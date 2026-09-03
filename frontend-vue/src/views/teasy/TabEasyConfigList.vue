@@ -84,7 +84,7 @@
 
           <a @click="bundPic(record)">绑定训练图片</a>
           <a-divider type="vertical" />
-          <a @click="handleEdit(record)">开始训练</a>
+          <span title="当前版本没有已验收的训练接口">训练已停用</span>
           <a-divider type="vertical" />
           <a @click="handleEdit(record)">编辑</a>
           <a-divider type="vertical" />

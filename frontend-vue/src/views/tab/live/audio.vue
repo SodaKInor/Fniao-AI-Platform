@@ -78,45 +78,10 @@ export default {
       this.audioUrl = URL.createObjectURL(this.audioBlob);
     },
     uploadAudio() {
-      if (!this.audioBlob) return;
-
-      const formData = new FormData();
-      formData.append('file', this.audioBlob, 'audio.wav');
-       formData.append('biz', "temp");
-
-      // axios.post('/api/upload-audio', formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data'
-      //   }
-      // }).then(response => {
-      //   message.success('音频上传成功');
-      // }).catch(error => {
-      //   message.error('音频上传失败');
-      //   console.error('音频上传失败', error);
-      // });
-      let that=this;
-      uploadAction("/sys/common/upload", formData).then((res) => {
-        if (res.success) {
-          message.success("识别成功");
-        
-          that.AiAudio(res.message);
-        } else {
-          message.warning(res.message);
-        }
-      })
-      
+      message.warning('旧音频执行入口已停用');
     },
-    AiAudio(url){
-      let that=this;
-        getAction("/tab/tabAiHistory/addAudio", {path:url}).then((res) => {
-          if (res.success) {
-             that.aitext=res.result;
-             message.success("识别成功");
-          
-          } else {
-           message.warning("识别失败");
-          }
-        })
+    AiAudio() {
+      message.warning('旧音频执行入口已停用');
     }
   }
 };
