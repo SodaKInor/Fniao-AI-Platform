@@ -1,0 +1,47 @@
+{
+  "at": "2026-09-03T11:01:40.484013+00:00",
+  "node": "v24.14.0",
+  "worktree": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend/code",
+  "checks": [
+    {
+      "name": "production build",
+      "command": "NODE_OPTIONS='--openssl-legacy-provider --max-old-space-size=4096' npm run build",
+      "cwd": "frontend-vue",
+      "exitCode": 0,
+      "fullLogSha256": "43afc2fbb467c4ad473294af3e4dd8601374663318f17decdc12c0138c2cf2dc",
+      "evidence": "build-output.txt"
+    },
+    {
+      "name": "scoped eslint",
+      "command": "./node_modules/.bin/eslint --no-ignore --no-fix 'src/api/ai/**/*.js' 'src/services/ai/**/*.js' 'src/components/ai/**/*.vue' 'src/views/ai/*.vue'",
+      "cwd": "frontend-vue",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "node tests",
+      "command": "node --test backend-github/integrations/ai-contracts/acceptance/04b-frontend/tests/*.test.cjs",
+      "exitCode": 0,
+      "passed": 16,
+      "failed": 0,
+      "evidence": "unit-tests.txt"
+    },
+    {
+      "name": "ownership and sizes",
+      "command": "node backend-github/integrations/ai-contracts/acceptance/04b-frontend/check-scope.cjs",
+      "exitCode": 0,
+      "evidence": "scope.json"
+    },
+    {
+      "name": "graph update",
+      "command": "graphify update .",
+      "exitCode": 0,
+      "evidence": "graphify-update.txt"
+    }
+  ],
+  "warnings": [
+    "Existing order-page CSS ordering conflicts (3), asset and entrypoint size warnings (2), outdated Browserslist data.",
+    "Graphify partially extracted six existing Vue files; changed community labels retained/reassigned by hub."
+  ],
+  "scope": "04b only; mock acceptance, no real GPU or backend permission verification"
+}

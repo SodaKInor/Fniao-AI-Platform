@@ -4,7 +4,7 @@ import { ACCESS_TOKEN, USER_NAME,USER_INFO,USER_AUTH,SYS_BUTTON_AUTH,UI_CACHE_DB
 import { welcome } from "@/utils/util"
 import { queryPermissionsByUser } from '@/api/api'
 import { getAction } from '@/api/manage'
-import { disableLegacyMenus } from '@/services/ai/legacyEntries'
+import { prepareAiMenus } from '@/services/ai/navigation'
 
 const user = {
   state: {
@@ -128,7 +128,7 @@ const user = {
       return new Promise((resolve, reject) => {
         queryPermissionsByUser().then(response => {
           response = { ...response, result: { ...response.result,
-            menu: disableLegacyMenus(response.result.menu) } }
+            menu: prepareAiMenus(response.result.menu) } }
           
           // update-begin----author:scott---date:20221018------for: 判断是否是 vue3 版本的菜单，给予提示 ---
           let routeList = response.result.menu;

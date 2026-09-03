@@ -1,0 +1,252 @@
+{
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/sys/permission/getUserPermissionByToken",
+      "query": "?_t=1788432458",
+      "at": "2026-09-03T10:47:38.784Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:47:39.093Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/sys/annountCement/listByUser",
+      "query": "?_t=1788432459",
+      "at": "2026-09-03T10:47:39.255Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:47:39.258Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_success",
+      "query": "",
+      "at": "2026-09-03T10:47:46.722Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/assets/sample_output/content",
+      "query": "",
+      "at": "2026-09-03T10:47:49.747Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/assets/sample_output/content",
+      "query": "",
+      "at": "2026-09-03T10:47:50.047Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:47:59.175Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:48:19.179Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:48:32.226Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_empty",
+      "query": "",
+      "at": "2026-09-03T10:48:35.265Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:48:39.183Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:48:58.308Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:48:59.190Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_unknown",
+      "query": "",
+      "at": "2026-09-03T10:49:01.339Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:49:04.395Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_error",
+      "query": "",
+      "at": "2026-09-03T10:49:07.441Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:49:22.651Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_success",
+      "query": "",
+      "at": "2026-09-03T10:49:25.770Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/assets/sample_output/content",
+      "query": "",
+      "at": "2026-09-03T10:49:28.725Z",
+      "status": 410
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/assets/sample_output/content",
+      "query": "",
+      "at": "2026-09-03T10:49:36.783Z",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/assets/sample_output/content",
+      "query": "",
+      "at": "2026-09-03T10:49:47.947Z",
+      "interrupted": true
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/capabilities",
+      "query": "",
+      "at": "2026-09-03T10:50:11.034Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/capabilities",
+      "query": "",
+      "at": "2026-09-03T10:50:26.294Z",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/jeecg-boot/ai/v1/assets",
+      "query": "",
+      "at": "2026-09-03T10:50:27.143Z",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "path": "/jeecg-boot/ai/v1/infer",
+      "query": "?waitMillis=1500",
+      "at": "2026-09-03T10:50:50.398Z",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/demo_job_0001",
+      "query": "",
+      "at": "2026-09-03T10:50:50.434Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:50:53.495Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/sample_success",
+      "query": "",
+      "at": "2026-09-03T10:50:56.788Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:51:20.016Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/sys/permission/getUserPermissionByToken",
+      "query": "?_t=1788432683",
+      "at": "2026-09-03T10:51:23.707Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/websocket/demo",
+      "query": "",
+      "at": "2026-09-03T10:51:23.938Z",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/sys/annountCement/listByUser",
+      "query": "?_t=1788432683",
+      "at": "2026-09-03T10:51:23.983Z",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs",
+      "query": "?limit=20",
+      "at": "2026-09-03T10:51:23.985Z",
+      "status": 200
+    }
+  ],
+  "submissionCount": 1,
+  "departedJobQueries": [
+    {
+      "method": "GET",
+      "path": "/jeecg-boot/ai/v1/jobs/demo_job_0001",
+      "query": "",
+      "at": "2026-09-03T10:50:50.434Z",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+
+> vue-antd-jeecg@3.4.3 build
+> vue-cli-service build
+
+
+-  Building for production...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ WARNING  Compiled with 5 warnings3:58:34 AM
+
+ warning
+
+chunk chunk-a8659118 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/form/JeecgOrderCustomerModal.vue?vue&type=style&index=0&id=e86d1f2e&prod&scoped=true&lang=css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/form/JeecgOrderDMainModal.vue?vue&type=style&index=0&id=2de11e5c&prod&scoped=true&lang=css
+   - couldn't fulfill desired order of chunk group(s)
+
+ warning
+
+chunk chunk-a8659118 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/JeecgOrderTicketList.vue?vue&type=style&index=0&id=3e5b2200&prod&scoped=true&lang=css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/JeecgOrderCustomerList.vue?vue&type=style&index=0&id=032e064e&prod&scoped=true&lang=css
+   - couldn't fulfill desired order of chunk group(s)
+
+ warning
+
+chunk chunk-a8659118 [mini-css-extract-plugin]
+Conflicting order. Following module has been added:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/JeecgOrderDMainList.vue?vue&type=style&index=0&id=1bacfb3c&prod&scoped=true&lang=css
+despite it was not able to fulfill desired ordering with these modules:
+ * css ./node_modules/css-loader??ref--6-oneOf-1-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-2!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/views/jeecg/tablist/JeecgOrderCustomerList.vue?vue&type=style&index=0&id=032e064e&prod&scoped=true&lang=css
+   - couldn't fulfill desired order of chunk group(s)
+
+ warning
+
+asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets:
+  img/bg-01.31076144.png (817 KiB)
+  img/bg-02.70b9d1b1.png (811 KiB)
+  js/app.d8144980.js (664 KiB)
+  js/chunk-2d0d5f54.92669ad2.js (754 KiB)
+  js/chunk-9150c0aa.6035fff4.js (2.33 MiB)
+  js/chunk-b4ed2580.9ee41498.js (547 KiB)
+  css/chunk-vendors.73e6e13b.css (763 KiB)
+  js/chunk-vendors.4c483788.js (7.63 MiB)
+  static/decoder-pro-audio.js (338 KiB)
+  static/decoder-pro-audio.wasm (433 KiB)
+  static/decoder-pro-simd.js (338 KiB)
+  static/decoder-pro-hard.js (338 KiB)
+  static/decoder-pro.js (338 KiB)
+  static/decoder-pro.wasm (1.27 MiB)
+  static/web-player-pro-multi.js (1.32 MiB)
+  static/jessibuca-pro-multi.js (1.32 MiB)
+  static/web-player-pro.js (1.3 MiB)
+  static/jessibuca-pro.js (1.3 MiB)
+  static/decoder-pro-simd.wasm (2.34 MiB)
+  static/model/4.glb (2.28 MiB)
+  static/web-player-pro-multi.js.gz (368 KiB)
+  static/web-player-pro.js.gz (363 KiB)
+  static/jessibuca-pro-multi.js.gz (368 KiB)
+  static/jessibuca-pro.js.gz (363 KiB)
+  js/chunk-9150c0aa.6035fff4.js.gz (545 KiB)
+  js/chunk-vendors.4c483788.js.gz (2.12 MiB)
+
+ warning
+
+entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  app (9.09 MiB)
+      css/chunk-vendors.73e6e13b.css
+      js/chunk-vendors.4c483788.js
+      css/app.8def044f.css
+      js/app.d8144980.js
+
+
+  File                                      Size             Gzipped
+
+[asset listing omitted; complete build output SHA-256 recorded in verification.json]
+
+ DONE  Build complete. The dist directory is ready to be deployed.
+ INFO  Check out deployment instructions at https://cli.vuejs.org/guide/deployment.html

@@ -1,0 +1,20 @@
+Re-extracting code files in . (no LLM needed)...
+  AST extraction: 100/851 uncached files (11%) [6 workers]
+  AST extraction: 200/851 uncached files (23%) [6 workers]
+  AST extraction: 300/851 uncached files (35%) [6 workers]
+  AST extraction: 400/851 uncached files (47%) [6 workers]
+  AST extraction: 500/851 uncached files (58%) [6 workers]
+  AST extraction: 600/851 uncached files (70%) [6 workers]
+  AST extraction: 700/851 uncached files (82%) [6 workers]
+  AST extraction: 800/851 uncached files (94%) [6 workers]
+  AST extraction: 851/851 uncached files (100%) [6 workers]
+  warning: 6 file(s) had syntax errors and may be partially extracted: frontend-vue/src/components/AvatarList/List.vue (first error at line 20, 1 symbol(s) extracted), frontend-vue/src/components/jeecg/JSuperQuery.vue (first error at line 287, 30 symbol(s) extracted), frontend-vue/src/components/jeecg/modal/JPopupOnlReport.vue (first error at line 211, 16 symbol(s) extracted), frontend-vue/src/views/account/settings/Custom.vue (first error at line 47, 5 symbol(s) extracted), frontend-vue/src/views/jeecg/JVxeDemo/layout-demo/ErpTemplate.vue (first error at line 58, 1 symbol(s) extracted) (+1 more)
+[graphify watch] community set changed since labeling (1182 saved labels, 1208 communities now; renamed 177 community(ies) by their hub). Run `graphify label` to refresh names with the LLM.
+[graphify] backed up curated graph (4 files) -> 2026-09-03/
+Graph has 27971 nodes (above 5000 limit). Building aggregated community view...
+graph.html written (aggregated: 1208 community nodes, 1730 cross-community edges)
+Tip: run with --obsidian for full node-level detail.
+[graphify watch] Rebuilt: 27971 nodes, 67882 edges, 1208 communities
+[graphify watch] graph.json, graph.html and GRAPH_REPORT.md updated in graphify-out
+Code graph updated. For doc/paper/image changes run /graphify --update in your AI assistant.
+Tip: set GEMINI_API_KEY or GOOGLE_API_KEY to use Gemini for semantic extraction.
