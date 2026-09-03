@@ -9,6 +9,7 @@
     "backend-github/deploy/remote-ai/dev.env.example",
     "backend-github/deploy/remote-ai/prod.env.example",
     "backend-github/deploy/remote-ai/secrets.override.yml",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/HANDOFF.md",
     "backend-github/integrations/ai-contracts/acceptance/03-client/README.md",
     "backend-github/integrations/ai-contracts/acceptance/03-client/build.json",
     "backend-github/integrations/ai-contracts/acceptance/03-client/contract-checks.json",
