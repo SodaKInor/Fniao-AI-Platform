@@ -1,0 +1,422 @@
+{
+  "status": "PASS",
+  "concurrency": {
+    "attempts": 6,
+    "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+    "dispatches": 1,
+    "conflictRejected": true
+  },
+  "download": {
+    "truncatedHttpRejected": true,
+    "jsonNotImage": true,
+    "restoredSha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+  },
+  "privateStorage": {
+    "partialFiles": 0,
+    "permissions": [
+      "700",
+      "600"
+    ],
+    "anonymousStaticDoesNotExposeFile": true
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437903909-owner_a",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3074
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437904079
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.110Z"
+        },
+        "timestamp": 1788437904150
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.110Z"
+        },
+        "timestamp": 1788437904150
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.110Z"
+        },
+        "timestamp": 1788437904163
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.110Z"
+        },
+        "timestamp": 1788437904163
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "DISPATCHING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.158Z"
+        },
+        "timestamp": 1788437904179
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "DISPATCHING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.158Z"
+        },
+        "timestamp": 1788437904183
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 409,
+        "result": {
+          "errorCode": "IDEMPOTENCY_CONFLICT",
+          "message": "Idempotency key has different input",
+          "simulated": false
+        },
+        "timestamp": 1788437904198
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/3a3b7efa-5021-4364-8035-811c12199ca8",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.177Z"
+        },
+        "timestamp": 1788437904219
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/3a3b7efa-5021-4364-8035-811c12199ca8",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:24.110Z",
+          "updatedAt": "2026-09-03T12:18:24.272Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_3a3b7efa-5021-4364-8035-811c12199ca8_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:24.264Z",
+                "expiresAt": "2026-10-03T12:18:24.264Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437904334
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "code": 404,
+        "message": "Acceptance download failure"
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 200,
+      "contentType": "image/png",
+      "size": 79
+    },
+    {
+      "method": "GET",
+      "url": "/sys/common/static/8f750010915444448c5cd85486d83414.bin",
+      "status": 404,
+      "contentType": "application/json",
+      "size": 151
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437905052
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437905055
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/jobs",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437905058
+      }
+    }
+  ]
+}

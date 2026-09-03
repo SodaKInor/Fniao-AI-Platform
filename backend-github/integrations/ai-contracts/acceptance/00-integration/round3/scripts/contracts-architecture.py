@@ -54,6 +54,12 @@ assert not triggers, triggers
 changed = subprocess.check_output(['git', 'diff', '--name-only', BASE], cwd=ROOT, text=True).splitlines()
 legacy = [{'path': p, 'lines': len((ROOT / p).read_text().splitlines())}
           for p in changed if p.endswith('.java') and '/modules/ai/' not in p and '/src/main/' in p]
+for row in legacy:
+    source = (ROOT / row['path']).read_text()
+    tokens = list(javalang.tokenizer.tokenize(source))
+    row['reviewMethodsOver80'] = [{'name': n.name, 'line': n.position.line, 'lines': types.physical_span(n, tokens)}
+        for _, n in javalang.parse.parse(source)
+        if isinstance(n, (javalang.tree.MethodDeclaration, javalang.tree.ConstructorDeclaration)) and types.physical_span(n, tokens) > 80]
 (OUT / 'architecture.json').write_text(json.dumps({'status': 'PASS', 'java': rows, 'triggers': triggers,
     'legacy': legacy, 'review': 'Existing oversized legacy files receive disabled-entry thin guards only; no old-system rewrite.',
     'limitations': 'AST import graph and physical spans, not a whole-program semantic proof.'}, indent=2) + '\n')

@@ -40,7 +40,7 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/CapabilityController.java",
-      "lines": 36,
+      "lines": 37,
       "layer": "api",
       "imports": [
         "java.util.List",
@@ -68,10 +68,10 @@
         {
           "name": "unavailable",
           "line": 28,
-          "lines": 8
+          "lines": 9
         }
       ],
-      "sha256": "1748949462c730350e50906e380c05dbf42c9dde5a4ef84922e8a57a92f716d5"
+      "sha256": "dd893e007e6c9a18832b6952fdc97d98e2290db73fa24a437b3f87233c9d6c68"
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/InferenceController.java",
@@ -2218,7 +2218,7 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderConfiguration.java",
-      "lines": 48,
+      "lines": 58,
       "layer": "config",
       "imports": [
         "java.time.Clock",
@@ -2267,12 +2267,22 @@
           "lines": 1
         },
         {
-          "name": "aiAccessRegistration",
+          "name": "aiJwtFilter",
           "line": 43,
+          "lines": 3
+        },
+        {
+          "name": "aiJwtRegistration",
+          "line": 47,
+          "lines": 5
+        },
+        {
+          "name": "aiAccessRegistration",
+          "line": 53,
           "lines": 5
         }
       ],
-      "sha256": "8517c0ea478b663790dc7380889be9a70a462f02499388501fc2dc6fb9a9455e"
+      "sha256": "aeeefea2bff1f42ac92999d2919a7ce47f14e1fef96b9173af2e5544de108883"
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderCredentials.java",
@@ -3340,7 +3350,7 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/AiAccessFilter.java",
-      "lines": 57,
+      "lines": 58,
       "layer": "legacy",
       "imports": [
         "com.fasterxml.jackson.databind.ObjectMapper",
@@ -3368,10 +3378,38 @@
         {
           "name": "reject",
           "line": 46,
-          "lines": 11
+          "lines": 12
         }
       ],
-      "sha256": "cabc610abd4d76ceb8b53183c74812f1b975ede2fabe00b64b5f4a466b11753a"
+      "sha256": "d2a3e31d229e020d0cf84e40f88ae3ed399fcf988b9c3a0e01678905b32ed902"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/AiJwtFilter.java",
+      "lines": 31,
+      "layer": "legacy",
+      "imports": [
+        "com.fasterxml.jackson.databind.ObjectMapper",
+        "javax.servlet.ServletRequest",
+        "javax.servlet.ServletResponse",
+        "javax.servlet.http.HttpServletResponse",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.config.shiro.filters.JwtFilter",
+        "org.jeecg.modules.ai.api.dto.ErrorDto",
+        "org.jeecg.modules.ai.domain.ErrorCode"
+      ],
+      "methods": [
+        {
+          "name": "AiJwtFilter",
+          "line": 15,
+          "lines": 1
+        },
+        {
+          "name": "isAccessAllowed",
+          "line": 17,
+          "lines": 14
+        }
+      ],
+      "sha256": "eb31db6ae7eb5de75fa4533777f0d8ab2a2f1d1835273c556fc50701c1785b06"
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/LegacyExecutionGuard.java",
@@ -4086,39 +4124,71 @@
   "legacy": [
     {
       "path": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/AiFilterChains.java",
-      "lines": 20
+      "lines": 24,
+      "reviewMethodsOver80": []
     },
     {
       "path": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
-      "lines": 283
+      "lines": 288,
+      "reviewMethodsOver80": [
+        {
+          "name": "shiroFilter",
+          "line": 70,
+          "lines": 108
+        }
+      ]
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java",
-      "lines": 242
+      "lines": 242,
+      "reviewMethodsOver80": []
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiSubscriptionController.java",
-      "lines": 318
+      "lines": 318,
+      "reviewMethodsOver80": []
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
-      "lines": 924
+      "lines": 924,
+      "reviewMethodsOver80": [
+        {
+          "name": "startAi",
+          "line": 607,
+          "lines": 113
+        },
+        {
+          "name": "sendUrl",
+          "line": 722,
+          "lines": 88
+        }
+      ]
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/controller/TabVideoUtilController.java",
-      "lines": 231
+      "lines": 231,
+      "reviewMethodsOver80": []
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java",
-      "lines": 79
+      "lines": 79,
+      "reviewMethodsOver80": []
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/controller/AITestController.java",
-      "lines": 263
+      "lines": 263,
+      "reviewMethodsOver80": [
+        {
+          "name": "testAIModel",
+          "line": 78,
+          "lines": 88
+        }
+      ]
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/java/org/jeecg/JeecgSystemApplication.java",
-      "lines": 59
+      "lines": 59,
+      "reviewMethodsOver80": []
     }
   ],
   "review": "Existing oversized legacy files receive disabled-entry thin guards only; no old-system rewrite.",

@@ -5,7 +5,7 @@ const { work, evidence, run } = require('./runtime.cjs')
 const base = 'http://127.0.0.1:19100/jeecg-boot'
 const receipts = []
 async function request(url, options = {}, token) {
-  const response = await fetch(base + url, { ...options, headers: {
+  const response = await fetch(base + url, { signal: AbortSignal.timeout(15000), ...options, headers: {
     ...(token ? { 'X-Access-Token': token } : {}), ...options.headers
   } })
   const bytes = Buffer.from(await response.arrayBuffer())

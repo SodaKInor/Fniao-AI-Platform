@@ -7,6 +7,7 @@ import re
 import shutil
 import subprocess
 import zipfile
+import uuid
 
 ROOT = Path(__file__).resolve().parents[7]
 OUT = Path(__file__).resolve().parents[1]
@@ -48,16 +49,28 @@ for name, files in [('main', sources), ('test', tests)]:
     (WORK / (name + '-sources.txt')).write_text('\n'.join('/workspace/' + str(p.relative_to(ROOT)) for p in files) + '\n')
 (WORK / 'logback-test.xml').write_text('<configuration><root level="ERROR"/></configuration>\n')
 script = '/workspace/backend-github/integrations/ai-contracts/acceptance/00-integration/round3/scripts/java-tests.sh'
+database = 'ai_00_verify_' + uuid.uuid4().hex[:12]
+runtime = str(Path(__file__).with_name('runtime.cjs'))
+node_sql = 'const r=require(process.argv[1]);r.sql(process.argv[2],process.argv[3]);'
+def sql(statement, db='wgai_ri_00_integration'):
+    subprocess.run(['node', '-e', node_sql, runtime, statement, db], check=True, stdout=subprocess.DEVNULL)
+
+sql('CREATE DATABASE ' + database + ' CHARACTER SET utf8mb4; GRANT ALL ON ' + database + ".* TO 'foundation'@'%';")
 command = ['docker', 'run', '--rm', '--network', 'wgai-ri-00-integration_network',
+    '-e', 'AI_TEST_JDBC=jdbc:mysql://mysql:3306/' + database + '?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC',
     '--env-file', str(WORK.parent / 'tests.env'), '-v', str(ROOT) + ':/workspace:ro',
     '-v', str(WORK) + ':/validation', 'maven:3.8.8-eclipse-temurin-8', 'sh', script]
-with (WORK / 'tests.log').open('w') as log:
-    result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT)
+try:
+    sql((ROOT / 'backend-github/deploy/remote-ai/migrations/V001__04a_assets_jobs.sql').read_text(), database)
+    with (WORK / 'tests.log').open('w') as log:
+        result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT)
+finally:
+    sql('REVOKE ALL ON ' + database + ".* FROM 'foundation'@'%'; DROP DATABASE " + database + ';')
 text = (WORK / 'tests.log').read_text()
 match = re.search(r'OK \((\d+) tests\)', text)
 receipt = {'status': 'PASS' if result.returncode == 0 and match else 'FAIL',
     'tests': int(match.group(1)) if match else 0, 'exitCode': result.returncode,
-    'database': '00 isolated MySQL', 'sourceReadOnly': True,
+    'database': '00 isolated MySQL temporary schema; dropped after tests', 'sourceReadOnly': True,
     'logSha256': hashlib.sha256((WORK / 'tests.log').read_bytes()).hexdigest(),
     'sources': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources + tests}}
 (OUT / 'java-tests.json').write_text(json.dumps(receipt, indent=2) + '\n')

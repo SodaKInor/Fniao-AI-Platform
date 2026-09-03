@@ -4,10 +4,10 @@
   "requests": [
     {
       "method": "GET",
-      "url": "/sys/randomImage/ri00-1788436354031-owner_a",
+      "url": "/sys/randomImage/ri00-1788437887823-owner_a",
       "status": 200,
       "contentType": "application/json",
-      "size": 3174
+      "size": 3202
     },
     {
       "method": "POST",
@@ -42,7 +42,7 @@
             "parametersSchema": "detection.v1"
           }
         ],
-        "timestamp": 1788436356158
+        "timestamp": 1788437889481
       }
     }
   ]

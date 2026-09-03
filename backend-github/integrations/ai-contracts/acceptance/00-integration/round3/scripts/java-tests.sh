@@ -8,7 +8,7 @@ fi
 javac -encoding UTF-8 -parameters -source 8 -target 8 -cp '/validation/libs/*' -d /validation/classes @/validation/main-sources.txt
 javac -encoding UTF-8 -parameters -source 8 -target 8 -cp '/validation/classes:/validation/libs/*' -d /validation/test-classes @/validation/test-sources.txt
 java -Djava.io.tmpdir=/validation/tmp -Dlogback.configurationFile=/validation/logback-test.xml \
-  '-Dai.test.jdbc=jdbc:mysql://mysql:3306/wgai_ri_00_integration?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC' \
+  "-Dai.test.jdbc=${AI_TEST_JDBC:?Explicit isolated test JDBC required}" \
   -cp '/validation/test-classes:/validation/classes:/validation/libs/*' org.junit.runner.JUnitCore \
   org.jeecg.modules.ai.client.DraftInferenceTest org.jeecg.modules.ai.client.DraftArtifactTest \
   org.jeecg.modules.ai.application.capabilities.CapabilityTest org.jeecg.modules.ai.legacy.AiAccessTest \
