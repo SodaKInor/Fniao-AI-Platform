@@ -1,0 +1,6 @@
+.env
+*.local
+assets/models/*
+assets/native/*
+!assets/models/.gitkeep
+!assets/native/.gitkeep

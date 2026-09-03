@@ -1,0 +1,7 @@
+/** Runtime configuration generated inside the local frontend container. */
+window._CONFIG = {
+  VUE_APP_API_BASE_URL: '${VUE_APP_API_BASE_URL}',
+  VUE_APP_CAS_BASE_URL: '${VUE_APP_CAS_BASE_URL}',
+  VUE_APP_ONLINE_BASE_URL: '${VUE_APP_ONLINE_BASE_URL}',
+  VUE_APP_VIDEO_STREAM_URL: '${VUE_APP_VIDEO_STREAM_URL}'
+}

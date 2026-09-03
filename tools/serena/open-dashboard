@@ -1,0 +1,26 @@
+#!/bin/zsh
+set -eu
+
+stdout_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stdout.log"
+stderr_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stderr.log"
+dashboard_url="$(grep -Eho 'http://127\.0\.0\.1:[0-9]+/dashboard[^[:space:]]*' "$stdout_log" "$stderr_log" 2>/dev/null | tail -n 1 || true)"
+
+if [ -z "$dashboard_url" ]; then
+  port=24282
+  while [ "$port" -le 24382 ]; do
+    candidate="http://127.0.0.1:${port}/dashboard/index.html"
+    if curl -fsS -o /dev/null "$candidate"; then
+      dashboard_url="$candidate"
+      break
+    fi
+    port=$((port + 1))
+  done
+fi
+
+if [ -z "$dashboard_url" ]; then
+  print -u2 "No running Serena Dashboard was found. Run tools/serena/start first."
+  exit 1
+fi
+
+print "$dashboard_url"
+open "$dashboard_url"

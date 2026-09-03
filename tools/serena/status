@@ -1,0 +1,39 @@
+#!/bin/zsh
+set -u
+
+label="com.local.wgai-serena"
+domain="gui/$(id -u)"
+port_file="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/port"
+stdout_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stdout.log"
+stderr_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stderr.log"
+fallback_pid_file="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/fallback.pid"
+port=9121
+[ -r "$port_file" ] && port="$(<"$port_file")"
+
+if launchctl print "$domain/$label" >/dev/null 2>&1; then
+  print "launchd: loaded ($domain/$label)"
+else
+  print "launchd: stopped ($domain/$label)"
+fi
+
+if [ -r "$fallback_pid_file" ]; then
+  fallback_pid="$(<"$fallback_pid_file")"
+  if kill -0 "$fallback_pid" 2>/dev/null; then
+    print "fallback: running (PID $fallback_pid)"
+  else
+    print "fallback: stale PID file ($fallback_pid)"
+  fi
+fi
+
+if lsof -nP -iTCP:"$port" -sTCP:LISTEN 2>/dev/null | grep -q '127.0.0.1'; then
+  print "MCP: listening at http://127.0.0.1:${port}/mcp"
+else
+  print "MCP: not listening on 127.0.0.1:${port}"
+fi
+
+dashboard_url="$(grep -Eho 'http://127\.0\.0\.1:[0-9]+/dashboard[^[:space:]]*' "$stdout_log" "$stderr_log" 2>/dev/null | tail -n 1 || true)"
+if [ -n "$dashboard_url" ]; then
+  print "Dashboard: $dashboard_url"
+else
+  print "Dashboard: waiting for Serena startup log"
+fi

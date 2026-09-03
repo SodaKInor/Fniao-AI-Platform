@@ -1,0 +1,90 @@
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /jeecg-boot
+  tomcat:
+    max-swallow-size: -1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 2GB
+      max-request-size: 2GB
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          url: jdbc:mysql://${MYSQL_HOST:mysql}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:java_ai}?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+          username: ${MYSQL_USER:wgai}
+          password: ${MYSQL_PASSWORD}
+          driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: ${REDIS_HOST:redis}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD}
+
+jeecg:
+  uploadType: local
+  path:
+    upload: /data/uploads
+    webapp: /data/webapp
+  elasticsearch:
+    check-enabled: false
+  file-view-domain: ""
+  minio:
+    minio_url: ""
+    minio_name: ""
+    minio_pass: ""
+  xxljob:
+    enabled: false
+  redisson:
+    address: ${REDIS_HOST:redis}:${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD}
+    type: STANDALONE
+    enabled: true
+
+cas:
+  prefixUrl: ""
+
+justauth:
+  enabled: false
+
+third-app:
+  enabled: false
+
+knife4j:
+  production: false
+  basic:
+    enable: false
+
+opencv: ${OPENCV_NATIVE_PATH:}
+
+wgai:
+  features:
+    opencv:
+      enabled: ${WGAI_OPENCV_ENABLED:false}
+    algorithm:
+      enabled: ${WGAI_ALGORITHM_ENABLED:false}
+    asr:
+      enabled: ${WGAI_ASR_ENABLED:false}
+    camera:
+      enabled: ${WGAI_CAMERA_ENABLED:false}
+    gpu:
+      enabled: ${WGAI_GPU_ENABLED:false}
+    plc:
+      enabled: ${WGAI_PLC_ENABLED:false}
+  contracts:
+    asr:
+      host: ${WGAI_ASR_HOST:}
+      port: ${WGAI_ASR_PORT:}
+      protocol: ${WGAI_ASR_PROTOCOL:http}
+    camera:
+      stream-url: ${WGAI_CAMERA_STREAM_URL:}

@@ -1,0 +1,9 @@
+.git
+*.zip
+backend-master
+deploy/.env
+deploy/diffs
+**/node_modules
+**/target
+frontend-vue/dist
+.DS_Store

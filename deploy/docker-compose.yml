@@ -1,0 +1,132 @@
+services:
+  mysql:
+    image: wgai-mysql:${APP_IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: deploy/mysql/Dockerfile
+      args:
+        MYSQL_IMAGE: ${MYSQL_IMAGE:-mysql:8.0.36}
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-java_ai}
+      MYSQL_USER: ${MYSQL_USER:-wgai}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_general_ci
+      - --explicit_defaults_for_timestamp=true
+      - --lower_case_table_names=1
+      - --max_allowed_packet=256M
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$${MYSQL_ROOT_PASSWORD}\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 45s
+    networks: [app]
+
+  redis:
+    image: ${REDIS_IMAGE:-redis:7.2.7-alpine}
+    restart: unless-stopped
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?REDIS_PASSWORD is required}
+    command: ["sh", "-c", "exec redis-server --appendonly yes --requirepass \"$${REDIS_PASSWORD}\""]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$${REDIS_PASSWORD}\" ping 2>/dev/null | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    networks: [app]
+
+  backend:
+    image: wgai-backend:${APP_IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: deploy/backend/Dockerfile
+      args:
+        MAVEN_IMAGE: ${MAVEN_IMAGE:-maven:3.8.8-eclipse-temurin-8}
+        JAVA_IMAGE: ${JAVA_IMAGE:-eclipse-temurin:8-jre-jammy}
+    restart: unless-stopped
+    environment:
+      TZ: Asia/Shanghai
+      SPRING_PROFILES_ACTIVE: prod,docker
+      SERVER_PORT: ${BACKEND_INTERNAL_PORT:-8080}
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-java_ai}
+      MYSQL_USER: ${MYSQL_USER:-wgai}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?REDIS_PASSWORD is required}
+      WGAI_OPENCV_ENABLED: ${WGAI_OPENCV_ENABLED:-false}
+      WGAI_ALGORITHM_ENABLED: ${WGAI_ALGORITHM_ENABLED:-false}
+      WGAI_ASR_ENABLED: ${WGAI_ASR_ENABLED:-false}
+      WGAI_CAMERA_ENABLED: ${WGAI_CAMERA_ENABLED:-false}
+      WGAI_GPU_ENABLED: ${WGAI_GPU_ENABLED:-false}
+      WGAI_PLC_ENABLED: ${WGAI_PLC_ENABLED:-false}
+      OPENCV_NATIVE_PATH: ${OPENCV_NATIVE_PATH:-}
+      WGAI_MAXKB_HOST: ${WGAI_MAXKB_HOST:-}
+      WGAI_MAXKB_APP_KEY: ${WGAI_MAXKB_APP_KEY:-}
+      WGAI_MAXKB_APP_SECRET: ${WGAI_MAXKB_APP_SECRET:-}
+      WGAI_ASR_HOST: ${WGAI_ASR_HOST:-}
+      WGAI_ASR_PORT: ${WGAI_ASR_PORT:-}
+      WGAI_ASR_PROTOCOL: ${WGAI_ASR_PROTOCOL:-http}
+      WGAI_CAMERA_STREAM_URL: ${WGAI_CAMERA_STREAM_URL:-}
+    volumes:
+      - backend_uploads:/data/uploads
+      - ./assets/models:/opt/wgai/models:ro
+      - ./assets/native:/opt/wgai/native:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:$${SERVER_PORT}/jeecg-boot/doc.html >/dev/null"]
+      interval: 15s
+      timeout: 8s
+      retries: 30
+      start_period: 90s
+    networks: [app]
+
+  frontend:
+    image: wgai-frontend:${APP_IMAGE_TAG:-local}
+    build:
+      context: ..
+      dockerfile: deploy/frontend/Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:16.20.2-bullseye}
+        NGINX_IMAGE: ${NGINX_IMAGE:-nginx:1.26.3-alpine}
+    restart: unless-stopped
+    environment:
+      VUE_APP_API_BASE_URL: /jeecg-boot
+      VUE_APP_CAS_BASE_URL: ""
+      VUE_APP_ONLINE_BASE_URL: ""
+      VUE_APP_VIDEO_STREAM_URL: ${VUE_APP_VIDEO_STREAM_URL:-}
+    ports:
+      - "${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-8080}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1/"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+    networks: [app]
+
+networks:
+  app:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
+  backend_uploads:

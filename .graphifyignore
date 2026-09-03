@@ -1,0 +1,14 @@
+# WGAI tool state and backups
+.setup-backups/
+.serena/
+.codex/
+.agents/
+openspec/
+graphify-out/
+
+# Archives and generated dependencies/builds
+*.zip
+**/node_modules/
+**/target/
+**/dist/
+**/.cache/

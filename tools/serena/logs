@@ -1,0 +1,16 @@
+#!/bin/zsh
+set -eu
+
+stdout_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stdout.log"
+stderr_log="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/serena.stderr.log"
+
+if [ "${1:-}" = "-f" ]; then
+  touch "$stdout_log" "$stderr_log"
+  exec tail -F "$stdout_log" "$stderr_log"
+fi
+
+lines="${1:-80}"
+print "==> $stdout_log <=="
+tail -n "$lines" "$stdout_log" 2>/dev/null || true
+print "==> $stderr_log <=="
+tail -n "$lines" "$stderr_log" 2>/dev/null || true
