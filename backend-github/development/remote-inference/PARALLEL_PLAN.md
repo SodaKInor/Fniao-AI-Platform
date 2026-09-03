@@ -63,7 +63,8 @@ backend-master 保持只读参考，不复制进改造提交。任何工具返�
 ## 状态与交接
 
 - PREPARED：任务说明已创建，尚未具备代码工作树或前置条件。
-- READY：实际 worktree、分支、公共契约起点和资源均已核实。
+- READY：该包所需的工作树和当前阶段条件已具备；若属于实现包，还必须核实公共契约起点与运行资源。
+- WAITING_PREREQUISITE：代码 worktree 已创建，但前置契约/集成验收尚未具备，不能直接开始实现。
 - IN_PROGRESS：仅本包正在实现。
 - READY_FOR_INTEGRATION：代码已提交，包内验收完成，等待 00 合并。
 - INTEGRATED：00 已合并并完成相应集成验证。

@@ -19,9 +19,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/code",
       "suggested_frontend_port": 18100,
-      "suggested_backend_port": 19100,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19100
     },
     {
       "id": "01-foundation",
@@ -42,9 +40,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/code",
       "suggested_frontend_port": 18101,
-      "suggested_backend_port": 19101,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19101
     },
     {
       "id": "02-contract",
@@ -66,9 +62,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/code",
       "suggested_frontend_port": 18102,
-      "suggested_backend_port": 19102,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19102
     },
     {
       "id": "03-client",
@@ -90,9 +84,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client/code",
       "suggested_frontend_port": 18103,
-      "suggested_backend_port": 19103,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19103
     },
     {
       "id": "04a-assets-jobs",
@@ -114,9 +106,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code",
       "suggested_frontend_port": 18104,
-      "suggested_backend_port": 19104,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19104
     },
     {
       "id": "04b-frontend",
@@ -137,9 +127,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend/code",
       "suggested_frontend_port": 18105,
-      "suggested_backend_port": 19105,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19105
     },
     {
       "id": "05-lan",
@@ -160,9 +148,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan/code",
       "suggested_frontend_port": 18106,
-      "suggested_backend_port": 19106,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19106
     },
     {
       "id": "06-resilience",
@@ -184,9 +170,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
       "suggested_frontend_port": 18107,
-      "suggested_backend_port": 19107,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19107
     },
     {
       "id": "07-cleanup",
@@ -208,9 +192,7 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup/code",
       "suggested_frontend_port": 18108,
-      "suggested_backend_port": 19108,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19108
     },
     {
       "id": "08-release",
@@ -232,9 +214,8 @@
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release/code",
       "suggested_frontend_port": 18109,
-      "suggested_backend_port": 19109,
-      "status": "PREPARED",
-      "worktree_created": false
+      "suggested_backend_port": 19109
     }
-  ]
+  ],
+  "runtime_registry": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/WORKSPACES.json"
 }
