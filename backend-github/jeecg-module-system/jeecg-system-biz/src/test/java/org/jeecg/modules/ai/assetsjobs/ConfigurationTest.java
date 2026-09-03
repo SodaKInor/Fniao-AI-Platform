@@ -28,8 +28,10 @@ public class ConfigurationTest {
             context.register(JobsConfiguration.class); context.refresh();
             AssetService assets=context.getBean(AssetService.class);
             Asset input=assets.upload("a",new ContentMetadata("in.png","image/png",(long)f.png.length,null),new ByteArrayInputStream(f.png));
-            JobRecord job=context.getBean(SubmitInferenceService.class).submit("a","spring-key","image-detection.v1",input.getAssetId(),f.parameters(),null).getJob();
-            assertEquals(JobState.PENDING,context.getBean(JobQueryService.class).owned(job.getRequest().getRequestId(),"a").getState());
+            try {
+                context.getBean(SubmitInferenceService.class).submit("a","spring-key","image-detection.v1",input.getAssetId(),f.parameters(),null);
+                fail("Missing provider policy must reject new submissions");
+            } catch (AiRequestException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE,error.getCode()); }
             assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.InferenceProvider.class).size());
         }
     }

@@ -6,7 +6,7 @@ import org.jeecg.modules.ai.api.dto.CapabilityDto;
 import org.jeecg.modules.ai.domain.Capability;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("aiCapabilityDtoMapper")
 public final class CapabilityMapper {
     public List<CapabilityDto> map(List<Capability> capabilities) {
         return capabilities.stream().map(this::map).collect(Collectors.toList());

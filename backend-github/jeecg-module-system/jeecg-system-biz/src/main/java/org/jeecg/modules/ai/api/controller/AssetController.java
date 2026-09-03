@@ -15,7 +15,7 @@ import org.jeecg.modules.ai.domain.*;
 
 @RestController
 @RequestMapping("/ai/v1/assets")
-public final class AssetController {
+public class AssetController {
     private final AssetService assets;
     private final AssetDtoMapper mapper=new AssetDtoMapper();
     public AssetController(AssetService assets) { this.assets=assets; }

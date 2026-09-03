@@ -40,7 +40,8 @@ public final class DbFixture implements AutoCloseable {
 
     public DbFixture() throws Exception { this(20,1); }
     public DbFixture(int pending,int active) throws Exception {
-        DriverManagerDataSource source=new DriverManagerDataSource("jdbc:mysql://mysql:3306/wgai_ri_04a_assets_jobs?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
+        DriverManagerDataSource source=new DriverManagerDataSource(System.getProperty("ai.test.jdbc",
+                "jdbc:mysql://mysql:3306/wgai_ri_04a_assets_jobs?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"),
                 "foundation",System.getenv("MYSQL_PASSWORD"));
         source.setDriverClassName("com.mysql.cj.jdbc.Driver"); sql=new JdbcTemplate(source);
         for (String table:Arrays.asList("ai_job_event","ai_job","ai_asset","ai_capability_binding")) sql.update("DELETE FROM "+table);

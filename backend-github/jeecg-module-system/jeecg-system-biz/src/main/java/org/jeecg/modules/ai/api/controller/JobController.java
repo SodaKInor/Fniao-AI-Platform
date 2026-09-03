@@ -11,7 +11,7 @@ import org.jeecg.modules.ai.domain.*;
 
 @RestController
 @RequestMapping("/ai/v1/jobs")
-public final class JobController {
+public class JobController {
     private final JobQueryService query;
     private final JobDtoMapper mapper=new JobDtoMapper();
     public JobController(JobQueryService query) { this.query=query; }

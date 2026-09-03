@@ -25,14 +25,19 @@ public final class CapabilityQueryService {
         if (source == null) throw new IllegalStateException("Capability repository is not ready");
         List<Capability> result = new ArrayList<>();
         for (Capability capability : source.list()) {
-            String reason = reason(capability, mayInfer);
-            result.add(new Capability(capability.getSnapshot(), capability.getDisplayName(), capability.isEnabled(),
+            result.add(effective(capability, mayInfer));
+        }
+        return result;
+    }
+
+    /** Shared policy for capability display and admission of a new submission. */
+    public Capability effective(Capability capability, boolean mayInfer) {
+        String reason = reason(capability, mayInfer);
+        return new Capability(capability.getSnapshot(), capability.getDisplayName(), capability.isEnabled(),
                     reason.isEmpty(), capability.isSimulated(), reason, capability.getInputMediaTypes(),
                     Math.max(1, Math.min(capability.getMaxInputBytes(), inputLimit)),
                     Math.max(1, Math.min(capability.getMaxOutputBytes(), outputLimit)),
-                    Math.max(0, Math.min(capability.getMaxWaitMillis(), 1500))));
-        }
-        return result;
+                    Math.max(0, Math.min(capability.getMaxWaitMillis(), 1500)));
     }
 
     private String reason(Capability capability, boolean mayInfer) {

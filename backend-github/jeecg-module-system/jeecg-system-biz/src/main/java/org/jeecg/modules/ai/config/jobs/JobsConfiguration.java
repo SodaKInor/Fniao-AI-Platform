@@ -54,8 +54,9 @@ public class JobsConfiguration implements WebMvcConfigurer {
         return new AssetService(assets,store,Clock.systemUTC(),p.getMaxInputBytes(),
                 Duration.ofDays(p.getInputRetentionDays()),Duration.ofDays(p.getOutputRetentionDays()));
     }
-    @Bean public SubmitInferenceService aiSubmitService(JobRepository jobs,CapabilityRepository capabilities,AssetService assets) {
-        return new SubmitInferenceService(jobs,capabilities,assets,Clock.systemUTC());
+    @Bean public SubmitInferenceService aiSubmitService(JobRepository jobs,CapabilityRepository capabilities,AssetService assets,
+            ObjectProvider<org.jeecg.modules.ai.application.capabilities.CapabilityQueryService> policies) {
+        return new SubmitInferenceService(jobs,new SubmissionCapabilities(capabilities,policies::getIfAvailable),assets,Clock.systemUTC());
     }
     @Bean public JobQueryService aiQueryService(JobRepository jobs,AssetRepository assets) { return new JobQueryService(jobs,assets); }
     @Bean(initMethod="start",destroyMethod="close")

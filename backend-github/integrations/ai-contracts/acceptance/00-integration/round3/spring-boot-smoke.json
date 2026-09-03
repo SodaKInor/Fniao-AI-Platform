@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "Full application image, real Spring/DictAspect/Shiro/MySQL/Redis/password+captcha; no replacement business API",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788436354031-owner_a",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3174
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "",
+        "code": 200,
+        "result": [
+          {
+            "code": "image-detection.v1",
+            "version": "mock-v1",
+            "displayName": "模拟图片检测",
+            "available": true,
+            "simulated": true,
+            "unavailableReason": "",
+            "inputMediaTypes": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxInputBytes": 10485760,
+            "maxOutputBytes": 10485760,
+            "maxWaitMillis": 1500,
+            "parametersSchema": "detection.v1"
+          }
+        ],
+        "timestamp": 1788436356158
+      }
+    }
+  ]
+}

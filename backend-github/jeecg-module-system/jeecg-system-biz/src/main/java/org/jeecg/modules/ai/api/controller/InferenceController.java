@@ -10,7 +10,7 @@ import org.jeecg.modules.ai.domain.*;
 
 @RestController
 @RequestMapping("/ai/v1")
-public final class InferenceController {
+public class InferenceController {
     private final SubmitInferenceService submit;
     private final JobQueryService query;
     private final JobDtoMapper mapper=new JobDtoMapper();
