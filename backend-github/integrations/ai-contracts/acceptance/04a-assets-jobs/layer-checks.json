@@ -1,0 +1,840 @@
+{
+  "status": "PASS",
+  "implementation_files": 35,
+  "max_file_lines": 129,
+  "max_method_lines": 39,
+  "frozen_public_types_unchanged": true,
+  "coverage": "AST imports, file/method spans, forbidden direct network API references; not a complete semantic proof",
+  "files": [
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/AssetController.java",
+      "lines": 45,
+      "methods": [
+        {
+          "name": "AssetController",
+          "lines": 1
+        },
+        {
+          "name": "upload",
+          "lines": 5
+        },
+        {
+          "name": "download",
+          "lines": 16
+        }
+      ],
+      "sha256": "90717ff08f950c064f95a3331a6ebf6f08028d209aab38e59adb42487f4b4899"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/InferenceController.java",
+      "lines": 46,
+      "methods": [
+        {
+          "name": "InferenceController",
+          "lines": 1
+        },
+        {
+          "name": "infer",
+          "lines": 8
+        },
+        {
+          "name": "jobs",
+          "lines": 7
+        },
+        {
+          "name": "accept",
+          "lines": 8
+        }
+      ],
+      "sha256": "5f8e1941f9d8428e201139f4eef4d2d280e54a0799720536e930896ef3bc9b67"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/JobApiIdentity.java",
+      "lines": 21,
+      "methods": [
+        {
+          "name": "JobApiIdentity",
+          "lines": 1
+        },
+        {
+          "name": "owner",
+          "lines": 11
+        }
+      ],
+      "sha256": "e1aa5c4a92382d6bf2c4c6e7edceeda77850ea27f818d2ba60b479c75504171d"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/JobApiResponse.java",
+      "lines": 14,
+      "methods": [
+        {
+          "name": "JobApiResponse",
+          "lines": 1
+        },
+        {
+          "name": "of",
+          "lines": 6
+        }
+      ],
+      "sha256": "0b0598e6e98a5bee0d1a4daca3180b62b93477cebfb7a9f8876eca011331ce9b"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/JobController.java",
+      "lines": 31,
+      "methods": [
+        {
+          "name": "JobController",
+          "lines": 1
+        },
+        {
+          "name": "get",
+          "lines": 4
+        },
+        {
+          "name": "list",
+          "lines": 7
+        }
+      ],
+      "sha256": "8c890340d3c81188b09cff72a339c6c3a12ef6a198f52c31f8ec93ca7aafc136"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/JobsApiExceptionHandler.java",
+      "lines": 49,
+      "methods": [
+        {
+          "name": "handle",
+          "lines": 15
+        },
+        {
+          "name": "status",
+          "lines": 13
+        }
+      ],
+      "sha256": "b64d51aac6bc426c21bf4ce071405d3d906d018e0ca36ceabdca57672ef551d4"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/mapper/assets/AssetDtoMapper.java",
+      "lines": 14,
+      "methods": [
+        {
+          "name": "map",
+          "lines": 7
+        }
+      ],
+      "sha256": "d36278f468a758a786ac3bec3bc683e85e2c5ae75f472d4c02da8d52c8c9ed32"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/mapper/jobs/JobDtoMapper.java",
+      "lines": 47,
+      "methods": [
+        {
+          "name": "map",
+          "lines": 19
+        },
+        {
+          "name": "data",
+          "lines": 12
+        },
+        {
+          "name": "error",
+          "lines": 4
+        }
+      ],
+      "sha256": "2cb40b42e6a31181d863bd80ac461128ed6ecf614a1ae3e2a309128c66fe2253"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/assets/AssetService.java",
+      "lines": 99,
+      "methods": [
+        {
+          "name": "AssetService",
+          "lines": 5
+        },
+        {
+          "name": "owned",
+          "lines": 5
+        },
+        {
+          "name": "upload",
+          "lines": 7
+        },
+        {
+          "name": "collect",
+          "lines": 7
+        },
+        {
+          "name": "collected",
+          "lines": 1
+        },
+        {
+          "name": "save",
+          "lines": 16
+        },
+        {
+          "name": "open",
+          "lines": 3
+        },
+        {
+          "name": "source",
+          "lines": 3
+        },
+        {
+          "name": "validateMetadata",
+          "lines": 6
+        },
+        {
+          "name": "fileName",
+          "lines": 6
+        },
+        {
+          "name": "UploadLimitStream",
+          "lines": 1
+        },
+        {
+          "name": "counted",
+          "lines": 4
+        },
+        {
+          "name": "read",
+          "lines": 1
+        },
+        {
+          "name": "read",
+          "lines": 1
+        }
+      ],
+      "sha256": "66074640856070eb756cf5ce0d150ea48201ce612bffb40d9087e62d20d683d1"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/AiRequestException.java",
+      "lines": 10,
+      "methods": [
+        {
+          "name": "AiRequestException",
+          "lines": 1
+        },
+        {
+          "name": "getCode",
+          "lines": 1
+        }
+      ],
+      "sha256": "c35fdb808692a45966374bee5b49a418a130daf60eca6a7e7e3508f30b6f701e"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/ClaimedJob.java",
+      "lines": 21,
+      "methods": [
+        {
+          "name": "ClaimedJob",
+          "lines": 1
+        },
+        {
+          "name": "record",
+          "lines": 1
+        },
+        {
+          "name": "move",
+          "lines": 7
+        }
+      ],
+      "sha256": "999c2ac9d5ee6a74ed2fdc511aa78c59145d1aea9a51067579f73a62312258ba"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/CollectResultService.java",
+      "lines": 70,
+      "methods": [
+        {
+          "name": "CollectResultService",
+          "lines": 3
+        },
+        {
+          "name": "collect",
+          "lines": 39
+        },
+        {
+          "name": "expired",
+          "lines": 3
+        },
+        {
+          "name": "pause",
+          "lines": 6
+        }
+      ],
+      "sha256": "6586a6111a3b1e6f53f4163d8de49781d5c54a7bde5d99f48b90163e237f6466"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/DispatchJobService.java",
+      "lines": 52,
+      "methods": [
+        {
+          "name": "DispatchJobService",
+          "lines": 4
+        },
+        {
+          "name": "dispatch",
+          "lines": 30
+        }
+      ],
+      "sha256": "ff1e61da3bcf74bd65fd4a2e00f4f10e723996f7f3d94551e4776d672e8cd3d5"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/JobQueryService.java",
+      "lines": 39,
+      "methods": [
+        {
+          "name": "JobQueryService",
+          "lines": 1
+        },
+        {
+          "name": "resultAssets",
+          "lines": 7
+        },
+        {
+          "name": "owned",
+          "lines": 4
+        },
+        {
+          "name": "history",
+          "lines": 1
+        },
+        {
+          "name": "await",
+          "lines": 13
+        },
+        {
+          "name": "finished",
+          "lines": 4
+        }
+      ],
+      "sha256": "9b7ac9b5402977da1c535d406768f0e41ae86b3821fcae7e2fa6122165536200"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/ProviderResultValidator.java",
+      "lines": 24,
+      "methods": [
+        {
+          "name": "validate",
+          "lines": 16
+        },
+        {
+          "name": "unit",
+          "lines": 1
+        },
+        {
+          "name": "invalid",
+          "lines": 1
+        }
+      ],
+      "sha256": "a53a3595ea5f59d8f105ba31f1a4c3777f9bb746c413fde220696b9cbe9b23b6"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/RequestFingerprint.java",
+      "lines": 30,
+      "methods": [
+        {
+          "name": "digest",
+          "lines": 18
+        },
+        {
+          "name": "key",
+          "lines": 1
+        },
+        {
+          "name": "identifier",
+          "lines": 1
+        },
+        {
+          "name": "invalid",
+          "lines": 1
+        }
+      ],
+      "sha256": "50547e620b7f6b563c45e6d3c72178a54e80c06b909ea671a9d7ae49169b6333"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/jobs/SubmitInferenceService.java",
+      "lines": 49,
+      "methods": [
+        {
+          "name": "SubmitInferenceService",
+          "lines": 3
+        },
+        {
+          "name": "submit",
+          "lines": 29
+        }
+      ],
+      "sha256": "2525510a19942735c2ed2ac92b26ea99a54017599f395fd9a0910820abbd747f"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/jobs/JobWorker.java",
+      "lines": 61,
+      "methods": [
+        {
+          "name": "JobWorker",
+          "lines": 7
+        },
+        {
+          "name": "thread",
+          "lines": 1
+        },
+        {
+          "name": "start",
+          "lines": 1
+        },
+        {
+          "name": "scan",
+          "lines": 15
+        },
+        {
+          "name": "dispatch",
+          "lines": 8
+        },
+        {
+          "name": "close",
+          "lines": 1
+        }
+      ],
+      "sha256": "13fcec022f13346cd9f43f5595633fb7f90d011e10de0240f06c697bc02d5fad"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/jobs/JobsConfiguration.java",
+      "lines": 69,
+      "methods": [
+        {
+          "name": "aiSnapshotCodec",
+          "lines": 1
+        },
+        {
+          "name": "aiRecordConverter",
+          "lines": 1
+        },
+        {
+          "name": "aiAssetRepository",
+          "lines": 3
+        },
+        {
+          "name": "aiCapabilityRepository",
+          "lines": 3
+        },
+        {
+          "name": "aiJobRepository",
+          "lines": 5
+        },
+        {
+          "name": "aiArtifactStore",
+          "lines": 12
+        },
+        {
+          "name": "aiAssetService",
+          "lines": 4
+        },
+        {
+          "name": "aiSubmitService",
+          "lines": 3
+        },
+        {
+          "name": "aiQueryService",
+          "lines": 1
+        },
+        {
+          "name": "aiJobWorker",
+          "lines": 4
+        },
+        {
+          "name": "extendMessageConverters",
+          "lines": 3
+        }
+      ],
+      "sha256": "ad9bab5f713e5f1f0c1eed65a04a2918573cec168eac88a031ec86e5a9bf0073"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/jobs/JobsProperties.java",
+      "lines": 26,
+      "methods": [
+        {
+          "name": "validate",
+          "lines": 6
+        }
+      ],
+      "sha256": "6bb388729b88bf1976e8e3e6ec508abc670950ed57e891c8419fba620bbce7b2"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/jobs/StrictInferenceJsonConverter.java",
+      "lines": 42,
+      "methods": [
+        {
+          "name": "StrictInferenceJsonConverter",
+          "lines": 1
+        },
+        {
+          "name": "supports",
+          "lines": 1
+        },
+        {
+          "name": "canWrite",
+          "lines": 1
+        },
+        {
+          "name": "readInternal",
+          "lines": 20
+        },
+        {
+          "name": "writeInternal",
+          "lines": 1
+        }
+      ],
+      "sha256": "764ec30e231d22ea14c55c816bd7a062ff6ad4857372e837d8565af9f3a2531c"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/converter/ClaimedUpdateRules.java",
+      "lines": 24,
+      "methods": [
+        {
+          "name": "allows",
+          "lines": 17
+        }
+      ],
+      "sha256": "5afb92dcdacaa9c020413b67f0000fd9a0b448e10cb34887983440661d5bbd28"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/converter/RecordConverter.java",
+      "lines": 44,
+      "methods": [
+        {
+          "name": "RecordConverter",
+          "lines": 1
+        },
+        {
+          "name": "asset",
+          "lines": 5
+        },
+        {
+          "name": "asset",
+          "lines": 7
+        },
+        {
+          "name": "job",
+          "lines": 5
+        },
+        {
+          "name": "create",
+          "lines": 7
+        },
+        {
+          "name": "update",
+          "lines": 5
+        }
+      ],
+      "sha256": "8683b2bef23862840b01c7539a76227c87a4d9135e15a961015464a5f853c353"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/converter/SnapshotCodec.java",
+      "lines": 105,
+      "methods": [
+        {
+          "name": "write",
+          "lines": 5
+        },
+        {
+          "name": "read",
+          "lines": 4
+        },
+        {
+          "name": "text",
+          "lines": 4
+        },
+        {
+          "name": "instant",
+          "lines": 4
+        },
+        {
+          "name": "request",
+          "lines": 7
+        },
+        {
+          "name": "parameters",
+          "lines": 4
+        },
+        {
+          "name": "snapshot",
+          "lines": 8
+        },
+        {
+          "name": "capability",
+          "lines": 8
+        },
+        {
+          "name": "data",
+          "lines": 10
+        },
+        {
+          "name": "checkpoint",
+          "lines": 13
+        },
+        {
+          "name": "result",
+          "lines": 7
+        },
+        {
+          "name": "error",
+          "lines": 5
+        }
+      ],
+      "sha256": "5c7b3a05846aa4ba1c2553abd6459a18e89eb8c1dca7c04be98ad2a5fe5ca7ee"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/entity/AssetRow.java",
+      "lines": 14,
+      "methods": [],
+      "sha256": "8d137f5987777c604f813a2a8272744ed3e40633dfd58f437604f0e290b60dd0"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/entity/CapabilityRow.java",
+      "lines": 6,
+      "methods": [],
+      "sha256": "02e628f42e8fd5dba7aba12bdb49ea2bdfe0a7aefc48653a87d4c278f6766311"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/entity/JobRow.java",
+      "lines": 18,
+      "methods": [],
+      "sha256": "251dcba0eeae678b277f061162d0e540e37d9065d408327b2e0d0d16ca447005"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/mapper/AssetMapper.java",
+      "lines": 15,
+      "methods": [
+        {
+          "name": "insert",
+          "lines": 1
+        },
+        {
+          "name": "findOwned",
+          "lines": 1
+        }
+      ],
+      "sha256": "fe6d4d5e4c33acfbfc065da2374e9d87b72085b22172a37dede2f1164ba6af31"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/mapper/CapabilityMapper.java",
+      "lines": 13,
+      "methods": [
+        {
+          "name": "find",
+          "lines": 1
+        },
+        {
+          "name": "list",
+          "lines": 1
+        }
+      ],
+      "sha256": "e34f8b6da1395be6da90773293ea010bf2ed17becdc56bf183255d0d1b08527c"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/mapper/JobMapper.java",
+      "lines": 53,
+      "methods": [
+        {
+          "name": "lockCapacity",
+          "lines": 1
+        },
+        {
+          "name": "pendingCount",
+          "lines": 1
+        },
+        {
+          "name": "activeCount",
+          "lines": 1
+        },
+        {
+          "name": "findByKey",
+          "lines": 1
+        },
+        {
+          "name": "findOwned",
+          "lines": 1
+        },
+        {
+          "name": "lock",
+          "lines": 1
+        },
+        {
+          "name": "pending",
+          "lines": 1
+        },
+        {
+          "name": "history",
+          "lines": 3
+        },
+        {
+          "name": "insert",
+          "lines": 1
+        },
+        {
+          "name": "update",
+          "lines": 1
+        },
+        {
+          "name": "event",
+          "lines": 1
+        }
+      ],
+      "sha256": "8e313bf2f08d61448f1b743468fd0e996ed81c333754d4e393353f62a3cf77fa"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/repository/MyBatisAssetRepository.java",
+      "lines": 19,
+      "methods": [
+        {
+          "name": "MyBatisAssetRepository",
+          "lines": 3
+        },
+        {
+          "name": "insert",
+          "lines": 1
+        },
+        {
+          "name": "findOwned",
+          "lines": 3
+        }
+      ],
+      "sha256": "c10d75dab100fb442ef19d273e93452d8ec49ab6f94ed4251d47bb51eeea0779"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/repository/MyBatisCapabilityRepository.java",
+      "lines": 22,
+      "methods": [
+        {
+          "name": "MyBatisCapabilityRepository",
+          "lines": 3
+        },
+        {
+          "name": "find",
+          "lines": 3
+        },
+        {
+          "name": "list",
+          "lines": 3
+        }
+      ],
+      "sha256": "bc2e78fde9d51fb01545fb904a525c23cf69e0a2fa4a3a6232eb63e8550383eb"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/persistence/repository/MyBatisJobRepository.java",
+      "lines": 129,
+      "methods": [
+        {
+          "name": "MyBatisJobRepository",
+          "lines": 8
+        },
+        {
+          "name": "capacity",
+          "lines": 3
+        },
+        {
+          "name": "createOrGet",
+          "lines": 14
+        },
+        {
+          "name": "findByKeyOwned",
+          "lines": 3
+        },
+        {
+          "name": "findOwned",
+          "lines": 3
+        },
+        {
+          "name": "findPending",
+          "lines": 4
+        },
+        {
+          "name": "claimPending",
+          "lines": 12
+        },
+        {
+          "name": "updateClaimed",
+          "lines": 13
+        },
+        {
+          "name": "cancelPending",
+          "lines": 9
+        },
+        {
+          "name": "save",
+          "lines": 4
+        },
+        {
+          "name": "listOwned",
+          "lines": 20
+        }
+      ],
+      "sha256": "e77337b8a91b57ca7216d367cf498939e58ae7fe8fa294bd57682c518a3fec14"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/storage/ImageFileVerifier.java",
+      "lines": 65,
+      "methods": [
+        {
+          "name": "ImageFileVerifier",
+          "lines": 1
+        },
+        {
+          "name": "verifyPng",
+          "lines": 18
+        },
+        {
+          "name": "verify",
+          "lines": 28
+        }
+      ],
+      "sha256": "8f2306bdd010ad5b0d571d2ad1eb44bb67de78df63b4c46a253aa3d0850a3f2d"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/storage/PrivateFileArtifactStore.java",
+      "lines": 110,
+      "methods": [
+        {
+          "name": "PrivateFileArtifactStore",
+          "lines": 15
+        },
+        {
+          "name": "noLinks",
+          "lines": 4
+        },
+        {
+          "name": "permissions",
+          "lines": 4
+        },
+        {
+          "name": "write",
+          "lines": 23
+        },
+        {
+          "name": "copy",
+          "lines": 17
+        },
+        {
+          "name": "path",
+          "lines": 7
+        },
+        {
+          "name": "open",
+          "lines": 5
+        },
+        {
+          "name": "delete",
+          "lines": 1
+        },
+        {
+          "name": "sha256",
+          "lines": 4
+        },
+        {
+          "name": "hex",
+          "lines": 5
+        }
+      ],
+      "sha256": "c2953841a42f93ec9c8fb419f61d2e6b00077dbbf5a212333badd13ee5439cd6"
+    }
+  ]
+}
