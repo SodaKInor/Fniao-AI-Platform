@@ -1,0 +1,10 @@
+{
+  "contract_version": "0.1-draft",
+  "request_id": "mock_job_0001",
+  "capability": "image-detection.v1",
+  "parameters": {
+    "threshold": 0.5,
+    "max_detections": 10,
+    "annotate": true
+  }
+}

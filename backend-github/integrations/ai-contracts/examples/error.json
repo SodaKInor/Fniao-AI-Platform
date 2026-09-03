@@ -1,0 +1,12 @@
+{
+  "success": false,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 409,
+  "result": {
+    "errorCode": "IDEMPOTENCY_CONFLICT",
+    "message": "SIMULATED same key different request",
+    "requestId": "mock_job_0001",
+    "simulated": true
+  },
+  "timestamp": 1788429600000
+}

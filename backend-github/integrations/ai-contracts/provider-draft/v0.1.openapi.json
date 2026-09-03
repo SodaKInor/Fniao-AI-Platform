@@ -1,0 +1,409 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Unconfirmed synchronous provider draft",
+    "version": "0.1.0-draft",
+    "description": "全部 wire 名称、路径、Bearer 鉴权和限额均是草案；.invalid 不是可用地址。真实接入前必须确认。"
+  },
+  "servers": [
+    {
+      "url": "https://provider.example.invalid"
+    }
+  ],
+  "security": [
+    {
+      "DraftCredential": []
+    }
+  ],
+  "x-confirmation-status": "UNCONFIRMED",
+  "x-features": {
+    "query": false,
+    "cancel": false,
+    "deduplication": false
+  },
+  "paths": {
+    "/infer": {
+      "post": {
+        "operationId": "draftSynchronousInfer",
+        "summary": "同步 multipart 文件 + JSON metadata 草案",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/Metadata"
+                  }
+                },
+                "required": [
+                  "file",
+                  "metadata"
+                ]
+              },
+              "encoding": {
+                "file": {
+                  "contentType": "image/png, image/jpeg"
+                },
+                "metadata": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "同步完成，可为空成果",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Success"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "明确输入错误",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "服务鉴权失败；适配成业务 PROVIDER_AUTH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "未确认是否执行；不得自动再次推理",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "DraftCredential": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "仅草案；真实凭据通过库外安全渠道交付"
+      }
+    },
+    "schemas": {
+      "Parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "max_detections": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "annotate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "threshold",
+          "max_detections",
+          "annotate"
+        ]
+      },
+      "Metadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "enum": [
+              "0.1-draft"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "capability": {
+            "type": "string",
+            "enum": [
+              "image-detection.v1"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/Parameters"
+          }
+        },
+        "required": [
+          "contract_version",
+          "request_id",
+          "capability",
+          "parameters"
+        ],
+        "description": "request_id 仅关联日志；未承诺去重，不是可查询/取消的远程任务标识。字段名称均待同事确认。"
+      },
+      "Box": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "width",
+          "height"
+        ],
+        "description": "归一化矩形；x+width <= 1 且 y+height <= 1，由应用校验。"
+      },
+      "Detection": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "box": {
+            "$ref": "#/components/schemas/Box"
+          }
+        },
+        "required": [
+          "label",
+          "score",
+          "box"
+        ]
+      },
+      "Data": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "enum": [
+              "detection.v1"
+            ]
+          },
+          "image_width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "image_height": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "detections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Detection"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "schema_version",
+          "image_width",
+          "image_height",
+          "detections"
+        ]
+      },
+      "Artifact": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reference": {
+            "type": "string",
+            "pattern": "^/artifacts/[A-Za-z0-9_-]+$"
+          },
+          "file_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "image/png",
+              "image/jpeg"
+            ]
+          },
+          "size_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "reference",
+          "file_name",
+          "media_type",
+          "size_bytes",
+          "sha256",
+          "expires_at"
+        ],
+        "description": "同服务相对引用草案；只由受控 reader 解释，不是本地路径。下载鉴权/有效期均待确认。"
+      },
+      "Success": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "enum": [
+              "0.1-draft"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "succeeded"
+            ]
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Data"
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Artifact"
+            },
+            "maxItems": 1
+          }
+        },
+        "required": [
+          "contract_version",
+          "request_id",
+          "status",
+          "simulated",
+          "data",
+          "artifacts"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "enum": [
+              "0.1-draft"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "failed"
+            ]
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "INVALID_INPUT",
+                  "REJECTED",
+                  "INTERNAL"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "execution_confirmed_not_started": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "code",
+              "message",
+              "execution_confirmed_not_started"
+            ]
+          }
+        },
+        "required": [
+          "contract_version",
+          "request_id",
+          "status",
+          "simulated",
+          "error"
+        ],
+        "description": "只有经双方确认的 execution_confirmed_not_started 语义才可证明未执行；当前不得凭该草案字段自动重发。"
+      }
+    }
+  }
+}

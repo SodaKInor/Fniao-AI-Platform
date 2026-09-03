@@ -1,0 +1,52 @@
+{
+  "success": true,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 200,
+  "result": {
+    "requestId": "mock_job_0001",
+    "capabilityCode": "image-detection.v1",
+    "capabilityVersion": "mock-v1",
+    "inputAssetId": "mock_input_0001",
+    "parameters": {
+      "threshold": 0.5,
+      "maxDetections": 10,
+      "annotate": true
+    },
+    "state": "SUCCEEDED",
+    "simulated": true,
+    "createdAt": "2026-09-03T10:00:00Z",
+    "updatedAt": "2026-09-03T10:00:00Z",
+    "result": {
+      "simulated": true,
+      "data": {
+        "schemaVersion": "detection.v1",
+        "imageWidth": 16,
+        "imageHeight": 16,
+        "detections": [
+          {
+            "label": "synthetic-square",
+            "score": 0.95,
+            "box": {
+              "x": 0.25,
+              "y": 0.25,
+              "width": 0.5,
+              "height": 0.5
+            }
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "assetId": "mock_output_0001",
+          "fileName": "annotated.png",
+          "mediaType": "image/png",
+          "sizeBytes": 79,
+          "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+          "createdAt": "2026-09-03T10:00:00Z",
+          "expiresAt": "2026-09-04T10:00:00Z"
+        }
+      ]
+    }
+  },
+  "timestamp": 1788429600000
+}

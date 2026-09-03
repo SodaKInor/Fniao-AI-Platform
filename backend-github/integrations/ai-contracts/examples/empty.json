@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 200,
+  "result": {
+    "requestId": "mock_job_empty",
+    "capabilityCode": "image-detection.v1",
+    "capabilityVersion": "mock-v1",
+    "inputAssetId": "mock_input_0001",
+    "parameters": {
+      "threshold": 0.5,
+      "maxDetections": 10,
+      "annotate": true
+    },
+    "state": "SUCCEEDED",
+    "simulated": true,
+    "createdAt": "2026-09-03T10:00:00Z",
+    "updatedAt": "2026-09-03T10:00:00Z",
+    "result": {
+      "simulated": true,
+      "data": {
+        "schemaVersion": "detection.v1",
+        "imageWidth": 16,
+        "imageHeight": 16,
+        "detections": []
+      },
+      "artifacts": []
+    }
+  },
+  "timestamp": 1788429600000
+}

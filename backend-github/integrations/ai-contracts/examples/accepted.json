@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 202,
+  "result": {
+    "requestId": "mock_job_0001",
+    "capabilityCode": "image-detection.v1",
+    "capabilityVersion": "mock-v1",
+    "inputAssetId": "mock_input_0001",
+    "parameters": {
+      "threshold": 0.5,
+      "maxDetections": 10,
+      "annotate": true
+    },
+    "state": "WAITING",
+    "simulated": true,
+    "createdAt": "2026-09-03T10:00:00Z",
+    "updatedAt": "2026-09-03T10:00:00Z"
+  },
+  "timestamp": 1788429600000
+}

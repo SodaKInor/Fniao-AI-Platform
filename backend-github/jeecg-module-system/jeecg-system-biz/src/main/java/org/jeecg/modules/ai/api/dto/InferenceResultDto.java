@@ -1,0 +1,41 @@
+package org.jeecg.modules.ai.api.dto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.util.List;
+
+/**
+ * Business API shape only; constraints and optional-field rules are in business.openapi.json.
+ * Use existing Result<T>. Mappers validate values and omit absent optional response fields.
+ * No provider wire payload, credentials or persistence entity may be attached.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public final class InferenceResultDto {
+    private Boolean simulated;
+    private DetectionDataDto data;
+    private List<AssetDto> artifacts;
+
+    public Boolean getSimulated() {
+        return simulated;
+    }
+
+    public void setSimulated(Boolean simulated) {
+        this.simulated = simulated;
+    }
+
+    public DetectionDataDto getData() {
+        return data;
+    }
+
+    public void setData(DetectionDataDto data) {
+        this.data = data;
+    }
+
+    public List<AssetDto> getArtifacts() {
+        return artifacts;
+    }
+
+    public void setArtifacts(List<AssetDto> artifacts) {
+        this.artifacts = artifacts;
+    }
+}

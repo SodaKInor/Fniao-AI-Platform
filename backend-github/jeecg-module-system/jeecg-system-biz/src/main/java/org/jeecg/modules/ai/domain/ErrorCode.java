@@ -1,0 +1,27 @@
+package org.jeecg.modules.ai.domain;
+
+/**
+ * Canonical business ErrorCode values. Semantics are frozen in v1/SEMANTICS.md.
+ */
+public enum ErrorCode {
+    INVALID_REQUEST,
+    UNAUTHENTICATED,
+    FORBIDDEN,
+    NOT_FOUND,
+    ASSET_EXPIRED,
+    LIMIT_EXCEEDED,
+    UNSUPPORTED_MEDIA,
+    CAPABILITY_UNAVAILABLE,
+    IDEMPOTENCY_CONFLICT,
+    CANCEL_NOT_SUPPORTED,
+    JOB_STATE_CONFLICT,
+    PROVIDER_OFFLINE,
+    PROVIDER_AUTH,
+    PROVIDER_REJECTED,
+    PROVIDER_TIMEOUT,
+    PROVIDER_PROTOCOL,
+    RESULT_UNKNOWN,
+    ARTIFACT_TRANSFER,
+    ARTIFACT_EXPIRED,
+    INTERNAL_ERROR
+}

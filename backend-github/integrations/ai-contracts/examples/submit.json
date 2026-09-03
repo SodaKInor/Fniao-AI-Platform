@@ -1,0 +1,9 @@
+{
+  "capabilityCode": "image-detection.v1",
+  "inputAssetId": "mock_input_0001",
+  "parameters": {
+    "threshold": 0.5,
+    "maxDetections": 10,
+    "annotate": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "contract_version": "0.1-draft",
+  "request_id": "mock_job_0001",
+  "status": "succeeded",
+  "simulated": true,
+  "data": {
+    "schema_version": "detection.v1",
+    "image_width": 16,
+    "image_height": 16,
+    "detections": []
+  },
+  "artifacts": []
+}

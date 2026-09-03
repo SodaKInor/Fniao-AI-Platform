@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 201,
+  "result": {
+    "assetId": "mock_input_0001",
+    "fileName": "input.png",
+    "mediaType": "image/png",
+    "sizeBytes": 79,
+    "sha256": "12b02152a0b0ce94163edff76b814fe0acb4f7778e176f7695d8d801f4126557",
+    "createdAt": "2026-09-03T10:00:00Z",
+    "expiresAt": "2026-09-04T10:00:00Z"
+  },
+  "timestamp": 1788429600000
+}

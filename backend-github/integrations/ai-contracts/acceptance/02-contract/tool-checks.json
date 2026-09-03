@@ -1,0 +1,16 @@
+{
+  "graphify": {
+    "command": "graphify update .",
+    "worktree": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/code",
+    "exit_code": 0,
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/graphify-update.log",
+    "sha256": "1d71f5dfb1b12180e5eac612f16d3d22a9e951326a7e3b5db1d5a076755a6107",
+    "limitations": "AST only; six pre-existing Vue syntax warnings; not a semantic architecture proof"
+  },
+  "openspec": {
+    "command": "openspec validate remote-inference-platform --strict",
+    "exit_code": 0,
+    "result": "valid"
+  },
+  "serena": "Shared original index initialization failed; no project switching or original-worktree writes"
+}

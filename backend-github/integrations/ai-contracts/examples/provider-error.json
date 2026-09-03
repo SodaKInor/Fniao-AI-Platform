@@ -1,0 +1,11 @@
+{
+  "contract_version": "0.1-draft",
+  "request_id": "mock_job_0001",
+  "status": "failed",
+  "simulated": true,
+  "error": {
+    "code": "INTERNAL",
+    "message": "SIMULATED unknown processing outcome",
+    "execution_confirmed_not_started": false
+  }
+}

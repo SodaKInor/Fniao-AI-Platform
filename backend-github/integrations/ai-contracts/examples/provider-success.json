@@ -1,0 +1,33 @@
+{
+  "contract_version": "0.1-draft",
+  "request_id": "mock_job_0001",
+  "status": "succeeded",
+  "simulated": true,
+  "data": {
+    "schema_version": "detection.v1",
+    "image_width": 16,
+    "image_height": 16,
+    "detections": [
+      {
+        "label": "synthetic-square",
+        "score": 0.95,
+        "box": {
+          "x": 0.25,
+          "y": 0.25,
+          "width": 0.5,
+          "height": 0.5
+        }
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "reference": "/artifacts/mock_output_0001",
+      "file_name": "annotated.png",
+      "media_type": "image/png",
+      "size_bytes": 79,
+      "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+      "expires_at": "2026-09-04T10:00:00Z"
+    }
+  ]
+}

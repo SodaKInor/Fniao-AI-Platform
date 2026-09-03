@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-09-03T09:49:45.066354+00:00",
+  "candidate_files_before_this_receipt": 76,
+  "allowed_paths": [
+    "backend-github/integrations/ai-contracts/",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/"
+  ],
+  "findings": [],
+  "scan_scope": "Owned new files, exact current deployment/test credentials and selected private-key/token patterns; not a universal secret scan",
+  "binary_files": "Only two documented synthetic PNG fixtures; no real uploads or private artifacts",
+  "unchanged": [
+    "existing tracked source and dependency files",
+    "OpenSpec total task checklist",
+    "01/00 acceptance records",
+    "original WGAI worktree"
+  ],
+  "max_java_lines": 126,
+  "max_method_lines": 22
+}

@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "java_version": [
+    "openjdk version \"1.8.0_392\"",
+    "OpenJDK Runtime Environment (Temurin)(build 1.8.0_392-b08)",
+    "OpenJDK 64-Bit Server VM (Temurin)(build 25.392-b08, mixed mode)",
+    "javac 1.8.0_392"
+  ],
+  "classes": 43,
+  "class_major_version": 52,
+  "domain_ports_classpath": "Java 8 standard library and these domain/port declarations only",
+  "dto_classpath": "compiled domain plus existing jackson-annotations",
+  "existing_dependency": {
+    "original_path": "BOOT-INF/lib/jackson-annotations-2.13.2.jar",
+    "sha256": "7d3df5aafa2dc61ad1dbad30f411548c0184ed92d94628c63168721f08237cd4"
+  },
+  "jdeps": "All actual references from the 43 public classes restricted to Java, own public types and DTO Jackson annotations; none unresolved",
+  "referenced_classes": [
+    "com.fasterxml.jackson.annotation.JsonFormat",
+    "com.fasterxml.jackson.annotation.JsonFormat$Shape",
+    "com.fasterxml.jackson.annotation.JsonInclude",
+    "com.fasterxml.jackson.annotation.JsonInclude$Include",
+    "java.io.IOException",
+    "java.io.InputStream",
+    "java.lang.Boolean",
+    "java.lang.Class",
+    "java.lang.Double",
+    "java.lang.Enum",
+    "java.lang.Exception",
+    "java.lang.Integer",
+    "java.lang.Long",
+    "java.lang.Object",
+    "java.lang.RuntimeException",
+    "java.lang.String",
+    "java.math.BigDecimal",
+    "java.time.Instant",
+    "java.util.ArrayList",
+    "java.util.Collection",
+    "java.util.Collections",
+    "java.util.List",
+    "java.util.Objects",
+    "java.util.Optional",
+    "org.jeecg.modules.ai.domain.Asset",
+    "org.jeecg.modules.ai.domain.BoundingBox",
+    "org.jeecg.modules.ai.domain.Capability",
+    "org.jeecg.modules.ai.domain.CapabilitySnapshot",
+    "org.jeecg.modules.ai.domain.ContentMetadata",
+    "org.jeecg.modules.ai.domain.ContentSource",
+    "org.jeecg.modules.ai.domain.Detection",
+    "org.jeecg.modules.ai.domain.DetectionData",
+    "org.jeecg.modules.ai.domain.DetectionParameters",
+    "org.jeecg.modules.ai.domain.ErrorCode",
+    "org.jeecg.modules.ai.domain.ExecutionCertainty",
+    "org.jeecg.modules.ai.domain.IdempotencyConflictException",
+    "org.jeecg.modules.ai.domain.InferenceResult",
+    "org.jeecg.modules.ai.domain.JobError",
+    "org.jeecg.modules.ai.domain.JobPage",
+    "org.jeecg.modules.ai.domain.JobRecord",
+    "org.jeecg.modules.ai.domain.JobRequest",
+    "org.jeecg.modules.ai.domain.JobState",
+    "org.jeecg.modules.ai.domain.JobSubmission",
+    "org.jeecg.modules.ai.domain.JobUpdate",
+    "org.jeecg.modules.ai.domain.ProviderArtifact",
+    "org.jeecg.modules.ai.domain.ProviderException",
+    "org.jeecg.modules.ai.domain.ProviderFeatures",
+    "org.jeecg.modules.ai.domain.ProviderRequest",
+    "org.jeecg.modules.ai.domain.ProviderResult",
+    "org.jeecg.modules.ai.domain.StoredArtifact"
+  ],
+  "files": [
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/java-validation/compile.log",
+      "sha256": "68d83925bb04228b9ba83c32cc979d2ab301eec4ddba3cd38161523bd5c6ba2f"
+    },
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/java-validation/domain-dependencies.txt",
+      "sha256": "70929af8cf5fe4f64701a7f17a8829b5c6c87b45be7ff43e86df71be90ddc44b"
+    },
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/java-validation/dto-dependencies.txt",
+      "sha256": "4f209a963373f8922a379c113aed3fc4304f42e780859a79817acd588f5cd346"
+    }
+  ],
+  "tests": "Declaration/ABI compatibility only; no client/repository/GPU test claimed"
+}
