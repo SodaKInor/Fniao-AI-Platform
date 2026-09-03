@@ -114,6 +114,7 @@ public class TabAiHistoryController extends JeecgController<TabAiHistory, ITabAi
 	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
 	 @PostMapping(value = "/addIdentify")
 	 public Result<String> addIdentify(@RequestBody TabAiModelBund tabAiModelBund) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
 		 return tabAiHistoryService.startAi(tabAiModelBund,uploadpath,sysUser.getId());
 	 }
@@ -130,6 +131,7 @@ public class TabAiHistoryController extends JeecgController<TabAiHistory, ITabAi
 	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
 	 @GetMapping(value = "/addAudio")
 	 public Result<?> addAudio(@RequestParam(name="path",required=true) String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 //		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
 		 return tabAiHistoryService.aiAudio(path,uploadpath);
 	 }
@@ -144,6 +146,7 @@ public class TabAiHistoryController extends JeecgController<TabAiHistory, ITabAi
 	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
 	 @PostMapping(value = "/addIdentifyClose")
 	 public Result<String> addIdentifyClose(@RequestBody TabAiModelBund tabAiModelBund) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
 		 tabAiHistoryService.closedentify(tabAiModelBund,sysUser);
 //e9ca23d68d884d4ebb19d07889727dae

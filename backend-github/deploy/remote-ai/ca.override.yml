@@ -1,0 +1,10 @@
+# Optional private CA overlay; hostname verification always remains enabled.
+services:
+  backend:
+    environment:
+      WGAI_INFERENCE_CA_FILE: /run/secrets/wgai-inference-ca
+    volumes:
+      - type: bind
+        source: ${WGAI_INFERENCE_CA_SOURCE:?absolute CA certificate file required}
+        target: /run/secrets/wgai-inference-ca
+        read_only: true

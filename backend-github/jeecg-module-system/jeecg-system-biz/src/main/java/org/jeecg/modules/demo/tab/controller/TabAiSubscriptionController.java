@@ -71,6 +71,7 @@ public class TabAiSubscriptionController extends JeecgController<TabAiSubscripti
 	 @ApiOperation(value="Ai事件订阅-test", notes="Ai事件订阅-test")
 	@RequestMapping(value = "/subInfo")
 	public List<PushInfo>  getSub(){
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 		log.info("输出结果");
 		List<PushInfo> object1= (List<PushInfo> ) redisTemplate.opsForValue().get("sendPush");
 		 tabAiBaseService.SendRedisBase();

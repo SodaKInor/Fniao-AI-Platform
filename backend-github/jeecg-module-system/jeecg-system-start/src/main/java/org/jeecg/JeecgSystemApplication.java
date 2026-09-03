@@ -35,7 +35,8 @@ public class JeecgSystemApplication extends SpringBootServletInitializer {
         String port = env.getProperty("server.port");
         String path = oConvertUtils.getString(env.getProperty("server.servlet.context-path"));
         String opencvpath = env.getProperty("opencv");
-        boolean opencvEnabled = env.getProperty("wgai.features.opencv.enabled", Boolean.class, false);
+        boolean opencvEnabled = env.getProperty("wgai.features.opencv.enabled", Boolean.class, false)
+                && org.jeecg.modules.ai.legacy.LegacyExecutionGuard.isLocalExecutionAllowed();
         if (opencvEnabled) {
             if (oConvertUtils.isEmpty(opencvpath)) {
                 throw new IllegalStateException("OpenCV is enabled but the native library path is empty");

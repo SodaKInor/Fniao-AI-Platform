@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "at": "2026-09-03T11:08:46.914488+00:00",
+  "image": "sha256:2ddbe68b87ac79bc4dbc17a840a51b60619fd791f3532dbc6b5ea477ab751918",
+  "project": "wgai-ri-03-client",
+  "inference_mode": "disabled",
+  "legacy_opencv_requested": true,
+  "native_path": "/must-not-be-loaded/opencv.so",
+  "native_load_suppressed": true,
+  "application_started": true,
+  "health": "healthy",
+  "scope": "Existing native startup gate; no GPU execution."
+}

@@ -1,0 +1,2314 @@
+{
+  "status": "PASS",
+  "base": "ab9809d23919ea5d61dfc7d8b34d7f30bb9d607c",
+  "changed_paths": [
+    "backend-github/deploy/remote-ai/README.md",
+    "backend-github/deploy/remote-ai/application-remote-ai.yml",
+    "backend-github/deploy/remote-ai/ca.override.yml",
+    "backend-github/deploy/remote-ai/core.override.yml",
+    "backend-github/deploy/remote-ai/dev.env.example",
+    "backend-github/deploy/remote-ai/prod.env.example",
+    "backend-github/deploy/remote-ai/secrets.override.yml",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/README.md",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/build.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/contract-checks.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/final-checks.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/java8-tests.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/runtime-native-guard.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/runtime-remote-missing.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/scope-and-architecture.json",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/scripts/run_tests.sh",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/scripts/test_package.py",
+    "backend-github/integrations/ai-contracts/acceptance/03-client/scripts/validate.py",
+    "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/AiFilterChains.java",
+    "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/CapabilityController.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/mapper/capabilities/CapabilityMapper.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/capabilities/CapabilityQueryService.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeArtifactReader.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeInferenceProvider.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ProviderObservations.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ProviderRequestChecks.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/TransferInputStream.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftArtifactReader.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftDetectionDecoder.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftEndpoint.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftFields.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftHttpProvider.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftRequestEncoder.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftResponseDecoder.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftTransport.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/mock/MockArtifactReader.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/mock/MockInferenceProvider.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/DraftTransportFactory.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderAvailability.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderConfiguration.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderCredentials.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderProperties.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderTrust.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/AiAccessFilter.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/LegacyExecutionGuard.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiSubscriptionController.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/controller/TabVideoUtilController.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/controller/AITestController.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/application/capabilities/CapabilityTest.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/ClientTestInputs.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/DraftArtifactTest.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/DraftInferenceTest.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/ProtocolFixture.java",
+    "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/legacy/AiAccessTest.java",
+    "backend-github/jeecg-module-system/jeecg-system-start/src/main/java/org/jeecg/JeecgSystemApplication.java"
+  ],
+  "java": [
+    {
+      "path": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/AiFilterChains.java",
+      "lines": 20,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.LinkedHashMap",
+        "java.util.Map"
+      ],
+      "methods": [
+        {
+          "name": "AiFilterChains",
+          "line": 8,
+          "lines": 1
+        },
+        {
+          "name": "protect",
+          "line": 10,
+          "lines": 10
+        }
+      ],
+      "sha256": "d8bd7c5f88cb877a7fdb8533caaf03f11f8ab0072117b8c36ec30b0abfc2afc0"
+    },
+    {
+      "path": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "lines": 283,
+      "new": false,
+      "baseline_lines": 281,
+      "imports": [
+        "lombok.extern.slf4j.Slf4j",
+        "org.apache.commons.pool2.impl.GenericObjectPoolConfig",
+        "org.apache.shiro.mgt.DefaultSessionStorageEvaluator",
+        "org.apache.shiro.mgt.DefaultSubjectDAO",
+        "org.apache.shiro.mgt.SecurityManager",
+        "org.apache.shiro.spring.LifecycleBeanPostProcessor",
+        "org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor",
+        "org.apache.shiro.spring.web.ShiroFilterFactoryBean",
+        "org.apache.shiro.web.mgt.DefaultWebSecurityManager",
+        "org.crazycake.shiro.IRedisManager",
+        "org.crazycake.shiro.RedisCacheManager",
+        "org.crazycake.shiro.RedisClusterManager",
+        "org.crazycake.shiro.RedisManager",
+        "org.jeecg.common.constant.CommonConstant",
+        "org.jeecg.common.util.oConvertUtils",
+        "org.jeecg.config.JeecgBaseConfig",
+        "org.jeecg.config.shiro.filters.CustomShiroFilterFactoryBean",
+        "org.jeecg.config.shiro.filters.JwtFilter",
+        "org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.beans.factory.annotation.Value",
+        "org.springframework.context.annotation.Bean",
+        "org.springframework.context.annotation.Configuration",
+        "org.springframework.context.annotation.DependsOn",
+        "org.springframework.core.env.Environment",
+        "org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory",
+        "org.springframework.util.StringUtils",
+        "redis.clients.jedis.HostAndPort",
+        "redis.clients.jedis.JedisCluster",
+        "javax.annotation.Resource",
+        "javax.servlet.Filter",
+        "java.util.*"
+      ],
+      "methods": [
+        {
+          "name": "shiroFilter",
+          "line": 66,
+          "lines": 107
+        },
+        {
+          "name": "securityManager",
+          "line": 175,
+          "lines": 18
+        },
+        {
+          "name": "defaultAdvisorAutoProxyCreator",
+          "line": 200,
+          "lines": 11
+        },
+        {
+          "name": "lifecycleBeanPostProcessor",
+          "line": 213,
+          "lines": 3
+        },
+        {
+          "name": "authorizationAttributeSourceAdvisor",
+          "line": 218,
+          "lines": 5
+        },
+        {
+          "name": "redisCacheManager",
+          "line": 230,
+          "lines": 10
+        },
+        {
+          "name": "redisManager",
+          "line": 248,
+          "lines": 34
+        }
+      ],
+      "sha256": "22abdad1a2e62cca3744ddd16c61a73d390ccf001609bb8705652d47ad0f8321"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/controller/CapabilityController.java",
+      "lines": 36,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.List",
+        "org.apache.shiro.SecurityUtils",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.modules.ai.api.dto.CapabilityDto",
+        "org.jeecg.modules.ai.api.dto.ErrorDto",
+        "org.jeecg.modules.ai.api.mapper.capabilities.CapabilityMapper",
+        "org.jeecg.modules.ai.application.capabilities.CapabilityQueryService",
+        "org.jeecg.modules.ai.domain.ErrorCode",
+        "org.springframework.http.ResponseEntity",
+        "org.springframework.web.bind.annotation.*"
+      ],
+      "methods": [
+        {
+          "name": "CapabilityController",
+          "line": 20,
+          "lines": 1
+        },
+        {
+          "name": "list",
+          "line": 23,
+          "lines": 3
+        },
+        {
+          "name": "unavailable",
+          "line": 28,
+          "lines": 8
+        }
+      ],
+      "sha256": "1748949462c730350e50906e380c05dbf42c9dde5a4ef84922e8a57a92f716d5"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/mapper/capabilities/CapabilityMapper.java",
+      "lines": 30,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.List",
+        "java.util.stream.Collectors",
+        "org.jeecg.modules.ai.api.dto.CapabilityDto",
+        "org.jeecg.modules.ai.domain.Capability",
+        "org.springframework.stereotype.Component"
+      ],
+      "methods": [
+        {
+          "name": "map",
+          "line": 11,
+          "lines": 3
+        },
+        {
+          "name": "map",
+          "line": 15,
+          "lines": 15
+        }
+      ],
+      "sha256": "31946d603d1c67b9fbecdafdba36ac1da2c555eb9a1b79b1341f40df59a94d3b"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/application/capabilities/CapabilityQueryService.java",
+      "lines": 49,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.ArrayList",
+        "java.util.List",
+        "java.util.function.Function",
+        "java.util.function.Supplier",
+        "org.jeecg.modules.ai.domain.Capability",
+        "org.jeecg.modules.ai.port.CapabilityRepository"
+      ],
+      "methods": [
+        {
+          "name": "CapabilityQueryService",
+          "line": 17,
+          "lines": 5
+        },
+        {
+          "name": "list",
+          "line": 23,
+          "lines": 14
+        },
+        {
+          "name": "reason",
+          "line": 38,
+          "lines": 11
+        }
+      ],
+      "sha256": "c1d6ca238dde2719ded1c1e55831617cfc737f5ca818c40581d6edb39cc63313"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeArtifactReader.java",
+      "lines": 20,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.InputStream",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.ProviderArtifactReader"
+      ],
+      "methods": [
+        {
+          "name": "ModeArtifactReader",
+          "line": 12,
+          "lines": 1
+        },
+        {
+          "name": "open",
+          "line": 14,
+          "lines": 6
+        }
+      ],
+      "sha256": "99e314ad57e88bd25231a7a85f75ac23be51fa86fb9834d55315d6159af2adbd"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeInferenceProvider.java",
+      "lines": 23,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.function.Supplier",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.InferenceProvider"
+      ],
+      "methods": [
+        {
+          "name": "ModeInferenceProvider",
+          "line": 13,
+          "lines": 3
+        },
+        {
+          "name": "infer",
+          "line": 17,
+          "lines": 6
+        }
+      ],
+      "sha256": "b211be5ad7a98e517183ee3c0d808f89c9e927c86359ae95acd69666ae22f6ff"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ProviderObservations.java",
+      "lines": 29,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.time.Clock",
+        "java.time.Instant",
+        "java.util.concurrent.ConcurrentHashMap"
+      ],
+      "methods": [
+        {
+          "name": "ProviderObservations",
+          "line": 12,
+          "lines": 1
+        },
+        {
+          "name": "record",
+          "line": 14,
+          "lines": 3
+        },
+        {
+          "name": "reason",
+          "line": 18,
+          "lines": 5
+        },
+        {
+          "name": "Observation",
+          "line": 27,
+          "lines": 1
+        }
+      ],
+      "sha256": "3eb8193ce8dcfe65f74f387cca8236253c3e1770063ea59f2dc4d45d1146e2da"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ProviderRequestChecks.java",
+      "lines": 42,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.math.BigDecimal",
+        "org.jeecg.modules.ai.domain.*"
+      ],
+      "methods": [
+        {
+          "name": "ProviderRequestChecks",
+          "line": 7,
+          "lines": 1
+        },
+        {
+          "name": "validate",
+          "line": 9,
+          "lines": 17
+        },
+        {
+          "name": "binding",
+          "line": 27,
+          "lines": 7
+        },
+        {
+          "name": "unavailable",
+          "line": 35,
+          "lines": 3
+        },
+        {
+          "name": "invalid",
+          "line": 39,
+          "lines": 3
+        }
+      ],
+      "sha256": "9036d9b6c9e65554b0fcbee9e6578d63175dfd5f58fab92715e77778e156c15e"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/TransferInputStream.java",
+      "lines": 60,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.FilterInputStream",
+        "java.io.IOException",
+        "java.io.InputStream"
+      ],
+      "methods": [
+        {
+          "name": "TransferInputStream",
+          "line": 13,
+          "lines": 8
+        },
+        {
+          "name": "account",
+          "line": 22,
+          "lines": 11
+        },
+        {
+          "name": "read",
+          "line": 34,
+          "lines": 5
+        },
+        {
+          "name": "read",
+          "line": 40,
+          "lines": 5
+        },
+        {
+          "name": "skip",
+          "line": 46,
+          "lines": 10
+        },
+        {
+          "name": "markSupported",
+          "line": 57,
+          "lines": 1
+        },
+        {
+          "name": "mark",
+          "line": 58,
+          "lines": 1
+        },
+        {
+          "name": "reset",
+          "line": 59,
+          "lines": 1
+        }
+      ],
+      "sha256": "e609b8b01bf1f7c3dd0b08892398a87cdb2620e68ceee521a38416981f6b12d7"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftArtifactReader.java",
+      "lines": 74,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.FilterInputStream",
+        "java.io.IOException",
+        "java.io.InputStream",
+        "java.time.Clock",
+        "java.util.concurrent.atomic.AtomicBoolean",
+        "okhttp3.Request",
+        "okhttp3.Response",
+        "org.jeecg.modules.ai.client.TransferInputStream",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.ProviderArtifactReader"
+      ],
+      "methods": [
+        {
+          "name": "DraftArtifactReader",
+          "line": 18,
+          "lines": 1
+        },
+        {
+          "name": "open",
+          "line": 20,
+          "lines": 20
+        },
+        {
+          "name": "validate",
+          "line": 41,
+          "lines": 15
+        },
+        {
+          "name": "ownedStream",
+          "line": 57,
+          "lines": 17
+        },
+        {
+          "name": "read",
+          "line": 61,
+          "lines": 3
+        },
+        {
+          "name": "read",
+          "line": 64,
+          "lines": 3
+        },
+        {
+          "name": "close",
+          "line": 67,
+          "lines": 5
+        }
+      ],
+      "sha256": "034966da8a4acd6312caf3ccd4ff81302ccf3b8ef52c3e7e7aeca2f72418aa81"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftDetectionDecoder.java",
+      "lines": 39,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.fasterxml.jackson.databind.JsonNode",
+        "java.util.ArrayList",
+        "java.util.List",
+        "org.jeecg.modules.ai.domain.BoundingBox",
+        "org.jeecg.modules.ai.domain.Detection",
+        "org.jeecg.modules.ai.domain.DetectionData"
+      ],
+      "methods": [
+        {
+          "name": "decode",
+          "line": 11,
+          "lines": 11
+        },
+        {
+          "name": "detection",
+          "line": 23,
+          "lines": 16
+        }
+      ],
+      "sha256": "a9631e723d0daf38c90ec6fd27da3e7d9cdaa0dda3bc826f5c348b6896fb3559"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftEndpoint.java",
+      "lines": 32,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "okhttp3.HttpUrl"
+      ],
+      "methods": [
+        {
+          "name": "DraftEndpoint",
+          "line": 10,
+          "lines": 13
+        },
+        {
+          "name": "inference",
+          "line": 24,
+          "lines": 1
+        },
+        {
+          "name": "artifact",
+          "line": 26,
+          "lines": 6
+        }
+      ],
+      "sha256": "46d77050453d39d2f6cc8a8c3fdb275690dc55a44716983de15531c83cdfaf35"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftFields.java",
+      "lines": 52,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.fasterxml.jackson.databind.JsonNode",
+        "java.util.Arrays",
+        "java.util.HashSet",
+        "java.util.Iterator",
+        "java.util.Set"
+      ],
+      "methods": [
+        {
+          "name": "DraftFields",
+          "line": 11,
+          "lines": 1
+        },
+        {
+          "name": "object",
+          "line": 13,
+          "lines": 7
+        },
+        {
+          "name": "text",
+          "line": 21,
+          "lines": 5
+        },
+        {
+          "name": "integer",
+          "line": 27,
+          "lines": 7
+        },
+        {
+          "name": "unit",
+          "line": 35,
+          "lines": 7
+        },
+        {
+          "name": "bool",
+          "line": 43,
+          "lines": 5
+        },
+        {
+          "name": "require",
+          "line": 49,
+          "lines": 3
+        }
+      ],
+      "sha256": "c52f97e8f165c3db773b4e46004ce90b9e5baca2881f545ce0250bd08572e791"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftHttpProvider.java",
+      "lines": 65,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.IOException",
+        "java.io.InterruptedIOException",
+        "java.util.concurrent.atomic.AtomicBoolean",
+        "okhttp3.Request",
+        "okhttp3.Response",
+        "org.jeecg.modules.ai.client.ProviderObservations",
+        "org.jeecg.modules.ai.client.ProviderRequestChecks",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.InferenceProvider"
+      ],
+      "methods": [
+        {
+          "name": "DraftHttpProvider",
+          "line": 18,
+          "lines": 4
+        },
+        {
+          "name": "infer",
+          "line": 23,
+          "lines": 28
+        },
+        {
+          "name": "checkStatus",
+          "line": 52,
+          "lines": 9
+        },
+        {
+          "name": "failure",
+          "line": 62,
+          "lines": 3
+        }
+      ],
+      "sha256": "2e0eeaa71d990330f7294605a19b2a0cdfe28f26954ac3daea71fb949f2c160f"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftRequestEncoder.java",
+      "lines": 64,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.fasterxml.jackson.databind.ObjectMapper",
+        "com.fasterxml.jackson.databind.node.ObjectNode",
+        "java.io.IOException",
+        "java.io.InputStream",
+        "java.util.concurrent.atomic.AtomicBoolean",
+        "okhttp3.MediaType",
+        "okhttp3.MultipartBody",
+        "okhttp3.RequestBody",
+        "okio.BufferedSink",
+        "org.jeecg.modules.ai.client.TransferInputStream",
+        "org.jeecg.modules.ai.domain.ProviderRequest"
+      ],
+      "methods": [
+        {
+          "name": "encode",
+          "line": 16,
+          "lines": 30
+        },
+        {
+          "name": "contentType",
+          "line": 31,
+          "lines": 1
+        },
+        {
+          "name": "isOneShot",
+          "line": 32,
+          "lines": 1
+        },
+        {
+          "name": "writeTo",
+          "line": 33,
+          "lines": 11
+        },
+        {
+          "name": "InputBody",
+          "line": 51,
+          "lines": 1
+        },
+        {
+          "name": "contentType",
+          "line": 52,
+          "lines": 1
+        },
+        {
+          "name": "isOneShot",
+          "line": 53,
+          "lines": 1
+        },
+        {
+          "name": "writeTo",
+          "line": 54,
+          "lines": 9
+        }
+      ],
+      "sha256": "3823052b20d81cdbf7f43d4bc654d231d51200734788c60ef679720bfdb16c7f"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftResponseDecoder.java",
+      "lines": 58,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.fasterxml.jackson.core.JsonParser",
+        "com.fasterxml.jackson.core.JsonProcessingException",
+        "com.fasterxml.jackson.databind.DeserializationFeature",
+        "com.fasterxml.jackson.databind.JsonNode",
+        "com.fasterxml.jackson.databind.ObjectMapper",
+        "java.io.IOException",
+        "java.io.InputStream",
+        "java.time.Instant",
+        "java.util.ArrayList",
+        "java.util.List",
+        "org.jeecg.modules.ai.client.TransferInputStream",
+        "org.jeecg.modules.ai.domain.*"
+      ],
+      "methods": [
+        {
+          "name": "DraftResponseDecoder",
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "name": "decode",
+          "line": 24,
+          "lines": 19
+        },
+        {
+          "name": "artifact",
+          "line": 44,
+          "lines": 14
+        }
+      ],
+      "sha256": "b4d6c1b675d0242c7b6ef1abd46daea418afdc01b6000bb24ecf6827139c4380"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/draft/DraftTransport.java",
+      "lines": 59,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.IOException",
+        "java.util.concurrent.Semaphore",
+        "java.util.concurrent.TimeUnit",
+        "java.util.concurrent.atomic.AtomicBoolean",
+        "java.util.function.Supplier",
+        "okhttp3.*",
+        "org.jeecg.modules.ai.domain.*"
+      ],
+      "methods": [
+        {
+          "name": "DraftTransport",
+          "line": 21,
+          "lines": 11
+        },
+        {
+          "name": "acquire",
+          "line": 33,
+          "lines": 5
+        },
+        {
+          "name": "release",
+          "line": 39,
+          "lines": 1
+        },
+        {
+          "name": "execute",
+          "line": 41,
+          "lines": 12
+        },
+        {
+          "name": "requestHeadersStart",
+          "line": 48,
+          "lines": 1
+        },
+        {
+          "name": "checkBinding",
+          "line": 54,
+          "lines": 5
+        }
+      ],
+      "sha256": "4d5c0a2f57606f705a81d1874a14a9995a251e9ab570354ffd5ba38a6b300070"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/mock/MockArtifactReader.java",
+      "lines": 39,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.ByteArrayInputStream",
+        "java.io.InputStream",
+        "java.time.Clock",
+        "java.util.Base64",
+        "org.jeecg.modules.ai.client.ProviderRequestChecks",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.ProviderArtifactReader"
+      ],
+      "methods": [
+        {
+          "name": "MockArtifactReader",
+          "line": 19,
+          "lines": 1
+        },
+        {
+          "name": "descriptor",
+          "line": 21,
+          "lines": 4
+        },
+        {
+          "name": "open",
+          "line": 26,
+          "lines": 13
+        }
+      ],
+      "sha256": "c2092f9b63d927103cdf547de162e1c7f425ec4bf976a0232363ea90b87fd768"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/mock/MockInferenceProvider.java",
+      "lines": 75,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.InputStream",
+        "java.time.Clock",
+        "java.util.Collections",
+        "java.util.Iterator",
+        "java.util.List",
+        "java.util.concurrent.Semaphore",
+        "javax.imageio.ImageIO",
+        "javax.imageio.ImageReader",
+        "javax.imageio.stream.MemoryCacheImageInputStream",
+        "org.jeecg.modules.ai.client.ProviderRequestChecks",
+        "org.jeecg.modules.ai.client.TransferInputStream",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.InferenceProvider"
+      ],
+      "methods": [
+        {
+          "name": "MockInferenceProvider",
+          "line": 24,
+          "lines": 4
+        },
+        {
+          "name": "infer",
+          "line": 29,
+          "lines": 25
+        },
+        {
+          "name": "dimensions",
+          "line": 55,
+          "lines": 20
+        }
+      ],
+      "sha256": "0d856ab843f49e57b0ae7cb7334f832dcba6e60523f0a0f8a3e5cd19b088f072"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/DraftTransportFactory.java",
+      "lines": 41,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.util.concurrent.TimeUnit",
+        "okhttp3.Authenticator",
+        "okhttp3.OkHttpClient",
+        "org.jeecg.modules.ai.client.draft.DraftEndpoint",
+        "org.jeecg.modules.ai.client.draft.DraftTransport"
+      ],
+      "methods": [
+        {
+          "name": "DraftTransportFactory",
+          "line": 11,
+          "lines": 1
+        },
+        {
+          "name": "create",
+          "line": 13,
+          "lines": 28
+        }
+      ],
+      "sha256": "a154afd3ba496d803618c37807c256e4fab2c017aa66986d261a603264808451"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderAvailability.java",
+      "lines": 38,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "org.jeecg.modules.ai.client.ProviderRequestChecks",
+        "org.jeecg.modules.ai.domain.Capability",
+        "org.jeecg.modules.ai.client.draft.DraftEndpoint"
+      ],
+      "methods": [
+        {
+          "name": "ProviderAvailability",
+          "line": 12,
+          "lines": 3
+        },
+        {
+          "name": "modeReason",
+          "line": 16,
+          "lines": 13
+        },
+        {
+          "name": "reason",
+          "line": 30,
+          "lines": 8
+        }
+      ],
+      "sha256": "4183fe9bc270c52b60b4ead60fa33414eb6da7dae922c429602c60c978c4e0a0"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderConfiguration.java",
+      "lines": 48,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.time.Clock",
+        "org.jeecg.modules.ai.application.capabilities.CapabilityQueryService",
+        "org.jeecg.modules.ai.client.ModeArtifactReader",
+        "org.jeecg.modules.ai.client.ModeInferenceProvider",
+        "org.jeecg.modules.ai.client.mock.MockArtifactReader",
+        "org.jeecg.modules.ai.client.mock.MockInferenceProvider",
+        "org.jeecg.modules.ai.legacy.AiAccessFilter",
+        "org.jeecg.modules.ai.port.*",
+        "org.springframework.beans.factory.ObjectProvider",
+        "org.springframework.boot.context.properties.EnableConfigurationProperties",
+        "org.springframework.boot.web.servlet.FilterRegistrationBean",
+        "org.springframework.context.annotation.Bean",
+        "org.springframework.context.annotation.Configuration"
+      ],
+      "methods": [
+        {
+          "name": "providerObservations",
+          "line": 20,
+          "lines": 3
+        },
+        {
+          "name": "providerAvailability",
+          "line": 24,
+          "lines": 2
+        },
+        {
+          "name": "inferenceProvider",
+          "line": 27,
+          "lines": 4
+        },
+        {
+          "name": "providerArtifactReader",
+          "line": 32,
+          "lines": 3
+        },
+        {
+          "name": "capabilityQueryService",
+          "line": 36,
+          "lines": 4
+        },
+        {
+          "name": "aiAccessFilter",
+          "line": 41,
+          "lines": 1
+        },
+        {
+          "name": "aiAccessRegistration",
+          "line": 43,
+          "lines": 5
+        }
+      ],
+      "sha256": "8517c0ea478b663790dc7380889be9a70a462f02499388501fc2dc6fb9a9455e"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderCredentials.java",
+      "lines": 27,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.InputStream",
+        "java.nio.charset.StandardCharsets",
+        "java.nio.file.Files",
+        "java.nio.file.Paths",
+        "java.io.ByteArrayOutputStream",
+        "org.jeecg.modules.ai.client.TransferInputStream"
+      ],
+      "methods": [
+        {
+          "name": "ProviderCredentials",
+          "line": 11,
+          "lines": 1
+        },
+        {
+          "name": "read",
+          "line": 13,
+          "lines": 14
+        }
+      ],
+      "sha256": "e45eae0310629eb14ab05e20563227f6b916157e7a9821013491e9a2de49e7f6"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderProperties.java",
+      "lines": 54,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "org.springframework.boot.context.properties.ConfigurationProperties"
+      ],
+      "methods": [
+        {
+          "name": "getMode",
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "name": "setMode",
+          "line": 23,
+          "lines": 1
+        },
+        {
+          "name": "getBaseUrl",
+          "line": 24,
+          "lines": 1
+        },
+        {
+          "name": "setBaseUrl",
+          "line": 25,
+          "lines": 1
+        },
+        {
+          "name": "getApprovedOrigin",
+          "line": 26,
+          "lines": 1
+        },
+        {
+          "name": "setApprovedOrigin",
+          "line": 27,
+          "lines": 1
+        },
+        {
+          "name": "getApiPath",
+          "line": 28,
+          "lines": 1
+        },
+        {
+          "name": "setApiPath",
+          "line": 29,
+          "lines": 1
+        },
+        {
+          "name": "getProviderKey",
+          "line": 30,
+          "lines": 1
+        },
+        {
+          "name": "setProviderKey",
+          "line": 31,
+          "lines": 1
+        },
+        {
+          "name": "getTokenFile",
+          "line": 32,
+          "lines": 1
+        },
+        {
+          "name": "setTokenFile",
+          "line": 33,
+          "lines": 1
+        },
+        {
+          "name": "getCaFile",
+          "line": 34,
+          "lines": 1
+        },
+        {
+          "name": "setCaFile",
+          "line": 35,
+          "lines": 1
+        },
+        {
+          "name": "getConnectTimeoutMs",
+          "line": 36,
+          "lines": 1
+        },
+        {
+          "name": "setConnectTimeoutMs",
+          "line": 37,
+          "lines": 1
+        },
+        {
+          "name": "getRequestTimeoutMs",
+          "line": 38,
+          "lines": 1
+        },
+        {
+          "name": "setRequestTimeoutMs",
+          "line": 39,
+          "lines": 1
+        },
+        {
+          "name": "getTransferTimeoutMs",
+          "line": 40,
+          "lines": 1
+        },
+        {
+          "name": "setTransferTimeoutMs",
+          "line": 41,
+          "lines": 1
+        },
+        {
+          "name": "getMaxInflight",
+          "line": 42,
+          "lines": 1
+        },
+        {
+          "name": "setMaxInflight",
+          "line": 43,
+          "lines": 1
+        },
+        {
+          "name": "getUploadMaxBytes",
+          "line": 44,
+          "lines": 1
+        },
+        {
+          "name": "setUploadMaxBytes",
+          "line": 45,
+          "lines": 1
+        },
+        {
+          "name": "getOutputMaxBytes",
+          "line": 46,
+          "lines": 1
+        },
+        {
+          "name": "setOutputMaxBytes",
+          "line": 47,
+          "lines": 1
+        },
+        {
+          "name": "validLimits",
+          "line": 49,
+          "lines": 5
+        }
+      ],
+      "sha256": "47d03c4c18bf0e08aa115490c0b64cbc3d1311731714c6ff3d5b4324f2ebbd4a"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderTrust.java",
+      "lines": 37,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.InputStream",
+        "java.nio.file.Files",
+        "java.nio.file.Paths",
+        "java.security.KeyStore",
+        "java.security.cert.Certificate",
+        "java.security.cert.CertificateFactory",
+        "java.util.Collection",
+        "javax.net.ssl.SSLContext",
+        "javax.net.ssl.TrustManagerFactory",
+        "javax.net.ssl.X509TrustManager",
+        "okhttp3.OkHttpClient"
+      ],
+      "methods": [
+        {
+          "name": "ProviderTrust",
+          "line": 16,
+          "lines": 1
+        },
+        {
+          "name": "configure",
+          "line": 18,
+          "lines": 19
+        }
+      ],
+      "sha256": "34adbcdee63a984bef7bf13fb4187f08975fd4cc0ad7d68d324a5edac3f27342"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/AiAccessFilter.java",
+      "lines": 57,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.fasterxml.jackson.databind.ObjectMapper",
+        "java.util.Arrays",
+        "java.util.HashSet",
+        "java.util.Set",
+        "javax.servlet.ServletRequest",
+        "javax.servlet.ServletResponse",
+        "javax.servlet.http.HttpServletRequest",
+        "javax.servlet.http.HttpServletResponse",
+        "org.apache.shiro.SecurityUtils",
+        "org.apache.shiro.subject.Subject",
+        "org.apache.shiro.web.servlet.AdviceFilter",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.modules.ai.api.dto.ErrorDto",
+        "org.jeecg.modules.ai.domain.ErrorCode",
+        "org.springframework.web.util.UrlPathHelper"
+      ],
+      "methods": [
+        {
+          "name": "preHandle",
+          "line": 28,
+          "lines": 17
+        },
+        {
+          "name": "reject",
+          "line": 46,
+          "lines": 11
+        }
+      ],
+      "sha256": "cabc610abd4d76ceb8b53183c74812f1b975ede2fabe00b64b5f4a466b11753a"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/legacy/LegacyExecutionGuard.java",
+      "lines": 12,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [],
+      "methods": [
+        {
+          "name": "LegacyExecutionGuard",
+          "line": 5,
+          "lines": 1
+        },
+        {
+          "name": "isLocalExecutionAllowed",
+          "line": 7,
+          "lines": 1
+        },
+        {
+          "name": "reject",
+          "line": 9,
+          "lines": 3
+        }
+      ],
+      "sha256": "6891790041a72caa0e4cc3a871cf3f1d08fed6b254d1c95a9def02f6b7cad264"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java",
+      "lines": 242,
+      "new": false,
+      "baseline_lines": 239,
+      "imports": [
+        "java.util.Arrays",
+        "java.util.List",
+        "java.util.Map",
+        "java.util.stream.Collectors",
+        "java.io.IOException",
+        "java.io.UnsupportedEncodingException",
+        "java.net.URLDecoder",
+        "javax.annotation.Resource",
+        "javax.servlet.http.HttpServletRequest",
+        "javax.servlet.http.HttpServletResponse",
+        "org.apache.shiro.SecurityUtils",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.common.system.query.QueryGenerator",
+        "org.jeecg.common.system.vo.LoginUser",
+        "org.jeecg.common.util.oConvertUtils",
+        "org.jeecg.modules.demo.tab.entity.TabAiHistory",
+        "org.jeecg.modules.demo.tab.entity.TabAiModelBund",
+        "org.jeecg.modules.demo.tab.service.ITabAiHistoryService",
+        "com.baomidou.mybatisplus.core.conditions.query.QueryWrapper",
+        "com.baomidou.mybatisplus.core.metadata.IPage",
+        "com.baomidou.mybatisplus.extension.plugins.pagination.Page",
+        "lombok.extern.slf4j.Slf4j",
+        "org.jeecg.modules.message.websocket.WebSocket",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3",
+        "org.jeecg.modules.tab.entity.TabAiModel",
+        "org.jeecg.modules.tab.service.ITabAiModelService",
+        "org.jeecgframework.poi.excel.ExcelImportUtil",
+        "org.jeecgframework.poi.excel.def.NormalExcelConstants",
+        "org.jeecgframework.poi.excel.entity.ExportParams",
+        "org.jeecgframework.poi.excel.entity.ImportParams",
+        "org.jeecgframework.poi.excel.view.JeecgEntityExcelView",
+        "org.jeecg.common.system.base.controller.JeecgController",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.beans.factory.annotation.Value",
+        "org.springframework.web.bind.annotation.*",
+        "org.springframework.web.multipart.MultipartFile",
+        "org.springframework.web.multipart.MultipartHttpServletRequest",
+        "org.springframework.web.servlet.ModelAndView",
+        "com.alibaba.fastjson.JSON",
+        "io.swagger.annotations.Api",
+        "io.swagger.annotations.ApiOperation",
+        "org.jeecg.common.aspect.annotation.AutoLog"
+      ],
+      "methods": [
+        {
+          "name": "queryPageList",
+          "line": 79,
+          "lines": 9
+        },
+        {
+          "name": "add",
+          "line": 99,
+          "lines": 4
+        },
+        {
+          "name": "addIdentify",
+          "line": 116,
+          "lines": 5
+        },
+        {
+          "name": "addAudio",
+          "line": 133,
+          "lines": 5
+        },
+        {
+          "name": "addIdentifyClose",
+          "line": 148,
+          "lines": 7
+        },
+        {
+          "name": "edit",
+          "line": 165,
+          "lines": 4
+        },
+        {
+          "name": "delete",
+          "line": 180,
+          "lines": 4
+        },
+        {
+          "name": "deleteBatch",
+          "line": 195,
+          "lines": 4
+        },
+        {
+          "name": "queryById",
+          "line": 209,
+          "lines": 7
+        },
+        {
+          "name": "exportXls",
+          "line": 225,
+          "lines": 3
+        },
+        {
+          "name": "importExcel",
+          "line": 238,
+          "lines": 3
+        }
+      ],
+      "sha256": "eeed310b32d64349ac5b61ad7f5702be16756d19ca2873f851d36094506f31fa"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiSubscriptionController.java",
+      "lines": 318,
+      "new": false,
+      "baseline_lines": 317,
+      "imports": [
+        "java.util.*",
+        "java.util.concurrent.TimeUnit",
+        "java.util.stream.Collectors",
+        "java.io.IOException",
+        "java.io.UnsupportedEncodingException",
+        "java.net.URLDecoder",
+        "javax.servlet.http.HttpServletRequest",
+        "javax.servlet.http.HttpServletResponse",
+        "com.alibaba.fastjson.JSONArray",
+        "com.alibaba.fastjson.JSONObject",
+        "com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.common.system.query.QueryGenerator",
+        "org.jeecg.common.util.RedisUtil",
+        "org.jeecg.common.util.oConvertUtils",
+        "org.jeecg.modules.demo.easy.entity.TabEasyConfig",
+        "org.jeecg.modules.demo.tab.entity.PushInfo",
+        "org.jeecg.modules.demo.tab.entity.TabAiModelBund",
+        "org.jeecg.modules.demo.tab.entity.TabAiSubscription",
+        "org.jeecg.modules.demo.tab.service.ITabAiBaseService",
+        "org.jeecg.modules.demo.tab.service.ITabAiSubscriptionService",
+        "com.baomidou.mybatisplus.core.conditions.query.QueryWrapper",
+        "com.baomidou.mybatisplus.core.metadata.IPage",
+        "com.baomidou.mybatisplus.extension.plugins.pagination.Page",
+        "lombok.extern.slf4j.Slf4j",
+        "org.jeecg.modules.system.entity.SysDictItem",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3",
+        "org.jeecg.modules.tab.entity.TabAiModel",
+        "org.jeecg.modules.tab.service.impl.TabAiModelServiceImpl",
+        "org.jeecgframework.poi.excel.ExcelImportUtil",
+        "org.jeecgframework.poi.excel.def.NormalExcelConstants",
+        "org.jeecgframework.poi.excel.entity.ExportParams",
+        "org.jeecgframework.poi.excel.entity.ImportParams",
+        "org.jeecgframework.poi.excel.view.JeecgEntityExcelView",
+        "org.jeecg.common.system.base.controller.JeecgController",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.data.redis.core.RedisTemplate",
+        "org.springframework.web.bind.annotation.*",
+        "org.springframework.web.multipart.MultipartFile",
+        "org.springframework.web.multipart.MultipartHttpServletRequest",
+        "org.springframework.web.servlet.ModelAndView",
+        "com.alibaba.fastjson.JSON",
+        "io.swagger.annotations.Api",
+        "io.swagger.annotations.ApiOperation",
+        "org.jeecg.common.aspect.annotation.AutoLog"
+      ],
+      "methods": [
+        {
+          "name": "getSub",
+          "line": 73,
+          "lines": 9
+        },
+        {
+          "name": "getSub2",
+          "line": 84,
+          "lines": 6
+        },
+        {
+          "name": "queryPageList",
+          "line": 103,
+          "lines": 23
+        },
+        {
+          "name": "getPushUrl",
+          "line": 139,
+          "lines": 13
+        },
+        {
+          "name": "add",
+          "line": 163,
+          "lines": 14
+        },
+        {
+          "name": "edit",
+          "line": 188,
+          "lines": 6
+        },
+        {
+          "name": "editWithPushUrl",
+          "line": 205,
+          "lines": 12
+        },
+        {
+          "name": "delWithPushUrl",
+          "line": 229,
+          "lines": 12
+        },
+        {
+          "name": "delete",
+          "line": 252,
+          "lines": 5
+        },
+        {
+          "name": "deleteBatch",
+          "line": 270,
+          "lines": 5
+        },
+        {
+          "name": "queryById",
+          "line": 285,
+          "lines": 7
+        },
+        {
+          "name": "exportXls",
+          "line": 301,
+          "lines": 3
+        },
+        {
+          "name": "importExcel",
+          "line": 314,
+          "lines": 3
+        }
+      ],
+      "sha256": "f515641d5819b9eac069703d2fc6f228319979037c99d462b1648e9efabfd954"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "lines": 924,
+      "new": false,
+      "baseline_lines": 907,
+      "imports": [
+        "com.alibaba.fastjson.JSONArray",
+        "com.alibaba.fastjson.JSONObject",
+        "com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper",
+        "lombok.extern.slf4j.Slf4j",
+        "net.ailemon.asrt.sdk.BaseSpeechRecognizer",
+        "net.ailemon.asrt.sdk.Sdk",
+        "net.ailemon.asrt.sdk.common.Common",
+        "net.ailemon.asrt.sdk.models.AsrtApiResponse",
+        "net.ailemon.asrt.sdk.models.Wave",
+        "org.bytedeco.ffmpeg.global.avcodec",
+        "org.bytedeco.javacv.*",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.common.system.vo.LoginUser",
+        "org.jeecg.common.util.RedisUtil",
+        "org.jeecg.modules.demo.tab.entity.TabAiBase",
+        "org.jeecg.modules.demo.tab.entity.TabAiHistory",
+        "org.jeecg.modules.demo.tab.entity.TabAiModelBund",
+        "org.jeecg.modules.demo.tab.mapper.TabAiBaseMapper",
+        "org.jeecg.modules.demo.tab.mapper.TabAiHistoryMapper",
+        "org.jeecg.modules.demo.tab.service.ITabAiHistoryService",
+        "org.jeecg.modules.message.websocket.WebSocket",
+        "org.jeecg.modules.monitor.service.RedisService",
+        "org.jeecg.modules.system.controller.wavUtil",
+        "org.jeecg.modules.system.entity.SysAnnouncementSend",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3",
+        "org.jeecg.modules.tab.AIModel.VideoSendReadCfg",
+        "org.jeecg.modules.tab.entity.TabAiModel",
+        "org.jeecg.modules.tab.mapper.TabAiModelMapper",
+        "org.opencv.core.Mat",
+        "org.opencv.imgcodecs.Imgcodecs",
+        "org.opencv.videoio.VideoWriter",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.beans.factory.annotation.Value",
+        "org.springframework.data.redis.core.RedisTemplate",
+        "org.springframework.stereotype.Service",
+        "com.baomidou.mybatisplus.extension.service.impl.ServiceImpl",
+        "javax.annotation.Resource",
+        "java.io.*",
+        "java.nio.ByteBuffer",
+        "java.util.List",
+        "java.util.Map",
+        "java.util.concurrent.TimeUnit",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3.bufferedImageToMat",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3.converterToFrame"
+      ],
+      "methods": [
+        {
+          "name": "aiAudio",
+          "line": 97,
+          "lines": 27
+        },
+        {
+          "name": "main",
+          "line": 125,
+          "lines": 68
+        },
+        {
+          "name": "saveStr",
+          "line": 195,
+          "lines": 26
+        },
+        {
+          "name": "saveAudioStr",
+          "line": 223,
+          "lines": 30
+        },
+        {
+          "name": "waveInt16",
+          "line": 254,
+          "lines": 36
+        },
+        {
+          "name": "saveCarIdentify",
+          "line": 291,
+          "lines": 28
+        },
+        {
+          "name": "saveCarIdentifyV5",
+          "line": 321,
+          "lines": 32
+        },
+        {
+          "name": "saveIdentify",
+          "line": 355,
+          "lines": 29
+        },
+        {
+          "name": "saveIdentifyYolov5",
+          "line": 386,
+          "lines": 27
+        },
+        {
+          "name": "saveIdentifyYolov8",
+          "line": 415,
+          "lines": 27
+        },
+        {
+          "name": "closedentify",
+          "line": 444,
+          "lines": 29
+        },
+        {
+          "name": "saveIdentifyVideo",
+          "line": 475,
+          "lines": 28
+        },
+        {
+          "name": "saveIdentifyLocalVideo",
+          "line": 505,
+          "lines": 20
+        },
+        {
+          "name": "saveIdentifyLocalVideoThread",
+          "line": 527,
+          "lines": 38
+        },
+        {
+          "name": "saveIdentifyLocalVideoThreadV5",
+          "line": 567,
+          "lines": 38
+        },
+        {
+          "name": "startAi",
+          "line": 607,
+          "lines": 113
+        },
+        {
+          "name": "sendUrl",
+          "line": 722,
+          "lines": 88
+        },
+        {
+          "name": "sendUrlFLV",
+          "line": 815,
+          "lines": 60
+        },
+        {
+          "name": "stopStreaming",
+          "line": 875,
+          "lines": 15
+        },
+        {
+          "name": "CustomOutputStream",
+          "line": 893,
+          "lines": 3
+        },
+        {
+          "name": "write",
+          "line": 898,
+          "lines": 3
+        },
+        {
+          "name": "write",
+          "line": 903,
+          "lines": 3
+        },
+        {
+          "name": "SendWebSocket",
+          "line": 907,
+          "lines": 3
+        },
+        {
+          "name": "createFLVHeader",
+          "line": 911,
+          "lines": 13
+        }
+      ],
+      "sha256": "aaa5d25a0568e108a7f948afa1cefa2468f319be7a7d2b72ee5fdb28e3e6b525"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/controller/TabVideoUtilController.java",
+      "lines": 231,
+      "new": false,
+      "baseline_lines": 229,
+      "imports": [
+        "java.util.Arrays",
+        "java.util.List",
+        "java.util.Map",
+        "java.util.concurrent.CompletableFuture",
+        "java.util.concurrent.Executors",
+        "java.util.stream.Collectors",
+        "java.io.IOException",
+        "java.io.UnsupportedEncodingException",
+        "java.net.URLDecoder",
+        "javax.servlet.http.HttpServletRequest",
+        "javax.servlet.http.HttpServletResponse",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.common.system.query.QueryGenerator",
+        "org.jeecg.common.util.oConvertUtils",
+        "org.jeecg.modules.demo.video.entity.TabVideoUtil",
+        "org.jeecg.modules.demo.video.service.ITabVideoUtilService",
+        "com.baomidou.mybatisplus.core.conditions.query.QueryWrapper",
+        "com.baomidou.mybatisplus.core.metadata.IPage",
+        "com.baomidou.mybatisplus.extension.plugins.pagination.Page",
+        "lombok.extern.slf4j.Slf4j",
+        "org.jeecgframework.poi.excel.ExcelImportUtil",
+        "org.jeecgframework.poi.excel.def.NormalExcelConstants",
+        "org.jeecgframework.poi.excel.entity.ExportParams",
+        "org.jeecgframework.poi.excel.entity.ImportParams",
+        "org.jeecgframework.poi.excel.view.JeecgEntityExcelView",
+        "org.jeecg.common.system.base.controller.JeecgController",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.beans.factory.annotation.Value",
+        "org.springframework.web.bind.annotation.*",
+        "org.springframework.web.multipart.MultipartFile",
+        "org.springframework.web.multipart.MultipartHttpServletRequest",
+        "org.springframework.web.servlet.ModelAndView",
+        "com.alibaba.fastjson.JSON",
+        "io.swagger.annotations.Api",
+        "io.swagger.annotations.ApiOperation",
+        "org.jeecg.common.aspect.annotation.AutoLog"
+      ],
+      "methods": [
+        {
+          "name": "queryPageList",
+          "line": 68,
+          "lines": 9
+        },
+        {
+          "name": "add",
+          "line": 88,
+          "lines": 4
+        },
+        {
+          "name": "edit",
+          "line": 103,
+          "lines": 4
+        },
+        {
+          "name": "startVideoUtil",
+          "line": 120,
+          "lines": 19
+        },
+        {
+          "name": "stopVideoUtil",
+          "line": 151,
+          "lines": 8
+        },
+        {
+          "name": "delete",
+          "line": 169,
+          "lines": 4
+        },
+        {
+          "name": "deleteBatch",
+          "line": 184,
+          "lines": 4
+        },
+        {
+          "name": "queryById",
+          "line": 198,
+          "lines": 7
+        },
+        {
+          "name": "exportXls",
+          "line": 214,
+          "lines": 3
+        },
+        {
+          "name": "importExcel",
+          "line": 227,
+          "lines": 3
+        }
+      ],
+      "sha256": "1e66cc19597001e53c5f244aa041efc182167496a3c0704c522200e00627c2c5"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java",
+      "lines": 79,
+      "new": false,
+      "baseline_lines": 77,
+      "imports": [
+        "lombok.extern.slf4j.Slf4j",
+        "org.apache.commons.lang3.StringUtils",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.common.util.RedisUtil",
+        "org.jeecg.modules.demo.tab.entity.TabAiModelBund",
+        "org.jeecg.modules.demo.tab.service.ITabAiModelBundService",
+        "org.jeecg.modules.demo.video.entity.TabVideoUtil",
+        "org.jeecg.modules.demo.video.mapper.TabVideoUtilMapper",
+        "org.jeecg.modules.demo.video.service.ITabVideoUtilService",
+        "org.jeecg.modules.message.websocket.WebSocket",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3",
+        "org.jeecg.modules.tab.entity.TabAiModel",
+        "org.jeecg.modules.tab.service.ITabAiModelService",
+        "org.springframework.beans.factory.annotation.Autowired",
+        "org.springframework.data.redis.core.RedisTemplate",
+        "org.springframework.stereotype.Service",
+        "com.baomidou.mybatisplus.extension.service.impl.ServiceImpl",
+        "javax.annotation.Resource"
+      ],
+      "methods": [
+        {
+          "name": "startVideoUtil",
+          "line": 45,
+          "lines": 26
+        },
+        {
+          "name": "endVideoUtil",
+          "line": 73,
+          "lines": 6
+        }
+      ],
+      "sha256": "66a7f2b024bbe0f25595e3f77c5c649a640fdc4c6cc07c36e54b3b1c7eabad03"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/controller/AITestController.java",
+      "lines": 263,
+      "new": false,
+      "baseline_lines": 259,
+      "imports": [
+        "com.baomidou.mybatisplus.core.metadata.IPage",
+        "io.swagger.annotations.Api",
+        "lombok.extern.slf4j.Slf4j",
+        "org.jeecg.common.api.vo.Result",
+        "org.jeecg.modules.tab.AIModel.AIModelYolo3",
+        "org.opencv.core.*",
+        "org.opencv.core.Point",
+        "org.opencv.dnn.Dnn",
+        "org.opencv.dnn.Net",
+        "org.opencv.imgcodecs.Imgcodecs",
+        "org.opencv.imgproc.Imgproc",
+        "org.springframework.beans.factory.annotation.Value",
+        "org.springframework.web.bind.annotation.GetMapping",
+        "org.springframework.web.bind.annotation.RequestMapping",
+        "org.springframework.web.bind.annotation.RestController",
+        "java.awt.*",
+        "java.awt.image.BufferedImage",
+        "java.io.BufferedReader",
+        "java.io.FileReader",
+        "java.io.IOException",
+        "java.nio.file.Files",
+        "java.nio.file.Paths",
+        "java.util.ArrayList",
+        "java.util.HashMap",
+        "java.util.List",
+        "java.util.Map"
+      ],
+      "methods": [
+        {
+          "name": "testSavePic",
+          "line": 53,
+          "lines": 9
+        },
+        {
+          "name": "testAIModel2",
+          "line": 63,
+          "lines": 12
+        },
+        {
+          "name": "testAIModel",
+          "line": 78,
+          "lines": 88
+        },
+        {
+          "name": "CommonColors",
+          "line": 166,
+          "lines": 14
+        },
+        {
+          "name": "StartAITest",
+          "line": 183,
+          "lines": 78
+        }
+      ],
+      "sha256": "6e1ad7fcfe76bdb33a88c1b25067f30af96767a88f62d1ce2646fb89556ba85b"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/application/capabilities/CapabilityTest.java",
+      "lines": 141,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.InputStream",
+        "java.math.BigDecimal",
+        "java.time.*",
+        "java.util.*",
+        "org.jeecg.modules.ai.api.controller.CapabilityController",
+        "org.jeecg.modules.ai.api.mapper.capabilities.CapabilityMapper",
+        "org.jeecg.modules.ai.client.*",
+        "org.jeecg.modules.ai.client.mock.*",
+        "org.jeecg.modules.ai.config.provider.*",
+        "org.jeecg.modules.ai.domain.*",
+        "org.jeecg.modules.ai.port.*",
+        "org.junit.Test",
+        "org.springframework.context.annotation.AnnotationConfigApplicationContext",
+        "org.junit.Assert.*",
+        "org.jeecg.modules.ai.client.ClientTestInputs.*"
+      ],
+      "methods": [
+        {
+          "name": "capability",
+          "line": 20,
+          "lines": 4
+        },
+        {
+          "name": "repository",
+          "line": 24,
+          "lines": 6
+        },
+        {
+          "name": "find",
+          "line": 26,
+          "lines": 1
+        },
+        {
+          "name": "list",
+          "line": 27,
+          "lines": 1
+        },
+        {
+          "name": "mockRequiresExplicitModeAndKeepsPastArtifactReadableWhenDisabled",
+          "line": 31,
+          "lines": 21
+        },
+        {
+          "name": "mockEmptyAndNoAnnotationHaveNoArtifacts",
+          "line": 53,
+          "lines": 8
+        },
+        {
+          "name": "modesPermissionsAndRepositoryStatusControlAvailability",
+          "line": 62,
+          "lines": 13
+        },
+        {
+          "name": "externalObservationsRemainSeparateFromModelReadiness",
+          "line": 76,
+          "lines": 11
+        },
+        {
+          "name": "missingRepositoryDoesNotPreventContextStartupOrProvideFakeBindings",
+          "line": 88,
+          "lines": 8
+        },
+        {
+          "name": "mapperPreservesFrozenShapeWithoutProviderSecrets",
+          "line": 97,
+          "lines": 6
+        },
+        {
+          "name": "capabilityHttpUsesFrozenEnvelopeAndReportsMissingDependency",
+          "line": 103,
+          "lines": 24
+        },
+        {
+          "name": "isPermitted",
+          "line": 106,
+          "lines": 1
+        },
+        {
+          "name": "springBindsProviderLimitsAndDoesNotRegisterDraftRuntimeClient",
+          "line": 128,
+          "lines": 12
+        }
+      ],
+      "sha256": "1adfa4d2dcba02c257f7f3fee83dbcaedf874e6e14b5f4349871be7af10a51f7"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/ClientTestInputs.java",
+      "lines": 57,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.*",
+        "java.math.BigDecimal",
+        "java.nio.file.*",
+        "java.time.Clock",
+        "java.util.concurrent.atomic.AtomicInteger",
+        "org.jeecg.modules.ai.client.draft.*",
+        "org.jeecg.modules.ai.config.provider.*",
+        "org.jeecg.modules.ai.domain.*"
+      ],
+      "methods": [
+        {
+          "name": "ClientTestInputs",
+          "line": 13,
+          "lines": 1
+        },
+        {
+          "name": "example",
+          "line": 17,
+          "lines": 3
+        },
+        {
+          "name": "binding",
+          "line": 21,
+          "lines": 4
+        },
+        {
+          "name": "request",
+          "line": 26,
+          "lines": 4
+        },
+        {
+          "name": "properties",
+          "line": 31,
+          "lines": 8
+        },
+        {
+          "name": "provider",
+          "line": 40,
+          "lines": 3
+        },
+        {
+          "name": "CountingSource",
+          "line": 48,
+          "lines": 1
+        },
+        {
+          "name": "CountingSource",
+          "line": 49,
+          "lines": 1
+        },
+        {
+          "name": "openStream",
+          "line": 50,
+          "lines": 6
+        },
+        {
+          "name": "close",
+          "line": 53,
+          "lines": 1
+        }
+      ],
+      "sha256": "dd7b86342aa10ed92a19dae3759c4332067f4c4c9b1d956f6721ccca566dd204"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/DraftArtifactTest.java",
+      "lines": 116,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.io.*",
+        "java.time.*",
+        "org.jeecg.modules.ai.client.draft.*",
+        "org.jeecg.modules.ai.config.provider.*",
+        "org.jeecg.modules.ai.domain.*",
+        "org.junit.Test",
+        "org.junit.Assert.*",
+        "org.jeecg.modules.ai.client.ClientTestInputs.*"
+      ],
+      "methods": [
+        {
+          "name": "artifact",
+          "line": 13,
+          "lines": 3
+        },
+        {
+          "name": "reader",
+          "line": 16,
+          "lines": 3
+        },
+        {
+          "name": "closesResponseAndReleasesExactlyOnePermit",
+          "line": 20,
+          "lines": 17
+        },
+        {
+          "name": "unapprovedReferencesExpiryAndLimitsNeverMakeRequests",
+          "line": 38,
+          "lines": 11
+        },
+        {
+          "name": "artifactRedirectAndRetryAfterDoNotFollowUp",
+          "line": 50,
+          "lines": 9
+        },
+        {
+          "name": "truncatedAndStalledArtifactCannotComplete",
+          "line": 60,
+          "lines": 15
+        },
+        {
+          "name": "wrongArtifactMediaOrLengthIsRejected",
+          "line": 76,
+          "lines": 8
+        },
+        {
+          "name": "tlsUsesTrustedCaAndNormalHostnameValidation",
+          "line": 85,
+          "lines": 15
+        },
+        {
+          "name": "endpointApprovalAndConfigurationAreConsumed",
+          "line": 101,
+          "lines": 10
+        },
+        {
+          "name": "expectOpenFailure",
+          "line": 112,
+          "lines": 4
+        }
+      ],
+      "sha256": "5749c29f2be6a24638fa2c417cd0da450638a4d816ec5c9ee7a09d84ecb3aad9"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/DraftInferenceTest.java",
+      "lines": 139,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.net.ServerSocket",
+        "java.time.Clock",
+        "java.util.concurrent.*",
+        "org.jeecg.modules.ai.client.draft.*",
+        "org.jeecg.modules.ai.config.provider.*",
+        "org.jeecg.modules.ai.domain.*",
+        "org.junit.Test",
+        "org.junit.Assert.*",
+        "org.jeecg.modules.ai.client.ClientTestInputs.*"
+      ],
+      "methods": [
+        {
+          "name": "multipartUsesIndependentCredentialAndClosesInputOnce",
+          "line": 14,
+          "lines": 15
+        },
+        {
+          "name": "validEmptyResponseIsSuccess",
+          "line": 30,
+          "lines": 7
+        },
+        {
+          "name": "strictResponseFailuresStayUnknown",
+          "line": 38,
+          "lines": 15
+        },
+        {
+          "name": "httpFailuresNeverReplayIncludingRetryAfterZero",
+          "line": 54,
+          "lines": 16
+        },
+        {
+          "name": "connectionRefusalIsKnownNotStartedAndDoesNotOpenInput",
+          "line": 71,
+          "lines": 8
+        },
+        {
+          "name": "responseLossAndHeaderOrBodyTimeoutNeverRetry",
+          "line": 80,
+          "lines": 12
+        },
+        {
+          "name": "inflightLimitRejectsWithoutOpeningSecondInput",
+          "line": 93,
+          "lines": 14
+        },
+        {
+          "name": "streamingInputLimitClosesSourceEvenWithUnknownSize",
+          "line": 108,
+          "lines": 12
+        },
+        {
+          "name": "uploadTransferBudgetIsIndependentOfTotalRequestBudget",
+          "line": 121,
+          "lines": 13
+        },
+        {
+          "name": "failure",
+          "line": 135,
+          "lines": 4
+        }
+      ],
+      "sha256": "33c9718d357ffd6c5407a37a1e806c5daa53421ba67af8d7ead265f23defc2d3"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/client/ProtocolFixture.java",
+      "lines": 78,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "com.sun.net.httpserver.*",
+        "java.io.*",
+        "java.net.InetSocketAddress",
+        "java.nio.charset.StandardCharsets",
+        "java.nio.file.*",
+        "java.security.KeyStore",
+        "java.util.concurrent.*",
+        "java.util.concurrent.atomic.AtomicInteger",
+        "javax.net.ssl.*"
+      ],
+      "methods": [
+        {
+          "name": "ProtocolFixture",
+          "line": 30,
+          "lines": 17
+        },
+        {
+          "name": "url",
+          "line": 48,
+          "lines": 1
+        },
+        {
+          "name": "json",
+          "line": 49,
+          "lines": 1
+        },
+        {
+          "name": "handle",
+          "line": 51,
+          "lines": 17
+        },
+        {
+          "name": "read",
+          "line": 69,
+          "lines": 7
+        },
+        {
+          "name": "close",
+          "line": 77,
+          "lines": 1
+        }
+      ],
+      "sha256": "49944b76319b1562c17f3a47ec3394fde75f77deb37c8a67a45fd96c05841e95"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/test/java/org/jeecg/modules/ai/legacy/AiAccessTest.java",
+      "lines": 132,
+      "new": true,
+      "baseline_lines": null,
+      "imports": [
+        "java.lang.reflect.*",
+        "java.util.concurrent.atomic.AtomicInteger",
+        "javax.servlet.Filter",
+        "org.apache.shiro.authc.*",
+        "org.apache.shiro.authz.*",
+        "org.apache.shiro.realm.AuthorizingRealm",
+        "org.apache.shiro.subject.PrincipalCollection",
+        "org.apache.shiro.util.ThreadContext",
+        "org.apache.shiro.web.mgt.DefaultWebSecurityManager",
+        "org.jeecg.config.JeecgBaseConfig",
+        "org.jeecg.config.shiro.ShiroConfig",
+        "org.jeecg.config.vo.Shiro",
+        "org.jeecg.modules.ai.client.*",
+        "org.jeecg.modules.ai.domain.*",
+        "org.junit.*",
+        "org.springframework.mock.env.MockEnvironment",
+        "org.springframework.mock.web.*",
+        "org.springframework.test.util.ReflectionTestUtils",
+        "org.junit.Assert.*",
+        "org.jeecg.modules.ai.client.ClientTestInputs.*"
+      ],
+      "methods": [
+        {
+          "name": "setUp",
+          "line": 29,
+          "lines": 11
+        },
+        {
+          "name": "tearDown",
+          "line": 41,
+          "lines": 1
+        },
+        {
+          "name": "call",
+          "line": 43,
+          "lines": 8
+        },
+        {
+          "name": "anonymousCannotBypassViaExclusionsOrStaticSuffix",
+          "line": 52,
+          "lines": 7
+        },
+        {
+          "name": "newSubmissionsRequireAiInferButOwnedReadsDoNot",
+          "line": 60,
+          "lines": 11
+        },
+        {
+          "name": "legacyEndpointsAreStoppedForAuthorizedOperators",
+          "line": 72,
+          "lines": 11
+        },
+        {
+          "name": "providerAuthFailureDoesNotInvalidateBusinessAuthentication",
+          "line": 84,
+          "lines": 10
+        },
+        {
+          "name": "directServiceAndControllerCallsStopBeforeAnyDependencyAccess",
+          "line": 95,
+          "lines": 11
+        },
+        {
+          "name": "assertGuarded",
+          "line": 107,
+          "lines": 11
+        },
+        {
+          "name": "supports",
+          "line": 120,
+          "lines": 1
+        },
+        {
+          "name": "doGetAuthenticationInfo",
+          "line": 121,
+          "lines": 5
+        },
+        {
+          "name": "doGetAuthorizationInfo",
+          "line": 126,
+          "lines": 5
+        }
+      ],
+      "sha256": "556d0600b73ed34a8240a4338473a63309463bffc2ca9b9dbc5a84722052b14a"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/java/org/jeecg/JeecgSystemApplication.java",
+      "lines": 59,
+      "new": false,
+      "baseline_lines": 58,
+      "imports": [
+        "lombok.extern.slf4j.Slf4j",
+        "org.jeecg.common.util.oConvertUtils",
+        "org.springframework.boot.SpringApplication",
+        "org.springframework.boot.autoconfigure.SpringBootApplication",
+        "org.springframework.boot.builder.SpringApplicationBuilder",
+        "org.springframework.boot.web.servlet.support.SpringBootServletInitializer",
+        "org.springframework.context.ConfigurableApplicationContext",
+        "org.springframework.core.env.Environment",
+        "java.net.InetAddress",
+        "java.net.UnknownHostException"
+      ],
+      "methods": [
+        {
+          "name": "configure",
+          "line": 25,
+          "lines": 3
+        },
+        {
+          "name": "main",
+          "line": 28,
+          "lines": 30
+        }
+      ],
+      "sha256": "ba20cae52e777ff04300f44fd9b77368b9e234b2955fe0e8f8eeb6fa3168d827"
+    }
+  ],
+  "max_new_java_lines": 141,
+  "max_new_method_lines": 30,
+  "limitations": "AST imports and spans plus targeted review; not whole-program semantic proof. Existing oversized legacy files receive thin guards only."
+}

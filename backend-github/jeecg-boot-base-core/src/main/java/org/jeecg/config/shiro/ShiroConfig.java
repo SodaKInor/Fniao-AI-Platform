@@ -51,6 +51,10 @@ public class ShiroConfig {
     @Resource
     private JeecgBaseConfig jeecgBaseConfig;
 
+    @Autowired(required = false)
+    @org.springframework.beans.factory.annotation.Qualifier("aiAccessFilter")
+    private Filter aiAccessFilter;
+
     /**
      * Filter Chain定义说明
      *
@@ -99,7 +103,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/sys/getQrcodeToken/**", "anon"); //监听扫码
         filterChainDefinitionMap.put("/sys/checkAuth", "anon"); //授权接口排除
 
-        filterChainDefinitionMap.put("/tab/testAI/**", "anon"); //测试接口
 
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/doc.html", "anon");
@@ -126,8 +129,6 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/v2/**", "anon");
 
         filterChainDefinitionMap.put("/sys/annountCement/show/**", "anon");
-        filterChainDefinitionMap.put("/tab/tabAiSubscription/**", "anon");
-        filterChainDefinitionMap.put("/tab/tabAiBase/**", "anon");
         //积木报表排除
         filterChainDefinitionMap.put("/jmreport/**", "anon");
         filterChainDefinitionMap.put("/**/*.js.map", "anon");
@@ -158,6 +159,7 @@ public class ShiroConfig {
         //如果cloudServer为空 则说明是单体 需要加载跨域配置【微服务跨域切换】
         Object cloudServer = env.getProperty(CommonConstant.CLOUD_SERVER_KEY);
         filterMap.put("jwt", new JwtFilter(cloudServer==null));
+        if (aiAccessFilter != null) filterMap.put("aiAccess", aiAccessFilter);
         shiroFilterFactoryBean.setFilters(filterMap);
         // <!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边
         filterChainDefinitionMap.put("/**", "jwt");
@@ -165,7 +167,7 @@ public class ShiroConfig {
         // 未授权界面返回JSON
         shiroFilterFactoryBean.setUnauthorizedUrl("/sys/common/403");
         shiroFilterFactoryBean.setLoginUrl("/sys/common/403");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(AiFilterChains.protect(filterChainDefinitionMap, aiAccessFilter != null));
         return shiroFilterFactoryBean;
     }
 

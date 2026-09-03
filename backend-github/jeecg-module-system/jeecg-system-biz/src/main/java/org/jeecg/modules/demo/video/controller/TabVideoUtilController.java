@@ -118,6 +118,7 @@ public class TabVideoUtilController extends JeecgController<TabVideoUtil, ITabVi
 	 //@RequiresPermissions("org.jeecg.modules.demo:tab_video_util:edit")
 	 @RequestMapping(value = "/startVideoUtil", method = {RequestMethod.POST})
 	 public Result<String> startVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 		 try {
 			 CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
 				 try {
@@ -148,6 +149,7 @@ public class TabVideoUtilController extends JeecgController<TabVideoUtil, ITabVi
 	 //@RequiresPermissions("org.jeecg.modules.demo:tab_video_util:edit")
 	 @RequestMapping(value = "/stopVideoUtil", method = {RequestMethod.POST})
 	 public Result<String> stopVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 		 tabVideoUtilService.endVideoUtil(tabVideoUtil);
 		 TabVideoUtil tabVideoUtil1=tabVideoUtilService.getById(tabVideoUtil.getId());
 		 tabVideoUtil1.setSpareOne("0");

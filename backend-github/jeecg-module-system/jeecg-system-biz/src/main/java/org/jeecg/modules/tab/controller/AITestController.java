@@ -51,6 +51,7 @@ public class AITestController {
 
     @GetMapping(value = "/testSavePic")
     public Result testSavePic() throws Exception {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         AIModelYolo3 picYoloV3=new AIModelYolo3();
 
@@ -60,6 +61,7 @@ public class AITestController {
     }
     @GetMapping(value = "/testAIModel2")
     public Result testAIModel2() throws Exception {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         // 保存标注后的图像
         AIModelYolo3 picYoloV3=new AIModelYolo3();
@@ -74,6 +76,7 @@ public class AITestController {
 
     @GetMapping(value = "/testAIModel")
     public Result testAIModel() throws IOException {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         // 加载 YOLOv3 模型
         String modelWeights = "F:\\JAVAAI\\yolo3\\yuanshi\\yolov3.weights";
@@ -178,6 +181,7 @@ public class AITestController {
 
     @GetMapping(value = "/test")
     public Result StartAITest() throws IOException {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         // 加载 YOLOv3 模型
         String modelWeights = "F:\\JAVAAI\\yolo3\\gunzhou\\my_yolov3_final.weights";

@@ -43,6 +43,7 @@ public class TabVideoUtilServiceImpl extends ServiceImpl<TabVideoUtilMapper, Tab
     public RedisTemplate redisTemplate;
     @Override
     public Result<?> startVideoUtil(TabVideoUtil tabVideoUtil,String path) throws Exception {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         //开启入侵
         redisUtil.set(tabVideoUtil.getId(),true);
         redisUtil.expire(tabVideoUtil.getId(),365*24*60);//开启一次一年
@@ -70,6 +71,7 @@ public class TabVideoUtilServiceImpl extends ServiceImpl<TabVideoUtilMapper, Tab
 
     @Override
     public Result<?> endVideoUtil(TabVideoUtil tabVideoUtil) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         redisUtil.set(tabVideoUtil.getId(),false);
         redisUtil.expire(tabVideoUtil.getId(),365*24*60);//开启一次一年
         return Result.OK("结束成功");

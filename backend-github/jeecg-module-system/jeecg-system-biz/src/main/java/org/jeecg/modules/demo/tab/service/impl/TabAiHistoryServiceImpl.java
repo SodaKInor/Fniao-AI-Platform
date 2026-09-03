@@ -95,6 +95,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public Result<?> aiAudio(String path,String uplpadPath) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         if (!asrEnabled || asrHost.trim().isEmpty() || asrPort.trim().isEmpty()) {
             return Result.error("ASR service is disabled or not configured");
         }
@@ -192,6 +193,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveStr(TabAiModelBund tabAiModelBund,String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -219,6 +221,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveAudioStr(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -249,6 +252,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
     }
 
     public  static  Result<String> waveInt16(String url,String path,String name){
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         String ffmpegCommand = "ffmpeg -y -i "+url+" -ac 1 -ar 16000  "+path+File.separator+name;
 
@@ -285,6 +289,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
     }
     @Override
     public int saveCarIdentify(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -314,6 +319,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveCarIdentifyV5(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -347,6 +353,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentify(TabAiModelBund tabAiModelBund,String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
@@ -377,6 +384,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyYolov5(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -405,6 +413,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyYolov8(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -433,6 +442,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int closedentify(TabAiModelBund tabAiModelBund, LoginUser sysUser) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         //使用redis 设置关闭当前流 使用的用户关闭识别 超时时间设置3s失效
 
 
@@ -463,6 +473,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyVideo(TabAiModelBund tabAiModelBund, String path) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
@@ -492,6 +503,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyLocalVideo(TabAiModelBund tabAiModelBund, String path,String userId) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         Long a=System.currentTimeMillis();
         LambdaQueryWrapper< TabAiModel> query = new LambdaQueryWrapper<>();
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -513,6 +525,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyLocalVideoThread(TabAiModelBund tabAiModelBund, String path, String userId) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
         AIModelYolo3  modelYolo3=new AIModelYolo3();
@@ -552,6 +565,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public int saveIdentifyLocalVideoThreadV5(TabAiModelBund tabAiModelBund, String path, String userId) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         log.info("V5识别内容开始！！！！！！！！！！！！！！！！！！！！！！！！！！！！！");
         TabAiModel tabAiModel1=modelMapper.selectById(tabAiModelBund.getModelName());
         AIModelYolo3  modelYolo3=new AIModelYolo3();
@@ -591,6 +605,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public Result<String>  startAi(TabAiModelBund tabAiModelBund, String path, String userId) {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
 
 
         TabAiModel aiModel=modelMapper.selectById(tabAiModelBund.getModelName());
@@ -705,6 +720,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
 
     @Override
     public void sendUrl() {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         if (!cameraEnabled || cameraStreamUrl.trim().isEmpty()) {
             log.warn("Camera streaming is disabled or not configured");
             return;
@@ -797,6 +813,7 @@ public class TabAiHistoryServiceImpl extends ServiceImpl<TabAiHistoryMapper, Tab
     FFmpegFrameRecorder  recorder;
     @Override
     public void sendUrlFLV() throws FFmpegFrameGrabber.Exception, FFmpegFrameRecorder.Exception {
+        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
         if (!cameraEnabled || cameraStreamUrl.trim().isEmpty()) {
             log.warn("Camera streaming is disabled or not configured");
             return;

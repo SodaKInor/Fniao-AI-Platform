@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "at": "2026-09-03T11:06:57.406716+00:00",
+  "mode": "remote",
+  "provider_configuration": "missing/unconfirmed",
+  "image": "sha256:2ddbe68b87ac79bc4dbc17a840a51b60619fd791f3532dbc6b5ea477ab751918",
+  "project": "wgai-ri-03-client",
+  "health": "healthy",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/doc.html",
+      "http_status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/v2/api-docs",
+      "http_status": 200,
+      "documented_path_count": 0
+    },
+    {
+      "method": "GET",
+      "path": "/ai/v1/capabilities",
+      "http_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/ai/v1/infer",
+      "http_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/tab/testAI/test",
+      "http_status": 401
+    },
+    {
+      "method": "GET",
+      "path": "/tab/tabAiBase/list",
+      "http_status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/video/tabVideoUtil/startVideoUtil",
+      "http_status": 401
+    }
+  ],
+  "limitations": "Docker health is doc.html. Swagger returned an empty path map, so it is not used as endpoint-registration evidence; capabilities mapping/envelope are tested with MockMvc. Live probes test anonymous rejection, not account login or assets/jobs."
+}
