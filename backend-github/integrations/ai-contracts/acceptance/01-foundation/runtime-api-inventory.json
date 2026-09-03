@@ -1,0 +1,760 @@
+{
+  "captured_at": "2026-09-03T09:25:15.735494+00:00",
+  "path_count": 234,
+  "by_area": {
+    "tab": 40,
+    "video": 8,
+    "train": 0,
+    "face": 0,
+    "szr": 0,
+    "audio": 0,
+    "chat": 49,
+    "tchat": 0,
+    "easy": 25,
+    "teasy": 0,
+    "maxkb": 7
+  },
+  "paths": {
+    "/chat/tabChartHistory/add": [
+      "post"
+    ],
+    "/chat/tabChartHistory/delete": [
+      "delete"
+    ],
+    "/chat/tabChartHistory/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabChartHistory/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabChartHistory/list": [
+      "get"
+    ],
+    "/chat/tabChartHistory/queryById": [
+      "get"
+    ],
+    "/chat/tabChatKeyword/add": [
+      "post"
+    ],
+    "/chat/tabChatKeyword/delete": [
+      "delete"
+    ],
+    "/chat/tabChatKeyword/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabChatKeyword/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabChatKeyword/list": [
+      "get"
+    ],
+    "/chat/tabChatKeyword/queryById": [
+      "get"
+    ],
+    "/chat/tabChatQa/add": [
+      "post"
+    ],
+    "/chat/tabChatQa/delete": [
+      "delete"
+    ],
+    "/chat/tabChatQa/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabChatQa/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabChatQa/list": [
+      "get"
+    ],
+    "/chat/tabChatQa/queryById": [
+      "get"
+    ],
+    "/chat/tabChatType/add": [
+      "post"
+    ],
+    "/chat/tabChatType/delete": [
+      "delete"
+    ],
+    "/chat/tabChatType/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabChatType/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabChatType/list": [
+      "get"
+    ],
+    "/chat/tabChatType/queryById": [
+      "get"
+    ],
+    "/chat/tabMessageList/add": [
+      "post"
+    ],
+    "/chat/tabMessageList/delete": [
+      "delete"
+    ],
+    "/chat/tabMessageList/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabMessageList/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabMessageList/list": [
+      "get"
+    ],
+    "/chat/tabMessageList/queryById": [
+      "get"
+    ],
+    "/chat/tabMessageTrainLog/add": [
+      "post"
+    ],
+    "/chat/tabMessageTrainLog/delete": [
+      "delete"
+    ],
+    "/chat/tabMessageTrainLog/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabMessageTrainLog/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabMessageTrainLog/list": [
+      "get"
+    ],
+    "/chat/tabMessageTrainLog/queryById": [
+      "get"
+    ],
+    "/chat/tabMessageTrainModel/add": [
+      "post"
+    ],
+    "/chat/tabMessageTrainModel/delete": [
+      "delete"
+    ],
+    "/chat/tabMessageTrainModel/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabMessageTrainModel/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabMessageTrainModel/list": [
+      "get"
+    ],
+    "/chat/tabMessageTrainModel/queryById": [
+      "get"
+    ],
+    "/chat/tabMessageType/add": [
+      "post"
+    ],
+    "/chat/tabMessageType/delete": [
+      "delete"
+    ],
+    "/chat/tabMessageType/deleteBatch": [
+      "delete"
+    ],
+    "/chat/tabMessageType/edit": [
+      "post",
+      "put"
+    ],
+    "/chat/tabMessageType/list": [
+      "get"
+    ],
+    "/chat/tabMessageType/queryById": [
+      "get"
+    ],
+    "/chat/tabMessageType/queryBychatTypeId": [
+      "get"
+    ],
+    "/easy/picConfig/add": [
+      "post"
+    ],
+    "/easy/picConfig/addList": [
+      "post"
+    ],
+    "/easy/picConfig/delete": [
+      "delete"
+    ],
+    "/easy/picConfig/deleteBatch": [
+      "delete"
+    ],
+    "/easy/picConfig/edit": [
+      "post",
+      "put"
+    ],
+    "/easy/picConfig/list": [
+      "get"
+    ],
+    "/easy/picConfig/queryById": [
+      "get"
+    ],
+    "/easy/tabEasyConfig/add": [
+      "post"
+    ],
+    "/easy/tabEasyConfig/delete": [
+      "delete"
+    ],
+    "/easy/tabEasyConfig/deleteBatch": [
+      "delete"
+    ],
+    "/easy/tabEasyConfig/edit": [
+      "post",
+      "put"
+    ],
+    "/easy/tabEasyConfig/list": [
+      "get"
+    ],
+    "/easy/tabEasyConfig/queryById": [
+      "get"
+    ],
+    "/easy/tabEasyPic/add": [
+      "post"
+    ],
+    "/easy/tabEasyPic/delete": [
+      "delete"
+    ],
+    "/easy/tabEasyPic/deleteBatch": [
+      "delete"
+    ],
+    "/easy/tabEasyPic/edit": [
+      "post",
+      "put"
+    ],
+    "/easy/tabEasyPic/list": [
+      "get"
+    ],
+    "/easy/tabEasyPic/queryById": [
+      "get"
+    ],
+    "/easy/tabEasyType/add": [
+      "post"
+    ],
+    "/easy/tabEasyType/delete": [
+      "delete"
+    ],
+    "/easy/tabEasyType/deleteBatch": [
+      "delete"
+    ],
+    "/easy/tabEasyType/edit": [
+      "post",
+      "put"
+    ],
+    "/easy/tabEasyType/list": [
+      "get"
+    ],
+    "/easy/tabEasyType/queryById": [
+      "get"
+    ],
+    "/maxkb/tabMaxkbModel/add": [
+      "post"
+    ],
+    "/maxkb/tabMaxkbModel/delete": [
+      "delete"
+    ],
+    "/maxkb/tabMaxkbModel/deleteBatch": [
+      "delete"
+    ],
+    "/maxkb/tabMaxkbModel/edit": [
+      "post",
+      "put"
+    ],
+    "/maxkb/tabMaxkbModel/list": [
+      "get"
+    ],
+    "/maxkb/tabMaxkbModel/queryById": [
+      "get"
+    ],
+    "/maxkb/tabMaxkbModel/testConnect": [
+      "post"
+    ],
+    "/online/graphreport/params/add": [
+      "post"
+    ],
+    "/online/graphreport/params/delete": [
+      "delete"
+    ],
+    "/online/graphreport/params/deleteBatch": [
+      "delete"
+    ],
+    "/online/graphreport/params/edit": [
+      "put"
+    ],
+    "/online/graphreport/params/list": [
+      "get"
+    ],
+    "/online/graphreport/params/queryById": [
+      "get"
+    ],
+    "/online/lowApp/add": [
+      "post"
+    ],
+    "/online/lowApp/delete": [
+      "delete"
+    ],
+    "/online/lowApp/deleteBatch": [
+      "delete"
+    ],
+    "/online/lowApp/edit": [
+      "put"
+    ],
+    "/online/lowApp/editBatch": [
+      "put"
+    ],
+    "/online/lowApp/list": [
+      "get"
+    ],
+    "/online/lowApp/queryById": [
+      "get"
+    ],
+    "/online/lowAppMenu/add": [
+      "post"
+    ],
+    "/online/lowAppMenu/delete": [
+      "delete"
+    ],
+    "/online/lowAppMenu/deleteBatch": [
+      "delete"
+    ],
+    "/online/lowAppMenu/edit": [
+      "put"
+    ],
+    "/online/lowAppMenu/list": [
+      "get"
+    ],
+    "/online/lowAppMenu/queryById": [
+      "get"
+    ],
+    "/sys/checkRule/add": [
+      "post"
+    ],
+    "/sys/checkRule/checkByCode": [
+      "get"
+    ],
+    "/sys/checkRule/delete": [
+      "delete"
+    ],
+    "/sys/checkRule/deleteBatch": [
+      "delete"
+    ],
+    "/sys/checkRule/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/checkRule/list": [
+      "get"
+    ],
+    "/sys/checkRule/queryById": [
+      "get"
+    ],
+    "/sys/comment/add": [
+      "post"
+    ],
+    "/sys/comment/addFile": [
+      "post"
+    ],
+    "/sys/comment/addText": [
+      "post"
+    ],
+    "/sys/comment/delete": [
+      "delete"
+    ],
+    "/sys/comment/deleteBatch": [
+      "delete"
+    ],
+    "/sys/comment/deleteOne": [
+      "delete"
+    ],
+    "/sys/comment/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/comment/fileList": [
+      "get"
+    ],
+    "/sys/comment/list": [
+      "get"
+    ],
+    "/sys/comment/listByForm": [
+      "get"
+    ],
+    "/sys/comment/queryById": [
+      "get"
+    ],
+    "/sys/dataSource/add": [
+      "post"
+    ],
+    "/sys/dataSource/delete": [
+      "delete"
+    ],
+    "/sys/dataSource/deleteBatch": [
+      "delete"
+    ],
+    "/sys/dataSource/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/dataSource/list": [
+      "get"
+    ],
+    "/sys/dataSource/queryById": [
+      "get"
+    ],
+    "/sys/dictItem/dictItemCheck": [
+      "get"
+    ],
+    "/sys/duplicate/check": [
+      "get"
+    ],
+    "/sys/files/add": [
+      "post"
+    ],
+    "/sys/files/delete": [
+      "delete"
+    ],
+    "/sys/files/deleteBatch": [
+      "delete"
+    ],
+    "/sys/files/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/files/list": [
+      "get"
+    ],
+    "/sys/files/queryById": [
+      "get"
+    ],
+    "/sys/fillRule/add": [
+      "post"
+    ],
+    "/sys/fillRule/delete": [
+      "delete"
+    ],
+    "/sys/fillRule/deleteBatch": [
+      "delete"
+    ],
+    "/sys/fillRule/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/fillRule/list": [
+      "get"
+    ],
+    "/sys/fillRule/queryById": [
+      "get"
+    ],
+    "/sys/formFile/add": [
+      "post"
+    ],
+    "/sys/formFile/delete": [
+      "delete"
+    ],
+    "/sys/formFile/deleteBatch": [
+      "delete"
+    ],
+    "/sys/formFile/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/formFile/list": [
+      "get"
+    ],
+    "/sys/formFile/queryById": [
+      "get"
+    ],
+    "/sys/getLoginQrcode": [
+      "get"
+    ],
+    "/sys/getQrcodeToken": [
+      "get"
+    ],
+    "/sys/getToken": [
+      "post"
+    ],
+    "/sys/login": [
+      "post"
+    ],
+    "/sys/phoneLogin": [
+      "post"
+    ],
+    "/sys/position/add": [
+      "post"
+    ],
+    "/sys/position/delete": [
+      "delete"
+    ],
+    "/sys/position/deleteBatch": [
+      "delete"
+    ],
+    "/sys/position/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/position/list": [
+      "get"
+    ],
+    "/sys/position/queryByCode": [
+      "get"
+    ],
+    "/sys/position/queryById": [
+      "get"
+    ],
+    "/sys/quartzJob/pause": [
+      "get"
+    ],
+    "/sys/quartzJob/resume": [
+      "get"
+    ],
+    "/sys/randomImage/{key}": [
+      "get"
+    ],
+    "/sys/scanLoginQrcode": [
+      "post"
+    ],
+    "/sys/sysDepartPermission/add": [
+      "post"
+    ],
+    "/sys/sysDepartPermission/delete": [
+      "delete"
+    ],
+    "/sys/sysDepartPermission/deleteBatch": [
+      "delete"
+    ],
+    "/sys/sysDepartPermission/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/sysDepartPermission/list": [
+      "get"
+    ],
+    "/sys/sysDepartPermission/queryById": [
+      "get"
+    ],
+    "/sys/sysDepartRole/add": [
+      "post"
+    ],
+    "/sys/sysDepartRole/delete": [
+      "delete"
+    ],
+    "/sys/sysDepartRole/deleteBatch": [
+      "delete"
+    ],
+    "/sys/sysDepartRole/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/sysDepartRole/list": [
+      "get"
+    ],
+    "/sys/sysDepartRole/queryById": [
+      "get"
+    ],
+    "/sys/sysRoleIndex/add": [
+      "post"
+    ],
+    "/sys/sysRoleIndex/delete": [
+      "delete"
+    ],
+    "/sys/sysRoleIndex/deleteBatch": [
+      "delete"
+    ],
+    "/sys/sysRoleIndex/edit": [
+      "post",
+      "put"
+    ],
+    "/sys/sysRoleIndex/list": [
+      "get"
+    ],
+    "/sys/sysRoleIndex/queryByCode": [
+      "get"
+    ],
+    "/sys/sysRoleIndex/queryById": [
+      "get"
+    ],
+    "/tab/tabAiBase/add": [
+      "post"
+    ],
+    "/tab/tabAiBase/delete": [
+      "delete"
+    ],
+    "/tab/tabAiBase/deleteBatch": [
+      "delete"
+    ],
+    "/tab/tabAiBase/edit": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiBase/list": [
+      "get"
+    ],
+    "/tab/tabAiBase/queryById": [
+      "get"
+    ],
+    "/tab/tabAiBase/sendRedis": [
+      "post"
+    ],
+    "/tab/tabAiHistory/add": [
+      "post"
+    ],
+    "/tab/tabAiHistory/addAudio": [
+      "get"
+    ],
+    "/tab/tabAiHistory/addIdentify": [
+      "post"
+    ],
+    "/tab/tabAiHistory/addIdentifyClose": [
+      "post"
+    ],
+    "/tab/tabAiHistory/delete": [
+      "delete"
+    ],
+    "/tab/tabAiHistory/deleteBatch": [
+      "delete"
+    ],
+    "/tab/tabAiHistory/edit": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiHistory/list": [
+      "get"
+    ],
+    "/tab/tabAiHistory/queryById": [
+      "get"
+    ],
+    "/tab/tabAiModel/add": [
+      "post"
+    ],
+    "/tab/tabAiModel/delete": [
+      "delete"
+    ],
+    "/tab/tabAiModel/deleteBatch": [
+      "delete"
+    ],
+    "/tab/tabAiModel/edit": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiModel/list": [
+      "get"
+    ],
+    "/tab/tabAiModel/queryById": [
+      "get"
+    ],
+    "/tab/tabAiModelBund/Treelist": [
+      "get"
+    ],
+    "/tab/tabAiModelBund/add": [
+      "post"
+    ],
+    "/tab/tabAiModelBund/delete": [
+      "delete"
+    ],
+    "/tab/tabAiModelBund/deleteBatch": [
+      "delete"
+    ],
+    "/tab/tabAiModelBund/edit": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiModelBund/list": [
+      "get"
+    ],
+    "/tab/tabAiModelBund/queryById": [
+      "get"
+    ],
+    "/tab/tabAiSubscription/add": [
+      "post"
+    ],
+    "/tab/tabAiSubscription/delWithPushUrl": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiSubscription/delete": [
+      "delete"
+    ],
+    "/tab/tabAiSubscription/deleteBatch": [
+      "delete"
+    ],
+    "/tab/tabAiSubscription/edit": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiSubscription/editWithPushUrl": [
+      "post",
+      "put"
+    ],
+    "/tab/tabAiSubscription/getPushUrl": [
+      "post"
+    ],
+    "/tab/tabAiSubscription/list": [
+      "get"
+    ],
+    "/tab/tabAiSubscription/queryById": [
+      "get"
+    ],
+    "/tab/tabAiSubscription/subInfo": [
+      "delete",
+      "get",
+      "head",
+      "options",
+      "patch",
+      "post",
+      "put"
+    ],
+    "/tab/tabAiSubscription/subInfo2": [
+      "post"
+    ],
+    "/test/dynamic/test1": [
+      "post"
+    ],
+    "/test/jeecgDemo/add": [
+      "post"
+    ],
+    "/test/jeecgDemo/delete": [
+      "delete"
+    ],
+    "/test/jeecgDemo/deleteBatch": [
+      "delete"
+    ],
+    "/test/jeecgDemo/edit": [
+      "post",
+      "put"
+    ],
+    "/test/jeecgDemo/list": [
+      "get"
+    ],
+    "/test/jeecgDemo/queryById": [
+      "get"
+    ],
+    "/video/tabVideoUtil/add": [
+      "post"
+    ],
+    "/video/tabVideoUtil/delete": [
+      "delete"
+    ],
+    "/video/tabVideoUtil/deleteBatch": [
+      "delete"
+    ],
+    "/video/tabVideoUtil/edit": [
+      "post",
+      "put"
+    ],
+    "/video/tabVideoUtil/list": [
+      "get"
+    ],
+    "/video/tabVideoUtil/queryById": [
+      "get"
+    ],
+    "/video/tabVideoUtil/startVideoUtil": [
+      "post"
+    ],
+    "/video/tabVideoUtil/stopVideoUtil": [
+      "post"
+    ]
+  },
+  "execution_endpoints_invoked": false
+}

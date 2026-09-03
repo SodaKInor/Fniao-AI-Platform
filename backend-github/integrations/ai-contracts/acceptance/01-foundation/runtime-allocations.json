@@ -1,0 +1,232 @@
+[
+  {
+    "id": "00-integration",
+    "project": "wgai-ri-00-integration",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/code",
+    "branch": "feature/remote-inference",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/00-integration/compose.json",
+    "frontend_port": 18100,
+    "backend_port": 19100,
+    "database": "wgai_ri_00_integration",
+    "volumes": [
+      "wgai-ri-00-integration_mysql_data",
+      "wgai-ri-00-integration_redis_data",
+      "wgai-ri-00-integration_uploads"
+    ],
+    "network": "wgai-ri-00-integration_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "01-foundation",
+    "project": "wgai-ri-01-foundation",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/code",
+    "branch": "work/remote-inference/01-foundation",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/01-foundation/compose.json",
+    "frontend_port": 18101,
+    "backend_port": 19101,
+    "database": "wgai_ri_01_foundation",
+    "volumes": [
+      "wgai-ri-01-foundation_mysql_data",
+      "wgai-ri-01-foundation_redis_data",
+      "wgai-ri-01-foundation_uploads"
+    ],
+    "network": "wgai-ri-01-foundation_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "02-contract",
+    "project": "wgai-ri-02-contract",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/code",
+    "branch": "work/remote-inference/02-contract",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/02-contract/compose.json",
+    "frontend_port": 18102,
+    "backend_port": 19102,
+    "database": "wgai_ri_02_contract",
+    "volumes": [
+      "wgai-ri-02-contract_mysql_data",
+      "wgai-ri-02-contract_redis_data",
+      "wgai-ri-02-contract_uploads"
+    ],
+    "network": "wgai-ri-02-contract_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "03-client",
+    "project": "wgai-ri-03-client",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client/code",
+    "branch": "work/remote-inference/03-client",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/03-client/compose.json",
+    "frontend_port": 18103,
+    "backend_port": 19103,
+    "database": "wgai_ri_03_client",
+    "volumes": [
+      "wgai-ri-03-client_mysql_data",
+      "wgai-ri-03-client_redis_data",
+      "wgai-ri-03-client_uploads"
+    ],
+    "network": "wgai-ri-03-client_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "04a-assets-jobs",
+    "project": "wgai-ri-04a-assets-jobs",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code",
+    "branch": "work/remote-inference/04a-assets-jobs",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/04a-assets-jobs/compose.json",
+    "frontend_port": 18104,
+    "backend_port": 19104,
+    "database": "wgai_ri_04a_assets_jobs",
+    "volumes": [
+      "wgai-ri-04a-assets-jobs_mysql_data",
+      "wgai-ri-04a-assets-jobs_redis_data",
+      "wgai-ri-04a-assets-jobs_uploads"
+    ],
+    "network": "wgai-ri-04a-assets-jobs_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "04b-frontend",
+    "project": "wgai-ri-04b-frontend",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend/code",
+    "branch": "work/remote-inference/04b-frontend",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/04b-frontend/compose.json",
+    "frontend_port": 18105,
+    "backend_port": 19105,
+    "database": "wgai_ri_04b_frontend",
+    "volumes": [
+      "wgai-ri-04b-frontend_mysql_data",
+      "wgai-ri-04b-frontend_redis_data",
+      "wgai-ri-04b-frontend_uploads"
+    ],
+    "network": "wgai-ri-04b-frontend_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "05-lan",
+    "project": "wgai-ri-05-lan",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan/code",
+    "branch": "work/remote-inference/05-lan",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/05-lan/compose.json",
+    "frontend_port": 18106,
+    "backend_port": 19106,
+    "database": "wgai_ri_05_lan",
+    "volumes": [
+      "wgai-ri-05-lan_mysql_data",
+      "wgai-ri-05-lan_redis_data",
+      "wgai-ri-05-lan_uploads"
+    ],
+    "network": "wgai-ri-05-lan_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "06-resilience",
+    "project": "wgai-ri-06-resilience",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
+    "branch": "work/remote-inference/06-resilience",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/06-resilience/compose.json",
+    "frontend_port": 18107,
+    "backend_port": 19107,
+    "database": "wgai_ri_06_resilience",
+    "volumes": [
+      "wgai-ri-06-resilience_mysql_data",
+      "wgai-ri-06-resilience_redis_data",
+      "wgai-ri-06-resilience_uploads"
+    ],
+    "network": "wgai-ri-06-resilience_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "07-cleanup",
+    "project": "wgai-ri-07-cleanup",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup/code",
+    "branch": "work/remote-inference/07-cleanup",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/07-cleanup/compose.json",
+    "frontend_port": 18108,
+    "backend_port": 19108,
+    "database": "wgai_ri_07_cleanup",
+    "volumes": [
+      "wgai-ri-07-cleanup_mysql_data",
+      "wgai-ri-07-cleanup_redis_data",
+      "wgai-ri-07-cleanup_uploads"
+    ],
+    "network": "wgai-ri-07-cleanup_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  },
+  {
+    "id": "08-release",
+    "project": "wgai-ri-08-release",
+    "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release/code",
+    "branch": "work/remote-inference/08-release",
+    "runtime_profile": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/runtimes/08-release/compose.json",
+    "frontend_port": 18109,
+    "backend_port": 19109,
+    "database": "wgai_ri_08_release",
+    "volumes": [
+      "wgai-ri-08-release_mysql_data",
+      "wgai-ri-08-release_redis_data",
+      "wgai-ri-08-release_uploads"
+    ],
+    "network": "wgai-ri-08-release_network",
+    "images": {
+      "mysql": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "redis": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "backend": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "frontend": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53"
+    },
+    "config_rendered": true
+  }
+]

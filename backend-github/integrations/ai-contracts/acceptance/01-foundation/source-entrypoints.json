@@ -1,0 +1,4677 @@
+{
+  "captured_at": "2026-09-03T09:25:15.735494+00:00",
+  "frontend": [
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/modules/TabAiModelForm.vue",
+      "line": 65,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/modules/TabAiModelForm.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/modules/TabAiModelForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/TabAiModelList.vue",
+      "line": 157,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/TabAiModelList.vue",
+      "line": 158,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/TabAiModelList.vue",
+      "line": 159,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/vue/TabAiModelList.vue",
+      "line": 160,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFaceTest.vue",
+      "kind": "view",
+      "lines": 1574
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFaceTest.vue",
+      "line": 343,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/extractFaceFeature"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelForm.vue",
+      "kind": "view",
+      "lines": 170
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelForm.vue",
+      "line": 116,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/add"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelForm.vue",
+      "line": 117,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabAiModelForm.vue",
+      "line": 118,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicBatchModal.vue",
+      "kind": "view",
+      "lines": 52
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicBatchForm.vue",
+      "kind": "view",
+      "lines": 135
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicBatchForm.vue",
+      "line": 80,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/batchAdd"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicBatchForm.vue",
+      "line": 81,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicBatchForm.vue",
+      "line": 82,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicForm.vue",
+      "kind": "view",
+      "lines": 149
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicForm.vue",
+      "line": 95,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/add"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicForm.vue",
+      "line": 96,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/face/modules/TabFacePicForm.vue",
+      "line": 97,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "kind": "view",
+      "lines": 289
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "line": 211,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/list"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "line": 212,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "line": 213,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/trainBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "kind": "view",
+      "lines": 289
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "line": 211,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/list"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "line": 212,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "line": 213,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabFacePicListData.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/face/tabFacePic/trainBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "kind": "view",
+      "lines": 284
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/listface"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "line": 215,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "line": 217,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/face/TabAiModelList.vue",
+      "line": 219,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/nextModel"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiWarningList.vue",
+      "kind": "view",
+      "lines": 362
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiWarningList.vue",
+      "line": 254,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/list"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiWarningList.vue",
+      "line": 255,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiWarningList.vue",
+      "line": 256,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiWarningList.vue",
+      "line": 257,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewForm.vue",
+      "kind": "view",
+      "lines": 326
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewForm.vue",
+      "line": 272,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewForm.vue",
+      "line": 273,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewForm.vue",
+      "line": 274,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/picUtilSetting.vue",
+      "kind": "view",
+      "lines": 66
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilForm.vue",
+      "kind": "view",
+      "lines": 189
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilForm.vue",
+      "line": 135,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilForm.vue",
+      "line": 136,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilForm.vue",
+      "line": 137,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingForm.vue",
+      "kind": "view",
+      "lines": 178
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingForm.vue",
+      "line": 116,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingForm.vue",
+      "line": 117,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingForm.vue",
+      "line": 118,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/videoUtil.vue",
+      "kind": "view",
+      "lines": 66
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundForm.vue",
+      "kind": "view",
+      "lines": 172
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundForm.vue",
+      "line": 98,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundForm.vue",
+      "line": 99,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundForm.vue",
+      "line": 100,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilModal.vue",
+      "kind": "view",
+      "lines": 61
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningForm.vue",
+      "kind": "view",
+      "lines": 139
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningForm.vue",
+      "line": 85,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningForm.vue",
+      "line": 86,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiWarningForm.vue",
+      "line": 87,
+      "kind": "literal_path",
+      "path": "/video/tabAiWarning/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabVideoUtilModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiClickpicSettingModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/picUtil.vue",
+      "kind": "view",
+      "lines": 66
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiSubscriptionNewModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiModelBundModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingForm.vue",
+      "kind": "view",
+      "lines": 216
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingForm.vue",
+      "line": 162,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/add"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingForm.vue",
+      "line": 163,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/video/modules/TabAiVideoSettingForm.vue",
+      "line": 164,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiClickpicSettingList.vue",
+      "kind": "view",
+      "lines": 296
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiClickpicSettingList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/list"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiClickpicSettingList.vue",
+      "line": 217,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiClickpicSettingList.vue",
+      "line": 218,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiClickpicSettingList.vue",
+      "line": 219,
+      "kind": "literal_path",
+      "path": "/video/tabAiClickpicSetting/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "kind": "view",
+      "lines": 295
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 176,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/listVideo"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 177,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 178,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 179,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 181,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addIdentify"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "line": 182,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addIdentifyClose"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiVideoSettingList.vue",
+      "kind": "view",
+      "lines": 261
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiVideoSettingList.vue",
+      "line": 221,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/list"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiVideoSettingList.vue",
+      "line": 222,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiVideoSettingList.vue",
+      "line": 223,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiVideoSettingList.vue",
+      "line": 224,
+      "kind": "literal_path",
+      "path": "/video/tabAiVideoSetting/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiSubscriptionNewList.vue",
+      "kind": "view",
+      "lines": 448
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiSubscriptionNewList.vue",
+      "line": 307,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/list"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiSubscriptionNewList.vue",
+      "line": 308,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiSubscriptionNewList.vue",
+      "line": 309,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabAiSubscriptionNewList.vue",
+      "line": 310,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "kind": "view",
+      "lines": 362
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 246,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/list"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 247,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 248,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 249,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 299,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/startVideoUtil"
+    },
+    {
+      "file": "frontend-vue/src/views/video/TabVideoUtilList.vue",
+      "line": 327,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/stopVideoUtil"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelForm.vue",
+      "kind": "view",
+      "lines": 134
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelForm.vue",
+      "line": 80,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/add"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelForm.vue",
+      "line": 81,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelForm.vue",
+      "line": 82,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/modules/TabMaxkbModelModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "kind": "view",
+      "lines": 257
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 177,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/list"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 178,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 179,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 180,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 182,
+      "kind": "literal_path",
+      "path": "/maxkb/tabMaxkbModel/testConnect"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/TabMaxkbModelList.vue",
+      "line": 241,
+      "kind": "literal_path",
+      "path": "/maxkb/userchat"
+    },
+    {
+      "file": "frontend-vue/src/views/maxkb/userchat.vue",
+      "kind": "view",
+      "lines": 54
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "kind": "view",
+      "lines": 541
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "line": 220,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/startMakeNum"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "line": 238,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "line": 317,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/startPy"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "line": 354,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/queryByModelId"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainCardList.vue",
+      "line": 371,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/queryByModelId"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgForm.vue",
+      "kind": "view",
+      "lines": 109
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgForm.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogFormShow.vue",
+      "kind": "view",
+      "lines": 125
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogFormShow.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogFormShow.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogFormShow.vue",
+      "line": 68,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultForm.vue",
+      "kind": "view",
+      "lines": 214
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultForm.vue",
+      "line": 160,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultForm.vue",
+      "line": 161,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultForm.vue",
+      "line": 162,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonForm.vue",
+      "kind": "view",
+      "lines": 145
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonForm.vue",
+      "line": 91,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonForm.vue",
+      "line": 92,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonForm.vue",
+      "line": 93,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainPythonModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryOrgModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogForm.vue",
+      "kind": "view",
+      "lines": 110
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogForm.vue",
+      "line": 58,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogModalShow.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainLogModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultFormShow.vue",
+      "kind": "view",
+      "lines": 240
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultFormShow.vue",
+      "line": 176,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultFormShow.vue",
+      "line": 177,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultFormShow.vue",
+      "line": 178,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryForm.vue",
+      "kind": "view",
+      "lines": 161
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryForm.vue",
+      "line": 107,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/add"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryForm.vue",
+      "line": 108,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabModelTryForm.vue",
+      "line": 109,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/train/modules/TabTrainResultModalShow.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainLogList.vue",
+      "kind": "view",
+      "lines": 187
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainLogList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainLogList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainLogList.vue",
+      "line": 148,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainLogList.vue",
+      "line": 149,
+      "kind": "literal_path",
+      "path": "/train/tabTrainLog/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "kind": "view",
+      "lines": 288
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 194,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 195,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 196,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 197,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 234,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/startPy"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryList.vue",
+      "line": 258,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/getBatchPic"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "kind": "view",
+      "lines": 1317
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 366,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/getTabModelTry"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 385,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/listPic"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 416,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 1018,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/addMarkPic"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 1035,
+      "kind": "literal_path",
+      "path": "/train/tabModelTry/autoMarkPic"
+    },
+    {
+      "file": "frontend-vue/src/views/train/canvas/makeTitle.vue",
+      "line": 1057,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryOrgList.vue",
+      "kind": "view",
+      "lines": 177
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryOrgList.vue",
+      "line": 144,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryOrgList.vue",
+      "line": 145,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryOrgList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabModelTryOrgList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/train/tabModelTryOrg/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainResultList.vue",
+      "kind": "view",
+      "lines": 332
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainResultList.vue",
+      "line": 270,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainResultList.vue",
+      "line": 271,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainResultList.vue",
+      "line": 272,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainResultList.vue",
+      "line": 273,
+      "kind": "literal_path",
+      "path": "/train/tabTrainResult/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "kind": "view",
+      "lines": 282
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/list"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "line": 215,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "line": 217,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/train/TabTrainPythonList.vue",
+      "line": 259,
+      "kind": "literal_path",
+      "path": "/train/tabTrainPython/startOnePy"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/modules/TabAiModelForm.vue",
+      "line": 65,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/modules/TabAiModelForm.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/modules/TabAiModelForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/TabAiModelList.vue",
+      "line": 157,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/TabAiModelList.vue",
+      "line": 158,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/TabAiModelList.vue",
+      "line": 159,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/vue/TabAiModelList.vue",
+      "line": 160,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatTypeList.vue",
+      "kind": "view",
+      "lines": 187
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatTypeList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatTypeList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatTypeList.vue",
+      "line": 148,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatTypeList.vue",
+      "line": 149,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryForm.vue",
+      "kind": "view",
+      "lines": 114
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaForm.vue",
+      "kind": "view",
+      "lines": 109
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaForm.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatQaForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeForm.vue",
+      "kind": "view",
+      "lines": 119
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeForm.vue",
+      "line": 65,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeForm.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTypeForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeForm.vue",
+      "kind": "view",
+      "lines": 109
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeForm.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/chat/tabChatType/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChartHistoryModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelForm.vue",
+      "kind": "view",
+      "lines": 174
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelForm.vue",
+      "line": 120,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelForm.vue",
+      "line": 121,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainModelForm.vue",
+      "line": 122,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListForm.vue",
+      "kind": "view",
+      "lines": 135
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListForm.vue",
+      "line": 68,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListForm.vue",
+      "line": 69,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageListForm.vue",
+      "line": 70,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/queryBychatTypeId"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordForm.vue",
+      "kind": "view",
+      "lines": 114
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatKeywordForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabChatTypeModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogForm.vue",
+      "kind": "view",
+      "lines": 119
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogForm.vue",
+      "line": 65,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogForm.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/modules/TabMessageTrainLogForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTypeList.vue",
+      "kind": "view",
+      "lines": 215
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTypeList.vue",
+      "line": 172,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTypeList.vue",
+      "line": 173,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTypeList.vue",
+      "line": 174,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTypeList.vue",
+      "line": 175,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageType/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatKeywordList.vue",
+      "kind": "view",
+      "lines": 193
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatKeywordList.vue",
+      "line": 151,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatKeywordList.vue",
+      "line": 152,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatKeywordList.vue",
+      "line": 153,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatKeywordList.vue",
+      "line": 154,
+      "kind": "literal_path",
+      "path": "/chat/tabChatKeyword/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainLogList.vue",
+      "kind": "view",
+      "lines": 215
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainLogList.vue",
+      "line": 179,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainLogList.vue",
+      "line": 180,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainLogList.vue",
+      "line": 181,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainLogList.vue",
+      "line": 182,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainLog/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageListList.vue",
+      "kind": "view",
+      "lines": 221
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageListList.vue",
+      "line": 178,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageListList.vue",
+      "line": 179,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageListList.vue",
+      "line": 180,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageListList.vue",
+      "line": 181,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageList/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainModelList.vue",
+      "kind": "view",
+      "lines": 281
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainModelList.vue",
+      "line": 227,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainModelList.vue",
+      "line": 228,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainModelList.vue",
+      "line": 229,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabMessageTrainModelList.vue",
+      "line": 230,
+      "kind": "literal_path",
+      "path": "/chat/tabMessageTrainModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/userchat.vue",
+      "kind": "view",
+      "lines": 67
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatQaList.vue",
+      "kind": "view",
+      "lines": 186
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatQaList.vue",
+      "line": 145,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatQaList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatQaList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChatQaList.vue",
+      "line": 148,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChartHistoryList.vue",
+      "kind": "view",
+      "lines": 230
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChartHistoryList.vue",
+      "line": 187,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChartHistoryList.vue",
+      "line": 188,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChartHistoryList.vue",
+      "line": 189,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tchat/TabChartHistoryList.vue",
+      "line": 190,
+      "kind": "literal_path",
+      "path": "/chat/tabChartHistory/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/components/jeecgbiz/JSelectMultiPic.vue",
+      "line": 27,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigForm.vue",
+      "kind": "view",
+      "lines": 114
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/add"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeForm.vue",
+      "kind": "view",
+      "lines": 114
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/add"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigForm.vue",
+      "kind": "view",
+      "lines": 171
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigForm.vue",
+      "line": 114,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/add"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigForm.vue",
+      "line": 115,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigForm.vue",
+      "line": 116,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyConfigModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicForm.vue",
+      "kind": "view",
+      "lines": 144
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicForm.vue",
+      "line": 90,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/add"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicForm.vue",
+      "line": 91,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyPicForm.vue",
+      "line": 92,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/PicConfigModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/modules/TabEasyTypeModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyPicList.vue",
+      "kind": "view",
+      "lines": 285
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyPicList.vue",
+      "line": 227,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyPicList.vue",
+      "line": 228,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyPicList.vue",
+      "line": 229,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyPicList.vue",
+      "line": 230,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyTypeList.vue",
+      "kind": "view",
+      "lines": 203
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyTypeList.vue",
+      "line": 169,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyTypeList.vue",
+      "line": 170,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyTypeList.vue",
+      "line": 171,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyTypeList.vue",
+      "line": 172,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/PicConfigList.vue",
+      "kind": "view",
+      "lines": 189
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/PicConfigList.vue",
+      "line": 155,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/PicConfigList.vue",
+      "line": 156,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/PicConfigList.vue",
+      "line": 157,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/PicConfigList.vue",
+      "line": 158,
+      "kind": "literal_path",
+      "path": "/easy/picConfig/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/SelectPicModal.vue",
+      "kind": "view",
+      "lines": 296
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/SelectPicModal.vue",
+      "line": 163,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "kind": "view",
+      "lines": 325
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "line": 217,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/list"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "line": 218,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "line": 219,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "line": 220,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/SzrThreeJs.vue",
+      "kind": "view",
+      "lines": 1280
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonForm.vue",
+      "kind": "view",
+      "lines": 124
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonForm.vue",
+      "line": 70,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/add"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonForm.vue",
+      "line": 71,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonForm.vue",
+      "line": 72,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzForm.vue",
+      "kind": "view",
+      "lines": 134
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzForm.vue",
+      "line": 80,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/add"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzForm.vue",
+      "line": 81,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzForm.vue",
+      "line": 82,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrDzModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoForm.vue",
+      "kind": "view",
+      "lines": 129
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoForm.vue",
+      "line": 75,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/add"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoForm.vue",
+      "line": 76,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrVideoForm.vue",
+      "line": 77,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/modules/TabSzrPythonModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/szr/SzrThreeJs1.vue",
+      "kind": "view",
+      "lines": 1173
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrDzList.vue",
+      "kind": "view",
+      "lines": 218
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrDzList.vue",
+      "line": 172,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/list"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrDzList.vue",
+      "line": 173,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrDzList.vue",
+      "line": 174,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrDzList.vue",
+      "line": 175,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrDz/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "kind": "view",
+      "lines": 269
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 198,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/list"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 199,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 200,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 201,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrVideo/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 234,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/startPy"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrVideoList.vue",
+      "line": 246,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/testStar"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrPythonList.vue",
+      "kind": "view",
+      "lines": 206
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrPythonList.vue",
+      "line": 162,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/list"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrPythonList.vue",
+      "line": 163,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrPythonList.vue",
+      "line": 164,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/szr/TabSzrPythonList.vue",
+      "line": 165,
+      "kind": "literal_path",
+      "path": "/szr/tabSzrPython/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+      "kind": "view",
+      "lines": 212
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+      "line": 167,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+      "line": 168,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+      "line": 169,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+      "line": 170,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "kind": "view",
+      "lines": 276
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "line": 202,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "line": 203,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "line": 204,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "line": 205,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiBaseList.vue",
+      "line": 207,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/sendRedis"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiSubscriptionList.vue",
+      "kind": "view",
+      "lines": 277
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiSubscriptionList.vue",
+      "line": 207,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiSubscriptionList.vue",
+      "line": 208,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiSubscriptionList.vue",
+      "line": 209,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiSubscriptionList.vue",
+      "line": 210,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceForm.vue",
+      "kind": "view",
+      "lines": 144
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceForm.vue",
+      "line": 90,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/add"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceForm.vue",
+      "line": 91,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceForm.vue",
+      "line": 92,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsForm.vue",
+      "kind": "view",
+      "lines": 183
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsForm.vue",
+      "line": 129,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/add"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsForm.vue",
+      "line": 130,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioTtsForm.vue",
+      "line": 131,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsForm.vue",
+      "kind": "view",
+      "lines": 114
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/add"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabKeyWordsForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAudioDeviceModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingForm.vue",
+      "kind": "view",
+      "lines": 172
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingForm.vue",
+      "line": 118,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/add"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingForm.vue",
+      "line": 119,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/modules/TabAuditSettingForm.vue",
+      "line": 120,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioTtsList.vue",
+      "kind": "view",
+      "lines": 294
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioTtsList.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/list"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioTtsList.vue",
+      "line": 215,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioTtsList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioTtsList.vue",
+      "line": 217,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioTts/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAuditSettingList.vue",
+      "kind": "view",
+      "lines": 276
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAuditSettingList.vue",
+      "line": 228,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/list"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAuditSettingList.vue",
+      "line": 229,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAuditSettingList.vue",
+      "line": 230,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAuditSettingList.vue",
+      "line": 231,
+      "kind": "literal_path",
+      "path": "/audio/tabAuditSetting/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "kind": "view",
+      "lines": 209
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "line": 155,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/list"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "line": 156,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "line": 157,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "line": 158,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabKeyWordsList.vue",
+      "line": 186,
+      "kind": "literal_path",
+      "path": "/audio/tabKeyWords/refreshKeyWord"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/audio.vue",
+      "kind": "view",
+      "lines": 200
+    },
+    {
+      "file": "frontend-vue/src/views/audio/audio.vue",
+      "line": 126,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addAudio"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioDeviceList.vue",
+      "kind": "view",
+      "lines": 224
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioDeviceList.vue",
+      "line": 182,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/list"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioDeviceList.vue",
+      "line": 183,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioDeviceList.vue",
+      "line": 184,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/audio/TabAudioDeviceList.vue",
+      "line": 185,
+      "kind": "literal_path",
+      "path": "/audio/tabAudioDevice/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabChatQaList.vue",
+      "kind": "view",
+      "lines": 177
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabChatQaList.vue",
+      "line": 144,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabChatQaList.vue",
+      "line": 145,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabChatQaList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabChatQaList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "kind": "view",
+      "lines": 283
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "line": 213,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "line": 214,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "line": 215,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "line": 216,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelList.vue",
+      "line": 218,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/nextModel"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelForm.vue",
+      "kind": "view",
+      "lines": 154
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelForm.vue",
+      "line": 100,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelForm.vue",
+      "line": 101,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelForm.vue",
+      "line": 102,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaForm.vue",
+      "kind": "view",
+      "lines": 109
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaForm.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabChatQaForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionForm.vue",
+      "kind": "view",
+      "lines": 213
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionForm.vue",
+      "line": 159,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionForm.vue",
+      "line": 160,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionForm.vue",
+      "line": 161,
+      "kind": "literal_path",
+      "path": "/tab/tabAiSubscription/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundForm.vue",
+      "kind": "view",
+      "lines": 200
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundForm.vue",
+      "line": 126,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundForm.vue",
+      "line": 127,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundForm.vue",
+      "line": 128,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryForm.vue",
+      "kind": "view",
+      "lines": 129
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryForm.vue",
+      "line": 75,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryForm.vue",
+      "line": 76,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiHistoryForm.vue",
+      "line": 77,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseForm.vue",
+      "kind": "view",
+      "lines": 144
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseForm.vue",
+      "line": 90,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseForm.vue",
+      "line": 91,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseForm.vue",
+      "line": 92,
+      "kind": "literal_path",
+      "path": "/tab/tabAiBase/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiBaseModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiSubscriptionModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlForm.vue",
+      "kind": "view",
+      "lines": 125
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlForm.vue",
+      "line": 71,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlForm.vue",
+      "line": 72,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabNextUrlForm.vue",
+      "line": 73,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundModal.Style#Drawer.vue",
+      "kind": "view",
+      "lines": 84
+    },
+    {
+      "file": "frontend-vue/src/views/tab/modules/TabAiModelBundModal.vue",
+      "kind": "view",
+      "lines": 60
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "kind": "view",
+      "lines": 317
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 194,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 195,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 196,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 197,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 199,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addIdentify"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "line": 200,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addIdentifyClose"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabNextUrlList.vue",
+      "kind": "view",
+      "lines": 222
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabNextUrlList.vue",
+      "line": 178,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/list"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabNextUrlList.vue",
+      "line": 179,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/delete"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabNextUrlList.vue",
+      "line": 180,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/deleteBatch"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/TabNextUrlList.vue",
+      "line": 181,
+      "kind": "literal_path",
+      "path": "/tab/tabNextUrl/exportXls"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/testVideo2.vue",
+      "kind": "view",
+      "lines": 305
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/testVideo1.vue",
+      "kind": "view",
+      "lines": 305
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/testVideo4.vue",
+      "kind": "view",
+      "lines": 348
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/AddressList.vue",
+      "kind": "view",
+      "lines": 31
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/test.vue",
+      "kind": "view",
+      "lines": 64
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/audio.vue",
+      "kind": "view",
+      "lines": 135
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/audio.vue",
+      "line": 111,
+      "kind": "literal_path",
+      "path": "/tab/tabAiHistory/addAudio"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/AddressListLeft.vue",
+      "kind": "view",
+      "lines": 146
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/AddressListLeft.vue",
+      "line": 50,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/Treelist"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/AddressListLeft.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/Treelist"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/AddressListRight.vue",
+      "kind": "view",
+      "lines": 363
+    },
+    {
+      "file": "frontend-vue/src/views/tab/live/testVideo.vue",
+      "kind": "view",
+      "lines": 306
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressList.vue",
+      "kind": "view",
+      "lines": 31
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPic.vue",
+      "kind": "view",
+      "lines": 439
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPic.vue",
+      "line": 198,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/getVideoPic"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPic.vue",
+      "line": 220,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/getVideoPic"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPic.vue",
+      "line": 307,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/saveBox"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListLeft.vue",
+      "kind": "view",
+      "lines": 145
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListLeft.vue",
+      "line": 50,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/Treelist"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListLeft.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/Treelist"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRight.vue",
+      "kind": "view",
+      "lines": 592
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRight.vue",
+      "line": 176,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModelBund/queryById"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRight.vue",
+      "line": 489,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/edit"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRight.vue",
+      "line": 513,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/add"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPicSetting.vue",
+      "kind": "view",
+      "lines": 1255
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPicSetting.vue",
+      "line": 916,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/getVideoPicSetting"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPicSetting.vue",
+      "line": 932,
+      "kind": "literal_path",
+      "path": "/video/tabAiSubscriptionNew/getVideoPic"
+    },
+    {
+      "file": "frontend-vue/src/views/tab/livecanvas/AddressListRightPicSetting.vue",
+      "line": 985,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/saveBoxSetting"
+    },
+    {
+      "file": "frontend-vue/src/views/dashboard/Analysis.vue",
+      "line": 369,
+      "kind": "literal_path",
+      "path": "/tab/tabAiModel/getIndexInfo"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/modules/TabChatQaForm.vue",
+      "line": 55,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/modules/TabChatQaForm.vue",
+      "line": 56,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/modules/TabChatQaForm.vue",
+      "line": 57,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/TabChatQaList.vue",
+      "line": 144,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/TabChatQaList.vue",
+      "line": 145,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/TabChatQaList.vue",
+      "line": 146,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/vue/TabChatQaList.vue",
+      "line": 147,
+      "kind": "literal_path",
+      "path": "/chat/tabChatQa/exportXls"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/modules/TabVideoUtilForm.vue",
+      "line": 135,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/modules/TabVideoUtilForm.vue",
+      "line": 136,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/modules/TabVideoUtilForm.vue",
+      "line": 137,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/TabVideoUtilList.vue",
+      "line": 224,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/TabVideoUtilList.vue",
+      "line": 225,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/TabVideoUtilList.vue",
+      "line": 226,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/vue/TabVideoUtilList.vue",
+      "line": 227,
+      "kind": "literal_path",
+      "path": "/video/tabVideoUtil/exportXls"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyTypeForm.vue",
+      "line": 60,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyTypeForm.vue",
+      "line": 61,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyTypeForm.vue",
+      "line": 62,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyConfigForm.vue",
+      "line": 103,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyConfigForm.vue",
+      "line": 104,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyConfigForm.vue",
+      "line": 105,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyPicForm.vue",
+      "line": 65,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/add"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyPicForm.vue",
+      "line": 66,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/edit"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/modules/TabEasyPicForm.vue",
+      "line": 67,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/queryById"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyPicList.vue",
+      "line": 183,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyPicList.vue",
+      "line": 184,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyPicList.vue",
+      "line": 185,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyPicList.vue",
+      "line": 186,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyPic/exportXls"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyTypeList.vue",
+      "line": 169,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyTypeList.vue",
+      "line": 170,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyTypeList.vue",
+      "line": 171,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyTypeList.vue",
+      "line": 172,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyType/exportXls"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyConfigList.vue",
+      "line": 210,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/list"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyConfigList.vue",
+      "line": 211,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/delete"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyConfigList.vue",
+      "line": 212,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/deleteBatch"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/vue/TabEasyConfigList.vue",
+      "line": 213,
+      "kind": "literal_path",
+      "path": "/easy/tabEasyConfig/exportXls"
+    }
+  ],
+  "target_backend_controllers": [
+    {
+      "file": "backend-github/jeecg-module-system/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiModelController.java",
+      "compiled_source_root": false,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/tab/tabAiModel\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/controller/TabAiModelController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 32,
+          "annotation": "@RequestMapping(\"/tab/tabAiModel\")"
+        },
+        {
+          "line": 49,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 69,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 99,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 128,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 144,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 157,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/controller/AITestController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 39,
+          "annotation": "@RequestMapping(\"/tab/testAI\")"
+        },
+        {
+          "line": 52,
+          "annotation": "@GetMapping(value = \"/testSavePic\")"
+        },
+        {
+          "line": 61,
+          "annotation": "@GetMapping(value = \"/testAIModel2\")"
+        },
+        {
+          "line": 75,
+          "annotation": "@GetMapping(value = \"/testAIModel\")"
+        },
+        {
+          "line": 179,
+          "annotation": "@GetMapping(value = \"/test\")"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/maxkb/controller/TabMaxkbModelController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 50,
+          "annotation": "@RequestMapping(\"/maxkb/tabMaxkbModel\")"
+        },
+        {
+          "line": 67,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 87,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 102,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 117,
+          "annotation": "@PostMapping(value = \"/testConnect\")"
+        },
+        {
+          "line": 150,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 165,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 179,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 195,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 208,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiModelBundController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 52,
+          "annotation": "@RequestMapping(\"/tab/tabAiModelBund\")"
+        },
+        {
+          "line": 79,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 100,
+          "annotation": "@GetMapping(value = \"/Treelist\")"
+        },
+        {
+          "line": 122,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 145,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 160,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 175,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 189,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 205,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 218,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 57,
+          "annotation": "@RequestMapping(\"/tab/tabAiHistory\")"
+        },
+        {
+          "line": 78,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 98,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 115,
+          "annotation": "@PostMapping(value = \"/addIdentify\")"
+        },
+        {
+          "line": 131,
+          "annotation": "@GetMapping(value = \"/addAudio\")"
+        },
+        {
+          "line": 145,
+          "annotation": "@PostMapping(value = \"/addIdentifyClose\")"
+        },
+        {
+          "line": 161,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 176,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 191,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 205,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 221,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 234,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiBaseController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 59,
+          "annotation": "@RequestMapping(\"/tab/tabAiBase\")"
+        },
+        {
+          "line": 69,
+          "annotation": "// @GetMapping(value = \"/test\")"
+        },
+        {
+          "line": 187,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 207,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 215,
+          "annotation": "@PostMapping(value = \"/sendRedis\")"
+        },
+        {
+          "line": 229,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 244,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 259,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 273,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 289,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 302,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiSubscriptionController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 60,
+          "annotation": "@RequestMapping(\"/tab/tabAiSubscription\")"
+        },
+        {
+          "line": 72,
+          "annotation": "@RequestMapping(value = \"/subInfo\")"
+        },
+        {
+          "line": 82,
+          "annotation": "@PostMapping(value = \"/subInfo2\")"
+        },
+        {
+          "line": 101,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 137,
+          "annotation": "@PostMapping(value = \"/getPushUrl\")"
+        },
+        {
+          "line": 161,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 186,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 203,
+          "annotation": "@RequestMapping(value = \"/editWithPushUrl\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 227,
+          "annotation": "@RequestMapping(value = \"/delWithPushUrl\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 250,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 268,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 283,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 299,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 312,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabMessageTypeController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 55,
+          "annotation": "@RequestMapping(\"/chat/tabMessageType\")"
+        },
+        {
+          "line": 72,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 98,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 136,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 151,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 166,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 180,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 198,
+          "annotation": "@GetMapping(value = \"/queryBychatTypeId\")"
+        },
+        {
+          "line": 217,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 230,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabMessageListController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 53,
+          "annotation": "@RequestMapping(\"/chat/tabMessageList\")"
+        },
+        {
+          "line": 70,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 95,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 144,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 173,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 189,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 202,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabChatKeywordController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabChatKeyword\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabChartHistoryController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabChartHistory\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabMessageTrainLogController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabMessageTrainLog\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabChatTypeController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabChatType\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabMessageTrainModelController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabMessageTrainModel\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/chat/controller/TabChatQaController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/chat/tabChatQa\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/controller/TabVideoUtilController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 50,
+          "annotation": "@RequestMapping(\"/video/tabVideoUtil\")"
+        },
+        {
+          "line": 67,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 87,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 102,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 119,
+          "annotation": "@RequestMapping(value = \"/startVideoUtil\", method = {RequestMethod.POST})"
+        },
+        {
+          "line": 149,
+          "annotation": "@RequestMapping(value = \"/stopVideoUtil\", method = {RequestMethod.POST})"
+        },
+        {
+          "line": 166,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 181,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 195,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 211,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 224,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/controller/TabEasyTypeController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/easy/tabEasyType\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 99,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 114,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 129,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 143,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 172,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/controller/TabEasyPicController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 48,
+          "annotation": "@RequestMapping(\"/easy/tabEasyPic\")"
+        },
+        {
+          "line": 65,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 87,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 102,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 117,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 132,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 146,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 162,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 175,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/controller/PicConfigController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 47,
+          "annotation": "@RequestMapping(\"/easy/picConfig\")"
+        },
+        {
+          "line": 64,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 84,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 100,
+          "annotation": "@PostMapping(value = \"/addList\")"
+        },
+        {
+          "line": 115,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 130,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 145,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 159,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 175,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 188,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/easy/controller/TabEasyConfigController.java",
+      "compiled_source_root": true,
+      "mappings": [
+        {
+          "line": 54,
+          "annotation": "@RequestMapping(\"/easy/tabEasyConfig\")"
+        },
+        {
+          "line": 72,
+          "annotation": "@GetMapping(value = \"/list\")"
+        },
+        {
+          "line": 109,
+          "annotation": "@PostMapping(value = \"/add\")"
+        },
+        {
+          "line": 125,
+          "annotation": "@RequestMapping(value = \"/edit\", method = {RequestMethod.PUT,RequestMethod.POST})"
+        },
+        {
+          "line": 140,
+          "annotation": "@DeleteMapping(value = \"/delete\")"
+        },
+        {
+          "line": 155,
+          "annotation": "@DeleteMapping(value = \"/deleteBatch\")"
+        },
+        {
+          "line": 169,
+          "annotation": "@GetMapping(value = \"/queryById\")"
+        },
+        {
+          "line": 185,
+          "annotation": "@RequestMapping(value = \"/exportXls\")"
+        },
+        {
+          "line": 198,
+          "annotation": "@RequestMapping(value = \"/importExcel\", method = RequestMethod.POST)"
+        }
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "file": "frontend-vue/src/store/modules/permission.js",
+      "line": 57,
+      "evidence": "addRouters: []"
+    },
+    {
+      "file": "frontend-vue/src/store/modules/permission.js",
+      "line": 61,
+      "evidence": "state.addRouters = data"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 74,
+      "evidence": "filterChainDefinitionMap.put(url,\"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 79,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/cas/client/validateLogin\", \"anon\"); //cas验证登录"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 80,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/randomImage/**\", \"anon\"); //登录验证码接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 81,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/checkCaptcha\", \"anon\"); //登录验证码接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 82,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/login\", \"anon\"); //登录接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 83,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/mLogin\", \"anon\"); //登录接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 84,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/logout\", \"anon\"); //登出接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 85,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/thirdLogin/**\", \"anon\"); //第三方登录"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 86,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/getEncryptedString\", \"anon\"); //获取加密串"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 87,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/sms\", \"anon\");//短信验证码"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 88,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/phoneLogin\", \"anon\");//手机登录"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 89,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/user/checkOnlyUser\", \"anon\");//校验用户是否存在"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 90,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/user/register\", \"anon\");//用户注册"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 91,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/user/phoneVerification\", \"anon\");//用户忘记密码验证手机号"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 92,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/user/passwordChange\", \"anon\");//用户更改密码"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 93,
+      "evidence": "filterChainDefinitionMap.put(\"/auth/2step-code\", \"anon\");//登录验证码"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 94,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/common/static/**\", \"anon\");//图片预览 &下载文件不限制token"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 95,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/common/pdf/**\", \"anon\");//pdf预览"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 96,
+      "evidence": "filterChainDefinitionMap.put(\"/generic/**\", \"anon\");//pdf预览需要文件"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 98,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/getLoginQrcode/**\", \"anon\"); //登录二维码"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 99,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/getQrcodeToken/**\", \"anon\"); //监听扫码"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 100,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/checkAuth\", \"anon\"); //授权接口排除"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 102,
+      "evidence": "filterChainDefinitionMap.put(\"/tab/testAI/**\", \"anon\"); //测试接口"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 104,
+      "evidence": "filterChainDefinitionMap.put(\"/\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 105,
+      "evidence": "filterChainDefinitionMap.put(\"/doc.html\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 106,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.js\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 107,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.css\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 108,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.html\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 109,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.svg\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 110,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.pdf\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 111,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.jpg\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 112,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.png\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 113,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.gif\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 114,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.ico\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 117,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.ttf\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 118,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.woff\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 119,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.woff2\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 122,
+      "evidence": "filterChainDefinitionMap.put(\"/druid/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 123,
+      "evidence": "filterChainDefinitionMap.put(\"/swagger-ui.html\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 124,
+      "evidence": "filterChainDefinitionMap.put(\"/swagger**/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 125,
+      "evidence": "filterChainDefinitionMap.put(\"/webjars/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 126,
+      "evidence": "filterChainDefinitionMap.put(\"/v2/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 128,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/annountCement/show/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 129,
+      "evidence": "filterChainDefinitionMap.put(\"/tab/tabAiSubscription/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 130,
+      "evidence": "filterChainDefinitionMap.put(\"/tab/tabAiBase/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 132,
+      "evidence": "filterChainDefinitionMap.put(\"/jmreport/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 133,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.js.map\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 134,
+      "evidence": "filterChainDefinitionMap.put(\"/**/*.css.map\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 137,
+      "evidence": "filterChainDefinitionMap.put(\"/test/bigScreen/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 138,
+      "evidence": "filterChainDefinitionMap.put(\"/bigscreen/template1/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 139,
+      "evidence": "filterChainDefinitionMap.put(\"/bigscreen/template1/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 140,
+      "evidence": "//filterChainDefinitionMap.put(\"/test/jeecgDemo/rabbitMqClientTest/**\", \"anon\"); //MQ测试"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 141,
+      "evidence": "//filterChainDefinitionMap.put(\"/test/jeecgDemo/html\", \"anon\"); //模板页面"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 142,
+      "evidence": "//filterChainDefinitionMap.put(\"/test/jeecgDemo/redis/**\", \"anon\"); //redis测试"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 145,
+      "evidence": "filterChainDefinitionMap.put(\"/websocket/**\", \"anon\");//系统通知和公告"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 146,
+      "evidence": "filterChainDefinitionMap.put(\"/newsWebsocket/**\", \"anon\");//CMS模块"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 147,
+      "evidence": "filterChainDefinitionMap.put(\"/vxeSocket/**\", \"anon\");//JVxeTable无痕刷新示例"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 149,
+      "evidence": "filterChainDefinitionMap.put(\"/sys/getToken\", \"anon\");//系统通知和公告"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 151,
+      "evidence": "//filterChainDefinitionMap.put(\"/actuator/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 154,
+      "evidence": "filterChainDefinitionMap.put(\"/test/seata/**\", \"anon\");"
+    },
+    {
+      "file": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java",
+      "line": 163,
+      "evidence": "filterChainDefinitionMap.put(\"/**\", \"jwt\");"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java",
+      "line": 32,
+      "evidence": "@ServerEndpoint(\"/websocket/{userId}\")"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 27,
+      "evidence": "import org.jeecg.modules.tab.AIModel.AIModelYolo3;"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 48,
+      "evidence": "import static org.jeecg.modules.tab.AIModel.AIModelYolo3.bufferedImageToMat;"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 49,
+      "evidence": "import static org.jeecg.modules.tab.AIModel.AIModelYolo3.converterToFrame;"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 198,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 291,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 320,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 354,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 383,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 411,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 470,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 498,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 518,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 557,
+      "evidence": "AIModelYolo3  modelYolo3=new AIModelYolo3();"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "line": 593,
+      "evidence": "public Result<String>  startAi(TabAiModelBund tabAiModelBund, String path, String userId) {"
+    },
+    {
+      "file": "frontend-vue/src/utils/util.js",
+      "line": 85,
+      "evidence": "export function generateIndexRouter(data) {"
+    },
+    {
+      "file": "frontend-vue/src/permission.js",
+      "line": 8,
+      "evidence": "import { generateIndexRouter, isOAuth2AppEnv } from '@/utils/util'"
+    },
+    {
+      "file": "frontend-vue/src/permission.js",
+      "line": 49,
+      "evidence": "const constRoutes = generateIndexRouter(menuData);"
+    },
+    {
+      "file": "frontend-vue/src/permission.js",
+      "line": 54,
+      "evidence": "router.addRoutes(store.getters.addRouters)"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java",
+      "line": 13,
+      "evidence": "import org.jeecg.modules.tab.AIModel.AIModelYolo3;"
+    },
+    {
+      "file": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java",
+      "line": 59,
+      "evidence": "AIModelYolo3 modelYolo3=new AIModelYolo3();"
+    }
+  ],
+  "scope": "Literal source/mapping inspection and runtime Swagger comparison; dynamic expressions require manual review; no semantic completeness claim"
+}

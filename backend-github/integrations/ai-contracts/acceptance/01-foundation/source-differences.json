@@ -1,0 +1,171 @@
+{
+  "commit": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+  "scope": "Tracked baseline source files; ignored data/configuration and backend-master are not included",
+  "counts": {
+    "backend-github": {
+      "identical": 1681,
+      "changed": 10,
+      "added": 9
+    },
+    "frontend-vue": {
+      "identical": 730,
+      "changed": 8,
+      "added": 0
+    }
+  },
+  "differences": [
+    {
+      "path": "backend-github/development/remote-inference/ARCHITECTURE.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "f9313697889c6dd514b27889319ca2f08aea4165af3373e712955d460b333e03"
+    },
+    {
+      "path": "backend-github/development/remote-inference/FILE_OWNERSHIP.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "b91847a9721175fb7b5bf08d4aa124131f702968834a584de73f319cc4967f9a"
+    },
+    {
+      "path": "backend-github/development/remote-inference/PARALLEL_PLAN.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "27d307445ad57845d33561ccc3c2bbb8f108ba962e64ffedd566389bee05827f"
+    },
+    {
+      "path": "backend-github/development/remote-inference/PREPARATION.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "bbc7ce47ab3285072dc96418651c569f8fd1b383f03dbb4005568d59d66fda09"
+    },
+    {
+      "path": "backend-github/development/remote-inference/PROMPTS.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "80feb68d5ad1eb32e1bfe3e003a9aab762e2c7d2697cdfd9c112114c69a44e68"
+    },
+    {
+      "path": "backend-github/development/remote-inference/README.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "c03b986837575c7fd268309602dc4ddd2c115f834b7998d9b3450f70717da0f5"
+    },
+    {
+      "path": "backend-github/development/remote-inference/REPOSITORY_BASELINE.md",
+      "status": "added_since_original_zip",
+      "current_sha256": "13bd12cb9100ea461e4301a5ebd5169d530a704826e0db70463f29f0391ef91f"
+    },
+    {
+      "path": "backend-github/development/remote-inference/local-artifacts.json",
+      "status": "added_since_original_zip",
+      "current_sha256": "6aa4798691c00588534470201e5056ae61fb24ab46526cf89e1747d10e078c83"
+    },
+    {
+      "path": "backend-github/development/remote-inference/work-packages.json",
+      "status": "added_since_original_zip",
+      "current_sha256": "1d35b9c6454dc996a9536ded28787aa82760e7e92cb842d98af93fc2f777e7b3"
+    },
+    {
+      "path": "backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/common/system/util/JwtUtil.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "10b0ec067ec6464c5b8cb5e36b4a90c2436e5f57c049870ba9ffba13d52295cd",
+      "current_sha256": "af2cee33d131f080e01e8d028cb1c5e80d2f661f9ac22bede33462841cee99c3"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/pom.xml",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "1f2f0856dea648e7425c94324f505a57c97e37d44a7e9992ba4bc60a067fa40b",
+      "current_sha256": "4cdd2fbe17c46376e307386c1cb6144141e6d6f9fc04244e3b72452fa6f5c0d1"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/maxkb/util/maxkbutil.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "af9e4ddf104a9a764535ccd4df31112a6409f83f288cce9b95f6a8ce9584d4f4",
+      "current_sha256": "f95fdfa395901b906063198ea2cde5f12594e68f6a854a40c8e1ca54863af169"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiBaseController.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "64199b236b77954ed8da1a80f205671c781e7be094d129b4aa0e649ce4dc8381",
+      "current_sha256": "500f206a3da006901034d47826d6019e0ad4df76ed56d20603ddcc83a3f9975b"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "da905b723384b4906064e8735deb8c5f8d596d906eadb85b281b62bf76fe3e9a",
+      "current_sha256": "facf2b0fb985bd14e994047b47a2a7159e33f7eee0fcead4caf567e01706004d"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/ThirdLoginController.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "0458d4c9d6598018fc11446d6f7d544cd21e4a5c926ae05327b52e181d190aee",
+      "current_sha256": "f855e21817c8a8b165a8d3abf3e080fcd2a5f3baf7fe3bbff36a827056885e50"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/AIModel/AIModelYolo3.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "8852b1456e1858d12f9d785d8cad63c3ae2e021a3e202be63de4344993e55477",
+      "current_sha256": "f60895520a00bab963d23203bf11b211cdf0ed9c6cdaa659983dd54db0736021"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/pom.xml",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "8e8f84f656eac72230402f5ac8fd6175ea153a8c7d082b34aa3c8964adba7396",
+      "current_sha256": "92b26acfa3c69431eaaeb2a7aa4f0a5c910c47db15cf1e6c5e42d475cb77a164"
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/java/org/jeecg/JeecgSystemApplication.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "931b5684e8a8d2ea073044348ddcbb6e2707bba8e59bb53f8f8eb9a768fcfe9d",
+      "current_sha256": "b1b1daacb61df4c830d4e3a90a487e57894d66a9ee3b201167554bf5c17a0ef7"
+    },
+    {
+      "path": "backend-github/jeecg-server-cloud/jeecg-visual/jeecg-cloud-test/jeecg-cloud-test-rabbitmq/src/main/java/org/jeecg/modules/test/rabbitmq/listener/HelloReceiver1.java",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "d45878038a9e827581b634c3a39e8ce74289d591de33f46e4e21d356adae7d20",
+      "current_sha256": "cc3466d3043c29eb82151d334a331ac70c663982ff0556ceb3e00b27a8809931"
+    },
+    {
+      "path": "frontend-vue/public/static/config.js",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "17bbc64af87faf5d9971e414f2934526575f740c2ab09485528b5d2d236d072c",
+      "current_sha256": "b83873d5d5d9f89738f37e97d4154985afeec8fb7c4b2cb23af738fe05392a63"
+    },
+    {
+      "path": "frontend-vue/src/views/system/modules/SysDataSourceModal.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "aae3f548cf67d36a82ffdfaebdb12931cbee200ec68f9d7bc4260cbe745031c3",
+      "current_sha256": "4899527df9d48814fc11bb7779576c846fce98b68a6a4c076577188ef21e7a7b"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/AddressListRight.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "04a0cdbfba88ee0f527d49079081a1106b01af835a25011fb29e060f17f9e6d0",
+      "current_sha256": "1768923b9003c132f45409ed609fbe9c9a360239660d2e880be044642750ab16"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/testVideo.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "246ce361a0e8997d883dbf15d7dc998aac0331c28febc659c49c0661f2c480f1",
+      "current_sha256": "728dee9832be494a2b59aeb4010dfdb6d776331665fc2d14b2ea343f89df0a6a"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/testVideo1.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "150a21033ed609788f9f4a7df3441ab91f9ce274888daa64d8057be4224415cc",
+      "current_sha256": "9bc678ca19830a25626761327cca70c49a41496945a914e4aa306310398122b2"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/testVideo2.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "5284e4ef1a86419f1f130d1e7f067acc395646939cd0e4ec2854891585f4b088",
+      "current_sha256": "5fe6c03e652246a100f7203224985278fff595cc76b644752f989e90d1e8a9ae"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/testVideo4.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "392ecb6117d9ffdc181128f58d5d238b8afa9726ff4d8c5dbb2198b25d42e546",
+      "current_sha256": "fab79434ab9282780bf4162731e7e458b80481c42405e1a4ffb5b75176e0d2de"
+    },
+    {
+      "path": "frontend-vue/src/views/tab/livecanvas/AddressListRight.vue",
+      "status": "changed_since_original_zip",
+      "archive_sha256": "7f994fd24316c5791ef6bb10bc596e78f1505d40fcb774cad7934faacc4262ae",
+      "current_sha256": "0f148d87b66c9039cadafdde5fa3738abfe0234de0eb76ad6e807a65c0f60775"
+    }
+  ]
+}

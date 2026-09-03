@@ -1,0 +1,45 @@
+[
+  {
+    "component": "backend",
+    "source_commit": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+    "image_id": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/build-backend-with-template.log",
+    "log_sha256": "de152472d922a47fb150625e197c0ca08609e4ebab1062a93e54b521e858f854",
+    "build_exit_code": 0,
+    "build_completed": true,
+    "tests_executed": false,
+    "backend_java8_private_jar_rebuild_verified": true,
+    "warnings": [
+      "#12 3.132 [INFO] BUILD SUCCESS",
+      "#12 5.395 Rebuilt OpenCV 4.10.0 Java bindings for Java 8: /tmp/opencv-4.10.0-java8.QOjuLM.jar",
+      "#12 6.701 [INFO] BUILD SUCCESS",
+      "#12 16.70 [INFO] Tests are skipped.",
+      "#12 20.01 [INFO] Tests are skipped.",
+      "#12 21.68 [INFO] Tests are skipped.",
+      "#12 30.60 [INFO] Tests are skipped.",
+      "#12 32.54 [INFO] Tests are skipped.",
+      "#12 42.40 [INFO] BUILD SUCCESS"
+    ],
+    "initial_build_log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/build-backend.log",
+    "initial_build_log_sha256": "8f5e136405d48973aa278cb0cdfc796259af449e0dfbe5aa8c82092e5305bd22",
+    "supplemental_build_input": {
+      "path": "templates/jeecg_database.properties.example",
+      "sha256": "f1caebd846fd3ca0525a8de862d2fbd73eb1e38af78fcfc1630d3c71244afa3c",
+      "sensitive_values": false
+    }
+  },
+  {
+    "component": "frontend",
+    "source_commit": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+    "image_id": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53",
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/build-frontend.log",
+    "log_sha256": "f4d73b5c6de92b319f0dc813c03fe0b6dad0f546484c79a7ba11a61980cfdebe",
+    "build_exit_code": 0,
+    "build_completed": true,
+    "tests_executed": false,
+    "backend_java8_private_jar_rebuild_verified": null,
+    "warnings": [
+      "#12 164.8  DONE  Build complete. The dist directory is ready to be deployed."
+    ]
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "artifacts": [
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/asrt_sdk_maven-1.0-alpha1.jar",
+      "bytes": 17999,
+      "sha256": "10b56560251cec9bac5a92a6ab058b84ee3b43c438ac9cab5a257fbf96981330",
+      "source": "Existing local project artifact; upstream acquisition/license to be documented by 01-foundation",
+      "tracked": false,
+      "actual_sha256": "10b56560251cec9bac5a92a6ab058b84ee3b43c438ac9cab5a257fbf96981330",
+      "hash_matches": true,
+      "embedded_license_paths": [],
+      "source_archive_member": "wgai-github/jeecg-module-system/jeecg-system-start/src/main/resources/asrt_sdk_maven-1.0-alpha1.jar",
+      "matches_source_archive": true,
+      "license_evidence": "upstream-license-references.json; upstream declaration, not a binary signature",
+      "local_build_input_available": true
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/opencv-4.10.0.jar",
+      "bytes": 803300,
+      "sha256": "794e79dc1b77bc849d60081f0fad069403a01abb1d1255e984bdd8b9e1bb2d81",
+      "source": "Existing local project artifact; upstream acquisition/license to be documented by 01-foundation",
+      "tracked": false,
+      "actual_sha256": "794e79dc1b77bc849d60081f0fad069403a01abb1d1255e984bdd8b9e1bb2d81",
+      "hash_matches": true,
+      "embedded_license_paths": [],
+      "source_archive_member": "wgai-github/jeecg-module-system/jeecg-system-start/src/main/resources/opencv-4.10.0.jar",
+      "matches_source_archive": true,
+      "license_evidence": "upstream-license-references.json; upstream declaration, not a binary signature",
+      "local_build_input_available": true
+    }
+  ],
+  "note": "No binaries or credentials included; manifests do not replace acquisition/restore verification.",
+  "licenses": [
+    {
+      "path": "backend-github/LICENSE",
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6",
+      "unchanged": true
+    },
+    {
+      "path": "backend-github/wg/LICENSE",
+      "sha256": "5f32c1899427ceac2a3bc335f81416041bb72055f90a3017757b73f60ea6668e",
+      "unchanged": true
+    },
+    {
+      "path": "frontend-vue/LICENSE",
+      "sha256": "96c444858d39b5604412c32ef35e60c29c001daf893c497d71a0810ae2d7511c",
+      "unchanged": true
+    }
+  ],
+  "original_archives": [
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI/wgai-github.zip",
+      "bytes": 57837744,
+      "sha256": "350e6da553ded3966313424a9638537976b6a4a2911f5754432b34b814ecef0c",
+      "matches_historical_hash": true,
+      "zip_integrity": "PASS",
+      "license_paths": [
+        "wgai-github/LICENSE",
+        "wgai-github/jeecg-module-system/jeecg-system-biz/src/main/resources/static/generic/LICENSE",
+        "wgai-github/jeecg-module-system/jeecg-system-biz/src/main/resources/static/generic/web/cmaps/LICENSE",
+        "wgai-github/wg/LICENSE"
+      ]
+    },
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI/wgai-master.zip",
+      "bytes": 113369662,
+      "sha256": "44723e788f9420d1b816c31972fc3f0a59b4bc6221185a47c5db53d6b0fd3630",
+      "matches_historical_hash": true,
+      "zip_integrity": "PASS",
+      "license_paths": [
+        "wgai-master/LICENSE",
+        "wgai-master/wg/LICENSE"
+      ]
+    },
+    {
+      "path": "/Users/twowt88/Documents/ChatGPT/WGAI/wgai-vue.zip",
+      "bytes": 8300041,
+      "sha256": "dba19ab7383d15f4aa97f2a0195244d73fe6d09278bce2127e7b862991ef3d27",
+      "matches_historical_hash": true,
+      "zip_integrity": "PASS",
+      "license_paths": [
+        "wgai-vue/LICENSE"
+      ]
+    }
+  ],
+  "original_zip_status": "VERIFIED after user supplied originals in the original workspace",
+  "search_scope": [
+    "project, Downloads, Desktop, Documents",
+    "Spotlight exact filenames",
+    "accessible home directories; macOS-protected locations were not bypassed"
+  ]
+}
