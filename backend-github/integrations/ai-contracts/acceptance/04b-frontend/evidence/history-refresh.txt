@@ -1,0 +1,26 @@
+首页
+/  任务历史
+任务历史
+新建任务
+全部状态
+刷新历史
+demo_job_0001
+image-detection.v1 ／ mock-v1 · 2026-09-03T10:50:50.399Z
+模拟
+等待处理结果
+sample_unknown
+image-detection.v1 ／ mock-v1 · 2026-09-03T10:47:37.089Z
+模拟
+结果未确认
+sample_success
+image-detection.v1 ／ mock-v1 · 2026-09-03T10:47:37.089Z
+模拟
+已完成
+sample_error
+image-detection.v1 ／ mock-v1 · 2026-09-03T10:47:37.089Z
+模拟
+处理失败
+sample_empty
+image-detection.v1 ／ mock-v1 · 2026-09-03T10:47:37.089Z
+模拟
+已完成

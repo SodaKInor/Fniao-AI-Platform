@@ -63,9 +63,9 @@
 		  <a @click="handleEdit(record)">编辑</a>
 
 		  <a-divider type="vertical" />
-		  <a @click="handleIdentify(record)">AI识别</a>
+		  <a @click="handleIdentify(record)">识别（已停用）</a>
 		  <a-divider type="vertical" v-if="record.spaceOne==='1'" />
-		  <a v-if="record.spaceOne==='1'" @click="handleIdentifyClose(record)">视频识别结束</a>
+		  <a v-if="record.spaceOne==='1'" @click="handleIdentifyClose(record)">关闭（已停用）</a>
 		  
 		  <a-divider type="vertical" v-if="record.spaceOne==='1'" />
 		  <a  v-if="record.spaceOne==='1'" @click="handleOpenVideo(record)">视频区域报警配置</a>
@@ -97,7 +97,6 @@
 
 <script>
   import {
-    httpAction,
     getAction,getFileAccessHttpUrl
   } from '@/api/manage'
   import '@/assets/less/TableExpand.less'
@@ -178,8 +177,6 @@
           deleteBatch: "/tab/tabAiModelBund/deleteBatch",
           exportXlsUrl: "/tab/tabAiModelBund/exportXls",
           importExcelUrl: "tab/tabAiModelBund/importExcel",
-          identifyUrl: "/tab/tabAiHistory/addIdentify",
-          identifyCloseUrl: "/tab/tabAiHistory/addIdentifyClose"
         },
         dictOptions: {},
         superFieldList: [],
@@ -223,58 +220,11 @@
         })
         this.superFieldList = fieldList
       },
-      handleIdentify(info) {
-        console.log("info", this.url);
-        let that = this;
-        this.$confirm({
-          title: "确认识别吗",
-          content: "手动触发图片识别只会生成一次结果! 但视频会识别到结束",
-          onOk: function() {
-            let httpurl = '';
-            let method = '';
-            //  debugger;
-            httpurl += that.url.identifyUrl;
-            method = 'post';
-
-            httpAction(httpurl, info, method).then((res) => {
-              if (res.success) {
-                that.$message.success(res.message);
-                that.$emit('ok');
-              } else {
-                that.$message.warning(res.message);
-              }
-            }).finally(() => {
-              that.confirmLoading = false;
-            })
-
-          }
-        });
+      handleIdentify() {
+        this.$message.warning('旧识别入口已停用，请使用统一 AI 推理页面');
       },
-      handleIdentifyClose(info) {
-        let that = this;
-        this.$confirm({
-          title: "确认结束视频结束吗",
-          content: "结束视频识别结果输出!",
-          onOk: function() {
-            let httpurl = '';
-            let method = '';
-            //  debugger;
-            httpurl += that.url.identifyCloseUrl;
-            method = 'post';
-
-            httpAction(httpurl, info, method).then((res) => {
-              if (res.success) {
-                that.$message.success(res.message);
-                that.$emit('ok');
-              } else {
-                that.$message.warning(res.message);
-              }
-            }).finally(() => {
-              that.confirmLoading = false;
-            })
-
-          }
-        });
+      handleIdentifyClose() {
+        this.$message.warning('旧关闭入口已停用，关闭页面不代表停止外部处理');
       },
       handleOpenVideo(info){
        this.$router.push('livecanvas/AddressList');

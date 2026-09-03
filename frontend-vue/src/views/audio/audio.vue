@@ -93,60 +93,13 @@ export default {
       this.audioUrl = URL.createObjectURL(this.audioBlob);
     },
     uploadAudio() {
-      if (!this.audioBlob) return;
-
-      const formData = new FormData();
-      formData.append('file', this.audioBlob, 'audio.wav');
-       formData.append('biz', "temp");
-
-      // axios.post('/api/upload-audio', formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data'
-      //   }
-      // }).then(response => {
-      //   message.success('音频上传成功');
-      // }).catch(error => {
-      //   message.error('音频上传失败');
-      //   console.error('音频上传失败', error);
-      // });
-      let that=this;
-      uploadAction("/sys/common/upload", formData).then((res) => {
-        if (res.success) {
-          message.success("识别成功");
-        
-          that.AiAudio(res.message);
-        } else {
-          message.warning(res.message);
-        }
-      })
-      
+      message.warning('旧音频执行入口已停用');
     },
-    AiAudio(url){
-      let that=this;
-        getAction("/tab/tabAiHistory/addAudio", {path:url}).then((res) => {
-          if (res.success) {
-             that.aitext=res.result;
-             message.success("识别成功");
-          
-          } else {
-           message.warning("识别失败");
-          }
-        })
+    AiAudio() {
+      message.warning('旧音频执行入口已停用');
     },
     initWebSocket: function() {
-      // WebSocket与普通的请求所用协议有所不同，ws等同于http，wss等同于https
-      var userId = store.getters.userInfo.id;
-      var url = window._CONFIG['domianURL'].replace("https://", "wss://").replace("http://", "ws://") +
-        "/WebSocketAudio/" + userId;
-      console.log(url);
-      //update-begin-author:taoyan date:2022-4-22 for:  v2.4.6 的 websocket 服务端，存在性能和安全问题。 #3278
-      let token = Vue.ls.get(ACCESS_TOKEN)
-      this.websock = new WebSocket(url, [token]);
-      this.websock.onopen = this.websocketonopen;
-      this.websock.onerror = this.websocketonerror;
-      this.websock.onmessage = this.websocketonmessage;
-      this.websock.onclose = this.websocketclose;
-    
+      // This retired entry must not establish an execution channel.
     },
     websocketonopen: function() {
       this.heartCheckFun();

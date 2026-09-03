@@ -1,0 +1,24 @@
+✔ retired menu entries become inert pages; management and pending businesses remain (1.26522ms)
+✔ calling retired component methods directly cannot send execution or upload requests (75.530946ms)
+✔ live mock HTTP responses obey frozen v1, including upload, idempotency, faults and cursor history (175.624215ms)
+✔ independent navigation inherits exact AI management menus and is idempotent (257.283329ms)
+✔ downloads preserve authentication wrapper, validate bytes, and decode JSON failures (25.31694ms)
+✔ detail lifecycle stops in flight; activation starts once; route reuse rejects old responses (32.355345ms)
+✔ history filtering and leaving discard obsolete pages (23.205861ms)
+✔ submission retry preserves key and body; late response after leaving cannot navigate (66.358864ms)
+✔ upload panel blocks unsupported and oversized inputs before sending a file (8.467749ms)
+✔ leaving during an in-flight query discards it and never schedules another poll (37.856523ms)
+✔ A → B isolates both late success and late failure (0.968391ms)
+✔ queries do not overlap, stopping clears timers, resuming queries only the current task (0.778213ms)
+✔ all observation terminal states stop, including UNKNOWN (1.070966ms)
+✔ network failures and mismatched identities pause without inventing a job state (0.757692ms)
+✔ preview rejects obsolete blobs and releases preview/download URLs on lifecycle exits (26.851785ms)
+✔ only agreed capability/result schemas render, including a valid empty detection list (0.266966ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 999.053233
