@@ -1,0 +1,23 @@
+[
+  {
+    "package": "03-client",
+    "branch": "work/remote-inference/03-client",
+    "head_before_freeze": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+    "clean": true,
+    "fast_forward_possible": true
+  },
+  {
+    "package": "04a-assets-jobs",
+    "branch": "work/remote-inference/04a-assets-jobs",
+    "head_before_freeze": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+    "clean": true,
+    "fast_forward_possible": true
+  },
+  {
+    "package": "04b-frontend",
+    "branch": "work/remote-inference/04b-frontend",
+    "head_before_freeze": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+    "clean": true,
+    "fast_forward_possible": true
+  }
+]

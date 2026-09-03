@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "openapi_documents": 2,
+  "fixtures": [
+    {
+      "file": "submit.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "success.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "accepted.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "empty.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "unknown.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "error.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "asset.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "history.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "capabilities.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "provider-metadata.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "provider-success.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "provider-empty.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "provider-error.json",
+      "expected_valid": true,
+      "passed": true
+    },
+    {
+      "file": "invalid-threshold.json",
+      "expected_valid": false,
+      "passed": true
+    },
+    {
+      "file": "invalid-provider-url.json",
+      "expected_valid": false,
+      "passed": true
+    }
+  ],
+  "binary_fixtures": "2 PNG files: signature, chunk CRC, decoded dimensions, size and SHA-256",
+  "semantic_checks": [
+    "same local identity for 200/202",
+    "terminal/result/error shape",
+    "normalized boxes/count",
+    "wire/business parameter correspondence",
+    "local/provider/file artifact hashes",
+    "unconfirmed optional features disabled"
+  ],
+  "scope": "Declarations and synthetic fixtures only; no live API, authentication or GPU execution"
+}

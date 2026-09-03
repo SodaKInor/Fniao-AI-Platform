@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-09-03T09:53:50.225830+00:00",
+  "validated_source_commit": "5a55ca5cc6ea8fde09898f44519d62c715af12db",
+  "backend_build": {
+    "command": "docker build -f deploy/backend/Dockerfile -t wgai-integration-backend:round1-5a55ca5 .",
+    "exit_code": 0,
+    "image_id": "sha256:d297048f508bbc84db0a74448b878fa4150898e0467aaddb8ed2cffbc1fc664e",
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/drafts/build-round1-backend.log",
+    "log_sha256": "6e8ee6e93101b224a7c99ee66356514457c53cd4c70510e1c77f6b6dcb796ba4",
+    "tests_executed": false,
+    "result": "Existing Java 8 Maven reactor packaged successfully; no dependency/configuration changes required"
+  },
+  "contracts_and_types": "Reran integrated files; PASS, receipts in integrated-validation",
+  "openspec": {
+    "command": "openspec validate remote-inference-platform --strict",
+    "exit_code": 0,
+    "completed_tasks": [
+      "1.1",
+      "1.2",
+      "1.3",
+      "1.4",
+      "1.5",
+      "1.6",
+      "2.1",
+      "2.2",
+      "2.3",
+      "2.4",
+      "2.5"
+    ],
+    "remaining_tasks": 30
+  },
+  "graphify": {
+    "command": "graphify update .",
+    "exit_code": 0,
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/drafts/graphify-round1.log",
+    "log_sha256": "c08795435b1ca4452227ed0b93fae023e6a7ab94d5b8649a5f4af5aa2f4552ed",
+    "limitations": "AST only; six pre-existing Vue parse warnings"
+  },
+  "scope": "Only 00 acceptance and OpenSpec checklist changes in freeze commit; exact known credentials and selected private-key/token patterns checked, no findings",
+  "original_services": [
+    {
+      "name": "/wgai-mysql-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-redis-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-backend-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-frontend-1",
+      "health": "healthy",
+      "running": true
+    }
+  ],
+  "baseline_test_services_stopped": true,
+  "original_main_unchanged": true,
+  "pushed": false,
+  "production_deployed": false,
+  "gpu_tested": false,
+  "business_end_to_end_tested": false
+}
