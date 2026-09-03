@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "container": "wgai-ri-04a-assets-jobs-mysql-1",
+  "synthetic_ai_rows_removed": true,
+  "historical_tables_untouched": true,
+  "database_stopped": true,
+  "volume_preserved": "wgai-ri-04a-assets-jobs_mysql_data",
+  "original_services_not_modified": true
+}
