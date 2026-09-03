@@ -24,4 +24,6 @@ Graphify 已按要求完成 AST 更新；新 Git 忽略规则使只读参考/配
 
 Serena 当前项目是原 WGAI，但 Vue/TypeScript 语言服务因 Node 路径未初始化；新 worktree 不通过共享实例写入不匹配的目录。相关限制写入各包约束。
 
+原 .codex/hooks.json 包含本机 Serena 会话清理钩子。该文件保留在原目录，并从共享分支的当前版本排除，避免并行对话结束时触发本机共享服务的清理；各 worktree 按任务约束显式处理 Graphify，不继承该本机钩子。
+
 推送与工作树最终提交状态以 Git 记录和 WGAI-parallel/WORKSPACES.json 为准；本文不是自动生成的运行健康证明。

@@ -55,5 +55,6 @@
 
 # This machine's MCP/skill runtime settings are not deployment configuration
 /.codex/config.toml
+/.codex/hooks.json
 /.codex/requirements*.txt
 /.codex/.serena/
