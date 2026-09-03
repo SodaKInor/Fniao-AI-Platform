@@ -40,6 +40,16 @@ public class ProviderConfiguration {
 
     @Bean(name = "aiAccessFilter") public AiAccessFilter aiAccessFilter() { return new AiAccessFilter(); }
 
+    @Bean(name = "aiJwtFilter") public org.jeecg.modules.ai.legacy.AiJwtFilter aiJwtFilter(org.springframework.core.env.Environment env) {
+        return new org.jeecg.modules.ai.legacy.AiJwtFilter(env.getProperty(org.jeecg.common.constant.CommonConstant.CLOUD_SERVER_KEY)==null);
+    }
+
+    @Bean public FilterRegistrationBean<org.jeecg.modules.ai.legacy.AiJwtFilter> aiJwtRegistration(org.jeecg.modules.ai.legacy.AiJwtFilter filter) {
+        FilterRegistrationBean<org.jeecg.modules.ai.legacy.AiJwtFilter> registration=new FilterRegistrationBean<>(filter);
+        registration.setEnabled(false);
+        return registration;
+    }
+
     @Bean public FilterRegistrationBean<AiAccessFilter> aiAccessRegistration(AiAccessFilter aiAccessFilter) {
         FilterRegistrationBean<AiAccessFilter> registration = new FilterRegistrationBean<>(aiAccessFilter);
         registration.setEnabled(false); // Shiro owns invocation, after JWT establishes the subject.

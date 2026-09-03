@@ -31,6 +31,7 @@ public class AiAccessTest {
         ShiroConfig config = new ShiroConfig();
         ReflectionTestUtils.setField(config, "env", new MockEnvironment());
         ReflectionTestUtils.setField(config, "aiAccessFilter", new AiAccessFilter());
+        ReflectionTestUtils.setField(config, "aiJwtFilter", new AiJwtFilter(true));
         JeecgBaseConfig base = new JeecgBaseConfig();
         Shiro exclusions = new Shiro(); exclusions.setExcludeUrls("/**,/ai/v1/**,/tab/testAI/**"); base.setShiro(exclusions);
         ReflectionTestUtils.setField(config, "jeecgBaseConfig", base);
@@ -57,10 +58,26 @@ public class AiAccessTest {
         assertEquals(0, downstream.get());
     }
 
+    @Test public void missingAndInvalidBusinessTokensUseFrozenAiErrorEnvelope() throws Exception {
+        for (String token : new String[]{null,"invalid"}) {
+            MockHttpServletResponse response=call("POST","/ai/v1/infer",token);
+            assertEquals(401,response.getStatus());
+            assertTrue(response.getContentType().startsWith("application/json"));
+            com.fasterxml.jackson.databind.JsonNode json=new com.fasterxml.jackson.databind.ObjectMapper().readTree(response.getContentAsString());
+            assertEquals("UNAUTHENTICATED",json.path("result").path("errorCode").asText());
+            assertEquals(401,json.path("code").asInt());
+            assertFalse(json.path("success").asBoolean());
+            assertTrue(json.path("result").has("simulated"));
+            assertFalse(json.path("result").path("simulated").asBoolean());
+        }
+        assertEquals(0,downstream.get());
+    }
+
     @Test public void newSubmissionsRequireAiInferButOwnedReadsDoNot() throws Exception {
         for (String path : new String[]{"/ai/v1/assets", "/ai/v1/infer", "/ai/v1/jobs", "/ai/v1/infer/"}) {
             MockHttpServletResponse response = call("POST", path, "reader");
             assertEquals(403, response.getStatus()); assertTrue(response.getContentAsString().contains("FORBIDDEN"));
+            assertTrue(response.getContentAsString().contains("\"simulated\":false"));
         }
         assertEquals(0, downstream.get());
         assertEquals(200, call("GET", "/ai/v1/jobs", "reader").getStatus());

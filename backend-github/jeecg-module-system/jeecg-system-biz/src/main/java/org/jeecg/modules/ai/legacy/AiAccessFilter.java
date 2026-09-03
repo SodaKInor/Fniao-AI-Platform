@@ -47,6 +47,7 @@ public final class AiAccessFilter extends AdviceFilter {
         ErrorDto error = new ErrorDto();
         error.setErrorCode(code);
         error.setMessage(message);
+        error.setSimulated(false);
         Result<ErrorDto> body = Result.error(status, message);
         body.setResult(error);
         response.setStatus(status);

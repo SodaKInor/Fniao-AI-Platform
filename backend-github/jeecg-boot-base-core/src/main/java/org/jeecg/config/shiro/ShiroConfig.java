@@ -55,6 +55,10 @@ public class ShiroConfig {
     @org.springframework.beans.factory.annotation.Qualifier("aiAccessFilter")
     private Filter aiAccessFilter;
 
+    @Autowired(required = false)
+    @org.springframework.beans.factory.annotation.Qualifier("aiJwtFilter")
+    private Filter aiJwtFilter;
+
     /**
      * Filter Chain定义说明
      *
@@ -160,6 +164,7 @@ public class ShiroConfig {
         Object cloudServer = env.getProperty(CommonConstant.CLOUD_SERVER_KEY);
         filterMap.put("jwt", new JwtFilter(cloudServer==null));
         if (aiAccessFilter != null) filterMap.put("aiAccess", aiAccessFilter);
+        if (aiJwtFilter != null) filterMap.put("aiJwt", aiJwtFilter);
         shiroFilterFactoryBean.setFilters(filterMap);
         // <!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边
         filterChainDefinitionMap.put("/**", "jwt");
@@ -167,7 +172,7 @@ public class ShiroConfig {
         // 未授权界面返回JSON
         shiroFilterFactoryBean.setUnauthorizedUrl("/sys/common/403");
         shiroFilterFactoryBean.setLoginUrl("/sys/common/403");
-        shiroFilterFactoryBean.setFilterChainDefinitionMap(AiFilterChains.protect(filterChainDefinitionMap, aiAccessFilter != null));
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(AiFilterChains.protect(filterChainDefinitionMap, aiAccessFilter != null, aiJwtFilter != null));
         return shiroFilterFactoryBean;
     }
 

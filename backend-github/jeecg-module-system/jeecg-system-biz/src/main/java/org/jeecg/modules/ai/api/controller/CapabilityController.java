@@ -29,6 +29,7 @@ public class CapabilityController {
         ErrorDto error = new ErrorDto();
         error.setErrorCode(ErrorCode.INTERNAL_ERROR);
         error.setMessage("能力仓储尚未就绪");
+        error.setSimulated(false);
         Result<ErrorDto> response = Result.error(500, error.getMessage());
         response.setResult(error);
         return ResponseEntity.status(500).body(response);
