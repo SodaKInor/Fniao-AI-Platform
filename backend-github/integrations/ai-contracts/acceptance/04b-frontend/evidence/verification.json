@@ -43,5 +43,7 @@
     "Existing order-page CSS ordering conflicts (3), asset and entrypoint size warnings (2), outdated Browserslist data.",
     "Graphify partially extracted six existing Vue files; changed community labels retained/reassigned by hub."
   ],
-  "scope": "04b only; mock acceptance, no real GPU or backend permission verification"
+  "scope": "04b only; mock acceptance, no real GPU or backend permission verification",
+  "finalGraphUpdateAt": "2026-09-03T11:07:08.844618+00:00",
+  "runtimeSourceHashesRechecked": true
 }
