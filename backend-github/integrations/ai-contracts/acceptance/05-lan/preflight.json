@@ -1,0 +1,39 @@
+{
+  "status": "WAITING_EXTERNAL",
+  "at": "2026-09-04T08:22:50Z",
+  "acceptedCommonStart": "b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d",
+  "codePrerequisite": "PASS",
+  "providerContract": "UNCONFIRMED",
+  "runtimeInputs": {
+    "configuredVariableNamesFound": 0,
+    "realBaseUrlFound": false,
+    "tokenReferenceFound": false,
+    "caReferenceFound": false,
+    "approvedRepresentativeMediaFound": false
+  },
+  "drafts": {
+    "v0.1Sha256": "2d10da09c88364c3dfa4cddf7e4e2d323290fabbda55d339a0fdec1656794c49",
+    "v0.2Sha256": "94ef2b2e18dff257ab2d3a8e3e470a4cb24df6a0d73a65e009548d3825697538",
+    "confirmationStatus": "UNCONFIRMED",
+    "optionalFeaturesEnabled": false
+  },
+  "failClosedRuntime": {
+    "imageRemoteProviderRegistered": false,
+    "videoRemoteProviderRegistered": false,
+    "streamRemoteProviderRegistered": false,
+    "productionVideoEnabled": false,
+    "productionStreamEnabled": false
+  },
+  "network": {
+    "frontendPort18106Listening": false,
+    "backendPort19106Listening": false,
+    "containerApplicationRequestAttempted": false
+  },
+  "blockedTasks": ["5.1", "5.2", "5.3", "5.4", "remote-video-streaming:5.1", "remote-video-streaming:5.2"],
+  "downstreamReleased": {
+    "06": false,
+    "07": false,
+    "releaseCandidate": false
+  },
+  "reason": "Actual method/path, TLS/CA, authentication, image/video/stream examples, limits, error certainty, event query and stop semantics have not been supplied."
+}
