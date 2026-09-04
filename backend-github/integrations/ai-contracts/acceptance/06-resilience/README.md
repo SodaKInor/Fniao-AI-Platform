@@ -25,15 +25,18 @@
 - `fault-matrix.json`：逐项对应恢复、取消竞争、UNKNOWN、断流、事件去重/迟到、停止和权限证据。
 - `static-checks.json`：文件归属、冻结契约/迁移、生产 fail-closed、低基数指标、滚动日志和
   远程 POST 不重放边界。
-- `backend-build.json`：Java 8 `prod,docker-core` Maven reactor 完整编译成功；宿主机仅余 146MiB，
-  当次镜像导出为避免写满磁盘而终止，因此不记录或沿用旧镜像摘要；这是一条历史构建结果，
-  当前空间恢复后仍需在 Docker 引擎健康时重新导出。
-- `backend-image-preflight.json`：在镜像构建前同时检查 Docker 引擎与可用空间；最低保留
-  4GiB（并取已知镜像大小三倍中的较大值）。当前 12,432,506,880 bytes 已通过空间下限，
-  但引擎探测仍超时，因此只按 `DOCKER_ENGINE_UNAVAILABLE` 阻断。检查不会启动 Docker、
-  清理缓存、删除镜像或修改容器/数据卷。
-- `docker-desktop-recovery.json`：记录一次官方 `docker desktop restart` 恢复尝试；等待 90 秒仍
-  卡在停止 4 个残留进程，随后仅中止等待命令。未强杀进程、重置 Docker 数据或改动镜像/卷。
+- `backend-build.json`：Java 8 `prod,docker-core` Maven reactor 8/8 编译成功并完成镜像导出；
+  本地镜像 `wgai-resilience-backend:local-check` 的不可变摘要为
+  `sha256:7407c59851f72e32cf982119c2d023fd81088059f1acdba7d1585f79b29e7460`，大小
+  1,111,539,263 bytes。早先因宿主机仅余 146MiB 而中止导出的经过保留为历史阻断，不覆盖本次结果。
+- `backend-image-preflight.json`：镜像导出后再次检查 Docker 引擎与可用空间；最低保留
+  4GiB（并取已知镜像大小三倍中的较大值）。当前引擎健康、可用 61,387,579,392 bytes，
+  状态为 `PASS_READY`。检查不会启动 Docker、清理缓存、删除镜像或修改容器/数据卷。
+- `backend-image-verification.json`：记录镜像摘要、体积、Linux/amd64、入口、Temurin Java 8
+  运行时检查，以及临时私有 JAR 入口删除和原件哈希复核。验证容器使用 `--network none --rm`，
+  未启动业务应用、连接数据库或挂载数据卷。
+- `docker-desktop-recovery.json`：保留早先官方 `docker desktop restart` 等待超时的事实，并记录
+  Docker Desktop 随后自行恢复；未强杀进程、重置 Docker 数据或改动镜像/卷。
 - `graphify.json`：30,116 节点、73,872 边、1,304 社区；仅保留前几轮相同的 6 个 Vue 警告。
 - 两个 OpenSpec 变更严格校验，以及 4 份 OpenAPI、34 个 JSON 样例、83 个公共 Java 类型检查。
 

@@ -21,5 +21,13 @@
   "processesForciblyKilled": false,
   "dockerDataReset": false,
   "imagesOrVolumesModified": false,
-  "destructiveCleanupPerformed": false
+  "destructiveCleanupPerformed": false,
+  "subsequentState": {
+    "observedAt": "2026-09-04T11:21:41Z",
+    "status": "RECOVERED_WITHOUT_FORCE",
+    "dockerEngineReady": true,
+    "processesForciblyKilled": false,
+    "dockerDataReset": false,
+    "imagesOrVolumesModifiedByRecovery": false
+  }
 }
