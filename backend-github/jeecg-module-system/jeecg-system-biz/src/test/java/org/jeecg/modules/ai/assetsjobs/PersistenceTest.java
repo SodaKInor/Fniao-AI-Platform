@@ -1,11 +1,18 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.JobError;
+import org.jeecg.modules.ai.job.domain.JobPage;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.job.domain.JobSubmission;
+import org.jeecg.modules.ai.job.domain.JobUpdate;
+
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.jeecg.modules.ai.domain.*;
 
 public class PersistenceTest {
     private DbFixture f;

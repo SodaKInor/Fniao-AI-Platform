@@ -1,12 +1,15 @@
 package org.jeecg.modules.ai.integration;
 
+import org.jeecg.modules.ai.asset.api.AssetController;
+import org.jeecg.modules.ai.image.api.InferenceController;
+import org.jeecg.modules.ai.job.api.JobController;
+
 import java.lang.reflect.Constructor;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
 import org.springframework.aop.support.AopUtils;
 import org.jeecg.common.aspect.DictAspect;
-import org.jeecg.modules.ai.api.controller.*;
 
 /** The host application's dictionary aspect applies to every module controller. */
 public class ControllerProxyTest {

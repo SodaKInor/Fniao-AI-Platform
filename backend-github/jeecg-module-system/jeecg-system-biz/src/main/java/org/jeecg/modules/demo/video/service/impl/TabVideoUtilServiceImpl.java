@@ -1,5 +1,7 @@
 package org.jeecg.modules.demo.video.service.impl;
 
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jeecg.common.api.vo.Result;

@@ -1,5 +1,12 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.operations.api.JobsApiExceptionHandler;
+import org.jeecg.modules.ai.stream.api.StreamController;
+import org.jeecg.modules.ai.stream.application.StartStreamSessionService;
+import org.jeecg.modules.ai.stream.application.StopStreamSessionService;
+import org.jeecg.modules.ai.stream.application.StreamQueryService;
+import org.jeecg.modules.ai.stream.domain.StreamProviderFeatures;
+
 import java.util.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -14,10 +21,7 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.*;
 import org.apache.shiro.util.ThreadContext;
 import org.jeecg.common.system.vo.LoginUser;
-import org.jeecg.modules.ai.api.controller.*;
-import org.jeecg.modules.ai.application.streams.*;
-import org.jeecg.modules.ai.config.jobs.StrictInferenceJsonConverter;
-import org.jeecg.modules.ai.domain.*;
+import org.jeecg.modules.ai.operations.config.StrictInferenceJsonConverter;
 
 public class StreamApiTest {
     private DbFixture f;

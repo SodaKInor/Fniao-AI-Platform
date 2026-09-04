@@ -1,7 +1,7 @@
 package org.jeecg.modules.ai.assetsjobs;
 
-import org.jeecg.modules.ai.api.controller.JobController;
-import org.jeecg.modules.ai.api.controller.StreamController;
+import org.jeecg.modules.ai.job.api.JobController;
+import org.jeecg.modules.ai.stream.api.StreamController;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.aop.framework.ProxyFactory;

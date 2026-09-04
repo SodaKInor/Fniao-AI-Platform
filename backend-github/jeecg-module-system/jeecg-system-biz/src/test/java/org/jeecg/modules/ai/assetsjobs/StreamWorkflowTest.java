@@ -1,5 +1,32 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.IdempotencyConflictException;
+import org.jeecg.modules.ai.job.domain.UnknownOperationReason;
+import org.jeecg.modules.ai.operations.config.AiRuntimeMetrics;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.result.domain.ProviderArtifact;
+import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
+import org.jeecg.modules.ai.stream.application.StartStreamSessionService;
+import org.jeecg.modules.ai.stream.application.StopStreamSessionService;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamEvent;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamEventPage;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamSession;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamStartRequest;
+import org.jeecg.modules.ai.stream.domain.StreamEvent;
+import org.jeecg.modules.ai.stream.domain.StreamEventPage;
+import org.jeecg.modules.ai.stream.domain.StreamParameters;
+import org.jeecg.modules.ai.stream.domain.StreamProviderFeatures;
+import org.jeecg.modules.ai.stream.domain.StreamSession;
+import org.jeecg.modules.ai.stream.domain.StreamSessionState;
+import org.jeecg.modules.ai.stream.domain.StreamSessionSubmission;
+import org.jeecg.modules.ai.stream.domain.StreamSessionUpdate;
+import org.jeecg.modules.ai.stream.domain.StreamStopOutcome;
+import org.jeecg.modules.ai.stream.domain.StreamStopResult;
+import org.jeecg.modules.ai.stream.port.StreamSessionProvider;
+
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -9,11 +36,8 @@ import java.util.concurrent.atomic.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.jeecg.modules.ai.application.jobs.AiRequestException;
-import org.jeecg.modules.ai.application.streams.*;
-import org.jeecg.modules.ai.config.jobs.StreamSessionWorker;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
+import org.jeecg.modules.ai.job.application.AiRequestException;
+import org.jeecg.modules.ai.operations.config.StreamSessionWorker;
 
 public class StreamWorkflowTest {
     private DbFixture f;
@@ -151,7 +175,7 @@ public class StreamWorkflowTest {
         beans.registerSingleton("reader",(ProviderArtifactReader)(snapshot,artifact,limit) -> new ByteArrayInputStream(f.png));
         return new StreamSessionWorker(f.streamSessions,f.streamSources,f.streamEvents,
                 beans.getBeanProvider(StreamSessionProvider.class),beans.getBeanProvider(ProviderArtifactReader.class),
-                f.files,f.clock,1,10*1024*1024,10,org.jeecg.modules.ai.config.jobs.AiRuntimeMetrics.disabled());
+                f.files,f.clock,1,10*1024*1024,10,org.jeecg.modules.ai.operations.config.AiRuntimeMetrics.disabled());
     }
     private StreamSessionProvider provider(ThrowingStart start) {
         return new StreamSessionProvider() {

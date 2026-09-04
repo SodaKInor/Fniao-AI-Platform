@@ -51,30 +51,38 @@ def schema_type(schema):
 def main():
     rows = []
     schemas = json.loads((CONTRACTS / 'v1.1/business.openapi.json').read_text())['components']['schemas']
-    owned_paths = [
-        path
-        for directory in [AI / 'domain', AI / 'port', AI / 'api' / 'dto']
-        for path in directory.rglob('*.java')
-    ]
+    owned_paths = []
+    for path in AI.rglob('*.java'):
+        parts = path.relative_to(AI).parts
+        if len(parts) >= 3 and parts[1] in ('domain', 'port'):
+            owned_paths.append(path)
+        elif len(parts) >= 4 and parts[1:3] == ('api', 'dto'):
+            owned_paths.append(path)
     for path in sorted(owned_paths):
         source = path.read_text()
         tree = javalang.parse.parse(source)
         assert len(tree.types) == 1 and tree.types[0].name == path.stem
         assert 'public' in tree.types[0].modifiers
         relative_parts = path.relative_to(AI).parts
-        layer = 'api' if relative_parts[:2] == ('api', 'dto') else relative_parts[0]
+        layer = 'api' if relative_parts[1:3] == ('api', 'dto') else relative_parts[1]
         imports = [i.path for i in tree.imports]
         allowed = ['java.']
+        if layer == 'domain':
+            allowed += ['org.jeecg.modules.ai.']
         if layer == 'port':
-            allowed += ['org.jeecg.modules.ai.domain.']
+            allowed += ['org.jeecg.modules.ai.']
         if layer == 'api':
             allowed += ['com.fasterxml.jackson.annotation.',
-                        'org.jeecg.modules.ai.domain.JobState',
-                        'org.jeecg.modules.ai.domain.ErrorCode',
-                        'org.jeecg.modules.ai.domain.JobType',
-                        'org.jeecg.modules.ai.domain.ResultType',
-                        'org.jeecg.modules.ai.domain.StreamSessionState',
-                        'org.jeecg.modules.ai.domain.UnknownOperationReason']
+                        'org.jeecg.modules.ai.asset.api.dto.',
+                        'org.jeecg.modules.ai.image.api.dto.',
+                        'org.jeecg.modules.ai.job.api.dto.',
+                        'org.jeecg.modules.ai.video.api.dto.',
+                        'org.jeecg.modules.ai.job.domain.JobState',
+                        'org.jeecg.modules.ai.job.domain.ErrorCode',
+                        'org.jeecg.modules.ai.job.domain.JobType',
+                        'org.jeecg.modules.ai.result.domain.ResultType',
+                        'org.jeecg.modules.ai.stream.domain.StreamSessionState',
+                        'org.jeecg.modules.ai.job.domain.UnknownOperationReason']
         assert all(any(i.startswith(prefix) for prefix in allowed) for i in imports), path
         tokens = list(javalang.tokenizer.tokenize(source))
         methods = [{'name': n.name, 'line': n.position.line, 'physical_lines': physical_span(n, tokens)}
@@ -103,7 +111,15 @@ def main():
             ('ResultType', schemas['ResultType']['enum']),
             ('StreamSessionState', schemas['StreamSessionState']['enum']),
             ('UnknownOperationReason', schemas['UnknownOperationReason']['enum'])]:
-        tree = javalang.parse.parse((AI / 'domain' / (name + '.java')).read_text())
+        enum_paths = {
+            'JobState': AI / 'job/domain/JobState.java',
+            'ErrorCode': AI / 'job/domain/ErrorCode.java',
+            'JobType': AI / 'job/domain/JobType.java',
+            'ResultType': AI / 'result/domain/ResultType.java',
+            'StreamSessionState': AI / 'stream/domain/StreamSessionState.java',
+            'UnknownOperationReason': AI / 'job/domain/UnknownOperationReason.java',
+        }
+        tree = javalang.parse.parse(enum_paths[name].read_text())
         assert [c.name for c in tree.types[0].body.constants] == values
     assert len(rows) >= 43
     (EVIDENCE / 'type-checks.json').write_text(json.dumps({

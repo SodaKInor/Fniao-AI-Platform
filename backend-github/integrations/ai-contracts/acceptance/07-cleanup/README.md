@@ -17,3 +17,14 @@
   `group1-build.actual.json`。
 
 后续组继续执行本地执行/训练代码清理与零调用者原生算法依赖清理；每组均重新构建并回归。
+
+## 第二组 A：后端功能模块
+
+- 将 182 个生产 AI Java 文件从旧的横向技术层目录迁入 capability、asset、job、result、image、
+  video、stream、provider、operations、legacy 十个功能根，功能内继续保留必要分层。
+- 独立模块检查确认旧技术层根无 Java 文件、无 audio/chat/training 空模块、类导入图无环、功能代码
+  不反向导入 provider 适配器，job 不导入 stream。
+- Java 8 回归 43/43、83 个公共契约类型、八模块后端构建、OpenSpec strict 2/2 通过。第一次实启发现
+  视频控制器不可代理后已修复；最终镜像健康启动，图片/视频/流/成果下载/历史/跨用户拒绝再次通过。
+- 证据见 `MODULE_MATRIX.md`、`group2-backend-modules.actual.json`、
+  `group2-backend-build.actual.json` 和 `group2-backend-runtime.actual.json`。

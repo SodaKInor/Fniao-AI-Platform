@@ -1,5 +1,39 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.image.port.InferenceProvider;
+import org.jeecg.modules.ai.job.application.DispatchJobService;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.JobError;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.job.domain.JobUpdate;
+import org.jeecg.modules.ai.job.domain.UnknownOperationReason;
+import org.jeecg.modules.ai.operations.config.AiRuntimeMetrics;
+import org.jeecg.modules.ai.operations.config.JobWorker;
+import org.jeecg.modules.ai.operations.config.StreamSessionWorker;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.result.application.CollectResultService;
+import org.jeecg.modules.ai.result.domain.ProviderArtifact;
+import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
+import org.jeecg.modules.ai.stream.application.StartStreamSessionService;
+import org.jeecg.modules.ai.stream.application.StopStreamSessionService;
+import org.jeecg.modules.ai.stream.application.StreamEventCollector;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamEvent;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamEventPage;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamSession;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamStartRequest;
+import org.jeecg.modules.ai.stream.domain.StreamEvent;
+import org.jeecg.modules.ai.stream.domain.StreamProviderFeatures;
+import org.jeecg.modules.ai.stream.domain.StreamSession;
+import org.jeecg.modules.ai.stream.domain.StreamSessionState;
+import org.jeecg.modules.ai.stream.domain.StreamSessionUpdate;
+import org.jeecg.modules.ai.stream.domain.StreamStopOutcome;
+import org.jeecg.modules.ai.stream.domain.StreamStopResult;
+import org.jeecg.modules.ai.stream.port.StreamSessionProvider;
+import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
+
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -13,11 +47,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.application.streams.*;
-import org.jeecg.modules.ai.config.jobs.*;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
 
 public class ResilienceTest {
     private DbFixture f;

@@ -1,5 +1,7 @@
 package org.jeecg.modules.demo.tab.service.impl;
 
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;

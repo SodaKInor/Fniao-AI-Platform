@@ -1,13 +1,27 @@
 package org.jeecg.modules.ai.client;
 
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.asset.domain.ContentSource;
+import org.jeecg.modules.ai.capability.domain.CapabilitySnapshot;
+import org.jeecg.modules.ai.capability.domain.ProviderFeatures;
+import org.jeecg.modules.ai.image.domain.DetectionParameters;
+import org.jeecg.modules.ai.image.domain.ProviderRequest;
+import org.jeecg.modules.ai.provider.adapter.ProviderObservations;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftHttpProvider;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftStreamHttpProvider;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftVideoHttpProvider;
+import org.jeecg.modules.ai.provider.config.DraftTransportFactory;
+import org.jeecg.modules.ai.provider.config.ProviderProperties;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamStartRequest;
+import org.jeecg.modules.ai.stream.domain.StreamParameters;
+import org.jeecg.modules.ai.video.domain.VideoParameters;
+import org.jeecg.modules.ai.video.domain.VideoProviderRequest;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.nio.file.*;
 import java.time.Clock;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.jeecg.modules.ai.client.draft.*;
-import org.jeecg.modules.ai.config.provider.*;
-import org.jeecg.modules.ai.domain.*;
 
 public final class ClientTestInputs {
     private ClientTestInputs() { }

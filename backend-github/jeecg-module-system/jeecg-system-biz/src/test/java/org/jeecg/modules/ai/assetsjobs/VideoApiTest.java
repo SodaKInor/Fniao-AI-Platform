@@ -1,5 +1,21 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.api.AssetController;
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.image.api.InferenceController;
+import org.jeecg.modules.ai.job.api.JobController;
+import org.jeecg.modules.ai.job.application.CancelJobService;
+import org.jeecg.modules.ai.job.application.DispatchJobService;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.operations.api.JobsApiExceptionHandler;
+import org.jeecg.modules.ai.result.application.CollectResultService;
+import org.jeecg.modules.ai.result.domain.ProviderArtifact;
+import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
+import org.jeecg.modules.ai.video.domain.ProviderVideoEvent;
+import org.jeecg.modules.ai.video.domain.VideoProviderResult;
+import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
+
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.util.*;
@@ -17,11 +33,7 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.*;
 import org.apache.shiro.util.ThreadContext;
 import org.jeecg.common.system.vo.LoginUser;
-import org.jeecg.modules.ai.api.controller.*;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.config.jobs.StrictInferenceJsonConverter;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
+import org.jeecg.modules.ai.operations.config.StrictInferenceJsonConverter;
 
 public class VideoApiTest {
     private DbFixture f;

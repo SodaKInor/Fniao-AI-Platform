@@ -1,5 +1,7 @@
 package org.jeecg.modules.tab.controller;
 
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;

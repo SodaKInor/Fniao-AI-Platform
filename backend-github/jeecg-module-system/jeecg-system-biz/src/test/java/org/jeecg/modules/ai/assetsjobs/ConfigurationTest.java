@@ -1,5 +1,19 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.capability.domain.Capability;
+import org.jeecg.modules.ai.image.port.InferenceProvider;
+import org.jeecg.modules.ai.job.application.AiRequestException;
+import org.jeecg.modules.ai.job.application.SubmitInferenceService;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.operations.config.JobsProperties;
+import org.jeecg.modules.ai.stream.application.StartStreamSessionService;
+import org.jeecg.modules.ai.stream.port.StreamSessionProvider;
+import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
+
 import java.io.ByteArrayInputStream;
 import java.util.*;
 import org.junit.*;
@@ -8,10 +22,8 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.jeecg.modules.ai.config.jobs.JobsConfiguration;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.application.assets.AssetService;
-import org.jeecg.modules.ai.domain.*;
+import org.jeecg.modules.ai.operations.config.JobsConfiguration;
+import org.jeecg.modules.ai.asset.application.AssetService;
 
 public class ConfigurationTest {
     @Test public void springConfigurationWiresRealRepositoriesAndRequiresNoProductionTestDouble() throws Exception {
@@ -32,12 +44,12 @@ public class ConfigurationTest {
                 context.getBean(SubmitInferenceService.class).submit("a","spring-key","image-detection.v1",input.getAssetId(),f.parameters(),null);
                 fail("Missing provider policy must reject new submissions");
             } catch (AiRequestException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE,error.getCode()); }
-            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.InferenceProvider.class).size());
-            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.VideoAnalysisProvider.class).size());
-            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.StreamSessionProvider.class).size());
+            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.image.port.InferenceProvider.class).size());
+            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.video.port.VideoAnalysisProvider.class).size());
+            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.stream.port.StreamSessionProvider.class).size());
             f.streamSource("a","spring_source",true);
             try {
-                context.getBean(org.jeecg.modules.ai.application.streams.StartStreamSessionService.class).start(
+                context.getBean(org.jeecg.modules.ai.stream.application.StartStreamSessionService.class).start(
                         "a","spring-stream","video-stream-analysis.v1","spring_source",f.streamParameters());
                 fail("Unconfirmed production stream feature must stay disabled");
             } catch (AiRequestException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE,error.getCode()); }
@@ -45,7 +57,7 @@ public class ConfigurationTest {
     }
 
     @Test public void videoLimitsAreExplicitlyBounded() {
-        org.jeecg.modules.ai.config.jobs.JobsProperties properties=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        org.jeecg.modules.ai.operations.config.JobsProperties properties=new org.jeecg.modules.ai.operations.config.JobsProperties();
         properties.validate(); assertEquals(512L*1024*1024,properties.getMaxVideoInputBytes());
         assertEquals(3600000,properties.getRecoveryLeaseMs());
         properties.setMaxVideoOutputBytes(512L*1024*1024+1);
@@ -53,10 +65,10 @@ public class ConfigurationTest {
     }
 
     @Test public void recoveryLeaseCannotBeDisabledOrMadeUnbounded() {
-        org.jeecg.modules.ai.config.jobs.JobsProperties shortLease=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        org.jeecg.modules.ai.operations.config.JobsProperties shortLease=new org.jeecg.modules.ai.operations.config.JobsProperties();
         shortLease.setRecoveryLeaseMs(59999);
         try { shortLease.validate(); fail(); } catch (IllegalArgumentException expected) { }
-        org.jeecg.modules.ai.config.jobs.JobsProperties unbounded=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        org.jeecg.modules.ai.operations.config.JobsProperties unbounded=new org.jeecg.modules.ai.operations.config.JobsProperties();
         unbounded.setRecoveryLeaseMs(86400001);
         try { unbounded.validate(); fail(); } catch (IllegalArgumentException expected) { }
     }

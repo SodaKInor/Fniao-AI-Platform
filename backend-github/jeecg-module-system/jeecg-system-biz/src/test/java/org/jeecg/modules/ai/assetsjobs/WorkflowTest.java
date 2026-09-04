@@ -1,5 +1,29 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.asset.port.AssetRepository;
+import org.jeecg.modules.ai.image.domain.BoundingBox;
+import org.jeecg.modules.ai.image.domain.Detection;
+import org.jeecg.modules.ai.image.domain.DetectionData;
+import org.jeecg.modules.ai.image.domain.DetectionParameters;
+import org.jeecg.modules.ai.image.domain.ProviderResult;
+import org.jeecg.modules.ai.image.port.InferenceProvider;
+import org.jeecg.modules.ai.job.application.AiRequestException;
+import org.jeecg.modules.ai.job.application.DispatchJobService;
+import org.jeecg.modules.ai.job.application.JobQueryService;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.IdempotencyConflictException;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobRequest;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.job.domain.JobSubmission;
+import org.jeecg.modules.ai.operations.config.JobWorker;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.result.domain.ProviderArtifact;
+import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.*;
@@ -8,10 +32,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.application.assets.AssetService;
+import org.jeecg.modules.ai.asset.application.AssetService;
 
 public class WorkflowTest {
     private DbFixture f;
@@ -167,7 +188,7 @@ public class WorkflowTest {
             finally { active.decrementAndGet(); }
         };
         beans.registerSingleton("provider",provider); beans.registerSingleton("reader",f.reader());
-        org.jeecg.modules.ai.config.jobs.JobWorker worker=new org.jeecg.modules.ai.config.jobs.JobWorker(f.jobs,
+        org.jeecg.modules.ai.operations.config.JobWorker worker=new org.jeecg.modules.ai.operations.config.JobWorker(f.jobs,
                 beans.getBeanProvider(InferenceProvider.class),beans.getBeanProvider(ProviderArtifactReader.class),f.files,f.clock,1,10*1024*1024,f.capabilities);
         List<JobRecord> pending=new ArrayList<>();
         for (int i=0;i<3;i++) pending.add(f.submit(f.input("a"),"worker-key-"+i));

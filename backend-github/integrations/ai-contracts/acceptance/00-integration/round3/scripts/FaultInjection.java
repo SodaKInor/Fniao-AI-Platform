@@ -5,8 +5,21 @@ import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
+import org.jeecg.modules.ai.asset.domain.*;
+import org.jeecg.modules.ai.capability.domain.*;
+import org.jeecg.modules.ai.image.domain.*;
+import org.jeecg.modules.ai.job.domain.*;
+import org.jeecg.modules.ai.provider.domain.*;
+import org.jeecg.modules.ai.result.domain.*;
+import org.jeecg.modules.ai.stream.domain.*;
+import org.jeecg.modules.ai.video.domain.*;
+import org.jeecg.modules.ai.asset.port.*;
+import org.jeecg.modules.ai.capability.port.*;
+import org.jeecg.modules.ai.image.port.*;
+import org.jeecg.modules.ai.job.port.*;
+import org.jeecg.modules.ai.result.port.*;
+import org.jeecg.modules.ai.stream.port.*;
+import org.jeecg.modules.ai.video.port.*;
 
 /** Acceptance-only classpath overlay. Never compiled into the application artifact. */
 @Component

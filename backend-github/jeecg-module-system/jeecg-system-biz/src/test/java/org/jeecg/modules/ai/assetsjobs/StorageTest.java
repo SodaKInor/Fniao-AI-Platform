@@ -1,5 +1,9 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.asset.domain.StoredArtifact;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+
 import java.io.*;
 import java.nio.file.*;
 import java.time.*;
@@ -7,10 +11,9 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.storage.PrivateFileArtifactStore;
-import org.jeecg.modules.ai.application.assets.AssetService;
-import org.jeecg.modules.ai.application.jobs.AiRequestException;
+import org.jeecg.modules.ai.asset.storage.PrivateFileArtifactStore;
+import org.jeecg.modules.ai.asset.application.AssetService;
+import org.jeecg.modules.ai.job.application.AiRequestException;
 
 public class StorageTest {
     private DbFixture f;

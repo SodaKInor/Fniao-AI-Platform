@@ -1,5 +1,8 @@
 package org.jeecg.modules.ai.legacy;
 
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+
 import java.lang.reflect.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.servlet.Filter;
@@ -12,8 +15,7 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.jeecg.config.JeecgBaseConfig;
 import org.jeecg.config.shiro.ShiroConfig;
 import org.jeecg.config.vo.Shiro;
-import org.jeecg.modules.ai.client.*;
-import org.jeecg.modules.ai.domain.*;
+import org.jeecg.modules.ai.client.ProtocolFixture;
 import org.junit.*;
 import org.springframework.mock.env.MockEnvironment;
 import org.springframework.mock.web.*;

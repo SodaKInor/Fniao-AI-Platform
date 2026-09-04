@@ -1,5 +1,28 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.job.application.AiRequestException;
+import org.jeecg.modules.ai.job.application.CancelJobService;
+import org.jeecg.modules.ai.job.application.DispatchJobService;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.IdempotencyConflictException;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.job.domain.JobSubmission;
+import org.jeecg.modules.ai.job.domain.JobType;
+import org.jeecg.modules.ai.job.domain.JobUpdate;
+import org.jeecg.modules.ai.job.domain.UnknownOperationReason;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.result.application.CollectResultService;
+import org.jeecg.modules.ai.result.domain.ProviderArtifact;
+import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
+import org.jeecg.modules.ai.video.domain.ProviderVideoEvent;
+import org.jeecg.modules.ai.video.domain.VideoParameters;
+import org.jeecg.modules.ai.video.domain.VideoProviderResult;
+import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -7,9 +30,6 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
 
 public class VideoWorkflowTest {
     private DbFixture f;

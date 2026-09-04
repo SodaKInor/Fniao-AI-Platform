@@ -1,5 +1,19 @@
 package org.jeecg.modules.ai.integration;
 
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.capability.domain.Capability;
+import org.jeecg.modules.ai.capability.domain.CapabilitySnapshot;
+import org.jeecg.modules.ai.capability.domain.ProviderFeatures;
+import org.jeecg.modules.ai.job.application.AiRequestException;
+import org.jeecg.modules.ai.job.application.JobQueryService;
+import org.jeecg.modules.ai.job.application.SubmitInferenceService;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.provider.config.ProviderConfiguration;
+import org.jeecg.modules.ai.provider.config.ProviderProperties;
+
 import java.io.ByteArrayInputStream;
 import java.util.*;
 import org.junit.Test;
@@ -9,12 +23,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.jeecg.modules.ai.assetsjobs.DbFixture;
-import org.jeecg.modules.ai.application.assets.AssetService;
-import org.jeecg.modules.ai.application.capabilities.CapabilityQueryService;
-import org.jeecg.modules.ai.application.jobs.*;
-import org.jeecg.modules.ai.config.jobs.JobsConfiguration;
-import org.jeecg.modules.ai.config.provider.*;
-import org.jeecg.modules.ai.domain.*;
+import org.jeecg.modules.ai.asset.application.AssetService;
+import org.jeecg.modules.ai.capability.application.CapabilityQueryService;
+import org.jeecg.modules.ai.operations.config.JobsConfiguration;
 
 public class CombinedConfigurationTest {
     private AnnotationConfigApplicationContext start(DbFixture f,String mode,long limit) throws Exception {
@@ -34,7 +45,7 @@ public class CombinedConfigurationTest {
         context.registerBean("transactionManager",org.springframework.transaction.PlatformTransactionManager.class,
                 () -> new DataSourceTransactionManager(f.sql.getDataSource()));
         context.register(ProviderConfiguration.class,JobsConfiguration.class,
-                org.jeecg.modules.ai.api.mapper.capabilities.CapabilityMapper.class);
+                org.jeecg.modules.ai.capability.api.mapper.CapabilityMapper.class);
         context.refresh();
         return context;
     }
@@ -42,7 +53,7 @@ public class CombinedConfigurationTest {
     @Test public void bothMappersAndRealProviderCompleteDurableJobThenDisablePreservesDuplicate() throws Exception {
         try (DbFixture f=new DbFixture(); AnnotationConfigApplicationContext c=start(f,"mock",10485760)) {
             assertNotNull(c.getBean("aiCapabilityDtoMapper"));
-            assertNotNull(c.getBean(org.jeecg.modules.ai.persistence.mapper.CapabilityMapper.class));
+            assertNotNull(c.getBean(org.jeecg.modules.ai.capability.persistence.mapper.CapabilityMapper.class));
             AssetService assets=c.getBean(AssetService.class);
             Asset input=assets.upload("owner-a",new ContentMetadata("in.png","image/png",(long)f.png.length,null),new ByteArrayInputStream(f.png));
             SubmitInferenceService submit=c.getBean(SubmitInferenceService.class);

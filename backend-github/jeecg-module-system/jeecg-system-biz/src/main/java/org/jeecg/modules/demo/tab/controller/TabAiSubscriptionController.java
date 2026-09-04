@@ -1,5 +1,7 @@
 package org.jeecg.modules.demo.tab.controller;
 
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;

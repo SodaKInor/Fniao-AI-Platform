@@ -1,0 +1,169 @@
+package org.jeecg.modules.ai.job.api.dto;
+
+import org.jeecg.modules.ai.image.api.dto.DetectionParametersDto;
+import org.jeecg.modules.ai.image.api.dto.InferenceResultDto;
+import org.jeecg.modules.ai.video.api.dto.VideoParametersDto;
+import org.jeecg.modules.ai.video.api.dto.VideoResultDto;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.Instant;
+import org.jeecg.modules.ai.job.domain.JobType;
+import org.jeecg.modules.ai.job.domain.JobState;
+import org.jeecg.modules.ai.job.domain.UnknownOperationReason;
+
+/**
+ * Business API shape only; constraints and optional-field rules are in business.openapi.json.
+ * Use existing Result<T>. Mappers validate values and omit absent optional response fields.
+ * No provider wire payload, credentials or persistence entity may be attached.
+ */
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public final class JobDto {
+    private String requestId;
+    private JobType jobType;
+    private String capabilityCode;
+    private String capabilityVersion;
+    private String inputAssetId;
+    private DetectionParametersDto parameters;
+    private VideoParametersDto videoParameters;
+    private JobState state;
+    private Boolean simulated;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Instant createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    private Instant updatedAt;
+    private String retryOfRequestId;
+    private InferenceResultDto result;
+    private VideoResultDto videoResult;
+    private ErrorDto error;
+    private UnknownOperationReason unknownReason;
+
+    public String getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
+    }
+
+    public String getCapabilityCode() {
+        return capabilityCode;
+    }
+
+    public void setCapabilityCode(String capabilityCode) {
+        this.capabilityCode = capabilityCode;
+    }
+
+    public String getCapabilityVersion() {
+        return capabilityVersion;
+    }
+
+    public void setCapabilityVersion(String capabilityVersion) {
+        this.capabilityVersion = capabilityVersion;
+    }
+
+    public String getInputAssetId() {
+        return inputAssetId;
+    }
+
+    public void setInputAssetId(String inputAssetId) {
+        this.inputAssetId = inputAssetId;
+    }
+
+    public DetectionParametersDto getParameters() {
+        return parameters;
+    }
+
+    public void setParameters(DetectionParametersDto parameters) {
+        this.parameters = parameters;
+    }
+
+    public VideoParametersDto getVideoParameters() {
+        return videoParameters;
+    }
+
+    public void setVideoParameters(VideoParametersDto videoParameters) {
+        this.videoParameters = videoParameters;
+    }
+
+    public JobState getState() {
+        return state;
+    }
+
+    public void setState(JobState state) {
+        this.state = state;
+    }
+
+    public Boolean getSimulated() {
+        return simulated;
+    }
+
+    public void setSimulated(Boolean simulated) {
+        this.simulated = simulated;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Instant updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getRetryOfRequestId() {
+        return retryOfRequestId;
+    }
+
+    public void setRetryOfRequestId(String retryOfRequestId) {
+        this.retryOfRequestId = retryOfRequestId;
+    }
+
+    public InferenceResultDto getResult() {
+        return result;
+    }
+
+    public void setResult(InferenceResultDto result) {
+        this.result = result;
+    }
+
+    public VideoResultDto getVideoResult() {
+        return videoResult;
+    }
+
+    public void setVideoResult(VideoResultDto videoResult) {
+        this.videoResult = videoResult;
+    }
+
+    public ErrorDto getError() {
+        return error;
+    }
+
+    public void setError(ErrorDto error) {
+        this.error = error;
+    }
+
+    public UnknownOperationReason getUnknownReason() {
+        return unknownReason;
+    }
+
+    public void setUnknownReason(UnknownOperationReason unknownReason) {
+        this.unknownReason = unknownReason;
+    }
+}

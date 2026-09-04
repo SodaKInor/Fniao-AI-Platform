@@ -1,5 +1,7 @@
 package org.jeecg.modules.tab.AIModel;
 
+import org.jeecg.modules.ai.image.domain.Detection;
+
 import ai.onnxruntime.OnnxTensor;
 import ai.onnxruntime.OnnxValue;
 import ai.onnxruntime.OrtEnvironment;

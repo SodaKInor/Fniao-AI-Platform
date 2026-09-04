@@ -12,8 +12,8 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.servlet.AdviceFilter;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.modules.ai.api.dto.ErrorDto;
-import org.jeecg.modules.ai.domain.ErrorCode;
+import org.jeecg.modules.ai.job.api.dto.ErrorDto;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
 import org.springframework.web.util.UrlPathHelper;
 
 /** Runs inside Shiro after JWT. Management reads and owned history do not require ai:infer. */

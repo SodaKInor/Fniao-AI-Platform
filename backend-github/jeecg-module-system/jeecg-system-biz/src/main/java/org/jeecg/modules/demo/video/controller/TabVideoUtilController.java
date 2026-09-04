@@ -1,5 +1,7 @@
 package org.jeecg.modules.demo.video.controller;
 
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;

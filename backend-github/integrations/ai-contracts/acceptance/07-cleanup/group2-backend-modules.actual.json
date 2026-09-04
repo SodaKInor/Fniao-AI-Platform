@@ -1,0 +1,178 @@
+{
+  "status": "PASS",
+  "scope": "backend production AI Java sources",
+  "javaFiles": 182,
+  "oldLayerFirstRoots": [],
+  "forbiddenEmptyFeatures": [],
+  "classImportCycles": [],
+  "providerReverseImports": [],
+  "jobToStreamImports": [],
+  "features": [
+    {
+      "feature": "asset",
+      "javaFiles": 14,
+      "importsFeatures": [
+        "image",
+        "job",
+        "video"
+      ],
+      "allowedImports": [
+        "image",
+        "job",
+        "video"
+      ]
+    },
+    {
+      "feature": "capability",
+      "javaFiles": 11,
+      "importsFeatures": [
+        "job"
+      ],
+      "allowedImports": [
+        "job"
+      ]
+    },
+    {
+      "feature": "image",
+      "javaFiles": 16,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ]
+    },
+    {
+      "feature": "job",
+      "javaFiles": 35,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "image",
+        "result",
+        "video"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "image",
+        "result",
+        "video"
+      ]
+    },
+    {
+      "feature": "legacy",
+      "javaFiles": 3,
+      "importsFeatures": [
+        "job"
+      ],
+      "allowedImports": [
+        "job"
+      ]
+    },
+    {
+      "feature": "operations",
+      "javaFiles": 8,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "provider",
+        "result",
+        "stream",
+        "video"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "provider",
+        "result",
+        "stream",
+        "video"
+      ]
+    },
+    {
+      "feature": "provider",
+      "javaFiles": 32,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "legacy",
+        "result",
+        "stream",
+        "video"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "legacy",
+        "result",
+        "stream",
+        "video"
+      ]
+    },
+    {
+      "feature": "result",
+      "javaFiles": 6,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "video"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "image",
+        "job",
+        "video"
+      ]
+    },
+    {
+      "feature": "stream",
+      "javaFiles": 44,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ]
+    },
+    {
+      "feature": "video",
+      "javaFiles": 13,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ],
+      "allowedImports": [
+        "asset",
+        "capability",
+        "job",
+        "result"
+      ]
+    }
+  ]
+}

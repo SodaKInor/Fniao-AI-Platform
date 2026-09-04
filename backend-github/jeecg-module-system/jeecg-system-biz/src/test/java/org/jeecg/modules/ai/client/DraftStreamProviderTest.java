@@ -1,14 +1,13 @@
 package org.jeecg.modules.ai.client;
 
-import org.jeecg.modules.ai.client.draft.DraftStreamHttpProvider;
-import org.jeecg.modules.ai.config.provider.ProviderProperties;
-import org.jeecg.modules.ai.domain.ErrorCode;
-import org.jeecg.modules.ai.domain.ExecutionCertainty;
-import org.jeecg.modules.ai.domain.ProviderException;
-import org.jeecg.modules.ai.domain.ProviderStreamEventPage;
-import org.jeecg.modules.ai.domain.ProviderStreamSession;
-import org.jeecg.modules.ai.domain.StreamSessionState;
-import org.jeecg.modules.ai.domain.StreamStopOutcome;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftStreamHttpProvider;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamEventPage;
+import org.jeecg.modules.ai.stream.domain.ProviderStreamSession;
+import org.jeecg.modules.ai.stream.domain.StreamSessionState;
+import org.jeecg.modules.ai.stream.domain.StreamStopOutcome;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.jeecg.modules.ai.client.ClientTestInputs.*;

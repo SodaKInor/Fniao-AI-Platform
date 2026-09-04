@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "scope": "backend feature-first module migration",
+  "java8": {
+    "tests": 43,
+    "failures": 0,
+    "errors": 0,
+    "runtime": "maven:3.8.8-eclipse-temurin-8"
+  },
+  "contractTypes": {
+    "publicTypes": 83,
+    "status": "PASS",
+    "checks": [
+      "DTO and OpenAPI field/type agreement",
+      "bounded types without unbounded Map",
+      "Java 8 source compatibility"
+    ]
+  },
+  "dockerBuild": {
+    "profiles": ["prod", "docker-core"],
+    "reactorModules": 8,
+    "status": "PASS",
+    "image": "wgai-cleanup-backend:modules",
+    "imageDigest": "sha256:4d9c8c7c37c0b0537f9bd260df3c396ff2e6fe8d9b8db868d20441427715f45c"
+  },
+  "runtime": {
+    "health": "healthy",
+    "applicationStarted": true,
+    "simulated": true,
+    "realProviderValidated": false,
+    "evidence": "group2-backend-runtime.actual.json"
+  },
+  "openspecStrict": {
+    "remote-inference-platform": "PASS",
+    "remote-video-streaming": "PASS"
+  },
+  "legacyRowsBefore": {
+    "pic_config": 0,
+    "tab_chat_keyword": 1,
+    "tab_chat_qa": 1,
+    "tab_chat_type": 4,
+    "tab_easy_config": 2,
+    "tab_easy_pic": 10,
+    "tab_easy_type": 0,
+    "tab_maxkb_model": 1,
+    "tab_message_list": 1,
+    "tab_message_train_log": 0,
+    "tab_message_train_model": 0,
+    "tab_message_type": 3
+  },
+  "legacyRowsAfter": {
+    "pic_config": 0,
+    "tab_chat_keyword": 1,
+    "tab_chat_qa": 1,
+    "tab_chat_type": 4,
+    "tab_easy_config": 2,
+    "tab_easy_pic": 10,
+    "tab_easy_type": 0,
+    "tab_maxkb_model": 1,
+    "tab_message_list": 1,
+    "tab_message_train_log": 0,
+    "tab_message_train_model": 0,
+    "tab_message_type": 3
+  },
+  "limitations": [
+    "The runtime uses the explicitly simulated HTTP stub.",
+    "RTX 5070/4090, provider source mapping, real RTSP, and remote cancel/stop remain unverified and disabled."
+  ]
+}

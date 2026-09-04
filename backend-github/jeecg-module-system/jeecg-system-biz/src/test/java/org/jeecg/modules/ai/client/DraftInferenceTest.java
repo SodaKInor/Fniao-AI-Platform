@@ -1,11 +1,15 @@
 package org.jeecg.modules.ai.client;
 
+import org.jeecg.modules.ai.image.domain.ProviderResult;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftHttpProvider;
+import org.jeecg.modules.ai.provider.config.ProviderProperties;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+
 import java.net.ServerSocket;
 import java.time.Clock;
 import java.util.concurrent.*;
-import org.jeecg.modules.ai.client.draft.*;
-import org.jeecg.modules.ai.config.provider.*;
-import org.jeecg.modules.ai.domain.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.jeecg.modules.ai.client.ClientTestInputs.*;

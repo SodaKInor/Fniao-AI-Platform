@@ -1,5 +1,15 @@
 package org.jeecg.modules.ai.assetsjobs;
 
+import org.jeecg.modules.ai.asset.api.AssetController;
+import org.jeecg.modules.ai.asset.domain.Asset;
+import org.jeecg.modules.ai.image.api.InferenceController;
+import org.jeecg.modules.ai.job.api.JobController;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.job.domain.ExecutionCertainty;
+import org.jeecg.modules.ai.job.domain.JobRecord;
+import org.jeecg.modules.ai.operations.api.JobsApiExceptionHandler;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+
 import java.util.*;
 import java.nio.file.*;
 import org.junit.*;
@@ -17,9 +27,7 @@ import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.subject.*;
 import org.apache.shiro.util.ThreadContext;
 import org.jeecg.common.system.vo.LoginUser;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.api.controller.*;
-import org.jeecg.modules.ai.config.jobs.StrictInferenceJsonConverter;
+import org.jeecg.modules.ai.operations.config.StrictInferenceJsonConverter;
 import org.jeecg.modules.system.controller.CommonController;
 
 public class ApiTest {

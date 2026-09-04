@@ -6,8 +6,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.config.shiro.filters.JwtFilter;
-import org.jeecg.modules.ai.api.dto.ErrorDto;
-import org.jeecg.modules.ai.domain.ErrorCode;
+import org.jeecg.modules.ai.job.api.dto.ErrorDto;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
 
 /** Same JWT/realm authentication and CORS; only AI's rejection representation differs. */
 public final class AiJwtFilter extends JwtFilter {

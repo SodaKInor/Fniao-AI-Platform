@@ -1,17 +1,37 @@
 package org.jeecg.modules.ai.application.capabilities;
 
+import org.jeecg.modules.ai.asset.domain.ContentMetadata;
+import org.jeecg.modules.ai.capability.application.CapabilityQueryService;
+import org.jeecg.modules.ai.capability.domain.Capability;
+import org.jeecg.modules.ai.capability.domain.CapabilitySnapshot;
+import org.jeecg.modules.ai.capability.domain.ProviderFeatures;
+import org.jeecg.modules.ai.capability.port.CapabilityRepository;
+import org.jeecg.modules.ai.image.domain.DetectionParameters;
+import org.jeecg.modules.ai.image.domain.ProviderRequest;
+import org.jeecg.modules.ai.image.domain.ProviderResult;
+import org.jeecg.modules.ai.image.port.InferenceProvider;
+import org.jeecg.modules.ai.job.domain.ErrorCode;
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
+import org.jeecg.modules.ai.provider.adapter.ProviderObservations;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftHttpProvider;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftStreamHttpProvider;
+import org.jeecg.modules.ai.provider.adapter.draft.DraftVideoHttpProvider;
+import org.jeecg.modules.ai.provider.adapter.mock.MockInferenceProvider;
+import org.jeecg.modules.ai.provider.config.ProviderAvailability;
+import org.jeecg.modules.ai.provider.config.ProviderConfiguration;
+import org.jeecg.modules.ai.provider.config.ProviderProperties;
+import org.jeecg.modules.ai.job.domain.ProviderException;
+import org.jeecg.modules.ai.stream.port.StreamSessionProvider;
+import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
+
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.*;
 import java.util.*;
-import org.jeecg.modules.ai.api.controller.CapabilityController;
-import org.jeecg.modules.ai.api.dto.CapabilityDto;
-import org.jeecg.modules.ai.api.mapper.capabilities.CapabilityMapper;
-import org.jeecg.modules.ai.client.*;
-import org.jeecg.modules.ai.client.mock.*;
-import org.jeecg.modules.ai.config.provider.*;
-import org.jeecg.modules.ai.domain.*;
-import org.jeecg.modules.ai.port.*;
+import org.jeecg.modules.ai.capability.api.CapabilityController;
+import org.jeecg.modules.ai.capability.api.dto.CapabilityDto;
+import org.jeecg.modules.ai.capability.api.mapper.CapabilityMapper;
+import org.jeecg.modules.ai.client.ProtocolFixture;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import static org.junit.Assert.*;
@@ -158,9 +178,9 @@ public class CapabilityTest {
             assertEquals(1, context.getBeansOfType(InferenceProvider.class).size());
             assertEquals(1, context.getBeansOfType(VideoAnalysisProvider.class).size());
             assertEquals(1, context.getBeansOfType(StreamSessionProvider.class).size());
-            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftHttpProvider.class).isEmpty());
-            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftVideoHttpProvider.class).isEmpty());
-            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftStreamHttpProvider.class).isEmpty());
+            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.provider.adapter.draft.DraftHttpProvider.class).isEmpty());
+            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.provider.adapter.draft.DraftVideoHttpProvider.class).isEmpty());
+            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.provider.adapter.draft.DraftStreamHttpProvider.class).isEmpty());
             try { context.getBean(VideoAnalysisProvider.class).analyze(videoRequest(new CountingSource(), false, false, null)); fail(); }
             catch (ProviderException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE, error.getErrorCode()); }
             try { context.getBean(StreamSessionProvider.class).start(streamRequest(false)); fail(); }
