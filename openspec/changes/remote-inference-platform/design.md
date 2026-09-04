@@ -148,6 +148,8 @@ worktree 之间只合并提交，不复制目录。功能、恢复和清理在�
 
 结构分支通过后合回 `feature/remote-inference`，再按既定流程合入 `main`。随后从远程 `main` 克隆 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`；它不是旧仓库的 worktree，也不复制旧 graphify-out、Serena cache 或并行目录。
 
+截至集成提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d`，stub、恢复故障、功能分包和旧入口清理已经验收。剩余目录迁移采用四段门禁：08-release 先串行建立 `apps` 壳；00 冻结 `08A_SHA`；08b-database-layout 与 08c-remote-boundary 从同一 SHA 并行移动互不重叠文件；00 合并后由 08-release 串行修复共享路径并生成 RC。这样保留真实并行，又避免一个包移动父目录时另一个包移动其子目录。
+
 ## Risks / Trade-offs
 
 - [大范围路径迁移造成构建或脚本引用遗漏] → 单独结构提交，维护旧到新路径清单，执行 Maven、npm、Compose、SQL、OpenSpec 和旧路径扫描。
@@ -159,12 +161,12 @@ worktree 之间只合并提交，不复制目录。功能、恢复和清理在�
 
 ## Migration Plan
 
-1. 以当前 `feature/remote-inference` 已验收 SHA 为起点，保留 1–4 批完成状态和证据。
-2. 将 05 调整为独立 HTTP stub 与 `remote → stub` 组合验收；06 使用 stub 完成本地故障、恢复、取消、停止和观测验证。
-3. 07 只清理已确认退役入口，并把新增 AI 后端和前端改为功能模块；每组独立提交。
-4. 从通过本地回归的集成 SHA 创建结构分支，迁移顶层目录、数据库、契约、stub、验收证据、部署和文档，更新所有有效路径。
+1. 已完成并验收 01—07，当前唯一本地功能基线为 `a14450ec0ed82cd329a666e52ac12c15cce3515d`。
+2. 08-release 阶段 A 只迁移 `backend-github → apps/backend` 与 `frontend-vue → apps/frontend`，完成最小 Maven/npm 路径修复后交给 00 验收。
+3. 00 从阶段 A 验收 SHA 创建 08b-database-layout 与 08c-remote-boundary 两个 worktree；前者只迁移数据库文件，后者只迁移契约、fixtures、stub、证据、文档和非数据库 remote 部署文件，两者并行。
+4. 00 按提交合并 08b/08c 并冻结共同 SHA；08-release 从该 SHA 统一修复 Compose、Docker、脚本、OpenSpec、AGENTS 和活动链接。
 5. 在独立数据库和文件目录执行完整本地验收，生成只声明 stub/disabled 范围的 RC。
-6. 合入并推送 `main` 后创建独立最终克隆，在新目录重新建立 Graphify、Serena 和 OpenSpec 工具定位。
+6. 00 验收后合入并推送 `main`，创建独立最终克隆，在新目录重新建立 Graphify、Serena 和 OpenSpec 工具定位。
 7. 同事服务可用后，在独立后续门禁中完成 RTX 5070 契约与局域网验收，再完成 RTX 4090 48GB 正式验收；真实证据齐全前不归档整个变更。
 
 ## Open Questions

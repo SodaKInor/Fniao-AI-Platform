@@ -1,67 +1,61 @@
-# 最新执行提示词
+# 最新第 8 批执行提示词
 
-状态：01、02、03、04a、04b 已完成并由 00 集成。以下提示词取代旧的“必须先完成真实 RTX 5070 才能继续”调度。同事尚未提供服务，因此先完成独立 HTTP stub、本地故障、功能模块迁移和最终仓库整理；真实 GPU 单独等待。
+当前有效起点：`a14450ec0ed82cd329a666e52ac12c15cce3515d`。01—07 已完成并由 00 验收；不要重复执行 05、06、07。
 
-每个实现对话必须在对应 `WGAI-parallel/<包>/code` 中运行，先读包级 `START_HERE.md`、`AGENTS.md`、`TASKS.md` 和本目录的架构/归属文件。工作树之间只合并 Git 提交，不复制目录。
-
-## 第一轮：05 独立 HTTP stub
-
-### 05-lan
+## 1. 08-release 阶段 A：串行 apps 建壳
 
 ```text
-请接手 05-lan 的最新版任务。先确认 code 根、分支及共同起点，读取最新 ARCHITECTURE.md、FILE_OWNERSHIP.md、OpenSpec 的 remote-inference-platform 与 remote-video-streaming。保留已有 fail-closed 真实证据校验，不再等待同事服务；完成总表 5.1—5.4：冻结 stub 场景和模拟标识，按小文件和单一职责实现独立 HTTP stub，增加显式开发 Compose profile，并从业务后端容器以 remote 模式完成图片、上传视频和实时流的 HTTP 组合验收。stub 不读业务数据库、不调用旧算法、不含 GPU/模型依赖，正式配置不启动或回退 stub。所有证据明确写 stub，RTX 5070/4090 任务不得勾选。提交代码、证据和 HANDOFF，等待 00 验收。
+请在 /Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release 接手第 8 批阶段 A。先核实 code 工作树、work/remote-inference/08-release 分支和干净状态；必须从 00 的验收 SHA a14450ec0ed82cd329a666e52ac12c15cce3515d 或包含它的最新规划提交开始。读取 START_HERE.md、AGENTS.md、TASKS.md、最新 ARCHITECTURE.md、FILE_OWNERSHIP.md、PARALLEL_PLAN.md 和两个 OpenSpec 变更。
+
+本阶段只用 git mv 将 backend-github 移到 apps/backend、frontend-vue 移到 apps/frontend，并完成 Maven、npm、许可证、最小测试和直接构建入口对新路径的必要修复。不要移动 database、remote-inference、docs/remote-inference 或 deploy/remote-inference，不要执行 8.2—8.5，不要修改真实 GPU 状态。生成旧→新路径清单，验证 Git 历史可追踪、后端和前端可从新路径构建，提交单一 08A 提交并更新 HANDOFF，等待 00 验收。
 ```
 
-### 00-integration
+## 2. 00 验收阶段 A，并创建两个并行工作树
 
 ```text
-请验收 05 最新交付。核实起点、文件归属、契约变更、stub 模块拆分、正式配置隔离和 HANDOFF；独立复跑契约、Compose、remote→stub 图片/视频/流闭环以及 fail-closed 真实证据校验。只勾选有证据的 5.1—5.4 和伴随流 stub 任务，不勾选任何真实 GPU 项。通过后合入 feature/remote-inference，记录新的共同起点并释放 06。
+请在 /Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration 验收 08-release 阶段 A。核对提交只包含 apps/backend 与 apps/frontend 建壳及必要构建路径修复，独立复跑 Maven、npm、契约和旧路径检查。通过后合入 feature/remote-inference，记录唯一 08A_SHA。
+
+然后从同一个 08A_SHA 创建两个独立 Git worktree：
+1. /Users/twowt88/Documents/ChatGPT/WGAI-parallel/08b-database-layout/code，分支 work/remote-inference/08b-database-layout；
+2. /Users/twowt88/Documents/ChatGPT/WGAI-parallel/08c-remote-boundary/code，分支 work/remote-inference/08c-remote-boundary。
+
+核实两者 Git 根、分支、HEAD 和干净状态，更新 WORKSPACES.json。不要在本对话实施 08b/08c 的代码移动。完成后这两个目录可以分别开启新对话并行执行。
 ```
 
-## 第二轮：06 本地恢复和故障
-
-### 06-resilience
+## 3. 并行包 08b：database
 
 ```text
-请接手 06-resilience。先从 00 验收的 05 stub 共同起点整合你已有的本地候选，解决冲突时保留已集成契约和状态语义。完成总表 6.1—6.4及伴随流本地故障任务：用独立 stub 验证 PENDING/FETCHING_RESULT 恢复、UNKNOWN、不透明重发禁止、取消/停止确认、事件去重/乱序、迟到终态、成果断流、指标与滚动日志。不得用 stub 推断真实 provider 查询/取消/停止能力。复跑 Java、前端、Compose 和安全检查，提交 HANDOFF 等待 00。
+请在 /Users/twowt88/Documents/ChatGPT/WGAI-parallel/08b-database-layout 接手数据库目录包。必须确认 code 工作树处于 work/remote-inference/08b-database-layout，HEAD 等于 00 登记的 08A_SHA。只建立 database/bootstrap、database/migrations/ai-core、database/migrations/stream、database/seeds/stub、database/private：移动现有脱敏初始化/清理入口、V001、V002 和 stub 绑定样例；V001/V002 文件字节、校验值、版本和顺序不得改变。private 只提交 README/.gitignore，不放真实数据。
+
+不要修改根 Compose、remote-inference、docs、apps 业务源码、OpenSpec 总表或共享工具脚本。为新数据库目录增加独立清单和验证器，在数据库副本验证初始化、V001→V002 顺序和重复执行行为。把仍需统一修复的旧路径写入 HANDOFF，提交单一职责提交并等待 00。
 ```
 
-### 00-integration
+## 4. 并行包 08c：remote-inference
 
 ```text
-请验收并合入 06。独立复跑登录/越权、图片/视频/流、重复提交、UNKNOWN、取消/停止、provider 下线历史访问、事件与文件故障、用户会话、指标和秘密扫描。通过后完成 6.5，只生成“本地 stub/disabled 候选”唯一 SHA；报告必须说明真实 RTX 5070/4090 未验收。随后释放 07，不归档整体变更。
+请在 /Users/twowt88/Documents/ChatGPT/WGAI-parallel/08c-remote-boundary 接手远程推理边界目录包。必须确认 code 工作树处于 work/remote-inference/08c-remote-boundary，HEAD 等于 00 登记的 08A_SHA。将业务/provider 契约移到 remote-inference/contracts，样例移到 fixtures，独立 HTTP stub 移到 stub，验收证据移到 acceptance，接口交接模板移到 handoff；将架构文档移到 docs/remote-inference；将 apps/backend/deploy/remote-ai 中除 migrations 和 stub-bindings.example.sql 之外的文件逐个移到 deploy/remote-inference。
+
+不要移动整个 remote-ai 父目录，不要修改 database、根 Compose、apps 业务源码、OpenSpec 总表或共享工具脚本。修复本包内部链接，运行 stub/契约/证据校验，证明所有结果仍标识 simulated、正式 profile 不默认使用 stub。把跨包旧路径写入 HANDOFF，提交单一职责提交并等待 00。
 ```
 
-## 第三轮：07 功能模块迁移和旧业务清理
-
-### 07-cleanup
+## 5. 00 合并两个并行包
 
 ```text
-请接手 07-cleanup。必须从 00 的 6.5 本地验收 SHA 开始，读取最新功能模块架构。先用 Graphify、源码引用、路由、菜单和数据库证据建立 capability、asset、job、result、image、video、stream、provider、operations、legacy 的文件映射与允许依赖矩阵。随后分组把后端改为按功能分包、前端改为 modules/ai 下按功能组织；每个功能内部再按需拆 api/application/domain/port/persistence 或 api/services/components/views/routes，不创建空目录，不按模型名称复制模块。按已确认范围退役 MaxKB、tchat、easyAi 聊天、训练和无调用者旧算法依赖，保留历史、管理 CRUD 和共用组件。每组独立提交并验证构建、remote→stub、disabled、权限、历史、数据库与 Graphify，交付 HANDOFF。
+请在 00-integration 核实 08b 与 08c 都从同一个 08A_SHA 开始，检查两包实际文件集合没有重叠。分别审查 HANDOFF、迁移表和验证结果，然后按提交合入 feature/remote-inference；冲突逐文件解决，不复制目录。复跑数据库清单、契约、stub 测试和链接检查。通过后记录唯一 08BC_SHA，并让 08-release 快进到该 SHA，释放阶段 D。
 ```
 
-### 00-integration
+## 6. 08-release 阶段 D：串行收口和本地 RC
 
 ```text
-请验收 07 的每个模块迁移和清理提交。检查依赖方向、循环引用、公共契约、文件规模、直接请求拒绝、保留功能、历史数据与回滚点；复跑后端、前端、remote→stub、disabled 和数据库回归。通过后合入并记录结构迁移起点，释放 08。缺少真实服务证据的入口保持 disabled，不因此退回已通过的本地模块整理。
+请回到 08-release，从 00 登记的 08BC_SHA 继续。统一修复根 Compose、Dockerfile 构建上下文、环境模板、Maven/npm 脚本、备份恢复脚本、AGENTS、README、OpenSpec 链接及 tools/graphify、tools/serena 的活动路径；路径必须从 Git 根动态解析。正式 Compose 默认不启动、不引用、不回退 stub。
+
+执行 Java、Vue、数据库、Compose、登录权限、remote→stub 图片/视频/流、disabled、历史成果、秘密扫描、旧活动路径、文件规模、模块依赖、两个 OpenSpec strict 和 graphify update .。生成 docs/FINAL_INTEGRATION_REPORT.md，明确本地 RC 仅覆盖 simulated/disabled，真实 5070/4090 未验收。提交阶段 D 和 HANDOFF，等待 00 最终验收。
 ```
 
-## 第四轮：08 顶层目录整合与最终本地项目
-
-### 08-release
+## 7. 00 最终交付
 
 ```text
-请接手 08-release 的最新版任务。只从 00 放行的 07 SHA 创建独立结构分支，使用 git mv 将 backend-github→apps/backend、frontend-vue→apps/frontend；建立 database/{bootstrap,migrations,seeds,private}，把契约/fixtures/stub/验收证据归入 remote-inference，把架构归入 docs/remote-inference，并统一 deploy。保持 V001/V002 内容与校验值，代码生成器 SQL 留在所属源码，private 数据保持 Git 忽略。更新 Maven、npm、Docker、Compose、脚本、AGENTS、文档、OpenSpec 和所有活动路径；正式 Compose 默认无 stub。执行全量构建、数据库、权限、remote→stub、disabled、历史、秘密、模块依赖、文件规模、OpenSpec strict 和 Graphify 验证，生成 docs/FINAL_INTEGRATION_REPORT.md，提交 HANDOFF。不得勾选真实 GPU 或删除旧仓库。
-```
+请在 00-integration 验收 08-release 阶段 D，独立复跑最终报告中的关键门禁。通过后合入 feature/remote-inference，再按用户既定授权合入并推送 main。从 origin/main 克隆 /Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform，确认它是独立 clone，不含 WGAI-parallel、backend-master、旧 graphify-out、Serena cache、真实数据库、凭据、素材或模型。不要删除旧仓库和 worktree。
 
-### 00-integration
-
-```text
-请执行最终本地集成。核实 08 的目录迁移表、提交、构建、数据库、Compose、功能模块、stub 隔离、OpenSpec 和 Graphify 证据；确认活动配置没有旧 WGAI/worktree 绝对路径。通过后合入 feature/remote-inference，再按既定授权合入并推送 main。从远程 main 克隆 /Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform，确认它是独立 clone，不包含 WGAI-parallel、backend-master、旧 graphify-out 或 Serena cache。不要删除旧仓库。告诉用户在新目录打开 Codex 并执行 07-final-workspace-tool-isolation.md。真实 GPU 任务保持开放。
-```
-
-## 第五轮：真实 GPU 服务到位后
-
-```text
-请在独立的新工作包执行真实 GPU 门禁。先对齐 RTX 5070 的方法、路径、TLS/CA、鉴权、图片/视频/流样例、限额、来源映射、查询、取消、停止和去重语义；从实际业务后端容器完成局域网请求与成果回存，不以 stub、ping、端口可达或宿主机请求替代。5070 全部通过后，再对接 Ubuntu 单张扩容 48GB RTX 4090 正式服务并执行正式权限、限额、成果、恢复和回滚。只有真实证据齐全时才同步主规格并归档；服务仍缺失则保持 disabled 和任务未完成。
+完成后让用户在新目录打开 Codex，并执行 /Users/twowt88/Documents/ChatGPT/WGAI-parallel/prompts/07-final-workspace-tool-isolation.md。Graphify、Serena、OpenSpec 只对最终 Git 根配置一次。真实 GPU 任务继续保持开放。
 ```

@@ -1,6 +1,6 @@
 # 并行文件归属
 
-本表适用于 08 顶层目录迁移之前。每包只在自己的 `code/` worktree 写入并提交；最终路径由 08 统一移动，其他包不能提前各自重命名顶层目录。
+01—07 已在 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 完成。以下归属重点约束第 8 批；每包只在自己的 `code/` worktree 写入并提交，工作树之间只合并提交。
 
 当前 Java AI 根为 `backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`，前端 AI 文件位于 `frontend-vue/src`。目标功能模块见 `ARCHITECTURE.md`。
 
@@ -16,15 +16,18 @@
 | 05 fail-closed 工具、provider stub 契约增量、独立 HTTP stub、fixtures、stub Compose 和模拟证据 | 05-lan | 可在当前仓库根新增 `remote-inference/stub` 等过渡目录；不修改真实证据目录，不冒充 GPU |
 | job/stream 恢复、取消/停止、竞态、指标和日志 | 06-resilience | 先合入 05 stub；用 stub 注入故障，不擅自修改公共契约 |
 | AI_ROOT 与前端 AI 代码的功能模块迁移、旧入口和无引用依赖清理 | 07-cleanup | 按 capability/asset/job/result/image/video/stream/provider/operations/legacy 分组；每组独立提交和回归 |
-| `backend-github`→`apps/backend`、`frontend-vue`→`apps/frontend`、database/remote-inference/deploy/docs 顶层归整 | 08-release | 只在 07 通过后的结构分支执行 `git mv`；统一更新所有构建和工具路径 |
+| `backend-github`→`apps/backend`、`frontend-vue`→`apps/frontend` | 08-release 阶段 A | 只移动两个应用根和最小 Maven/npm 构建入口；不提前移动 database 或 remote-inference |
+| `database/bootstrap`、`migrations/ai-core`、`migrations/stream`、`seeds/stub`、`private` | 08b-database-layout | 只移动数据库文件和本包验证器；V001/V002 字节、校验值、版本与顺序不变 |
+| `remote-inference/{contracts,fixtures,stub,acceptance,handoff}`、`docs/remote-inference`、`deploy/remote-inference` | 08c-remote-boundary | 与 08b 并行；逐文件移动非数据库内容，不接管 migrations、stub seed、根 Compose 或业务源码 |
+| 根 Compose、Dockerfile 上下文、环境模板、备份恢复、AGENTS、README、OpenSpec 链接、Graphify/Serena 脚本、最终报告 | 08-release 阶段 D | 等 00 合入 08b/08c 后串行修复和全量 RC；从 Git 根动态解析活动路径 |
 | 最终 main 合并、推送、独立克隆和工具迁移门禁 | 00-integration | 验证 08 报告后执行；不删除旧工作区 |
 | RTX 5070/4090 真实契约、网络与成果证据 | future-real-gpu | 服务到位后单独分配；stub 证据不得写入 |
 | `integrations/ai-contracts/acceptance/<包名>` 或迁移后的 `remote-inference/acceptance/<包名>` | 对应包 | 包之间使用不同子目录，不改他包历史证据 |
 | 各工作包 `HANDOFF.md`、`TASKS.md` 和 `drafts/` | 对应包 | 00 只读取交付，不覆盖他包记录；总状态写集成 OpenSpec |
 
-## 功能模块迁移归属
+## 已完成的功能模块归属
 
-07 对 AI 业务代码执行逻辑移动和依赖修正：
+07 已对 AI 业务代码执行逻辑移动和依赖修正；08 只移动顶层路径，不重新设计这些职责：
 
 - capability：现有能力查询、绑定与可用性。
 - asset：资产 API、服务、存储和持久化。
@@ -35,10 +38,10 @@
 - operations：健康、指标、诊断和日志边界。
 - legacy：过渡适配、停用提示和直接请求拒绝。
 
-公共类型需要变化时先交给 00 协调 02 复核。07 不为人脸、车牌、安全帽等模型名称复制整套模块，也不创建无调用者的 audio/chat/training 空目录。
+公共类型需要变化时先交给 00 协调 02 复核。第 8 批不因目录整理增加新业务行为，不为人脸、车牌、安全帽等模型名称复制整套模块，也不创建无调用者的 audio/chat/training 空目录。
 
 ## 公共文件
 
-根 `pom.xml` 相关聚合、`package.json`/锁文件、Compose、AGENTS、OpenSpec、Graphify/Serena 管理脚本和最终路径引用由 00/08 串行处理。包需要新增依赖时在 HANDOFF 记录必要性、版本和最小补丁，由集成统一应用。
+阶段 A 只处理 apps 建壳必须修改的 Maven/npm 路径。其余 Compose、AGENTS、OpenSpec、Graphify/Serena 管理脚本和最终路径引用全部留给阶段 D；08b/08c 只在 HANDOFF 登记这些待修复引用。
 
 所有者表约束提交范围。越界变更必须在写入前由 00 重新分配；不能完成后以“顺手修复”为由合并。

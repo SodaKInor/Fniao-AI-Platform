@@ -1,6 +1,6 @@
 # 远程推理平台架构与代码约束
 
-状态：2026-09-04 最新目标设计。1—4 批已经实现的业务行为保持；后续先建立独立 HTTP stub 和本地恢复门禁，再按功能模块整理代码，最后迁移到完整项目目录。真实 RTX 5070/4090 服务验收继续等待同事交付。
+状态：2026-09-04 基于集成提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 的最新设计。1—7 批、独立 HTTP stub、本地故障门禁及前后端功能模块迁移均已完成；当前只实施第 8 批最终目录整合。真实 RTX 5070/4090 服务验收继续等待同事交付。
 
 ## 1. 项目边界
 
@@ -10,25 +10,25 @@
 Fniao-AI-Platform/
 ├── apps/backend/                 Java 8 / Spring Boot 2.6.6 / JEECG 业务后端
 ├── apps/frontend/                Vue 2 业务前端
-├── database/                     初始化、迁移、演示数据与私有数据入口
-├── remote-inference/             契约、fixtures、独立 stub、验收证据
-├── deploy/                       业务系统与可选 stub 的部署编排
+├── database/                     bootstrap、ai-core/stream 迁移、stub seed 与 private
+├── remote-inference/             contracts、fixtures、stub、acceptance、handoff
+├── deploy/                       业务系统与 remote-inference 配置
 ├── docs/remote-inference/        架构、运行、交接和报告
 ├── openspec/                     持久需求与任务状态
 └── tools/                        项目工具脚本
 ```
 
-目录迁移前，业务源码仍位于 `backend-github` 和 `frontend-vue`。所有功能和清理通过后由 08 在独立结构分支使用 `git mv` 迁移；实现包不得提前各自改顶层路径。
+当前业务源码仍位于 `backend-github` 和 `frontend-vue`，但内部功能分包已经完成。第 8 批先串行迁移 `apps` 壳，再从同一验收 SHA 并行迁移 database 与 remote-inference，最后串行修复共享路径和生成本地 RC；具体边界见 `PARALLEL_PLAN.md`。
 
 GPU 服务、算法、模型、权重、驱动和显卡运行时由同事负责，不进入本仓库。`remote-inference/stub` 只模拟版本化 HTTP 接口，不产生真实算法结果。`backend-master` 始终只读且不进入最终仓库。
 
 ## 2. 后端按功能分包
 
-当前过渡根为：
+当前已完成迁移的 Java 根为：
 
 `backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`
 
-最终 Maven 工程整体进入 `apps/backend`，上述 Java 包名保持 `org.jeecg.modules.ai`，内部改为：
+最终 Maven 工程整体进入 `apps/backend`，上述 Java 包名保持 `org.jeecg.modules.ai`，内部已经是：
 
 | 功能模块 | 职责 | 禁止内容 |
 |---|---|---|
@@ -68,7 +68,7 @@ legacy                 -> 已确认的新 application 入口
 
 ## 4. 前端按功能组织
 
-当前横向分散在 `src/api/ai`、`services/ai`、`components/ai` 和 `views/ai` 的新增代码，最终迁入：
+当前已完成迁移的前端根为 `frontend-vue/src/modules/ai`；最终随 Vue 工程整体迁入：
 
 ```text
 apps/frontend/src/modules/ai/
@@ -79,7 +79,6 @@ apps/frontend/src/modules/ai/
 ├── image/
 ├── video/
 ├── stream/
-├── operations/
 └── legacy/
 ```
 
@@ -93,12 +92,9 @@ apps/frontend/src/modules/ai/
 database/
 ├── bootstrap/                    脱敏结构和必要基础数据
 ├── migrations/
-│   ├── capability/
-│   ├── asset/
-│   ├── job/
-│   ├── result/
+│   ├── ai-core/                  原 V001，覆盖资产、任务、结果与能力
 │   └── stream/
-├── seeds/                        明确的本地演示数据
+├── seeds/stub/                   明确标识模拟的能力绑定样例
 └── private/                      原始基线和真实数据，Git 忽略
 ```
 
@@ -124,9 +120,9 @@ stub 内部至少拆分启动、配置、鉴权、路由、校验、场景服务
 
 ## 8. 实施顺序
 
-1. 05 保留已有 fail-closed 校验，增加独立 HTTP stub 和 remote→stub 组合验收。
-2. 06 基于现有候选和 stub 完成本地恢复、竞态、取消/停止、故障和观测门禁。
-3. 07 先建立模块映射与依赖矩阵，再迁移后端/前端功能模块并清理已确认退役入口。
-4. 08 从本地验收 SHA 创建结构分支，迁移顶层目录、数据库、remote-inference、部署和文档，生成本地 RC 并交给 00。
+1. 已完成：05 stub、06 故障恢复、07 功能模块与旧入口清理，由 00 在 `a14450e` 验收。
+2. 08-release 阶段 A 串行使用 `git mv` 建立 `apps/backend` 和 `apps/frontend`，00 验收并冻结 `08A_SHA`。
+3. 08b-database-layout 与 08c-remote-boundary 从同一 `08A_SHA` 建立独立 worktree，并行移动互不重叠的目录。
+4. 00 串行合入两个目录包并冻结 `08BC_SHA`；08-release 阶段 D 从该 SHA 修复共享路径、完整构建并生成本地 RC。
 5. 00 独立验收后合入 main，克隆独立最终目录，并在新目录重新建立 Graphify、Serena 和 OpenSpec 定位。
 6. 同事服务可用后单独完成 RTX 5070 局域网和 RTX 4090 48GB 正式验收；真实证据未齐前不归档整体变更。

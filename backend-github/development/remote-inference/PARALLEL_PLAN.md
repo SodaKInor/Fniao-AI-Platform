@@ -1,88 +1,142 @@
-# 远程推理平台并行与串行计划
+# 远程推理平台最新并行与串行计划
 
-## 1. 当前状态
+## 1. 当前真实状态
 
-`WGAI-parallel/*/code` 是临时 Git worktree，每个目录包含完整仓库的一条分支。最终项目不会把这些目录复制到一起，而是由 00 验收并合并提交后形成。
+截至 2026-09-04，`feature/remote-inference` 的本地验收基线为
+`a14450ec0ed82cd329a666e52ac12c15cce3515d`。
 
-截至 2026-09-04：01、02、03、04a、04b 已进入 `feature/remote-inference` 并通过相应门禁；05 已交付拒绝伪造真实证据的 fail-closed 校验；06 有尚未合入的本地恢复/竞态/观测候选；07 只有只读清理盘点；08 只有恢复与发布草案。同事尚未提供 GPU 服务。
+- 01—04b 的基线、契约、provider、资产/任务、视频/流和前端已经集成。
+- 05 的独立 HTTP stub、显式开发 profile 和 remote→stub 图片/视频/流闭环已经集成。
+- 06 的恢复、UNKNOWN、取消/停止、故障和观测矩阵已经集成。
+- 07 已把后端迁入 10 个功能根、前端迁入 8 个功能根，并退役确认淘汰的旧执行入口。
+- 平台 OpenSpec 为 44/56，流变更为 22/27。当前本地剩余仅是最终目录整合；真实 GPU 门禁等待同事服务。
 
-## 2. 最新工作包职责
+`WGAI-parallel/*/code` 仍是临时 Git worktree。最终项目通过合并提交形成，禁止复制或拼接这些目录。
 
-| 包 | 最新职责 | 是否依赖真实 GPU |
-|---|---|---|
-| 00-integration | OpenSpec、架构、共享冲突、分支合并、组合验收、总状态和最终结构门禁 | 真实门禁阶段才依赖 |
-| 01-foundation | 基线、备份、来源和隔离工作区；已完成 | 否 |
-| 02-contract | 业务/provider 契约和公共类型；已有版本冻结，后续公共变化经 00 协调 | 否 |
-| 03-client | provider 端口、严格 HTTP 适配、凭据、信任和转换；已有候选已集成 | 否 |
-| 04a-assets-jobs | 资产、任务、结果、流持久化和 V001/V002；已集成 | 否 |
-| 04b-frontend | 图片、上传视频、实时流、历史和结果页面；已集成 | 否 |
-| 05-lan | 保留 fail-closed 校验，新增独立 HTTP stub、fixtures、Compose profile 和 remote→stub 组合验收 | 否；真实 5070 转为后续门禁 |
-| 06-resilience | 基于 stub 验证恢复、UNKNOWN、取消/停止、事件竞争、观测和日志 | 否 |
-| 07-cleanup | 后端/前端按功能模块迁移，旧聊天/训练及无引用算法依赖分组清理 | 否；未知真实能力保持 disabled |
-| 08-release | 顶层目录整合、数据库归整、部署路径、全量本地 RC 和结构交接；00 负责最终合并与独立克隆 | 否；不宣称正式 GPU 完成 |
-| future-real-gpu | RTX 5070 局域网真实契约/成果验收，再做 RTX 4090 48GB 正式验收 | 是；服务到位后再创建工作包 |
+## 2. 当前功能模块
 
-## 3. 执行顺序
+后端已经按以下功能组织：
 
-```text
-已完成：01 → 02 → 03 → 04a → 04b → 00 验收
+`capability / asset / job / result / image / video / stream / provider / operations / legacy`
 
-下一阶段：
-05 HTTP stub
-      ↓
-06 本地恢复与故障
-      ↓
-00 统一 stub/disabled 门禁
-      ↓
-07 功能模块迁移与旧业务清理
-      ↓
-08 顶层目录整合与本地 RC
-      ↓
-00 合并 main、推送、创建独立最终克隆
+前端已经按以下功能组织：
 
-外部服务到位后：
-RTX 5070 局域网验收 → RTX 4090 48GB 正式验收 → 规格同步/归档
-```
+`capability / asset / job / result / image / video / stream / legacy`
 
-05 与 06 不再并行修改共享行为。05 先交付 stub 和冻结场景，00 验收后 06 从新共同起点快进并复用其已经完成的候选。08 的只读资料准备可以继续，但顶层移动必须等待 07 完成。
+每个模块只保留实际需要的分层。算法名称是 capability 绑定，不建立“一个模型一套 Controller/Service/页面”的重复结构。
 
-## 4. 合并规则
+## 3. 第 8 批拆分
 
-1. 包只提交自己的代码和证据，更新本包 HANDOFF。
-2. 00 核对提交范围、契约、测试、秘密与 Graphify 后合并。
-3. 已包含在集成分支中的提交不重复 cherry-pick/merge；用祖先关系判断。
-4. 发生冲突逐文件解决，不用整目录覆盖，不删除另一包已通过行为。
-5. 先合并行为，再在 08 独立结构分支执行 `git mv`；目录重命名不与功能开发混在同一提交。
-6. 真实 GPU 任务未完成不阻止本地 stub/disabled 候选，但阻止真实能力启用、正式发布结论和 OpenSpec 归档。
-
-## 5. 运行资源与证据
-
-- 每个包继续使用独立数据库、上传目录、端口和 Compose 项目名。
-- 05 stub 使用本包专属端口和容器名，不修改同事机器或假装其为 RTX 服务。
-- 06 的故障注入只针对 stub/本包资源，不停止共享演示环境或未来同事服务。
-- stub、真实 5070、正式 4090 的证据放在不同目录并含环境类型字段；模拟证据不能进入真实门禁。
-- 私有账号、凭据、原始数据库、素材和证书只保存在对应 drafts/private 或外部备份中，不提交。
-
-## 6. 最终目录阶段
-
-08 以前所有包仍在当前 `backend-github`、`frontend-vue` 路径工作。08 从 00 放行 SHA 创建结构分支，统一迁移为：
+顶层路径移动会改变大量 Git 文件名，不能和功能开发同时进行。第 8 批采用“一次串行建壳、两个目录包并行、一次串行收口”：
 
 ```text
-apps/backend
-apps/frontend
-database
-remote-inference
-deploy
-docs/remote-inference
-openspec
-tools
+已完成基线 a14450e
+        │
+        ▼
+08-release 阶段 A：串行建立 apps 壳
+backend-github → apps/backend
+frontend-vue   → apps/frontend
+        │
+        ▼
+00 验收并冻结 08A_SHA，同时创建两个工作树
+        │
+        ├─────────────────────────────┐
+        ▼                             ▼
+08b-database-layout             08c-remote-boundary
+database/**                     remote-inference/**
+V001/V002/seed/private          docs/remote-inference/**
+                                deploy/remote-inference/**
+        └──────────────┬──────────────┘
+                       ▼
+00 串行合并 08b、08c，冻结 08BC_SHA
+                       │
+                       ▼
+08-release 阶段 D：路径修复、构建、完整本地 RC
+                       │
+                       ▼
+00 最终验收 → main → origin/main → 独立 clone
 ```
 
-08 提交结构迁移和本地 RC 后由 00 独立验收；00 合并 main 并推送，再从远程创建 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 独立克隆。它不能是旧仓库 worktree，也不复制 `WGAI-parallel`、`backend-master`、graphify-out 或 Serena cache。用户在新目录打开 Codex，再配置一次该仓库自己的 Serena、Graphify 和 OpenSpec。
+### 08-release：阶段 A 和阶段 D
 
-## 7. 工具规则
+阶段 A 只执行 `backend-github → apps/backend`、`frontend-vue → apps/frontend`，并做让 Maven、npm 和最小检查可从新路径运行所需的改动。通过后立即交给 00，不提前移动 database 或 remote-inference。
 
-- 在当前 worktree 中执行 `graphify update .`，不要调用硬编码旧 WGAI 的脚本。
-- 共享 Serena 在并行阶段不切换、不新增第二个服务；精确编辑只能在确认项目根匹配时使用。
-- 00 完成新克隆后，停止旧并行会话，再把唯一 Serena 服务切到最终目录并在那里重建索引。
-- OpenSpec 总状态只由 00 按证据更新；stub 完成不允许勾选 RTX 5070/4090 任务。
+阶段 D 等 00 合入 08b/08c 后再继续，负责所有共享路径、根 Compose、Docker 构建上下文、工具脚本、AGENTS、OpenSpec 链接、README、完整测试和 `docs/FINAL_INTEGRATION_REPORT.md`。
+
+### 08b-database-layout：可与 08c 并行
+
+只负责：
+
+- `database/bootstrap`：现有脱敏初始化/本地清理入口及说明。
+- `database/migrations/ai-core`：原 V001，文件字节、校验值和顺序不变。
+- `database/migrations/stream`：原 V002，文件字节、校验值和顺序不变。
+- `database/seeds/stub`：开发 stub 能力绑定样例。
+- `database/private`：只提交 README/.gitignore，不提交任何真实数据。
+
+本包不得修改根 Compose、OpenSpec 总表、remote-inference、docs、apps 源码或共享工具脚本。需要更新的旧路径写入 HANDOFF，由阶段 D 统一修复。
+
+### 08c-remote-boundary：可与 08b 并行
+
+只负责：
+
+- `remote-inference/contracts`：业务 v1/v1.1 与 provider draft 契约。
+- `remote-inference/fixtures`：图片、视频、流、空结果和故障样例。
+- `remote-inference/stub`：已有独立 HTTP stub。
+- `remote-inference/acceptance`：各批验收证据。
+- `remote-inference/handoff`：接口交接模板。
+- `docs/remote-inference`：架构、文件归属、运行和历史说明。
+- `deploy/remote-inference`：除 V001/V002 与 stub seed 外的远程 provider 配置、校验器和 profile。
+
+本包逐文件移动 `apps/backend/deploy/remote-ai` 的非数据库内容，不移动整个父目录，避免与 08b 冲突。不得修改根 Compose、database、apps 业务源码、OpenSpec 总表或共享工具脚本。
+
+## 4. 串行门禁
+
+1. 08-release 必须从 00 验收基线开始；阶段 A 未验收时不能创建 08b/08c 代码工作树。
+2. 08b 与 08c 必须从同一个 `08A_SHA` 建立独立 worktree，可以并行。
+3. 00 先核对两包文件集合不重叠，再按提交合并；禁止复制目录。
+4. 08-release 阶段 D 必须从 00 的 `08BC_SHA` 继续，不能从阶段 A 直接跳过并行包。
+5. 只有完整本地 RC 通过后，00 才能合并 main、推送并创建最终独立 clone。
+6. RTX 5070/4090 任务保持未完成，不阻止本地目录 RC，但阻止真实服务结论和 OpenSpec 归档。
+
+## 5. 最终仓库
+
+```text
+Fniao-AI-Platform/
+├── apps/
+│   ├── backend/
+│   └── frontend/
+├── database/
+│   ├── bootstrap/
+│   ├── migrations/
+│   │   ├── ai-core/
+│   │   └── stream/
+│   ├── seeds/stub/
+│   └── private/
+├── remote-inference/
+│   ├── contracts/
+│   ├── fixtures/
+│   ├── stub/
+│   ├── acceptance/
+│   └── handoff/
+├── deploy/
+│   └── remote-inference/
+├── docs/
+│   └── remote-inference/
+├── openspec/
+├── tools/
+├── AGENTS.md
+└── README.md
+```
+
+不创建空的算法类型目录。代码生成器自己的 SQL 留在 `apps/backend`；真实数据库、凭据、素材、模型、权重、缓存和工具索引不进入 Git。
+
+## 6. 工具与最终克隆
+
+- 当前各 worktree 只运行 `graphify update .`；不切换共享 Serena 项目。
+- 00 推送 `origin/main` 后，从远程克隆到 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`。
+- 该目录不是旧仓库 worktree，不包含 `backend-master`、`WGAI-parallel`、旧 graphify-out 或 Serena cache。
+- 关闭旧并行任务后，只在最终 Git 根配置一次 Graphify、Serena 和 OpenSpec。四个顶层功能区域不分别迁移工具。
+
+## 7. 未来真实 GPU 门禁
+
+同事服务到位后另建工作包，先从业务后端容器验收同一局域网 Ubuntu RTX 5070，再验收 Ubuntu 单张扩容 48GB RTX 4090 正式服务。stub、ping、端口连通或宿主机请求均不能替代真实成果证据。
