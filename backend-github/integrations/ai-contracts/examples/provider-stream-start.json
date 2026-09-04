@@ -1,0 +1,10 @@
+{
+  "contract_version": "0.2-draft",
+  "request_id": "stream-session-001",
+  "capability": "video-stream-analysis.v1",
+  "parameters": {
+    "max_events_per_poll": 50,
+    "poll_interval_ms": 2000,
+    "include_snapshots": true
+  }
+}

@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.Instant;
+import org.jeecg.modules.ai.domain.JobType;
 import org.jeecg.modules.ai.domain.JobState;
+import org.jeecg.modules.ai.domain.UnknownOperationReason;
 
 /**
  * Business API shape only; constraints and optional-field rules are in business.openapi.json.
@@ -14,10 +16,12 @@ import org.jeecg.modules.ai.domain.JobState;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class JobDto {
     private String requestId;
+    private JobType jobType;
     private String capabilityCode;
     private String capabilityVersion;
     private String inputAssetId;
     private DetectionParametersDto parameters;
+    private VideoParametersDto videoParameters;
     private JobState state;
     private Boolean simulated;
     @JsonFormat(shape = JsonFormat.Shape.STRING)
@@ -26,7 +30,9 @@ public final class JobDto {
     private Instant updatedAt;
     private String retryOfRequestId;
     private InferenceResultDto result;
+    private VideoResultDto videoResult;
     private ErrorDto error;
+    private UnknownOperationReason unknownReason;
 
     public String getRequestId() {
         return requestId;
@@ -34,6 +40,14 @@ public final class JobDto {
 
     public void setRequestId(String requestId) {
         this.requestId = requestId;
+    }
+
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(JobType jobType) {
+        this.jobType = jobType;
     }
 
     public String getCapabilityCode() {
@@ -66,6 +80,14 @@ public final class JobDto {
 
     public void setParameters(DetectionParametersDto parameters) {
         this.parameters = parameters;
+    }
+
+    public VideoParametersDto getVideoParameters() {
+        return videoParameters;
+    }
+
+    public void setVideoParameters(VideoParametersDto videoParameters) {
+        this.videoParameters = videoParameters;
     }
 
     public JobState getState() {
@@ -116,11 +138,27 @@ public final class JobDto {
         this.result = result;
     }
 
+    public VideoResultDto getVideoResult() {
+        return videoResult;
+    }
+
+    public void setVideoResult(VideoResultDto videoResult) {
+        this.videoResult = videoResult;
+    }
+
     public ErrorDto getError() {
         return error;
     }
 
     public void setError(ErrorDto error) {
         this.error = error;
+    }
+
+    public UnknownOperationReason getUnknownReason() {
+        return unknownReason;
+    }
+
+    public void setUnknownReason(UnknownOperationReason unknownReason) {
+        this.unknownReason = unknownReason;
     }
 }

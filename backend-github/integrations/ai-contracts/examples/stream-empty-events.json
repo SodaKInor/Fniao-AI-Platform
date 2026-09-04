@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": {
+    "sessionId": "stream-session-001",
+    "items": [],
+    "nextCursor": "cursor-001"
+  },
+  "timestamp": 1788438005000
+}

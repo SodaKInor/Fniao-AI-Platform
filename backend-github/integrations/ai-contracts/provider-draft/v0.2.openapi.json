@@ -1,0 +1,657 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Unconfirmed video and stream provider extension draft",
+    "version": "0.2.0-draft",
+    "description": "全部方法、路径、字段、TLS、鉴权、限额和停止语义均待 RTX 5070 服务确认；本文件不能启用 remote。图片草案继续见 v0.1.openapi.json。"
+  },
+  "servers": [
+    {
+      "url": "https://provider.example.invalid"
+    }
+  ],
+  "security": [
+    {
+      "DraftCredential": []
+    }
+  ],
+  "x-confirmation-status": "UNCONFIRMED",
+  "x-depends-on": "v0.1.openapi.json",
+  "x-features": {
+    "videoSubmit": false,
+    "sessionQuery": false,
+    "eventQuery": false,
+    "stop": false,
+    "deduplication": false
+  },
+  "paths": {
+    "/video-jobs": {
+      "post": {
+        "operationId": "draftAnalyzeVideo",
+        "summary": "未确认的同步 MP4/H.264 上传视频分析",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "metadata": {
+                    "$ref": "#/components/schemas/VideoMetadata"
+                  }
+                },
+                "required": [
+                  "file",
+                  "metadata"
+                ]
+              },
+              "encoding": {
+                "file": {
+                  "contentType": "video/mp4"
+                },
+                "metadata": {
+                  "contentType": "application/json"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "同步完成；事件和截图可以是有效空集合",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VideoSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "401": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "500": {
+            "$ref": "#/components/responses/DraftError"
+          }
+        }
+      }
+    },
+    "/stream-sources/{source_id}/sessions": {
+      "post": {
+        "operationId": "draftStartStream",
+        "summary": "未确认的已登记来源启动；source_id 由后端映射，绝非 RTSP URL",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProviderSourceId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamStartMetadata"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "供应商确认已启动",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderSession"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "401": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "500": {
+            "$ref": "#/components/responses/DraftError"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{provider_session_id}": {
+      "get": {
+        "operationId": "draftGetStreamSession",
+        "summary": "未确认的会话对账能力",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProviderSessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderSession"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "404": {
+            "$ref": "#/components/responses/DraftError"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{provider_session_id}/events": {
+      "get": {
+        "operationId": "draftGetStreamEvents",
+        "summary": "未确认的主动事件查询",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProviderSessionId"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功；items 为空是有效结果",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderEventPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "404": {
+            "$ref": "#/components/responses/DraftError"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{provider_session_id}/stop": {
+      "post": {
+        "operationId": "draftStopStream",
+        "summary": "未确认的停止确认接口",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ProviderSessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "只有 confirmed=true 且同一会话才可映射为 STOPPED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProviderStopResult"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "404": {
+            "$ref": "#/components/responses/DraftError"
+          },
+          "500": {
+            "$ref": "#/components/responses/DraftError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "DraftCredential": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "仅草案；真实凭据通过库外安全渠道交付。"
+      }
+    },
+    "parameters": {
+      "ProviderSourceId": {
+        "in": "path",
+        "name": "source_id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,160}$"
+        },
+        "description": "后端配置映射的登记来源，不是 URL。"
+      },
+      "ProviderSessionId": {
+        "in": "path",
+        "name": "provider_session_id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,160}$"
+        }
+      }
+    },
+    "responses": {
+      "DraftError": {
+        "description": "未确认错误；响应丢失或未确认 500 不证明执行失败",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ProviderError"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "VideoParameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "sample_interval_ms": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 100,
+            "maximum": 60000
+          },
+          "max_events": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "include_snapshots": {
+            "type": "boolean"
+          },
+          "annotate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "threshold",
+          "sample_interval_ms",
+          "max_events",
+          "include_snapshots",
+          "annotate"
+        ]
+      },
+      "VideoMetadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "enum": [
+              "0.2-draft"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "capability": {
+            "type": "string",
+            "enum": [
+              "video-file-analysis.v1"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/VideoParameters"
+          }
+        },
+        "required": [
+          "contract_version",
+          "request_id",
+          "capability",
+          "parameters"
+        ]
+      },
+      "Artifact": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          },
+          "media_type": {
+            "type": "string",
+            "enum": [
+              "image/png",
+              "image/jpeg",
+              "video/mp4"
+            ]
+          },
+          "size_bytes": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "reference",
+          "media_type"
+        ],
+        "description": "只能由受控 reader 解释；不是业务 API URL。"
+      },
+      "ProviderVideoEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,120}$"
+          },
+          "offset_ms": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "event_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "nullable": true
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/Artifact"
+          }
+        },
+        "required": [
+          "event_id",
+          "offset_ms",
+          "event_type"
+        ]
+      },
+      "VideoSuccess": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "simulated": {
+            "type": "boolean"
+          },
+          "provider_request_id": {
+            "type": "string",
+            "maxLength": 160,
+            "nullable": true
+          },
+          "provider_version": {
+            "type": "string",
+            "maxLength": 120,
+            "nullable": true
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderVideoEvent"
+            },
+            "maxItems": 1000
+          },
+          "annotated_video": {
+            "$ref": "#/components/schemas/Artifact"
+          }
+        },
+        "required": [
+          "simulated",
+          "events"
+        ]
+      },
+      "StreamParameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "max_events_per_poll": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "poll_interval_ms": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 250,
+            "maximum": 30000
+          },
+          "include_snapshots": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "max_events_per_poll",
+          "poll_interval_ms",
+          "include_snapshots"
+        ]
+      },
+      "StreamStartMetadata": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "enum": [
+              "0.2-draft"
+            ]
+          },
+          "request_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "capability": {
+            "type": "string",
+            "enum": [
+              "video-stream-analysis.v1"
+            ]
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/StreamParameters"
+          }
+        },
+        "required": [
+          "contract_version",
+          "request_id",
+          "capability",
+          "parameters"
+        ]
+      },
+      "ProviderSession": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provider_session_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,160}$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "STARTING",
+              "RUNNING",
+              "STOPPED",
+              "FAILED"
+            ]
+          },
+          "cursor": {
+            "type": "string",
+            "maxLength": 512,
+            "nullable": true
+          },
+          "provider_version": {
+            "type": "string",
+            "maxLength": 120,
+            "nullable": true
+          }
+        },
+        "required": [
+          "provider_session_id",
+          "state"
+        ]
+      },
+      "ProviderStreamEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,120}$"
+          },
+          "offset_ms": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "occurred_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "event_type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "nullable": true
+          },
+          "snapshot": {
+            "$ref": "#/components/schemas/Artifact"
+          }
+        },
+        "required": [
+          "event_id",
+          "offset_ms",
+          "occurred_at",
+          "event_type"
+        ]
+      },
+      "ProviderEventPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProviderStreamEvent"
+            },
+            "maxItems": 200
+          },
+          "next_cursor": {
+            "type": "string",
+            "maxLength": 512,
+            "nullable": true
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "ProviderStopResult": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provider_session_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,160}$"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "enum": [
+              true
+            ]
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "STOPPED"
+            ]
+          }
+        },
+        "required": [
+          "provider_session_id",
+          "confirmed",
+          "state"
+        ]
+      },
+      "ProviderError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "simulated": {
+            "type": "boolean"
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "INVALID_INPUT",
+              "AUTH_FAILED",
+              "NOT_FOUND",
+              "LIMIT_EXCEEDED",
+              "PROCESSING_FAILED",
+              "UNAVAILABLE"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "request_id": {
+            "type": "string",
+            "maxLength": 160,
+            "nullable": true
+          }
+        },
+        "required": [
+          "simulated",
+          "code",
+          "message"
+        ]
+      }
+    }
+  }
+}

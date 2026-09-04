@@ -1,14 +1,31 @@
 # 固定模拟样例
 
-全部 JSON、输入和成果均为本地构造的测试数据，没有执行推理，不能证明真实算法能力。manifest.json 标注每个样例的来源、schema 与预期通过/拒绝；响应自身也包含 simulated=true 和说明。固定时间用于复现，不代表目前文件仍未过期。
+全部 JSON、输入和成果均为本地构造的测试数据，没有执行推理，不能证明真实算法能力。
+manifest.json 标注每个样例的契约、schema 与预期通过或拒绝；固定时间不是可用性承诺。
 
-`input.png` 是 16×16 合成色块；`annotated.png` 是另一个合成色块，用来验证文件字节、媒体、长度与 SHA-256，不声称实际画出了检测框。两者均为 PNG，无真人或业务素材。
+input.png 与 annotated.png 是 16×16 合成色块，用来验证文件字节、媒体、长度和 SHA-256，
+不包含真人或业务素材，也不声称实际绘制了检测框。
 
-1. `asset.json` 对应模拟上传 input.png，取得 mock_input_0001。
-2. 以 Idempotency-Key `mock_request_0001` 提交 `submit.json`。参数固定 threshold=0.5 / maxDetections=10 / annotate=true。
-3. 短等待未完成时返回 `accepted.json`（202），后续读取返回 `success.json`（200）；两者是同一个 mock_job_0001。本地任务完成且文件回存后，成果资产 mock_output_0001 的长度/哈希必须对应 annotated.png。
-4. `empty.json` 有效空检测和空文件列表为成功；`unknown.json` 模拟已发送后响应丢失，不自动再次推理；`error.json` 模拟复用 key 的不同请求冲突。
-5. `provider-*.json` 仅演示未确认的同步协议：metadata 与输入文件 multipart，返回结构化内容及同服务相对成果引用；空成果/错误分别有样例。
-6. `invalid-threshold.json`、`invalid-provider-url.json` 必须拒绝。其他 JSON 必须符合各自 schema；还检查跨文件 ID、模拟标识、媒体/哈希和状态组合。
+## 1.0 图片兼容样例
 
-示例请求文件自身严格遵守业务 schema，故没有额外的 simulated 请求字段；其模拟身份由本目录说明和 manifest 指定。任何实际调用所选能力的模式由后端配置决定，浏览器不能伪造 simulated 改变执行模式。
+1. asset.json 对应模拟上传 input.png。
+2. submit.json 使用固定图片参数；accepted.json（202）和 success.json（200）保持同一本地任务。
+3. success.json 的成果长度与哈希对应 annotated.png；empty.json 是有效空检测。
+4. unknown.json 表达已发送后响应丢失，不授权自动再次推理；error.json 表达幂等冲突。
+5. provider-*.json 只演示未确认的 v0.1 同步图片协议。
+6. invalid-threshold.json 与 invalid-provider-url.json 必须拒绝。
+
+## 1.1 上传视频与实时流样例
+
+- video-submit.json、video-success.json、video-empty.json 覆盖有界视频参数、时间偏移、
+  授权截图、有效空成果及缺省的可选标注视频。
+- stream-sources.json 明确未确认映射的来源不可用；stream-start.json、stream-running.json、
+  stream-events.json 和 stream-empty-events.json 覆盖不透明来源、会话与有效空事件页。
+- stream-stop-unknown.json 明确停止响应丢失仍不是 STOPPED。
+- invalid-video-provider-url.json、invalid-stream-rtsp.json、invalid-stream-gpu-url.json、
+  invalid-stream-credentials.json 必须因未知或秘密字段被拒绝。
+- provider-video-*.json 与 provider-stream-*.json 只验证未确认 v0.2 草案的严格形状，
+  不证明真实方法、来源映射、事件查询或停止能力。
+
+请求样例不带 simulated 字段，因为模式只能由后端配置选择。浏览器不能伪造模拟状态、
+provider 地址、RTSP 地址或凭据。

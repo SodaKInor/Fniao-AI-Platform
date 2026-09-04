@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "event_id": "provider-stream-event-001",
+      "offset_ms": 2500,
+      "occurred_at": "2026-09-03T12:20:02.500Z",
+      "event_type": "person",
+      "score": 0.93,
+      "snapshot": {
+        "reference": "artifacts/stream-snapshot-001.png",
+        "media_type": "image/png",
+        "size_bytes": 79,
+        "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+      }
+    }
+  ],
+  "next_cursor": "provider-cursor-001"
+}

@@ -1,7 +1,10 @@
 {
   "status": "PASS",
-  "checked_at": "2026-09-03T09:49:45.066354+00:00",
-  "candidate_files_before_this_receipt": 76,
+  "checked_at": "2026-09-04T05:19:57+00:00",
+  "base_commit": "d31489415b21032f3d08b9a0ef94a85813a8ec05",
+  "changed_files": 82,
+  "tracked_modified": 19,
+  "new_files": 63,
   "allowed_paths": [
     "backend-github/integrations/ai-contracts/",
     "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/",
@@ -9,14 +12,15 @@
     "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/"
   ],
   "findings": [],
-  "scan_scope": "Owned new files, exact current deployment/test credentials and selected private-key/token patterns; not a universal secret scan",
+  "scan_scope": "All added or modified 02 files relative to the planning base, including exact deployment/test credentials and selected private-key/token patterns; not a universal secret scan",
   "binary_files": "Only two documented synthetic PNG fixtures; no real uploads or private artifacts",
   "unchanged": [
-    "existing tracked source and dependency files",
+    "files outside the four allowed 02 path prefixes",
+    "existing dependency and build files",
     "OpenSpec total task checklist",
-    "01/00 acceptance records",
+    "00/01/03/04 acceptance records",
     "original WGAI worktree"
   ],
-  "max_java_lines": 126,
-  "max_method_lines": 22
+  "max_java_lines": 164,
+  "max_method_lines": 26
 }

@@ -12,8 +12,11 @@ public final class JobRecord {
     private final long version;
     private final String dispatchToken;
     private final ProviderResult providerResult;
+    private final VideoProviderResult videoProviderResult;
     private final InferenceResult result;
+    private final VideoResult videoResult;
     private final JobError error;
+    private final UnknownOperationReason unknownReason;
     private final Instant updatedAt;
 
     public JobRecord(
@@ -25,13 +28,42 @@ public final class JobRecord {
             InferenceResult result,
             JobError error,
             Instant updatedAt) {
+        this(
+                request,
+                state,
+                version,
+                dispatchToken,
+                providerResult,
+                null,
+                result,
+                null,
+                error,
+                null,
+                updatedAt);
+    }
+
+    public JobRecord(
+            JobRequest request,
+            JobState state,
+            long version,
+            String dispatchToken,
+            ProviderResult providerResult,
+            VideoProviderResult videoProviderResult,
+            InferenceResult result,
+            VideoResult videoResult,
+            JobError error,
+            UnknownOperationReason unknownReason,
+            Instant updatedAt) {
         this.request = request;
         this.state = state;
         this.version = version;
         this.dispatchToken = dispatchToken;
         this.providerResult = providerResult;
+        this.videoProviderResult = videoProviderResult;
         this.result = result;
+        this.videoResult = videoResult;
         this.error = error;
+        this.unknownReason = unknownReason;
         this.updatedAt = updatedAt;
     }
 
@@ -55,12 +87,24 @@ public final class JobRecord {
         return providerResult;
     }
 
+    public VideoProviderResult getVideoProviderResult() {
+        return videoProviderResult;
+    }
+
     public InferenceResult getResult() {
         return result;
     }
 
+    public VideoResult getVideoResult() {
+        return videoResult;
+    }
+
     public JobError getError() {
         return error;
+    }
+
+    public UnknownOperationReason getUnknownReason() {
+        return unknownReason;
     }
 
     public Instant getUpdatedAt() {

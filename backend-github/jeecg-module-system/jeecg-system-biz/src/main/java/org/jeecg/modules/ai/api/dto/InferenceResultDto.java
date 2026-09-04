@@ -3,6 +3,7 @@ package org.jeecg.modules.ai.api.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
+import org.jeecg.modules.ai.domain.ResultType;
 
 /**
  * Business API shape only; constraints and optional-field rules are in business.openapi.json.
@@ -11,9 +12,18 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class InferenceResultDto {
+    private ResultType resultType;
     private Boolean simulated;
     private DetectionDataDto data;
     private List<AssetDto> artifacts;
+
+    public ResultType getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(ResultType resultType) {
+        this.resultType = resultType;
+    }
 
     public Boolean getSimulated() {
         return simulated;

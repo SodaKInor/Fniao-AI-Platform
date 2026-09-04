@@ -50,6 +50,24 @@ def validate_job(job):
         assert 'error' in job
 
 
+def validate_v11_job(job):
+    if job.get('jobType') != 'VIDEO_FILE_ANALYSIS':
+        return
+    assert 'parameters' not in job and 'result' not in job
+    assert 'videoParameters' in job
+    if job['state'] == 'SUCCEEDED':
+        result = job['videoResult']
+        assert result['resultType'] == 'VIDEO_TIMELINE'
+        offsets = [event['offsetMillis'] for event in result['events']]
+        assert offsets == sorted(offsets)
+        assert len(offsets) <= job['videoParameters']['maxEvents']
+        snapshot_ids = {asset['assetId'] for asset in result['snapshots']}
+        assert all(event.get('snapshotAssetId') in snapshot_ids
+                   for event in result['events'] if event.get('snapshotAssetId'))
+    else:
+        assert 'videoResult' not in job
+
+
 def verify_png(path):
     data = path.read_bytes()
     assert data[:8] == b'\x89PNG\r\n\x1a\n'
@@ -70,7 +88,10 @@ def verify_png(path):
 
 def main():
     docs = {name: json.loads((CONTRACTS / path).read_text()) for name, path in {
-        'business': 'v1/business.openapi.json', 'provider': 'provider-draft/v0.1.openapi.json'}.items()}
+        'business': 'v1/business.openapi.json',
+        'provider': 'provider-draft/v0.1.openapi.json',
+        'businessV11': 'v1.1/business.openapi.json',
+        'providerV02': 'provider-draft/v0.2.openapi.json'}.items()}
     for document in docs.values():
         validate_spec(document)
         for schema in document['components']['schemas'].values():
@@ -83,11 +104,26 @@ def main():
         schema = resolve(docs[case['contract']]['components']['schemas'][case['schema']], docs[case['contract']])
         errors = list(Draft4Validator(schema, format_checker=FormatChecker()).iter_errors(value))
         assert (not errors) == case['valid'], name
+        compatible_v11 = False
+        if case['valid'] and case['contract'] == 'business':
+            v11_schema = docs['businessV11']['components']['schemas'].get(case['schema'])
+            if v11_schema is not None:
+                compatible_errors = list(Draft4Validator(
+                    resolve(v11_schema, docs['businessV11']),
+                    format_checker=FormatChecker()).iter_errors(value))
+                assert not compatible_errors, (name, compatible_errors)
+                compatible_v11 = True
         if case['valid'] and case['schema'] == 'JobResponse':
-            validate_job(value['result'])
+            if case['contract'] == 'business':
+                validate_job(value['result'])
+            else:
+                validate_v11_job(value['result'])
         if case['contract'] == 'provider' and case['schema'] in ['Success', 'Error']:
             assert value['simulated'] is True
-        outcomes.append({'file': name, 'expected_valid': case['valid'], 'passed': True})
+        if case['contract'] == 'providerV02' and case['schema'] == 'VideoSuccess':
+            assert value['simulated'] is True
+        outcomes.append({'file': name, 'expected_valid': case['valid'], 'passed': True,
+                         'compatible_with_1_1': compatible_v11})
     for file in manifest['files']:
         path = CONTRACTS / 'examples' / file['path']
         assert path.stat().st_size == file['sizeBytes']
@@ -109,14 +145,41 @@ def main():
     assert artifact['sizeBytes'] == wire_artifact['size_bytes'] == expected['sizeBytes']
     assert docs['provider']['x-features'] == {'query': False, 'cancel': False, 'deduplication': False}
     assert list(docs['provider']['paths']) == ['/infer']
+    video_request, video_success = read('video-submit.json'), read('video-success.json')['result']
+    assert video_success['videoParameters'] == video_request['parameters']
+    assert 'annotatedVideo' not in video_success['videoResult']
+    assert read('video-empty.json')['result']['videoResult'] == {
+        'resultType': 'VIDEO_TIMELINE', 'simulated': True, 'events': [], 'snapshots': []}
+    source = read('stream-sources.json')['result'][0]
+    assert source['available'] is False and source['unavailableReason']
+    stop_unknown = read('stream-stop-unknown.json')['result']
+    assert stop_unknown['state'] != 'STOPPED'
+    assert stop_unknown['unknownReason'] == 'STOP_CONFIRMATION_UNKNOWN'
+    assert read('provider-stream-stop.json') == {
+        'provider_session_id': 'provider-stream-session-001',
+        'confirmed': True,
+        'state': 'STOPPED'}
+    assert docs['providerV02']['x-confirmation-status'] == 'UNCONFIRMED'
+    assert docs['businessV11']['info']['version'] == '1.1.0'
+    assert all(value is False for value in docs['providerV02']['x-features'].values())
+    assert list(docs['businessV11']['paths']) == [
+        '/assets', '/assets/{id}/content', '/infer', '/capabilities', '/jobs',
+        '/video-jobs', '/jobs/{id}', '/jobs/{id}/cancel', '/stream-sources',
+        '/stream-sessions', '/stream-sessions/{id}',
+        '/stream-sessions/{id}/events', '/stream-sessions/{id}/stop']
+    assert set(read('stream-start.json')) == {'capabilityCode', 'streamSourceId', 'parameters'}
     (EVIDENCE / 'contract-checks.json').write_text(json.dumps({
-        'status': 'PASS', 'openapi_documents': 2, 'fixtures': outcomes,
+        'status': 'PASS', 'openapi_documents': 4, 'fixtures': outcomes,
         'binary_fixtures': '2 PNG files: signature, chunk CRC, decoded dimensions, size and SHA-256',
         'semantic_checks': ['same local identity for 200/202', 'terminal/result/error shape',
                             'normalized boxes/count', 'wire/business parameter correspondence',
-                            'local/provider/file artifact hashes', 'unconfirmed optional features disabled'],
+                            'local/provider/file artifact hashes', 'image 1.0 fixture compatibility',
+                            'video event ordering/snapshot ownership/optional annotation',
+                            'opaque stream source and secret-field rejection',
+                            'UNKNOWN stop is not STOPPED', 'unconfirmed optional features disabled'],
         'scope': 'Declarations and synthetic fixtures only; no live API, authentication or GPU execution'}, indent=2) + '\n')
-    print('PASS: 2 OpenAPI documents, 15 positive/negative JSON cases, 2 PNG fixtures, cross-field checks')
+    print('PASS:', len(docs), 'OpenAPI documents,', len(outcomes),
+          'positive/negative JSON cases, 2 PNG fixtures, cross-field checks')
 
 
 if __name__ == '__main__':

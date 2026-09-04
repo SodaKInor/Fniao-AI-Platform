@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": {
+    "requestId": "video-request-001",
+    "jobType": "VIDEO_FILE_ANALYSIS",
+    "capabilityCode": "video-file-analysis.v1",
+    "capabilityVersion": "1.1.0",
+    "inputAssetId": "asset-video-input-001",
+    "videoParameters": {
+      "threshold": 0.5,
+      "sampleIntervalMillis": 1000,
+      "maxEvents": 100,
+      "includeSnapshots": true,
+      "annotate": false
+    },
+    "state": "SUCCEEDED",
+    "simulated": true,
+    "createdAt": "2026-09-03T12:00:00Z",
+    "updatedAt": "2026-09-03T12:00:05Z",
+    "videoResult": {
+      "resultType": "VIDEO_TIMELINE",
+      "simulated": true,
+      "events": [
+        {
+          "eventId": "video-event-001",
+          "offsetMillis": 1250,
+          "eventType": "person",
+          "score": 0.91,
+          "snapshotAssetId": "asset-video-snapshot-001"
+        }
+      ],
+      "snapshots": [
+        {
+          "assetId": "asset-video-snapshot-001",
+          "fileName": "snapshot-001.png",
+          "mediaType": "image/png",
+          "sizeBytes": 79,
+          "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+          "createdAt": "2026-09-03T12:00:05Z",
+          "expiresAt": "2026-09-10T12:00:05Z"
+        }
+      ]
+    }
+  },
+  "timestamp": 1788436805000
+}

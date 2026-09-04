@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": {
+    "sessionId": "stream-session-001",
+    "items": [
+      {
+        "eventId": "stream-event-001",
+        "offsetMillis": 2500,
+        "occurredAt": "2026-09-03T12:20:02.500Z",
+        "eventType": "person",
+        "score": 0.93,
+        "snapshotAssetId": "asset-stream-snapshot-001"
+      }
+    ],
+    "nextCursor": "cursor-001"
+  },
+  "timestamp": 1788438003000
+}

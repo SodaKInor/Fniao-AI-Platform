@@ -105,6 +105,120 @@
       "schema": "InferenceRequestDto",
       "valid": false,
       "simulated": true
+    },
+    "video-submit.json": {
+      "contract": "businessV11",
+      "schema": "VideoJobRequestDto",
+      "valid": true,
+      "simulated": true
+    },
+    "video-success.json": {
+      "contract": "businessV11",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "video-empty.json": {
+      "contract": "businessV11",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "invalid-video-provider-url.json": {
+      "contract": "businessV11",
+      "schema": "VideoJobRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "stream-sources.json": {
+      "contract": "businessV11",
+      "schema": "StreamSourceListResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-start.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-running.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-events.json": {
+      "contract": "businessV11",
+      "schema": "StreamEventPageResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-empty-events.json": {
+      "contract": "businessV11",
+      "schema": "StreamEventPageResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-stop-unknown.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "invalid-stream-rtsp.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "invalid-stream-gpu-url.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "invalid-stream-credentials.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "provider-video-metadata.json": {
+      "contract": "providerV02",
+      "schema": "VideoMetadata",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-video-success.json": {
+      "contract": "providerV02",
+      "schema": "VideoSuccess",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-start.json": {
+      "contract": "providerV02",
+      "schema": "StreamStartMetadata",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-running.json": {
+      "contract": "providerV02",
+      "schema": "ProviderSession",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-events.json": {
+      "contract": "providerV02",
+      "schema": "ProviderEventPage",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-stop.json": {
+      "contract": "providerV02",
+      "schema": "ProviderStopResult",
+      "valid": true,
+      "simulated": true
     }
   }
 }

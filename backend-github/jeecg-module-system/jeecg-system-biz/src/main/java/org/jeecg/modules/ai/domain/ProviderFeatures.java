@@ -1,8 +1,8 @@
 package org.jeecg.modules.ai.domain;
 
 /**
- * Confirmed features only. All three MUST be false for the unconfirmed synchronous draft.
- * No optional operation is exposed in the initial provider ports; additions require contract review.
+ * Confirmed file-job features only. All three MUST be false for an unconfirmed provider draft.
+ * Application code gates optional query/cancel control on this immutable capability snapshot.
  */
 public final class ProviderFeatures {
     private final boolean query;

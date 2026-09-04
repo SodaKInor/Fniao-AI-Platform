@@ -3,6 +3,7 @@ package org.jeecg.modules.ai.api.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import org.jeecg.modules.ai.domain.ErrorCode;
+import org.jeecg.modules.ai.domain.UnknownOperationReason;
 
 /**
  * Business API shape only; constraints and optional-field rules are in business.openapi.json.
@@ -15,6 +16,7 @@ public final class ErrorDto {
     private String message;
     private String requestId;
     private Boolean simulated;
+    private UnknownOperationReason unknownReason;
 
     public ErrorCode getErrorCode() {
         return errorCode;
@@ -46,5 +48,13 @@ public final class ErrorDto {
 
     public void setSimulated(Boolean simulated) {
         this.simulated = simulated;
+    }
+
+    public UnknownOperationReason getUnknownReason() {
+        return unknownReason;
+    }
+
+    public void setUnknownReason(UnknownOperationReason unknownReason) {
+        this.unknownReason = unknownReason;
     }
 }

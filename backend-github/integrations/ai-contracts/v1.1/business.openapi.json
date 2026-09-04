@@ -1,0 +1,1752 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "WGAI business inference API",
+    "version": "1.1.0",
+    "description": "图片接口保持 1.0 JSON 兼容；新增上传视频任务和实时事件会话。浏览器不得提交 GPU URL、RTSP 地址或凭据。"
+  },
+  "servers": [
+    {
+      "url": "/jeecg-boot/ai/v1"
+    }
+  ],
+  "security": [
+    {
+      "ExistingLogin": []
+    }
+  ],
+  "paths": {
+    "/assets": {
+      "post": {
+        "operationId": "uploadAssetV11",
+        "summary": "流式上传私有 PNG/JPEG 或已启用的 MP4/H.264 输入",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                },
+                "required": [
+                  "file"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "完整保存并建立归属后返回",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AssetResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "413": {
+            "$ref": "#/components/responses/LimitExceeded"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMedia"
+          }
+        }
+      }
+    },
+    "/assets/{id}/content": {
+      "get": {
+        "operationId": "downloadAssetV11",
+        "summary": "授权后下载完整私有资产",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9_-]{1,80}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "原始二进制流；部分文件不得发布",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "image/jpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "video/mp4": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/infer": {
+      "post": {
+        "operationId": "inferWithShortWaitV11",
+        "summary": "兼容 1.0 图片短等待接口",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          },
+          {
+            "in": "query",
+            "name": "waitMillis",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1500,
+              "default": 1500
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InferenceRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/JobComplete"
+          },
+          "202": {
+            "$ref": "#/components/responses/JobAccepted"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    },
+    "/capabilities": {
+      "get": {
+        "operationId": "listCapabilitiesV11",
+        "summary": "返回图片、上传视频和实时流的分项可用性",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CapabilityListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/jobs": {
+      "post": {
+        "operationId": "submitImageJobV11",
+        "summary": "兼容 1.0 图片任务提交",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InferenceRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/JobComplete"
+          },
+          "202": {
+            "$ref": "#/components/responses/JobAccepted"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      },
+      "get": {
+        "operationId": "listJobsV11",
+        "summary": "查询当前用户的图片和上传视频历史",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "state",
+            "schema": {
+              "$ref": "#/components/schemas/JobState"
+            }
+          },
+          {
+            "in": "query",
+            "name": "jobType",
+            "schema": {
+              "$ref": "#/components/schemas/JobType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobPageResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/video-jobs": {
+      "post": {
+        "operationId": "submitVideoJob",
+        "summary": "提交 MP4/H.264 上传视频任务；能力资料未确认时返回停用",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VideoJobRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/JobComplete"
+          },
+          "202": {
+            "$ref": "#/components/responses/JobAccepted"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "413": {
+            "$ref": "#/components/responses/LimitExceeded"
+          },
+          "415": {
+            "$ref": "#/components/responses/UnsupportedMedia"
+          }
+        }
+      }
+    },
+    "/jobs/{id}": {
+      "get": {
+        "operationId": "getJobV11",
+        "summary": "只读本地图片或上传视频任务",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/JobComplete"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/jobs/{id}/cancel": {
+      "post": {
+        "operationId": "cancelJobV11",
+        "summary": "取消未派发任务；已派发任务仅在供应商确认后进入 CANCELLED",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/JobId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/JobComplete"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    },
+    "/stream-sources": {
+      "get": {
+        "operationId": "listStreamSources",
+        "summary": "只返回当前用户获授权的不透明来源",
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamSourceListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/stream-sessions": {
+      "post": {
+        "operationId": "startStreamSession",
+        "summary": "用已授权 streamSourceId 创建实时事件会话",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdempotencyKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamSessionRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/StreamSessionComplete"
+          },
+          "202": {
+            "$ref": "#/components/responses/StreamSessionAccepted"
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{id}": {
+      "get": {
+        "operationId": "getStreamSession",
+        "summary": "查询本地流会话状态",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/StreamSessionComplete"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{id}/events": {
+      "get": {
+        "operationId": "listStreamEvents",
+        "summary": "按稳定游标读取已回存事件和截图",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "schema": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200,
+              "default": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功；无事件时 items 为空",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StreamEventPageResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/stream-sessions/{id}/stop": {
+      "post": {
+        "operationId": "stopStreamSession",
+        "summary": "请求停止；仅供应商确认同一会话后进入 STOPPED",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/SessionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/StreamSessionComplete"
+          },
+          "202": {
+            "$ref": "#/components/responses/StreamSessionAccepted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ExistingLogin": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Access-Token",
+        "description": "复用现有业务登录；GPU 鉴权错误不得清除用户会话。"
+      }
+    },
+    "parameters": {
+      "IdempotencyKey": {
+        "in": "header",
+        "name": "Idempotency-Key",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,128}$"
+        },
+        "description": "用户范围内与规范化摘要原子去重；同 key 不同输入返回 409。"
+      },
+      "JobId": {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        }
+      },
+      "SessionId": {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,80}$"
+        }
+      }
+    },
+    "responses": {
+      "JobComplete": {
+        "description": "本地记录可返回；API 成功不等于推理成功",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/JobResponse"
+            }
+          }
+        }
+      },
+      "JobAccepted": {
+        "description": "后台继续同一调用，不授权再次提交",
+        "headers": {
+          "Location": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "Retry-After": {
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/JobResponse"
+            }
+          }
+        }
+      },
+      "StreamSessionComplete": {
+        "description": "返回当前本地会话状态",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StreamSessionResponse"
+            }
+          }
+        }
+      },
+      "StreamSessionAccepted": {
+        "description": "启动或停止确认仍在进行；不得重复启动或声称已停止",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/StreamSessionResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "字段、参数或秘密输入非法",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "业务登录失效",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "不存在或不属于当前用户",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "幂等、状态、取消或停止能力冲突",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "LimitExceeded": {
+        "description": "超出已确认限额",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "UnsupportedMedia": {
+        "description": "视频格式或编码不支持",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "JobState": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "DISPATCHING",
+          "WAITING",
+          "FETCHING_RESULT",
+          "SUCCEEDED",
+          "FAILED",
+          "UNKNOWN",
+          "CANCELLED"
+        ]
+      },
+      "DetectionParametersDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "maxDetections": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "annotate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "threshold",
+          "maxDetections",
+          "annotate"
+        ]
+      },
+      "InferenceRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capabilityCode": {
+            "type": "string",
+            "enum": [
+              "image-detection.v1"
+            ]
+          },
+          "inputAssetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/DetectionParametersDto"
+          },
+          "retryOfRequestId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          }
+        },
+        "required": [
+          "capabilityCode",
+          "inputAssetId",
+          "parameters"
+        ]
+      },
+      "BoundingBoxDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "width": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "height": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "width",
+          "height"
+        ]
+      },
+      "DetectionDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "box": {
+            "$ref": "#/components/schemas/BoundingBoxDto"
+          }
+        },
+        "required": [
+          "label",
+          "score",
+          "box"
+        ]
+      },
+      "DetectionDataDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schemaVersion": {
+            "type": "string",
+            "enum": [
+              "detection.v1"
+            ]
+          },
+          "imageWidth": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "imageHeight": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "detections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetectionDto"
+            },
+            "maxItems": 100
+          }
+        },
+        "required": [
+          "schemaVersion",
+          "imageWidth",
+          "imageHeight",
+          "detections"
+        ]
+      },
+      "JobType": {
+        "type": "string",
+        "enum": [
+          "IMAGE_DETECTION",
+          "VIDEO_FILE_ANALYSIS"
+        ]
+      },
+      "ResultType": {
+        "type": "string",
+        "enum": [
+          "IMAGE_DETECTION",
+          "VIDEO_TIMELINE"
+        ]
+      },
+      "UnknownOperationReason": {
+        "type": "string",
+        "enum": [
+          "PROVIDER_RESPONSE_LOST",
+          "PROVIDER_QUERY_UNAVAILABLE",
+          "PROVIDER_STATE_UNRECOGNIZED",
+          "CANCEL_CONFIRMATION_UNKNOWN",
+          "STOP_CONFIRMATION_UNKNOWN"
+        ]
+      },
+      "VideoParametersDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "sampleIntervalMillis": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 100,
+            "maximum": 60000
+          },
+          "maxEvents": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000
+          },
+          "includeSnapshots": {
+            "type": "boolean"
+          },
+          "annotate": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "threshold",
+          "sampleIntervalMillis",
+          "maxEvents",
+          "includeSnapshots",
+          "annotate"
+        ]
+      },
+      "VideoJobRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capabilityCode": {
+            "type": "string",
+            "enum": [
+              "video-file-analysis.v1"
+            ]
+          },
+          "inputAssetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/VideoParametersDto"
+          },
+          "retryOfRequestId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          }
+        },
+        "required": [
+          "capabilityCode",
+          "inputAssetId",
+          "parameters"
+        ]
+      },
+      "AssetDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "assetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "fileName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "mediaType": {
+            "type": "string",
+            "enum": [
+              "image/png",
+              "image/jpeg",
+              "video/mp4"
+            ]
+          },
+          "sizeBytes": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "assetId",
+          "fileName",
+          "mediaType",
+          "sizeBytes",
+          "sha256",
+          "createdAt",
+          "expiresAt"
+        ]
+      },
+      "InferenceResultDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "resultType": {
+            "$ref": "#/components/schemas/ResultType"
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DetectionDataDto"
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetDto"
+            },
+            "maxItems": 1
+          }
+        },
+        "required": [
+          "simulated",
+          "data",
+          "artifacts"
+        ],
+        "description": "resultType 对旧 1.0 图片记录可缺省并按 IMAGE_DETECTION 解释。"
+      },
+      "VideoEventDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,120}$"
+          },
+          "offsetMillis": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "eventType": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "nullable": true
+          },
+          "snapshotAssetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          }
+        },
+        "required": [
+          "eventId",
+          "offsetMillis",
+          "eventType"
+        ]
+      },
+      "VideoResultDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "resultType": {
+            "$ref": "#/components/schemas/ResultType"
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VideoEventDto"
+            },
+            "maxItems": 1000
+          },
+          "snapshots": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetDto"
+            },
+            "maxItems": 1000
+          },
+          "annotatedVideo": {
+            "$ref": "#/components/schemas/AssetDto"
+          }
+        },
+        "required": [
+          "resultType",
+          "simulated",
+          "events",
+          "snapshots"
+        ],
+        "description": "events 与 snapshots 可为空；annotatedVideo 可选，不能伪造。"
+      },
+      "ErrorDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "enum": [
+              "INVALID_REQUEST",
+              "UNAUTHENTICATED",
+              "FORBIDDEN",
+              "NOT_FOUND",
+              "ASSET_EXPIRED",
+              "LIMIT_EXCEEDED",
+              "UNSUPPORTED_MEDIA",
+              "CAPABILITY_UNAVAILABLE",
+              "IDEMPOTENCY_CONFLICT",
+              "CANCEL_NOT_SUPPORTED",
+              "JOB_STATE_CONFLICT",
+              "PROVIDER_OFFLINE",
+              "PROVIDER_AUTH",
+              "PROVIDER_REJECTED",
+              "PROVIDER_TIMEOUT",
+              "PROVIDER_PROTOCOL",
+              "RESULT_UNKNOWN",
+              "ARTIFACT_TRANSFER",
+              "ARTIFACT_EXPIRED",
+              "INTERNAL_ERROR"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "requestId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "unknownReason": {
+            "$ref": "#/components/schemas/UnknownOperationReason"
+          }
+        },
+        "required": [
+          "errorCode",
+          "message",
+          "simulated"
+        ]
+      },
+      "JobDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "requestId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "jobType": {
+            "$ref": "#/components/schemas/JobType"
+          },
+          "capabilityCode": {
+            "type": "string"
+          },
+          "capabilityVersion": {
+            "type": "string"
+          },
+          "inputAssetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/DetectionParametersDto"
+          },
+          "videoParameters": {
+            "$ref": "#/components/schemas/VideoParametersDto"
+          },
+          "state": {
+            "$ref": "#/components/schemas/JobState"
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "retryOfRequestId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          },
+          "result": {
+            "$ref": "#/components/schemas/InferenceResultDto"
+          },
+          "videoResult": {
+            "$ref": "#/components/schemas/VideoResultDto"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDto"
+          },
+          "unknownReason": {
+            "$ref": "#/components/schemas/UnknownOperationReason"
+          }
+        },
+        "required": [
+          "requestId",
+          "capabilityCode",
+          "capabilityVersion",
+          "inputAssetId",
+          "state",
+          "simulated",
+          "createdAt",
+          "updatedAt"
+        ],
+        "description": "旧图片记录可缺省 jobType 并按 IMAGE_DETECTION 读取；新记录必须写入类型。图片只使用 parameters/result，视频只使用 videoParameters/videoResult。"
+      },
+      "JobPageDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobDto"
+            }
+          },
+          "nextCursor": {
+            "type": "string",
+            "maxLength": 512,
+            "nullable": true
+          }
+        },
+        "required": [
+          "items"
+        ]
+      },
+      "CapabilityDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "simulated": {
+            "type": "boolean"
+          },
+          "unavailableReason": {
+            "type": "string"
+          },
+          "inputMediaTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "maxInputBytes": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "maxOutputBytes": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+          },
+          "maxWaitMillis": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "parametersSchema": {
+            "type": "string",
+            "enum": [
+              "detection.v1",
+              "video-analysis.v1",
+              "stream-analysis.v1"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "version",
+          "displayName",
+          "available",
+          "simulated",
+          "unavailableReason",
+          "inputMediaTypes",
+          "maxInputBytes",
+          "maxOutputBytes",
+          "maxWaitMillis",
+          "parametersSchema"
+        ]
+      },
+      "StreamParametersDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "maxEventsPerPoll": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 200
+          },
+          "pollIntervalMillis": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 250,
+            "maximum": 30000
+          },
+          "includeSnapshots": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "maxEventsPerPoll",
+          "pollIntervalMillis",
+          "includeSnapshots"
+        ]
+      },
+      "StreamSourceDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "streamSourceId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "unavailableReason": {
+            "type": "string",
+            "maxLength": 500,
+            "nullable": true
+          }
+        },
+        "required": [
+          "streamSourceId",
+          "displayName",
+          "available"
+        ],
+        "description": "不得包含 provider source ID、GPU URL、RTSP 地址或凭据。"
+      },
+      "StreamSessionRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capabilityCode": {
+            "type": "string",
+            "enum": [
+              "video-stream-analysis.v1"
+            ]
+          },
+          "streamSourceId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/StreamParametersDto"
+          }
+        },
+        "required": [
+          "capabilityCode",
+          "streamSourceId",
+          "parameters"
+        ],
+        "description": "只接受本地不透明来源 ID；additionalProperties=false 明确拒绝 RTSP、GPU URL 和凭据字段。"
+      },
+      "StreamSessionState": {
+        "type": "string",
+        "enum": [
+          "PENDING",
+          "STARTING",
+          "RUNNING",
+          "STOP_REQUESTED",
+          "STOPPED",
+          "FAILED",
+          "UNKNOWN"
+        ]
+      },
+      "StreamSessionDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "streamSourceId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "capabilityCode": {
+            "type": "string",
+            "enum": [
+              "video-stream-analysis.v1"
+            ]
+          },
+          "capabilityVersion": {
+            "type": "string"
+          },
+          "parameters": {
+            "$ref": "#/components/schemas/StreamParametersDto"
+          },
+          "state": {
+            "$ref": "#/components/schemas/StreamSessionState"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "unknownReason": {
+            "$ref": "#/components/schemas/UnknownOperationReason"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorDto"
+          }
+        },
+        "required": [
+          "sessionId",
+          "streamSourceId",
+          "capabilityCode",
+          "capabilityVersion",
+          "parameters",
+          "state",
+          "createdAt",
+          "updatedAt"
+        ],
+        "description": "不得向浏览器返回 providerSessionId 或连接秘密。"
+      },
+      "StreamEventDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "eventId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,120}$"
+          },
+          "offsetMillis": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          },
+          "occurredAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "eventType": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "nullable": true
+          },
+          "snapshotAssetId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "nullable": true
+          }
+        },
+        "required": [
+          "eventId",
+          "offsetMillis",
+          "occurredAt",
+          "eventType"
+        ]
+      },
+      "StreamEventPageDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StreamEventDto"
+            },
+            "maxItems": 200
+          },
+          "nextCursor": {
+            "type": "string",
+            "maxLength": 512,
+            "nullable": true
+          }
+        },
+        "required": [
+          "sessionId",
+          "items"
+        ]
+      },
+      "CapabilityListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CapabilityDto"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "AssetResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/AssetDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "JobResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/JobDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "JobPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/JobPageDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "StreamSourceListResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StreamSourceDto"
+            }
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "StreamSessionResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/StreamSessionDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "StreamEventPageResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/StreamEventPageDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ErrorDto"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "success",
+          "message",
+          "code",
+          "result",
+          "timestamp"
+        ]
+      }
+    }
+  }
+}

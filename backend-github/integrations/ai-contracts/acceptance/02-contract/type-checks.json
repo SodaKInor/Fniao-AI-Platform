@@ -1,11 +1,11 @@
 {
   "status": "PASS",
-  "public_types": 43,
-  "max_java_physical_lines": 126,
-  "max_method_physical_lines": 22,
+  "public_types": 83,
+  "max_java_physical_lines": 164,
+  "max_method_physical_lines": 26,
   "files_requiring_400_line_review": [],
   "methods_requiring_80_line_review": [],
-  "coverage": "Java AST declarations/imports/physical method spans and DTO/schema mappings. Combined with Java 8 isolated compile, jdeps and documented responsibility review; not a general proof of runtime architecture.",
+  "coverage": "Java AST declarations/imports/physical method spans, no unbounded Map, and DTO/schema mappings. Combined with Java 8 isolated compile, jdeps and documented responsibility review; not a general proof of runtime architecture.",
   "files": [
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/AssetDto.java",
@@ -388,50 +388,61 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/ErrorDto.java",
-      "physical_lines": 50,
+      "physical_lines": 60,
       "imports": [
         "com.fasterxml.jackson.annotation.JsonInclude",
-        "org.jeecg.modules.ai.domain.ErrorCode"
+        "org.jeecg.modules.ai.domain.ErrorCode",
+        "org.jeecg.modules.ai.domain.UnknownOperationReason"
       ],
       "methods": [
         {
           "name": "getErrorCode",
-          "line": 19,
+          "line": 21,
           "physical_lines": 3
         },
         {
           "name": "setErrorCode",
-          "line": 23,
+          "line": 25,
           "physical_lines": 3
         },
         {
           "name": "getMessage",
-          "line": 27,
+          "line": 29,
           "physical_lines": 3
         },
         {
           "name": "setMessage",
-          "line": 31,
+          "line": 33,
           "physical_lines": 3
         },
         {
           "name": "getRequestId",
-          "line": 35,
+          "line": 37,
           "physical_lines": 3
         },
         {
           "name": "setRequestId",
-          "line": 39,
+          "line": 41,
           "physical_lines": 3
         },
         {
           "name": "getSimulated",
-          "line": 43,
+          "line": 45,
           "physical_lines": 3
         },
         {
           "name": "setSimulated",
-          "line": 47,
+          "line": 49,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 53,
+          "physical_lines": 3
+        },
+        {
+          "name": "setUnknownReason",
+          "line": 57,
           "physical_lines": 3
         }
       ]
@@ -487,172 +498,225 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/InferenceResultDto.java",
-      "physical_lines": 41,
+      "physical_lines": 51,
       "imports": [
         "com.fasterxml.jackson.annotation.JsonInclude",
-        "java.util.List"
+        "java.util.List",
+        "org.jeecg.modules.ai.domain.ResultType"
       ],
       "methods": [
         {
+          "name": "getResultType",
+          "line": 20,
+          "physical_lines": 3
+        },
+        {
+          "name": "setResultType",
+          "line": 24,
+          "physical_lines": 3
+        },
+        {
           "name": "getSimulated",
-          "line": 18,
+          "line": 28,
           "physical_lines": 3
         },
         {
           "name": "setSimulated",
-          "line": 22,
+          "line": 32,
           "physical_lines": 3
         },
         {
           "name": "getData",
-          "line": 26,
+          "line": 36,
           "physical_lines": 3
         },
         {
           "name": "setData",
-          "line": 30,
+          "line": 40,
           "physical_lines": 3
         },
         {
           "name": "getArtifacts",
-          "line": 34,
+          "line": 44,
           "physical_lines": 3
         },
         {
           "name": "setArtifacts",
-          "line": 38,
+          "line": 48,
           "physical_lines": 3
         }
       ]
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/JobDto.java",
-      "physical_lines": 126,
+      "physical_lines": 164,
       "imports": [
         "com.fasterxml.jackson.annotation.JsonInclude",
         "com.fasterxml.jackson.annotation.JsonFormat",
         "java.time.Instant",
-        "org.jeecg.modules.ai.domain.JobState"
+        "org.jeecg.modules.ai.domain.JobType",
+        "org.jeecg.modules.ai.domain.JobState",
+        "org.jeecg.modules.ai.domain.UnknownOperationReason"
       ],
       "methods": [
         {
           "name": "getRequestId",
-          "line": 31,
+          "line": 37,
           "physical_lines": 3
         },
         {
           "name": "setRequestId",
-          "line": 35,
+          "line": 41,
+          "physical_lines": 3
+        },
+        {
+          "name": "getJobType",
+          "line": 45,
+          "physical_lines": 3
+        },
+        {
+          "name": "setJobType",
+          "line": 49,
           "physical_lines": 3
         },
         {
           "name": "getCapabilityCode",
-          "line": 39,
+          "line": 53,
           "physical_lines": 3
         },
         {
           "name": "setCapabilityCode",
-          "line": 43,
+          "line": 57,
           "physical_lines": 3
         },
         {
           "name": "getCapabilityVersion",
-          "line": 47,
+          "line": 61,
           "physical_lines": 3
         },
         {
           "name": "setCapabilityVersion",
-          "line": 51,
+          "line": 65,
           "physical_lines": 3
         },
         {
           "name": "getInputAssetId",
-          "line": 55,
+          "line": 69,
           "physical_lines": 3
         },
         {
           "name": "setInputAssetId",
-          "line": 59,
+          "line": 73,
           "physical_lines": 3
         },
         {
           "name": "getParameters",
-          "line": 63,
+          "line": 77,
           "physical_lines": 3
         },
         {
           "name": "setParameters",
-          "line": 67,
+          "line": 81,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoParameters",
+          "line": 85,
+          "physical_lines": 3
+        },
+        {
+          "name": "setVideoParameters",
+          "line": 89,
           "physical_lines": 3
         },
         {
           "name": "getState",
-          "line": 71,
+          "line": 93,
           "physical_lines": 3
         },
         {
           "name": "setState",
-          "line": 75,
+          "line": 97,
           "physical_lines": 3
         },
         {
           "name": "getSimulated",
-          "line": 79,
+          "line": 101,
           "physical_lines": 3
         },
         {
           "name": "setSimulated",
-          "line": 83,
+          "line": 105,
           "physical_lines": 3
         },
         {
           "name": "getCreatedAt",
-          "line": 87,
+          "line": 109,
           "physical_lines": 3
         },
         {
           "name": "setCreatedAt",
-          "line": 91,
+          "line": 113,
           "physical_lines": 3
         },
         {
           "name": "getUpdatedAt",
-          "line": 95,
+          "line": 117,
           "physical_lines": 3
         },
         {
           "name": "setUpdatedAt",
-          "line": 99,
+          "line": 121,
           "physical_lines": 3
         },
         {
           "name": "getRetryOfRequestId",
-          "line": 103,
+          "line": 125,
           "physical_lines": 3
         },
         {
           "name": "setRetryOfRequestId",
-          "line": 107,
+          "line": 129,
           "physical_lines": 3
         },
         {
           "name": "getResult",
-          "line": 111,
+          "line": 133,
           "physical_lines": 3
         },
         {
           "name": "setResult",
-          "line": 115,
+          "line": 137,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoResult",
+          "line": 141,
+          "physical_lines": 3
+        },
+        {
+          "name": "setVideoResult",
+          "line": 145,
           "physical_lines": 3
         },
         {
           "name": "getError",
-          "line": 119,
+          "line": 149,
           "physical_lines": 3
         },
         {
           "name": "setError",
-          "line": 123,
+          "line": 153,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 157,
+          "physical_lines": 3
+        },
+        {
+          "name": "setUnknownReason",
+          "line": 161,
           "physical_lines": 3
         }
       ]
@@ -683,6 +747,588 @@
         {
           "name": "setNextCursor",
           "line": 29,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamEventDto.java",
+      "physical_lines": 66,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonFormat",
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.math.BigDecimal",
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "getEventId",
+          "line": 19,
+          "physical_lines": 3
+        },
+        {
+          "name": "setEventId",
+          "line": 23,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 27,
+          "physical_lines": 3
+        },
+        {
+          "name": "setOffsetMillis",
+          "line": 31,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOccurredAt",
+          "line": 35,
+          "physical_lines": 3
+        },
+        {
+          "name": "setOccurredAt",
+          "line": 39,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 43,
+          "physical_lines": 3
+        },
+        {
+          "name": "setEventType",
+          "line": 47,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 51,
+          "physical_lines": 3
+        },
+        {
+          "name": "setScore",
+          "line": 55,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshotAssetId",
+          "line": 59,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSnapshotAssetId",
+          "line": 63,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamEventPageDto.java",
+      "physical_lines": 36,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.util.List"
+      ],
+      "methods": [
+        {
+          "name": "getSessionId",
+          "line": 13,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSessionId",
+          "line": 17,
+          "physical_lines": 3
+        },
+        {
+          "name": "getItems",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "setItems",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getNextCursor",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "setNextCursor",
+          "line": 33,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamParametersDto.java",
+      "physical_lines": 35,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude"
+      ],
+      "methods": [
+        {
+          "name": "getMaxEventsPerPoll",
+          "line": 12,
+          "physical_lines": 3
+        },
+        {
+          "name": "setMaxEventsPerPoll",
+          "line": 16,
+          "physical_lines": 3
+        },
+        {
+          "name": "getPollIntervalMillis",
+          "line": 20,
+          "physical_lines": 3
+        },
+        {
+          "name": "setPollIntervalMillis",
+          "line": 24,
+          "physical_lines": 3
+        },
+        {
+          "name": "getIncludeSnapshots",
+          "line": 28,
+          "physical_lines": 3
+        },
+        {
+          "name": "setIncludeSnapshots",
+          "line": 32,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamSessionDto.java",
+      "physical_lines": 104,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonFormat",
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.time.Instant",
+        "org.jeecg.modules.ai.domain.StreamSessionState",
+        "org.jeecg.modules.ai.domain.UnknownOperationReason"
+      ],
+      "methods": [
+        {
+          "name": "getSessionId",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSessionId",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "getStreamSourceId",
+          "line": 33,
+          "physical_lines": 3
+        },
+        {
+          "name": "setStreamSourceId",
+          "line": 37,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapabilityCode",
+          "line": 41,
+          "physical_lines": 3
+        },
+        {
+          "name": "setCapabilityCode",
+          "line": 45,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapabilityVersion",
+          "line": 49,
+          "physical_lines": 3
+        },
+        {
+          "name": "setCapabilityVersion",
+          "line": 53,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 57,
+          "physical_lines": 3
+        },
+        {
+          "name": "setParameters",
+          "line": 61,
+          "physical_lines": 3
+        },
+        {
+          "name": "getState",
+          "line": 65,
+          "physical_lines": 3
+        },
+        {
+          "name": "setState",
+          "line": 69,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCreatedAt",
+          "line": 73,
+          "physical_lines": 3
+        },
+        {
+          "name": "setCreatedAt",
+          "line": 77,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUpdatedAt",
+          "line": 81,
+          "physical_lines": 3
+        },
+        {
+          "name": "setUpdatedAt",
+          "line": 85,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 89,
+          "physical_lines": 3
+        },
+        {
+          "name": "setUnknownReason",
+          "line": 93,
+          "physical_lines": 3
+        },
+        {
+          "name": "getError",
+          "line": 97,
+          "physical_lines": 3
+        },
+        {
+          "name": "setError",
+          "line": 101,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamSessionRequestDto.java",
+      "physical_lines": 35,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude"
+      ],
+      "methods": [
+        {
+          "name": "getCapabilityCode",
+          "line": 12,
+          "physical_lines": 3
+        },
+        {
+          "name": "setCapabilityCode",
+          "line": 16,
+          "physical_lines": 3
+        },
+        {
+          "name": "getStreamSourceId",
+          "line": 20,
+          "physical_lines": 3
+        },
+        {
+          "name": "setStreamSourceId",
+          "line": 24,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 28,
+          "physical_lines": 3
+        },
+        {
+          "name": "setParameters",
+          "line": 32,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/StreamSourceDto.java",
+      "physical_lines": 44,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude"
+      ],
+      "methods": [
+        {
+          "name": "getStreamSourceId",
+          "line": 13,
+          "physical_lines": 3
+        },
+        {
+          "name": "setStreamSourceId",
+          "line": 17,
+          "physical_lines": 3
+        },
+        {
+          "name": "getDisplayName",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "setDisplayName",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getAvailable",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "setAvailable",
+          "line": 33,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnavailableReason",
+          "line": 37,
+          "physical_lines": 3
+        },
+        {
+          "name": "setUnavailableReason",
+          "line": 41,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/VideoEventDto.java",
+      "physical_lines": 54,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.math.BigDecimal"
+      ],
+      "methods": [
+        {
+          "name": "getEventId",
+          "line": 15,
+          "physical_lines": 3
+        },
+        {
+          "name": "setEventId",
+          "line": 19,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 23,
+          "physical_lines": 3
+        },
+        {
+          "name": "setOffsetMillis",
+          "line": 27,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 31,
+          "physical_lines": 3
+        },
+        {
+          "name": "setEventType",
+          "line": 35,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 39,
+          "physical_lines": 3
+        },
+        {
+          "name": "setScore",
+          "line": 43,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshotAssetId",
+          "line": 47,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSnapshotAssetId",
+          "line": 51,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/VideoJobRequestDto.java",
+      "physical_lines": 44,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude"
+      ],
+      "methods": [
+        {
+          "name": "getCapabilityCode",
+          "line": 13,
+          "physical_lines": 3
+        },
+        {
+          "name": "setCapabilityCode",
+          "line": 17,
+          "physical_lines": 3
+        },
+        {
+          "name": "getInputAssetId",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "setInputAssetId",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "setParameters",
+          "line": 33,
+          "physical_lines": 3
+        },
+        {
+          "name": "getRetryOfRequestId",
+          "line": 37,
+          "physical_lines": 3
+        },
+        {
+          "name": "setRetryOfRequestId",
+          "line": 41,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/VideoParametersDto.java",
+      "physical_lines": 54,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.math.BigDecimal"
+      ],
+      "methods": [
+        {
+          "name": "getThreshold",
+          "line": 15,
+          "physical_lines": 3
+        },
+        {
+          "name": "setThreshold",
+          "line": 19,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSampleIntervalMillis",
+          "line": 23,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSampleIntervalMillis",
+          "line": 27,
+          "physical_lines": 3
+        },
+        {
+          "name": "getMaxEvents",
+          "line": 31,
+          "physical_lines": 3
+        },
+        {
+          "name": "setMaxEvents",
+          "line": 35,
+          "physical_lines": 3
+        },
+        {
+          "name": "getIncludeSnapshots",
+          "line": 39,
+          "physical_lines": 3
+        },
+        {
+          "name": "setIncludeSnapshots",
+          "line": 43,
+          "physical_lines": 3
+        },
+        {
+          "name": "getAnnotate",
+          "line": 47,
+          "physical_lines": 3
+        },
+        {
+          "name": "setAnnotate",
+          "line": 51,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/VideoResultDto.java",
+      "physical_lines": 55,
+      "imports": [
+        "com.fasterxml.jackson.annotation.JsonInclude",
+        "java.util.List",
+        "org.jeecg.modules.ai.domain.ResultType"
+      ],
+      "methods": [
+        {
+          "name": "getResultType",
+          "line": 16,
+          "physical_lines": 3
+        },
+        {
+          "name": "setResultType",
+          "line": 20,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSimulated",
+          "line": 24,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSimulated",
+          "line": 28,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEvents",
+          "line": 32,
+          "physical_lines": 3
+        },
+        {
+          "name": "setEvents",
+          "line": 36,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshots",
+          "line": 40,
+          "physical_lines": 3
+        },
+        {
+          "name": "setSnapshots",
+          "line": 44,
+          "physical_lines": 3
+        },
+        {
+          "name": "getAnnotatedVideo",
+          "line": 48,
+          "physical_lines": 3
+        },
+        {
+          "name": "setAnnotatedVideo",
+          "line": 52,
           "physical_lines": 3
         }
       ]
@@ -1134,118 +1780,153 @@
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/JobRecord.java",
-      "physical_lines": 69,
+      "physical_lines": 113,
       "imports": [
         "java.time.Instant"
       ],
       "methods": [
         {
           "name": "JobRecord",
-          "line": 19,
-          "physical_lines": 18
+          "line": 22,
+          "physical_lines": 22
+        },
+        {
+          "name": "JobRecord",
+          "line": 45,
+          "physical_lines": 24
         },
         {
           "name": "getRequest",
-          "line": 38,
+          "line": 70,
           "physical_lines": 3
         },
         {
           "name": "getState",
-          "line": 42,
+          "line": 74,
           "physical_lines": 3
         },
         {
           "name": "getVersion",
-          "line": 46,
+          "line": 78,
           "physical_lines": 3
         },
         {
           "name": "getDispatchToken",
-          "line": 50,
+          "line": 82,
           "physical_lines": 3
         },
         {
           "name": "getProviderResult",
-          "line": 54,
+          "line": 86,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoProviderResult",
+          "line": 90,
           "physical_lines": 3
         },
         {
           "name": "getResult",
-          "line": 58,
+          "line": 94,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoResult",
+          "line": 98,
           "physical_lines": 3
         },
         {
           "name": "getError",
-          "line": 62,
+          "line": 102,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 106,
           "physical_lines": 3
         },
         {
           "name": "getUpdatedAt",
-          "line": 66,
+          "line": 110,
           "physical_lines": 3
         }
       ]
     },
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/JobRequest.java",
-      "physical_lines": 84,
+      "physical_lines": 124,
       "imports": [
         "java.time.Instant"
       ],
       "methods": [
         {
           "name": "JobRequest",
-          "line": 22,
-          "physical_lines": 22
+          "line": 24,
+          "physical_lines": 25
+        },
+        {
+          "name": "JobRequest",
+          "line": 50,
+          "physical_lines": 26
         },
         {
           "name": "getRequestId",
-          "line": 45,
-          "physical_lines": 3
-        },
-        {
-          "name": "getOwnerId",
-          "line": 49,
-          "physical_lines": 3
-        },
-        {
-          "name": "getIdempotencyKey",
-          "line": 53,
-          "physical_lines": 3
-        },
-        {
-          "name": "getRequestDigest",
-          "line": 57,
-          "physical_lines": 3
-        },
-        {
-          "name": "getInputAssetId",
-          "line": 61,
-          "physical_lines": 3
-        },
-        {
-          "name": "getParameters",
-          "line": 65,
-          "physical_lines": 3
-        },
-        {
-          "name": "getCapability",
-          "line": 69,
-          "physical_lines": 3
-        },
-        {
-          "name": "getRetryOfRequestId",
-          "line": 73,
-          "physical_lines": 3
-        },
-        {
-          "name": "isSimulated",
           "line": 77,
           "physical_lines": 3
         },
         {
-          "name": "getCreatedAt",
+          "name": "getOwnerId",
           "line": 81,
+          "physical_lines": 3
+        },
+        {
+          "name": "getIdempotencyKey",
+          "line": 85,
+          "physical_lines": 3
+        },
+        {
+          "name": "getRequestDigest",
+          "line": 89,
+          "physical_lines": 3
+        },
+        {
+          "name": "getInputAssetId",
+          "line": 93,
+          "physical_lines": 3
+        },
+        {
+          "name": "getJobType",
+          "line": 97,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 101,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoParameters",
+          "line": 105,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapability",
+          "line": 109,
+          "physical_lines": 3
+        },
+        {
+          "name": "getRetryOfRequestId",
+          "line": 113,
+          "physical_lines": 3
+        },
+        {
+          "name": "isSimulated",
+          "line": 117,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCreatedAt",
+          "line": 121,
           "physical_lines": 3
         }
       ]
@@ -1279,40 +1960,66 @@
       ]
     },
     {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/JobType.java",
+      "physical_lines": 7,
+      "imports": [],
+      "methods": []
+    },
+    {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/JobUpdate.java",
-      "physical_lines": 48,
+      "physical_lines": 78,
       "imports": [
         "java.time.Instant"
       ],
       "methods": [
         {
           "name": "JobUpdate",
-          "line": 16,
-          "physical_lines": 12
+          "line": 19,
+          "physical_lines": 8
+        },
+        {
+          "name": "JobUpdate",
+          "line": 28,
+          "physical_lines": 18
         },
         {
           "name": "getState",
-          "line": 29,
+          "line": 47,
           "physical_lines": 3
         },
         {
           "name": "getProviderResult",
-          "line": 33,
+          "line": 51,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoProviderResult",
+          "line": 55,
           "physical_lines": 3
         },
         {
           "name": "getResult",
-          "line": 37,
+          "line": 59,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVideoResult",
+          "line": 63,
           "physical_lines": 3
         },
         {
           "name": "getError",
-          "line": 41,
+          "line": 67,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 71,
           "physical_lines": 3
         },
         {
           "name": "getUpdatedAt",
-          "line": 45,
+          "line": 75,
           "physical_lines": 3
         }
       ]
@@ -1470,6 +2177,187 @@
       ]
     },
     {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ProviderStreamEvent.java",
+      "physical_lines": 53,
+      "imports": [
+        "java.math.BigDecimal",
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "ProviderStreamEvent",
+          "line": 15,
+          "physical_lines": 14
+        },
+        {
+          "name": "getProviderEventId",
+          "line": 30,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 34,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOccurredAt",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 42,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 46,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshot",
+          "line": 50,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ProviderStreamEventPage.java",
+      "physical_lines": 26,
+      "imports": [
+        "java.util.ArrayList",
+        "java.util.Collections",
+        "java.util.List",
+        "java.util.Objects"
+      ],
+      "methods": [
+        {
+          "name": "ProviderStreamEventPage",
+          "line": 13,
+          "physical_lines": 5
+        },
+        {
+          "name": "getItems",
+          "line": 19,
+          "physical_lines": 3
+        },
+        {
+          "name": "getNextCursor",
+          "line": 23,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ProviderStreamSession.java",
+      "physical_lines": 36,
+      "imports": [],
+      "methods": [
+        {
+          "name": "ProviderStreamSession",
+          "line": 10,
+          "physical_lines": 10
+        },
+        {
+          "name": "getProviderSessionId",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "getState",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCursor",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderVersion",
+          "line": 33,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ProviderStreamStartRequest.java",
+      "physical_lines": 36,
+      "imports": [],
+      "methods": [
+        {
+          "name": "ProviderStreamStartRequest",
+          "line": 10,
+          "physical_lines": 10
+        },
+        {
+          "name": "getSessionId",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapability",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderSourceRef",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 33,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ProviderVideoEvent.java",
+      "physical_lines": 45,
+      "imports": [
+        "java.math.BigDecimal"
+      ],
+      "methods": [
+        {
+          "name": "ProviderVideoEvent",
+          "line": 13,
+          "physical_lines": 12
+        },
+        {
+          "name": "getProviderEventId",
+          "line": 26,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 30,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 34,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshot",
+          "line": 42,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/ResultType.java",
+      "physical_lines": 7,
+      "imports": [],
+      "methods": []
+    },
+    {
       "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StoredArtifact.java",
       "physical_lines": 31,
       "imports": [],
@@ -1492,6 +2380,612 @@
         {
           "name": "getSha256",
           "line": 28,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamEvent.java",
+      "physical_lines": 60,
+      "imports": [
+        "java.math.BigDecimal",
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "StreamEvent",
+          "line": 16,
+          "physical_lines": 16
+        },
+        {
+          "name": "getEventId",
+          "line": 33,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderEventId",
+          "line": 37,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 41,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOccurredAt",
+          "line": 45,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 49,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 53,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshotAssetId",
+          "line": 57,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamEventPage.java",
+      "physical_lines": 32,
+      "imports": [
+        "java.util.ArrayList",
+        "java.util.Collections",
+        "java.util.List",
+        "java.util.Objects"
+      ],
+      "methods": [
+        {
+          "name": "StreamEventPage",
+          "line": 14,
+          "physical_lines": 6
+        },
+        {
+          "name": "getSessionId",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "getItems",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "getNextCursor",
+          "line": 29,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamParameters.java",
+      "physical_lines": 29,
+      "imports": [],
+      "methods": [
+        {
+          "name": "StreamParameters",
+          "line": 9,
+          "physical_lines": 8
+        },
+        {
+          "name": "getMaxEventsPerPoll",
+          "line": 18,
+          "physical_lines": 3
+        },
+        {
+          "name": "getPollIntervalMillis",
+          "line": 22,
+          "physical_lines": 3
+        },
+        {
+          "name": "isIncludeSnapshots",
+          "line": 26,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamProviderFeatures.java",
+      "physical_lines": 36,
+      "imports": [],
+      "methods": [
+        {
+          "name": "StreamProviderFeatures",
+          "line": 10,
+          "physical_lines": 10
+        },
+        {
+          "name": "isSessionQuery",
+          "line": 21,
+          "physical_lines": 3
+        },
+        {
+          "name": "isEventQuery",
+          "line": 25,
+          "physical_lines": 3
+        },
+        {
+          "name": "isStop",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "isDeduplication",
+          "line": 33,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSession.java",
+      "physical_lines": 73,
+      "imports": [
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "StreamSession",
+          "line": 17,
+          "physical_lines": 20
+        },
+        {
+          "name": "getRequest",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getState",
+          "line": 42,
+          "physical_lines": 3
+        },
+        {
+          "name": "getVersion",
+          "line": 46,
+          "physical_lines": 3
+        },
+        {
+          "name": "getDispatchToken",
+          "line": 50,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderSessionId",
+          "line": 54,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCursor",
+          "line": 58,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 62,
+          "physical_lines": 3
+        },
+        {
+          "name": "getError",
+          "line": 66,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUpdatedAt",
+          "line": 70,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSessionRequest.java",
+      "physical_lines": 73,
+      "imports": [
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "StreamSessionRequest",
+          "line": 17,
+          "physical_lines": 20
+        },
+        {
+          "name": "getSessionId",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOwnerId",
+          "line": 42,
+          "physical_lines": 3
+        },
+        {
+          "name": "getIdempotencyKey",
+          "line": 46,
+          "physical_lines": 3
+        },
+        {
+          "name": "getRequestDigest",
+          "line": 50,
+          "physical_lines": 3
+        },
+        {
+          "name": "getStreamSourceId",
+          "line": 54,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapability",
+          "line": 58,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderFeatures",
+          "line": 62,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 66,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCreatedAt",
+          "line": 70,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSessionState.java",
+      "physical_lines": 12,
+      "imports": [],
+      "methods": []
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSessionSubmission.java",
+      "physical_lines": 20,
+      "imports": [],
+      "methods": [
+        {
+          "name": "StreamSessionSubmission",
+          "line": 8,
+          "physical_lines": 4
+        },
+        {
+          "name": "getSession",
+          "line": 13,
+          "physical_lines": 3
+        },
+        {
+          "name": "isCreated",
+          "line": 17,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSessionUpdate.java",
+      "physical_lines": 52,
+      "imports": [
+        "java.time.Instant"
+      ],
+      "methods": [
+        {
+          "name": "StreamSessionUpdate",
+          "line": 14,
+          "physical_lines": 14
+        },
+        {
+          "name": "getState",
+          "line": 29,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderSessionId",
+          "line": 33,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCursor",
+          "line": 37,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnknownReason",
+          "line": 41,
+          "physical_lines": 3
+        },
+        {
+          "name": "getError",
+          "line": 45,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUpdatedAt",
+          "line": 49,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamSource.java",
+      "physical_lines": 50,
+      "imports": [],
+      "methods": [
+        {
+          "name": "StreamSource",
+          "line": 12,
+          "physical_lines": 14
+        },
+        {
+          "name": "getStreamSourceId",
+          "line": 27,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOwnerId",
+          "line": 31,
+          "physical_lines": 3
+        },
+        {
+          "name": "getDisplayName",
+          "line": 35,
+          "physical_lines": 3
+        },
+        {
+          "name": "getProviderSourceRef",
+          "line": 39,
+          "physical_lines": 3
+        },
+        {
+          "name": "isEnabled",
+          "line": 43,
+          "physical_lines": 3
+        },
+        {
+          "name": "getUnavailableReason",
+          "line": 47,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamStopOutcome.java",
+      "physical_lines": 8,
+      "imports": [],
+      "methods": []
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/StreamStopResult.java",
+      "physical_lines": 20,
+      "imports": [],
+      "methods": [
+        {
+          "name": "StreamStopResult",
+          "line": 8,
+          "physical_lines": 4
+        },
+        {
+          "name": "getProviderSessionId",
+          "line": 13,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOutcome",
+          "line": 17,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/UnknownOperationReason.java",
+      "physical_lines": 10,
+      "imports": [],
+      "methods": []
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/VideoEvent.java",
+      "physical_lines": 45,
+      "imports": [
+        "java.math.BigDecimal"
+      ],
+      "methods": [
+        {
+          "name": "VideoEvent",
+          "line": 13,
+          "physical_lines": 12
+        },
+        {
+          "name": "getEventId",
+          "line": 26,
+          "physical_lines": 3
+        },
+        {
+          "name": "getOffsetMillis",
+          "line": 30,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEventType",
+          "line": 34,
+          "physical_lines": 3
+        },
+        {
+          "name": "getScore",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshotAssetId",
+          "line": 42,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/VideoParameters.java",
+      "physical_lines": 45,
+      "imports": [
+        "java.math.BigDecimal"
+      ],
+      "methods": [
+        {
+          "name": "VideoParameters",
+          "line": 13,
+          "physical_lines": 12
+        },
+        {
+          "name": "getThreshold",
+          "line": 26,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSampleIntervalMillis",
+          "line": 30,
+          "physical_lines": 3
+        },
+        {
+          "name": "getMaxEvents",
+          "line": 34,
+          "physical_lines": 3
+        },
+        {
+          "name": "isIncludeSnapshots",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "isAnnotate",
+          "line": 42,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/VideoProviderRequest.java",
+      "physical_lines": 43,
+      "imports": [],
+      "methods": [
+        {
+          "name": "VideoProviderRequest",
+          "line": 11,
+          "physical_lines": 12
+        },
+        {
+          "name": "getRequestId",
+          "line": 24,
+          "physical_lines": 3
+        },
+        {
+          "name": "getCapability",
+          "line": 28,
+          "physical_lines": 3
+        },
+        {
+          "name": "getParameters",
+          "line": 32,
+          "physical_lines": 3
+        },
+        {
+          "name": "getInputMetadata",
+          "line": 36,
+          "physical_lines": 3
+        },
+        {
+          "name": "getInput",
+          "line": 40,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/VideoProviderResult.java",
+      "physical_lines": 42,
+      "imports": [
+        "java.util.ArrayList",
+        "java.util.Collections",
+        "java.util.List",
+        "java.util.Objects"
+      ],
+      "methods": [
+        {
+          "name": "VideoProviderResult",
+          "line": 15,
+          "physical_lines": 11
+        },
+        {
+          "name": "getProviderRequestId",
+          "line": 27,
+          "physical_lines": 3
+        },
+        {
+          "name": "isSimulated",
+          "line": 31,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEvents",
+          "line": 35,
+          "physical_lines": 3
+        },
+        {
+          "name": "getAnnotatedVideo",
+          "line": 39,
+          "physical_lines": 3
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/VideoResult.java",
+      "physical_lines": 49,
+      "imports": [
+        "java.util.ArrayList",
+        "java.util.Collections",
+        "java.util.List",
+        "java.util.Objects"
+      ],
+      "methods": [
+        {
+          "name": "VideoResult",
+          "line": 15,
+          "physical_lines": 10
+        },
+        {
+          "name": "immutable",
+          "line": 26,
+          "physical_lines": 3
+        },
+        {
+          "name": "getResultType",
+          "line": 30,
+          "physical_lines": 3
+        },
+        {
+          "name": "isSimulated",
+          "line": 34,
+          "physical_lines": 3
+        },
+        {
+          "name": "getEvents",
+          "line": 38,
+          "physical_lines": 3
+        },
+        {
+          "name": "getSnapshotAssetIds",
+          "line": 42,
+          "physical_lines": 3
+        },
+        {
+          "name": "getAnnotatedVideoAssetId",
+          "line": 46,
           "physical_lines": 3
         }
       ]
@@ -1652,6 +3146,154 @@
           "name": "open",
           "line": 16,
           "physical_lines": 2
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/StreamEventRepository.java",
+      "physical_lines": 23,
+      "imports": [
+        "java.time.Instant",
+        "java.util.List",
+        "org.jeecg.modules.ai.domain.StreamEvent",
+        "org.jeecg.modules.ai.domain.StreamEventPage"
+      ],
+      "methods": [
+        {
+          "name": "listOwned",
+          "line": 14,
+          "physical_lines": 1
+        },
+        {
+          "name": "appendAndAdvance",
+          "line": 16,
+          "physical_lines": 7
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/StreamSessionProvider.java",
+      "physical_lines": 21,
+      "imports": [
+        "org.jeecg.modules.ai.domain.ProviderException",
+        "org.jeecg.modules.ai.domain.ProviderStreamEventPage",
+        "org.jeecg.modules.ai.domain.ProviderStreamSession",
+        "org.jeecg.modules.ai.domain.ProviderStreamStartRequest",
+        "org.jeecg.modules.ai.domain.StreamStopResult"
+      ],
+      "methods": [
+        {
+          "name": "start",
+          "line": 11,
+          "physical_lines": 1
+        },
+        {
+          "name": "getSession",
+          "line": 13,
+          "physical_lines": 1
+        },
+        {
+          "name": "getEvents",
+          "line": 15,
+          "physical_lines": 4
+        },
+        {
+          "name": "stop",
+          "line": 20,
+          "physical_lines": 1
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/StreamSessionRepository.java",
+      "physical_lines": 48,
+      "imports": [
+        "java.time.Instant",
+        "java.util.List",
+        "java.util.Optional",
+        "org.jeecg.modules.ai.domain.IdempotencyConflictException",
+        "org.jeecg.modules.ai.domain.StreamSession",
+        "org.jeecg.modules.ai.domain.StreamSessionRequest",
+        "org.jeecg.modules.ai.domain.StreamSessionSubmission",
+        "org.jeecg.modules.ai.domain.StreamSessionUpdate"
+      ],
+      "methods": [
+        {
+          "name": "createOrGet",
+          "line": 14,
+          "physical_lines": 2
+        },
+        {
+          "name": "findByKeyOwned",
+          "line": 17,
+          "physical_lines": 1
+        },
+        {
+          "name": "findOwned",
+          "line": 19,
+          "physical_lines": 1
+        },
+        {
+          "name": "findPending",
+          "line": 21,
+          "physical_lines": 1
+        },
+        {
+          "name": "findRecoverable",
+          "line": 24,
+          "physical_lines": 1
+        },
+        {
+          "name": "claimPending",
+          "line": 26,
+          "physical_lines": 5
+        },
+        {
+          "name": "updateClaimed",
+          "line": 32,
+          "physical_lines": 5
+        },
+        {
+          "name": "requestStopOwned",
+          "line": 43,
+          "physical_lines": 5
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/StreamSourceRepository.java",
+      "physical_lines": 12,
+      "imports": [
+        "java.util.List",
+        "java.util.Optional",
+        "org.jeecg.modules.ai.domain.StreamSource"
+      ],
+      "methods": [
+        {
+          "name": "listOwned",
+          "line": 9,
+          "physical_lines": 1
+        },
+        {
+          "name": "findOwned",
+          "line": 11,
+          "physical_lines": 1
+        }
+      ]
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/VideoAnalysisProvider.java",
+      "physical_lines": 10,
+      "imports": [
+        "org.jeecg.modules.ai.domain.ProviderException",
+        "org.jeecg.modules.ai.domain.VideoProviderRequest",
+        "org.jeecg.modules.ai.domain.VideoProviderResult"
+      ],
+      "methods": [
+        {
+          "name": "analyze",
+          "line": 9,
+          "physical_lines": 1
         }
       ]
     }

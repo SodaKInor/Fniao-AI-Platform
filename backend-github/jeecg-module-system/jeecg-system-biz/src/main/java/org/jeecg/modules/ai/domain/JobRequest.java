@@ -13,7 +13,9 @@ public final class JobRequest {
     private final String idempotencyKey;
     private final String requestDigest;
     private final String inputAssetId;
+    private final JobType jobType;
     private final DetectionParameters parameters;
+    private final VideoParameters videoParameters;
     private final CapabilitySnapshot capability;
     private final String retryOfRequestId;
     private final boolean simulated;
@@ -30,12 +32,42 @@ public final class JobRequest {
             String retryOfRequestId,
             boolean simulated,
             Instant createdAt) {
+        this(
+                requestId,
+                ownerId,
+                idempotencyKey,
+                requestDigest,
+                inputAssetId,
+                JobType.IMAGE_DETECTION,
+                parameters,
+                null,
+                capability,
+                retryOfRequestId,
+                simulated,
+                createdAt);
+    }
+
+    public JobRequest(
+            String requestId,
+            String ownerId,
+            String idempotencyKey,
+            String requestDigest,
+            String inputAssetId,
+            JobType jobType,
+            DetectionParameters parameters,
+            VideoParameters videoParameters,
+            CapabilitySnapshot capability,
+            String retryOfRequestId,
+            boolean simulated,
+            Instant createdAt) {
         this.requestId = requestId;
         this.ownerId = ownerId;
         this.idempotencyKey = idempotencyKey;
         this.requestDigest = requestDigest;
         this.inputAssetId = inputAssetId;
+        this.jobType = jobType;
         this.parameters = parameters;
+        this.videoParameters = videoParameters;
         this.capability = capability;
         this.retryOfRequestId = retryOfRequestId;
         this.simulated = simulated;
@@ -62,8 +94,16 @@ public final class JobRequest {
         return inputAssetId;
     }
 
+    public JobType getJobType() {
+        return jobType;
+    }
+
     public DetectionParameters getParameters() {
         return parameters;
+    }
+
+    public VideoParameters getVideoParameters() {
+        return videoParameters;
     }
 
     public CapabilitySnapshot getCapability() {
