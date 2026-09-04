@@ -1,0 +1,43 @@
+{
+  "status": "PASS_WITH_EXTERNAL_BLOCKER",
+  "package": "03-client",
+  "common_start": "e44041ec050974ee3f36655f6869fb96cf16faad",
+  "implementation_commit": "f7e8bfba4cee2ed2bb340685272a626235f2f92b",
+  "delivery_commit": "214678f77cbf2f62b802592b1e6c008e01a09f17",
+  "fast_forward": true,
+  "owned_delivery_paths": 42,
+  "frozen_contract_changed": false,
+  "tests": {
+    "junit": 42,
+    "java_class_major": 52,
+    "result": "PASS",
+    "log_sha256": "aea2232f4bd398174f8584b4e44f9698f8311b0066c82822166ff16df5901019"
+  },
+  "contracts": {
+    "openapi": 4,
+    "json_cases": 34,
+    "png": 2,
+    "result": "PASS"
+  },
+  "build": {
+    "tag": "wgai-integration-backend:round5-client-214678f",
+    "image": "sha256:aec55ff71050fc04665290bcb4b5879683c82d485251698309acb5256d9c565a",
+    "size_bytes": 1111459214,
+    "log_sha256": "8c5d29d2af9871d09c4e45328fb0aa6a0e0876de47fc8769800d3d005acde856",
+    "layertools_smoke": "PASS"
+  },
+  "openspec": {
+    "remote-inference-platform": "PASS --strict; 27/48",
+    "remote-video-streaming": "PASS --strict; 5/21",
+    "accepted_tasks": ["3.6", "3.7", "stream:2.1", "stream:2.2", "stream:2.3"]
+  },
+  "graphify": {
+    "result": "PASS",
+    "nodes": 29541,
+    "links": 71838,
+    "existing_vue_parser_warnings": 6
+  },
+  "production_video_stream": "HARD_DISABLED",
+  "external_blocker": "RTX 5070 method/TLS/CA/auth/samples/limits/event-query/stop contract remains unconfirmed",
+  "next_release": "04a-assets-jobs only"
+}
