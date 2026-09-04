@@ -1,7 +1,9 @@
-Note: /workspace/backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/jobs/StrictInferenceJsonConverter.java uses or overrides a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
+Java 8 container; source mounted read-only; isolated 04a MySQL 8.0.36
 JUnit version 4.13.2
-.................................
-Time: 25.145
+Time: 25.943
 
-OK (33 tests)
+OK (49 tests)
+
+Full private log:
+/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/junit-round5.log
+SHA-256: 0a87fc30c730fd2764603aa8d9281212bc062ead086895c218787e7968ccaf52

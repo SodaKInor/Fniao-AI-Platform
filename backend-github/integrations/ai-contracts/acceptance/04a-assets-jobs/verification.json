@@ -1,60 +1,78 @@
 {
   "status": "PASS",
-  "code_commit": "669e8bcc0238d7e6127b8420fc5460b5196d1aee",
-  "java": "Java 8 container, all compiled main classes major version 52",
-  "compiled_main_classes": 80,
-  "tests_executed": 33,
-  "tests_failed": 0,
-  "tests": [
-    "ApiTest.twoSubmissionRoutesShareIdentityAndQueriesDoNotDispatch",
-    "ApiTest.strictJsonRejectsUnknownDuplicateAndCoercedFieldsBeforeDispatch",
-    "ApiTest.unauthenticatedAndForeignResourcesAreNotReadable",
-    "ApiTest.rememberedIdentityWithoutAuthenticationIsRejected",
-    "ApiTest.uploadAndDownloadArePrivateAndExpiryIsEnforced",
-    "ApiTest.oldAnonymousStaticControllerCannotReadNewPrivateFiles",
-    "ApiTest.startedDownloadFailureClosesStreamWithoutAppendingJson",
-    "ApiTest.providerAuthenticationFailureDoesNotBecomeLogin401",
-    "ConfigurationTest.springConfigurationWiresRealRepositoriesAndRequiresNoProductionTestDouble",
-    "ConfigurationTest.stricterCapabilityOutputLimitReachesReaderAndStore",
-    "PersistenceTest.concurrentCreateAndClaimAreAtomic",
-    "PersistenceTest.capacityIsDurableAndKeysAreCaseSensitive",
-    "PersistenceTest.eventFailureRollsBackClaim",
-    "PersistenceTest.cancelAndDispatchHaveOnlyOneWinner",
-    "PersistenceTest.historyUsesStableOwnerScopedCursor",
-    "PersistenceTest.unknownAndFinalStateCannotBeOverwritten",
-    "StorageTest.integrityLimitAndBorrowedStreamOwnership",
-    "StorageTest.oversizedUnknownLengthAndWrongSignatureAreRejected",
-    "StorageTest.privateRootsAndStorageKeysCannotEscape",
-    "StorageTest.truncatedImageCannotBecomeAnAsset",
-    "StorageTest.dimensionsAreCheckedBeforeDecode",
-    "WorkflowTest.completeResultAndHistorySurviveProviderOffline",
-    "WorkflowTest.emptyResultIsSuccessWithoutFiles",
-    "WorkflowTest.shortWaitDoesNotCancelOrReplaySynchronousCall",
-    "WorkflowTest.responseLostBecomesUnknownAndExplicitRetryHasNewIdentity",
-    "WorkflowTest.canonicalDuplicatesPersistPreciseParametersAndIgnoreLaterDisable",
-    "WorkflowTest.interruptedDownloadRetriesOnlySameArtifactAndCleansPartialFile",
-    "WorkflowTest.badHashCannotPublishOrSucceed",
-    "WorkflowTest.expiredAndRejectedReferencesNeverSucceed",
-    "WorkflowTest.metadataFailureCleansOrphanAndLostAcknowledgementPreservesCommittedFile",
-    "WorkflowTest.crossOwnerAndOversizedInputsAreRejectedBeforeProvider",
-    "WorkflowTest.realBackgroundWorkerUsesOneSlotAndContinuesAfterResponse",
-    "WorkflowTest.invalidNormalizedDetectionCannotPublishSuccess"
-  ],
-  "junit_log_sha256": "44d301d9ceec9fe26c7ceb9c0bffb2abd0f9be99c4bad462d787a6f9fd938b8f",
-  "full_backend_build": "PASS; existing prod,docker-core build; unit tests separately executed by JUnitCore",
-  "build_image_id": "sha256:08d0e90dade4a48c85e603c85858d77bff82d15a079ecd160df3c635d5ca8b04",
-  "build_log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/full-build-final.log",
-  "build_log_sha256": "ec7078c88f2ab930b0b7f31051d58aefe39683aeabc782285f8897c2bc71b6ce",
-  "build_main_sources_match_checkout": true,
-  "main_source_files_compared": 78,
-  "database": "Real isolated MySQL 8.0.36 existing copy",
-  "provider": "Frozen port test doubles only",
+  "common_start": "0bafd30726e82de74cfeb58ebad12393b36841c7",
+  "contract_commit": "1177de8be45123d043d7cb26b845ee9d94c26784",
+  "implementation_commit": "7c8a80f505200fe1088154ad4e3accd0b2ebf1df",
+  "java": {
+    "runtime": "Java 8 container",
+    "main_source_files": 180,
+    "compiled_class_files": 192,
+    "sample_class_major_version": 52
+  },
+  "junit": {
+    "status": "PASS",
+    "tests_executed": 49,
+    "tests_failed": 0,
+    "suites": [
+      "PersistenceTest",
+      "WorkflowTest",
+      "VideoWorkflowTest",
+      "ApiTest",
+      "VideoApiTest",
+      "StreamWorkflowTest",
+      "StreamApiTest",
+      "StorageTest",
+      "ConfigurationTest"
+    ],
+    "database": "Real isolated MySQL 8.0.36 package copy",
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/junit-round5.log",
+    "log_sha256": "0a87fc30c730fd2764603aa8d9281212bc062ead086895c218787e7968ccaf52"
+  },
+  "migration": {
+    "status": "PASS",
+    "sequence": [
+      "V001__04a_assets_jobs.sql",
+      "V002__04a_video_stream.sql"
+    ],
+    "executions_each": 2,
+    "historical_tables_unchanged": 123,
+    "v001_schema_and_rows_unchanged": true,
+    "evidence_sha256": "925c8e5e9b018bbc4fa70719bc959b04e900deac3025e2538987f9097dc2775e"
+  },
+  "static_checks": {
+    "layer_and_size": "PASS",
+    "scope_and_frozen_contract": "PASS",
+    "changed_owned_paths": 64,
+    "max_implementation_file_lines": 156,
+    "layer_evidence_sha256": "bebfe87de5d64c7720a17484250062db5f0b6cfeb84ce7890e3e34cacfc89c26",
+    "scope_evidence_sha256": "9bc598964f2512596f933a264f8c3b26cace90461042d874d28644480cf7267f"
+  },
+  "backend_image": {
+    "status": "PASS",
+    "tag": "wgai-04a-assets-jobs:round5-7c8a80f",
+    "image_id": "sha256:74380adf50d0b9c9c1f510e94ae876eff589e16eb790c45315641cff0c9424c0",
+    "size_bytes": 1111523858,
+    "spring_boot_layers": [
+      "dependencies",
+      "spring-boot-loader",
+      "snapshot-dependencies",
+      "application"
+    ],
+    "build_log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/full-build-round5.log",
+    "build_log_sha256": "bba766ff40cf24586e2b257a89e3373a11bf843f0563d0c0bb23d361cbb1c3ba"
+  },
+  "production_guards": {
+    "stream_features_hard_disabled": true,
+    "browser_accepts_provider_url_rtsp_or_credentials": false,
+    "unknown_marked_success": false,
+    "transparent_post_retry": false,
+    "provider_stop_required_for_terminal_stopped": true
+  },
   "not_validated": [
-    "Real token issuance/verification chain",
-    "03 HTTP URL/DNS/TLS/redirect implementation",
-    "4.7 frontend integrated demo",
-    "Real GPU",
-    "Production",
-    "6.x restart reconciliation/cancellation use cases"
+    "Real RTX 5070 image, video or stream request",
+    "Real provider source-id mapping, event query or stop",
+    "DISPATCHING/WAITING file-job reconciliation and full 06 fault matrix",
+    "04b browser pages and 00 integration acceptance",
+    "Production deployment"
   ]
 }

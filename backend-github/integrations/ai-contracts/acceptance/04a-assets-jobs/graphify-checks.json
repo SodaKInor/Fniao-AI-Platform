@@ -2,7 +2,10 @@
   "status": "PASS",
   "command": "graphify update .",
   "cwd": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code",
-  "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/graphify.log",
-  "log_sha256": "7d6c1d0a1dfd53ca45dd1bc2f8bc66b8d184903da04a6c344d9c8aba69da619a",
-  "limitations": "Six pre-existing Vue parse warnings; AST-only index; no shared Serena project switch"
+  "nodes": 29830,
+  "edges": 73166,
+  "communities": 1270,
+  "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code/backend-github/jeecg-module-system/jeecg-system-biz/target/04a-validation/graphify-round5.log",
+  "log_sha256": "34fbc64e1912d653a4d79484072caab9632385c8df8f864951b24c4fcd0ffa81",
+  "limitations": "Six pre-existing Vue parse warnings; AST-only update; no shared Serena project switch"
 }

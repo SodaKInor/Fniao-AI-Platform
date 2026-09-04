@@ -1,48 +1,37 @@
 # 04a-assets-jobs 交接
 
-状态：READY_FOR_INTEGRATION（4.1—4.5 包内验收完成，等待 00 集成）。
+状态：`READY_FOR_00_ACCEPTANCE`。04a 包内实现与验证完成；尚未由 00 接受，不释放 04b。
 
-- 工作树：/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code
-- 分支：work/remote-inference/04a-assets-jobs
-- 原源码基线：8c7fa382a344e82eb13828d53b9fd9e018a5a461
-- 共同集成起点：ab9809d23919ea5d61dfc7d8b34d7f30bb9d607c
-- 冻结契约：5a55ca5cc6ea8fde09898f44519d62c715af12db；内部业务 API 1.0.0，外部协议仍未真实确认。
-- 03、04b 与 00 的共同祖先及冻结内容已再次核对，见 scope-check.json。
+- 共同起点：`0bafd30726e82de74cfeb58ebad12393b36841c7`
+- 冻结 1.1.0 契约交付：`1177de8be45123d043d7cb26b845ee9d94c26784`
+- 实现提交：`7c8a80f505200fe1088154ad4e3accd0b2ebf1df`
+- 分支：`work/remote-inference/04a-assets-jobs`
+- 工作树：`/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code`
 
-## 本包完成内容
+## 合入内容
 
-- 4.1：五张新增表与增量迁移；三个仓储端口实现，归属、不可变请求快照、token/version、容量、状态事件同事务；迁移重复执行后 123 张旧表的结构/数据摘要不变。
-- 4.2：私有上传、权限和授权下载；有界读写、PNG/JPEG 签名/完整性及解码预算、SHA-256、临时文件清理、原子发布；旧匿名路径无法读取新文件。
-- 4.3：受理前保存身份和输入；数据库限额加有界执行器；/infer 短等待与 /jobs 受理共用本地记录；后台只等待原调用，UNKNOWN 不自动派发。
-- 4.4：规范摘要与数据库 owner/key 唯一性；跨接口并发去重、不同输入冲突、停用后原记录查询、明确新尝试关联旧 UNKNOWN。
-- 4.5：保存标准化成果检查点；通过冻结 reader 收集最多三次；检查长度、哈希、期限及结构，完整文件和资产元数据均提交后才成功；历史不依赖供应商在线。
+1. 图片/视频统一持久任务、严格类型快照、视频时间线/截图/可选标注视频与历史读取。
+2. PENDING 原子取消；已派发任务不伪造取消成功。`FETCHING_RESULT` 恢复只重取成果。
+3. V002 新增 source/session/event 三表，不删除、不改写 V001 或历史表。
+4. 五个流业务端点、来源归属、持久幂等、唯一启动、查询恢复、事件去重/游标、截图和停止边界。
+5. MP4/H.264 私有存储及独立视频上限；浏览器边界无 RTSP/GPU URL/凭据/provider identity。
+6. 生产流功能保持硬关闭，待 05 提供真实接口证据后由其明确开启。
 
-输入保留 7 天、成果 30 天，可配置，不加入自动删除任务。取消只完成冻结仓储原子方法；未实现取消 API、6.x 恢复流程或 4.7。
+## 验收摘要
 
-## 代码提交（按依赖顺序合并）
+- JUnit：49/49 PASS，Java 8 / class major 52。
+- 迁移：V001→V002 重建与各两次执行 PASS；123 张历史表、V001 结构与行摘要不变。
+- 完整后端镜像：`wgai-04a-assets-jobs:round5-7c8a80f`
+  / `sha256:74380adf50d0b9c9c1f510e94ae876eff589e16eb790c45315641cff0c9424c0`。
+- 分层、归属、冻结契约、Graphify 更新和隔离环境清理均 PASS。
 
-- `4451cb4d70b4c5733f1e619636f0b9919f3ebd8d` feat(ai): persist assets and atomic inference job state
-- `43d597e52812542c43f6a0dbc8aec265b3276f93` feat(ai): store bounded private assets with integrity checks
-- `669e8bcc0238d7e6127b8420fc5460b5196d1aee` feat(ai): dispatch durable jobs and expose private result APIs
+00 应从实现提交核实 64 个归属路径，独立重跑迁移、Java 8 用例和完整构建。通过后再记录新的共同
+起点并释放 04b。真实 provider 尚未确认，因此 04a 的 provider 替身结果不能被记为 5.1 或真实联调成功。
 
-测试与本交接材料在独立验收提交中；最终交付提交同时记录在工作包入口 HANDOFF.md。完整改动路径见 scope-check.json。
+## 保留的未完成项
 
-## 验收证据
+- 文件任务 DISPATCHING/WAITING 的完整重启对账、远程取消确认、遥测与故障注入交给 06。
+- 真实图片/视频/流请求、source ID 映射、远程事件和停止能力交给 05。
+- 页面与浏览器回归交给 04b/00。任何外部能力未知继续保持 disabled/UNKNOWN。
 
-README.md 为复现索引；verification.json、junit.txt、migration-checks.json、layer-checks.json、scope-check.json、graphify-checks.json 分别记录运行测试、迁移、分层、归属和索引证据。测试涵盖真实 MySQL 并发与事务、Spring 装配、后台线程、现有 Shiro 身份下的接口权限、成果异常和落盘。
-
-新增业务 Java 35 文件，最大 129 行；domain/port/api DTO 保持冻结。没有修改前端、旧后端、公共 POM/配置或 OpenSpec 总表。数据库迁移仅为本包新增 V001 文件。
-
-## 集成所需装配与限制
-
-- 00 先应用新增迁移，并为 `/data/ai-private`（或配置替代位置）准备本包独立持久私有目录/卷；不得挂在旧上传、webapp 或静态路径下。
-- 03 提供 InferenceProvider 与 ProviderArtifactReader Bean，并确认其 providerKey/adapterId 与能力描述匹配。能力仓储只读本地绑定；本包没有在正式配置中安装测试替身或自动启用未知能力。配置与绑定字段见 README。
-- 当前能力描述和配置中更严格的输出限额传递给 reader 和存储；外呼/传输超时与 URL/DNS/TLS/重定向实现归 03。
-- 权限测试用真实 Shiro Subject/LoginUser 类型及受控测试身份，不冒充真实令牌签发/验证链或 03 执行权限守卫验收。
-- reader 拒绝来源/重定向的测试验证本包错误处理；不冒充 HTTP 地址策略实测。没有真实 GPU、前端页面组合、正式接入验收；4.7 交 00。
-- 数据库无法确认元数据提交时不会删除可能已被引用的文件。进程崩溃后的在途状态对账和孤儿处理属于 06 恢复工作，本包不宣称完成 6.1。
-- Graphify 在本 worktree 更新；保留六个旧 Vue 解析警告。Serena 指向原 WGAI，仅检查服务说明，没有切换共享项目或跨工作树写入。
-
-## 回退与后续
-
-代码可按相反提交顺序追加 revert，保留新增数据库表与私有文件。与当前数据兼容的回退配置保持远程执行守卫，不恢复旧本地算法，不清空历史数据、不重跑初始化清理 SQL。运行测试只使用本包副本，结束后停止本包测试 MySQL，保留其独立卷。未推送、未归档整体变更；由 00 核实并更新总任务勾选。
+回退只追加 revert 代码；保留 V001/V002 表和已产生的历史数据，不执行删除迁移。
