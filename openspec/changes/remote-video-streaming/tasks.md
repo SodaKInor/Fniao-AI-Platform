@@ -1,7 +1,7 @@
 ## 1. 契约与共同起点
 
-- [ ] 1.1 由 02 冻结 `video-stream-analysis.v1` 的五个端点、有界 DTO、OpenAPI 与样例，明确浏览器只提交 `streamSourceId`，并以契约测试验证原始 RTSP、GPU URL 和凭据字段均被拒绝。
-- [ ] 1.2 由 00 核对文件归属、供应商真实能力假设和伴随变更依赖，记录新的共同起点 SHA；在 source 映射、TLS/CA、鉴权和停止能力未确认前，所有实时来源保持 disabled。
+- [x] 1.1 由 02 冻结 `video-stream-analysis.v1` 的五个端点、有界 DTO、OpenAPI 与样例，明确浏览器只提交 `streamSourceId`，并以契约测试验证原始 RTSP、GPU URL 和凭据字段均被拒绝。
+- [x] 1.2 由 00 核对文件归属、供应商真实能力假设和伴随变更依赖，记录新的共同起点 SHA；在 source 映射、TLS/CA、鉴权和停止能力未确认前，所有实时来源保持 disabled。
 
 ## 2. Provider 与安全边界（03）
 
