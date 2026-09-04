@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "status": "INCOMPLETE",
+  "evidenceKind": "REAL_RTX5070_APPLICATION_FLOW",
+  "environment": "development",
+  "recordedAt": "",
+  "acceptedCommonStart": "",
+  "contractVersion": "1.1.0",
+  "providerApiVersion": "",
+  "intakeSha256": "",
+  "runtime": {
+    "requestOrigin": "UNCONFIRMED",
+    "providerMode": "disabled",
+    "simulated": false,
+    "mock": false
+  },
+  "flows": {
+    "image": { "status": "NOT_RUN" },
+    "video": { "status": "NOT_RUN" },
+    "stream": { "status": "NOT_RUN" }
+  },
+  "supportingEvidence": [],
+  "integrity": {
+    "unknownMarkedSuccessful": false,
+    "unconfirmedStopMarkedStopped": false,
+    "duplicateDispatchObserved": false,
+    "hostRequestUsedAsAcceptance": false,
+    "unconfirmedCapabilityEnabled": false,
+    "sensitiveDataPresent": false
+  },
+  "fallback": {
+    "mode": "disabled",
+    "procedure": "",
+    "unconfirmedFormatsRemainDisabled": true,
+    "historicalAssetsPreserved": true
+  }
+}

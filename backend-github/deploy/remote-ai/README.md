@@ -58,3 +58,30 @@ node backend-github/deploy/remote-ai/validate-contract-intake.cjs /absolute/priv
 校验通过只表示 5.1 资料结构完整，不代表接口真实可用，也不自动切换 `remote`。仍须人工核对样例
 语义、由适配器所有者实现并验收真实 wire，再从 05 后端容器执行 5.2—5.4。明确不支持的能力用
 `status: UNSUPPORTED` 和原因登记；这不会伪造为已完成的真实图片、视频或流验收。
+
+## 05 真实联调证据校验
+
+只有私有 intake 校验通过、02/00 已冻结实际 wire、03 所有者已完成正式 remote 装配，才启动 05
+隔离环境并从实际业务后端容器执行联调。不得把宿主机请求、端口探测、mock 或 draft fixture 写入
+真实验收。完成图片、上传视频和流会话后，将脱敏证据按
+`real-integration-evidence.example.json` 的字段整理，并执行：
+
+```sh
+node backend-github/deploy/remote-ai/validate-real-integration-evidence.cjs \
+  /absolute/private/path/contract-intake.json \
+  /path/to/real-integration-evidence.json
+```
+
+校验器把证据绑定到私有 intake 的原始字节 SHA-256，要求记录实际后端容器与镜像摘要、remote
+模式、加密通道、服务鉴权、批准 origin，以及图片/视频/流的业务 request/session ID、供应商关联
+ID、一次派发、实际版本、耗时、输入大小与哈希。成果必须已经回存，并用资产 ID、大小、哈希、
+授权下载、页面和历史读取串联；视频事件必须有时间偏移和截图，流事件必须有时间戳和截图。
+
+证据文件本身也按大小和 SHA-256 核验，提交内容只能是脱敏副本，不得包含 provider URL、RTSP、
+凭据或授权值。供应商声明支持停止时，只有实际确认才能记录 `STOPPED`；未支持时只能记录
+`UNSUPPORTED`，不能借此通过完整流验收。完整证据还必须明确不存在 UNKNOWN 误标成功、未确认
+停止误标终态、重复派发和宿主机代验。
+
+`real-integration-evidence.example.json` 故意不完整，不能作为通过证据。校验器通过仍只是 05 提交
+给 00 的候选证据；00 必须复核原始私有资料、真实运行记录和页面结果后才可勾选 5.1—5.4。资料、
+正式适配器或任何一项真实流程缺失时，继续保持 remote disabled，且不得释放 06、07 或 RC。

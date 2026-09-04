@@ -29,3 +29,20 @@ MP4/H.264、已登记 source ID 的真实请求/成功/空/错误样例；输入
 机器可读结论见 `preflight.json`。`backend-github/deploy/remote-ai/validate-contract-intake.cjs`
 提供资料到齐后的 fail-closed 校验，配套测试覆盖占位地址、HTTP、URL 凭据、内联密钥、RTSP、
 视频限制和停止确认；模板按预期不能通过。本记录不勾选 OpenSpec 5.x，不释放 06、07 或 RC。
+
+## 第二阶段证据门禁（准备完成，未执行真实联调）
+
+新增 `backend-github/deploy/remote-ai/validate-real-integration-evidence.cjs`，用于实际联调完成后
+核验脱敏证据。它不发起供应商请求，也不会启用 remote；其职责是防止以下内容被写成 05 成功：
+
+- mock、draft fixture、宿主机请求或单纯端口可达；
+- 未与私有 intake 原始字节哈希绑定的接口版本和能力；
+- 图片、视频或流任一流程缺失，或者供应商调用次数不是 1；
+- UNKNOWN 被记为成功、未确认停止被记为 STOPPED、未确认能力被扩大启用；
+- 没有实际资产哈希、视频事件偏移、流事件时间戳/截图、页面展示或历史读取；
+- 提交证据包含供应商 URL、RTSP、凭据或授权值，或引用文件大小/哈希不匹配。
+
+`tests/real-integration-evidence.test.cjs` 覆盖上述边界，并验证 CLI 会核对引用文件内容且错误输出
+不回显供应商坐标。本阶段共 11 项 Node 测试通过；详见
+`real-integration-evidence-validation.json`。这仍是 fail-closed tooling 证据，`realProviderRequestAttempted`
+保持 false，5.1—5.4 和伴随流 5.1—5.2 仍全部未完成。

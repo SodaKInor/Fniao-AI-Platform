@@ -1,0 +1,37 @@
+{
+  "status": "PASS_FAIL_CLOSED_TOOLING_ONLY",
+  "at": "2026-09-04T09:40:00Z",
+  "nodeTests": {
+    "passed": 11,
+    "failed": 0
+  },
+  "realEvidenceTemplate": {
+    "status": "INCOMPLETE",
+    "acceptedAsRealEvidence": false
+  },
+  "validatedBoundaries": [
+    "private intake raw-byte SHA-256 binding",
+    "actual application backend container identity and image digest",
+    "remote mode with mock and simulation forbidden",
+    "container network path, TLS, service authentication and approved origin",
+    "image, uploaded video and stream capability/version agreement",
+    "business request/session identity and exactly one dispatch",
+    "persisted asset size, SHA-256, owner access and download",
+    "representative and valid-empty image/video outcomes",
+    "video offsets and stream timestamps joined to persisted snapshots",
+    "provider-confirmed STOPPED or explicit UNSUPPORTED",
+    "page display, history read and redacted supporting files",
+    "UNKNOWN, unconfirmed stop, duplicate dispatch and host substitution rejection",
+    "provider URL, RTSP and inline authorization redaction"
+  ],
+  "openspecTasksCompleted": [],
+  "realProviderRequestAttempted": false,
+  "realProviderEvidenceValidated": false,
+  "productionCapabilityEnabled": false,
+  "downstreamReleased": {
+    "06": false,
+    "07": false,
+    "releaseCandidate": false
+  },
+  "remainingGate": "Validated private RTX 5070 intake, frozen real wire, owner remote adapter, and actual backend-container image/video/stream evidence are still required."
+}
