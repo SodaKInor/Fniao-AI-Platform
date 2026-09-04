@@ -21,6 +21,13 @@ public class CapabilityTest {
         return new Capability(binding(true), "模拟图片检测", enabled, true, true, "", Arrays.asList("image/png", "image/jpeg"),
                 10485760, 10485760, 1500);
     }
+    private Capability stubCapability() {
+        CapabilitySnapshot snapshot = new CapabilitySnapshot("image-detection.v1", "1.1.0", "stub",
+                "sync-draft-v0.1", "image-detection.v1", "stub-simulated-v1",
+                new ProviderFeatures(false, false, false));
+        return new Capability(snapshot, "开发模拟图片检测", true, true, true, "",
+                Arrays.asList("image/png", "image/jpeg"), 10485760, 10485760, 1500);
+    }
     private CapabilityRepository repository(Capability value) {
         return new CapabilityRepository() {
             public Optional<Capability> find(String code) { return Optional.of(value); }
@@ -134,6 +141,7 @@ public class CapabilityTest {
             ProviderProperties p = context.getBean(ProviderProperties.class);
             assertEquals("mock", p.getMode()); assertEquals(2, p.getMaxInflight()); assertEquals(512, p.getUploadMaxBytes());
             assertEquals(1024, p.getVideoUploadMaxBytes()); assertEquals("/fixture-video", p.getVideoApiPath());
+            assertFalse(p.isDevelopmentStub());
             assertEquals(1, context.getBeansOfType(InferenceProvider.class).size());
             assertEquals(1, context.getBeansOfType(VideoAnalysisProvider.class).size());
             assertEquals(1, context.getBeansOfType(StreamSessionProvider.class).size());
@@ -145,6 +153,32 @@ public class CapabilityTest {
             try { context.getBean(StreamSessionProvider.class).start(streamRequest(false)); fail(); }
             catch (ProviderException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE, error.getErrorCode()); }
             assertFalse(org.jeecg.modules.ai.legacy.LegacyExecutionGuard.isLocalExecutionAllowed());
+        }
+    }
+
+    @Test public void developmentStubNeedsAllThreeExplicitSignalsAndNeverPromotesRealRemote() throws Exception {
+        try (ProtocolFixture fixture = new ProtocolFixture(false)) {
+            ProviderProperties p = properties(fixture.url());
+            p.setMode("remote");
+            p.setProviderKey("stub");
+            ProviderConfiguration config = new ProviderConfiguration();
+            ProviderAvailability state = new ProviderAvailability(p, config.providerObservations());
+
+            assertFalse(state.modeReason().isEmpty());
+            assertFalse(state.reason(stubCapability()).isEmpty());
+
+            p.setDevelopmentStub(true);
+            assertEquals("", state.modeReason());
+            assertEquals("", state.reason(stubCapability()));
+            assertEquals("", state.videoReason());
+            assertEquals("", state.streamStartReason());
+
+            p.setProviderKey("fixture");
+            assertFalse(state.modeReason().isEmpty());
+            p.setProviderKey("stub");
+            p.setMode("mock");
+            assertEquals("", state.modeReason());
+            assertFalse(state.reason(stubCapability()).isEmpty());
         }
     }
 

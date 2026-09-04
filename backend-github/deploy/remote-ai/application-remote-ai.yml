@@ -1,6 +1,7 @@
 wgai:
   inference:
     mode: ${WGAI_INFERENCE_MODE:disabled}
+    development-stub: ${WGAI_INFERENCE_DEVELOPMENT_STUB:false}
     provider-key: ${WGAI_INFERENCE_PROVIDER_KEY:remote}
     base-url: ${WGAI_INFERENCE_BASE_URL:}
     approved-origin: ${WGAI_INFERENCE_APPROVED_ORIGIN:}

@@ -8,6 +8,11 @@
 
 选择 `dev.env.example`（显式 mock）或 `prod.env.example`（disabled）为外部配置的参考，设置 `WGAI_REMOTE_AI_CONFIG_FILE` 为本目录 `application-remote-ai.yml` 的绝对路径。在原隔离 Compose 配置之后追加 `core.override.yml`，保留原数据库、上传目录和端口隔离。该覆盖文件启用 `remote-ai` 配置 profile；实际生效值必须通过渲染配置核对。
 
+需要覆盖真实 HTTP 适配路径时，使用 `stub.env.example`，并在基线 Compose 与 `core.override.yml` 后显式追加
+`stub.override.yml`、启用 `remote-ai-stub` profile。该服务只有合成输入输出，使用公开开发 token，所有响应均
+标识 simulated。正式启动不得包含该覆盖文件或 `WGAI_INFERENCE_DEVELOPMENT_STUB=true`。开发数据库只可在
+隔离副本中应用 `stub-bindings.example.sql`，替换其中的 `__OWNER_ID__`；该 seed 不属于 V001/V002 迁移。
+
 服务凭据是独立文件，与业务 X-Access-Token 无关。需要凭据时追加 `secrets.override.yml` 并设置 `WGAI_INFERENCE_TOKEN_SOURCE`；私有 CA 另追加 `ca.override.yml` 和 `WGAI_INFERENCE_CA_SOURCE`。文件只读挂载，真实值不入库。正常公网 CA 可保留 CA_FILE 为空并沿用 JVM 信任库。禁止跳过证书或主机名校验。
 
 ## 当前可用范围
@@ -15,8 +20,10 @@
 - 默认 disabled；mock 只用于明确标识的本地模拟。正式模板默认关闭。
 - 唯一模拟绑定：capabilityCode/providerCapabilityCode=`image-detection.v1`，capabilityVersion=`mock-v1`，providerKey=`mock`，adapterId=`mock-v1`，query/cancel/deduplication 全 false。由 04a 的 CapabilityRepository 提供本地绑定，不在 03 注册运行时假仓储。
 - 模拟器读取图像尺寸，生成合成检测与固定 16×16 合成预览；预览不是原图标注。threshold 大于 0.95 时返回有效空成果；annotate=false 无文件成果。引用有效期为生成后 1 小时。
-- remote 在真实接口经 02/00 确认前始终不可用；不存在把草案变成正式协议的配置开关。草案适配器仅供独立协议夹具构造，不会自动注册到业务派发器。
-- 图片 draft 夹具绑定 adapterId=`sync-draft-v0.1`；视频和实时流夹具分别绑定 `video-draft-v0.2`、`stream-draft-v0.2`。providerKey 必须匹配后端配置；HTTP 只允许测试夹具中的字面量回环地址，部署配置只接受与批准 origin 完全一致的 HTTPS 地址。
+- remote 在真实接口经 02/00 确认前始终不可用于真实能力。唯一例外是同时满足
+  `mode=remote`、`development-stub=true`、`provider-key=stub` 的显式开发组合；它注册草案适配器但只接受
+  simulated stub 绑定。缺少任一条件或正式模板均不会注册，也不会自动回退 stub。
+- 图片 draft 夹具绑定 adapterId=`sync-draft-v0.1`；视频和实时流夹具分别绑定 `video-draft-v0.2`、`stream-draft-v0.2`。providerKey 必须匹配后端配置；HTTP 只允许测试夹具中的字面量回环地址或显式开发 profile 的精确服务名 `remote-ai-stub`，其余部署配置仍只接受与批准 origin 完全一致的 HTTPS 地址。
 - 视频/流草案客户端已经实现真实的一次性 HTTP 请求、严格响应转换和故障确定性，供 05 提供正式样例后逐字段核对。它们没有生产 Bean；`VideoAnalysisProvider` 与 `StreamSessionProvider` 当前只注册硬关闭模式。流请求只接收仓储映射后的 provider source ref，浏览器仍只能提交本地 `streamSourceId`，不得传 RTSP、GPU URL 或凭据。
 - 视频与流的 POST 禁止自动重试和重定向；请求发出后断线保持 UNKNOWN。流停止只有收到严格的 `CONFIRMED_STOPPED` 响应才算停止，失败、超时或未知响应均不得写入停止终态。
 - 新上传和推理必须有 `ai:infer`。00/04a 负责按角色登记权限，03 不修改迁移或默认给全部用户授权。重复提交须先按冻结的用户/key 返回已有记录，再检查新提交能力；不得在 HTTP 过滤器里按全局模式提前拦截这一去重流程。04a 在去重后接入能力可用性检查，03 派发端还会在外呼前再次守卫。

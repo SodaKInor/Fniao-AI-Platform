@@ -1,0 +1,53 @@
+{
+  "name": "wgai-development-provider-stub",
+  "version": "stub-v1",
+  "businessContractVersion": "1.1.0",
+  "simulated": true,
+  "authentication": "Bearer development token from WGAI_STUB_TOKEN",
+  "sources": [
+    {
+      "providerSourceRef": "synthetic-camera-01",
+      "displayName": "合成演示来源",
+      "simulated": true
+    }
+  ],
+  "endpoints": [
+    "GET /health",
+    "GET /capabilities",
+    "POST /infer",
+    "POST /video-jobs",
+    "GET /stream-sources",
+    "POST /stream-sources/{providerSourceRef}/sessions",
+    "GET /stream-sessions/{providerSessionId}",
+    "GET /stream-sessions/{providerSessionId}/events",
+    "POST /stream-sessions/{providerSessionId}/stop",
+    "GET /artifacts/{artifactName}"
+  ],
+  "scenarios": [
+    "success",
+    "empty",
+    "failed",
+    "invalid-schema",
+    "delayed",
+    "response-lost",
+    "artifact-interrupted",
+    "duplicate-events",
+    "out-of-order-events",
+    "stop-unsupported",
+    "stop-unknown"
+  ],
+  "scenarioSelection": {
+    "header": "X-WGAI-Stub-Scenario",
+    "query": "scenario",
+    "default": "success"
+  },
+  "prohibitedRequestFields": [
+    "rtsp",
+    "rtspUrl",
+    "gpuUrl",
+    "providerUrl",
+    "credentials",
+    "token",
+    "password"
+  ]
+}

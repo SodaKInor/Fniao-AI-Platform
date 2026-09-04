@@ -27,7 +27,7 @@ public final class DraftEndpoint {
         if (base == null || approved == null || !base.equals(approved)
                 || !"/".equals(base.encodedPath()) || base.query() != null || base.fragment() != null
                 || !base.username().isEmpty() || !base.password().isEmpty()
-                || !(base.isHttps() || (fixtureHttp && ("127.0.0.1".equals(base.host()) || "::1".equals(base.host()))))
+                || !(base.isHttps() || developmentFixtureHttp(base, fixtureHttp))
                 || !validPath(inferPath) || !validPath(videoPath)
                 || !validPath(streamSourcesPath) || !validPath(streamSessionsPath)) {
             throw new IllegalArgumentException("Unapproved provider endpoint");
@@ -79,5 +79,12 @@ public final class DraftEndpoint {
     private static boolean validPath(String value) {
         return value != null && value.matches("/[A-Za-z0-9_/-]+")
                 && !value.contains("//") && !value.endsWith("/");
+    }
+
+    /** Plain HTTP is limited to process-local fixtures or the exact development Compose service name. */
+    private static boolean developmentFixtureHttp(HttpUrl base, boolean enabled) {
+        if (!enabled || !"http".equals(base.scheme())) return false;
+        return "127.0.0.1".equals(base.host()) || "::1".equals(base.host())
+                || "remote-ai-stub".equals(base.host());
     }
 }

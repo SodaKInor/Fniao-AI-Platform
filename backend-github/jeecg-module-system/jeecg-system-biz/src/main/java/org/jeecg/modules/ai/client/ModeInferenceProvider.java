@@ -4,7 +4,7 @@ import java.util.function.Supplier;
 import org.jeecg.modules.ai.domain.*;
 import org.jeecg.modules.ai.port.InferenceProvider;
 
-/** There is deliberately no configuration flag that promotes an unconfirmed wire draft. */
+/** Remote dispatch exists only when configuration explicitly supplies an approved provider implementation. */
 public final class ModeInferenceProvider implements InferenceProvider {
     private final Supplier<String> mode;
     private final Supplier<String> unavailableReason;

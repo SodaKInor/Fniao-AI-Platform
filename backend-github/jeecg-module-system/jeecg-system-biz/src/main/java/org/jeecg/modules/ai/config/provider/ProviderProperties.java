@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "wgai.inference")
 public class ProviderProperties {
     private String mode = "disabled";
+    private boolean developmentStub;
     private String baseUrl = "";
     private String approvedOrigin = "";
     private String apiPath = "/infer";
@@ -26,6 +27,8 @@ public class ProviderProperties {
 
     public String getMode() { return mode; }
     public void setMode(String value) { mode = value; }
+    public boolean isDevelopmentStub() { return developmentStub; }
+    public void setDevelopmentStub(boolean value) { developmentStub = value; }
     public String getBaseUrl() { return baseUrl; }
     public void setBaseUrl(String value) { baseUrl = value; }
     public String getApprovedOrigin() { return approvedOrigin; }

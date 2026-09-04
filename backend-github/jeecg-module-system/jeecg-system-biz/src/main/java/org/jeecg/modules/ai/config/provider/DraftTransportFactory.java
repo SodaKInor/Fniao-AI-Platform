@@ -6,7 +6,7 @@ import okhttp3.OkHttpClient;
 import org.jeecg.modules.ai.client.draft.DraftEndpoint;
 import org.jeecg.modules.ai.client.draft.DraftTransport;
 
-/** Explicit construction for protocol fixtures; never automatically registered as a live provider. */
+/** Explicit construction for protocol fixtures and the isolated development stub; never a production fallback. */
 public final class DraftTransportFactory {
     private DraftTransportFactory() { }
 

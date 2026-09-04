@@ -14,11 +14,13 @@ function sha256(relative) {
   return crypto.createHash('sha256').update(fs.readFileSync(path.join(root, relative))).digest('hex')
 }
 
-test('current source remains fail-closed until the confirmed owner adapter and assembly replace this receipt', () => {
+test('development stub is explicit while every real-provider path remains fail-closed', () => {
   const evidence = JSON.parse(fs.readFileSync(evidencePath, 'utf8'))
-  assert.equal(evidence.status, 'WAITING_OWNER_ADAPTER_AND_EXTERNAL_CONTRACT')
+  assert.equal(evidence.status, 'PASS_EXPLICIT_DEVELOPMENT_STUB_REAL_FAIL_CLOSED')
   assert.equal(evidence.contractVersion, '1.1.0')
-  assert.deepEqual(evidence.openspecTasksCompleted, [])
+  assert.deepEqual(evidence.openspecTasksCompleted, ['5.1', '5.2', '5.3', '5.4'])
+  assert.deepEqual(evidence.realIntegrationTasksCompleted, [])
+  assert.equal(evidence.currentActivationResult.developmentStubRuntimeMayStart, true)
   assert.equal(evidence.currentActivationResult.runtimeMayStartForRealRequests, false)
   assert.equal(evidence.currentActivationResult.realProviderRequestAttempted, false)
   assert.ok(Object.values(evidence.downstreamReleased).every(value => value === false))
@@ -26,19 +28,17 @@ test('current source remains fail-closed until the confirmed owner adapter and a
   for (const item of evidence.sourceChecks) assert.equal(sha256(item.path), item.sha256, item.path)
 
   const configuration = read(evidence.sourceChecks[0].path)
-  assert.match(configuration, /new ModeInferenceProvider\(p::getMode, availability::modeReason,\s*new MockInferenceProvider/)
-  assert.doesNotMatch(configuration, /new DraftHttpProvider|new DraftVideoHttpProvider|new DraftStreamHttpProvider|new DraftArtifactReader/)
-  assert.match(configuration, /new ModeArtifactReader\(new MockArtifactReader\(Clock\.systemUTC\(\)\), p\.getOutputMaxBytes\(\)\)/)
-  assert.match(configuration, /new ModeVideoAnalysisProvider\(availability::videoReason, null\)/)
-  assert.match(configuration, /availability::streamStopReason,\s*null\)/)
+  assert.match(configuration, /developmentStubTransport\(p\)/)
+  assert.match(configuration, /new DraftHttpProvider|new DraftVideoHttpProvider|new DraftStreamHttpProvider|new DraftArtifactReader/)
+  assert.match(configuration, /!properties\.isDevelopmentStub\(\).*return null/s)
+  assert.match(configuration, /!"remote"\.equals\(properties\.getMode\(\)\)/)
+  assert.match(configuration, /!"stub"\.equals\(properties\.getProviderKey\(\)\)/)
 
   const availability = read(evidence.sourceChecks[1].path)
   assert.match(availability, /真实服务协议尚未确认/)
-  assert.match(availability, /当前模拟适配器不支持上传视频/)
-  assert.match(availability, /当前模拟适配器不支持实时流/)
-  assert.match(availability, /真实流会话查询协议尚未确认/)
-  assert.match(availability, /真实流事件查询协议尚未确认/)
-  assert.match(availability, /真实流停止协议尚未确认/)
+  assert.match(availability, /properties\.isDevelopmentStub\(\) && "remote"\.equals\(properties\.getMode\(\)\)/)
+  assert.match(availability, /&& "stub"\.equals\(properties\.getProviderKey\(\)\)/)
+  assert.match(availability, /开发 stub 只接受明确标记的模拟能力/)
 
   const inference = read(evidence.sourceChecks[2].path)
   const artifacts = read(evidence.sourceChecks[3].path)
@@ -51,10 +51,16 @@ test('current source remains fail-closed until the confirmed owner adapter and a
 
   const appConfig = read(evidence.sourceChecks[6].path)
   const compose = read(evidence.sourceChecks[7].path)
+  const stubCompose = read(evidence.sourceChecks[8].path)
   assert.match(appConfig, /mode: \$\{WGAI_INFERENCE_MODE:disabled\}/)
+  assert.match(appConfig, /development-stub: \$\{WGAI_INFERENCE_DEVELOPMENT_STUB:false\}/)
   assert.match(compose, /WGAI_INFERENCE_MODE: \$\{WGAI_INFERENCE_MODE:-disabled\}/)
+  assert.match(compose, /WGAI_INFERENCE_DEVELOPMENT_STUB: \$\{WGAI_INFERENCE_DEVELOPMENT_STUB:-false\}/)
   assert.match(compose, /read_only: true/)
-  assert.doesNotMatch(compose, /^\s{2}(gpu|inference|provider):\s*$/m)
+  assert.doesNotMatch(compose, /^\s{2}(gpu|inference|provider|remote-ai-stub):\s*$/m)
+  assert.match(stubCompose, /profiles: \[remote-ai-stub\]/)
+  assert.match(stubCompose, /WGAI_INFERENCE_DEVELOPMENT_STUB: "true"/)
+  assert.doesNotMatch(stubCompose, /^\s+ports:\s*$/m)
 
   const ancestry = spawnSync('git', ['merge-base', '--is-ancestor', evidence.inspectedCommit, 'HEAD'], {
     cwd: root, encoding: 'utf8'

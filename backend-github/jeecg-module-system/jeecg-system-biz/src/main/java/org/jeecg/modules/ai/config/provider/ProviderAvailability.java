@@ -21,10 +21,11 @@ public final class ProviderAvailability {
         try {
             new DraftEndpoint(properties.getBaseUrl(), properties.getApprovedOrigin(), properties.getApiPath(),
                     properties.getVideoApiPath(), properties.getStreamSourcesPath(),
-                    properties.getStreamSessionsPath(), false);
+                    properties.getStreamSessionsPath(), isDevelopmentStub());
             ProviderCredentials.read(properties.getTokenFile());
             ProviderTrust.configure(new okhttp3.OkHttpClient.Builder(), properties.getCaFile());
         } catch (RuntimeException error) { return "外部服务地址、凭据或信任配置不完整"; }
+        if (isDevelopmentStub()) return "";
         String observed = observations.reason(properties.getProviderKey());
         return "真实服务协议尚未确认；" + (observed.isEmpty() ? "外部可达性曾确认" : observed) + "；模型就绪状态未确认";
     }
@@ -32,6 +33,7 @@ public final class ProviderAvailability {
     public String reason(Capability capability) {
         String reason = modeReason();
         if (!reason.isEmpty()) return reason;
+        if (isDevelopmentStub()) return stubBindingReason(capability);
         if (!"image-detection.v1".equals(capability.getSnapshot().getCapabilityCode())
                 || !capability.isSimulated()
                 || !ProviderRequestChecks.binding(capability.getSnapshot(), "mock", "mock-v1")) {
@@ -43,18 +45,47 @@ public final class ProviderAvailability {
     public String videoReason() {
         String common = modeReason();
         if (!common.isEmpty()) return common;
+        if (isDevelopmentStub()) return "";
         return "当前模拟适配器不支持上传视频";
     }
 
     public String streamStartReason() {
         String common = modeReason();
         if (!common.isEmpty()) return common;
+        if (isDevelopmentStub()) return "";
         return "当前模拟适配器不支持实时流";
     }
 
-    public String streamSessionQueryReason() { return "真实流会话查询协议尚未确认"; }
+    public String streamSessionQueryReason() { return isDevelopmentStub() ? "" : "真实流会话查询协议尚未确认"; }
 
-    public String streamEventQueryReason() { return "真实流事件查询协议尚未确认"; }
+    public String streamEventQueryReason() { return isDevelopmentStub() ? "" : "真实流事件查询协议尚未确认"; }
 
-    public String streamStopReason() { return "真实流停止协议尚未确认"; }
+    public String streamStopReason() { return isDevelopmentStub() ? "" : "真实流停止协议尚未确认"; }
+
+    public String artifactReason(String capabilityCode) {
+        String common = modeReason();
+        if (!common.isEmpty()) return common;
+        if (isDevelopmentStub() && ("image-detection.v1".equals(capabilityCode)
+                || "video-file-analysis.v1".equals(capabilityCode)
+                || "video-stream-analysis.v1".equals(capabilityCode))) return "";
+        return "真实成果下载协议尚未确认";
+    }
+
+    org.jeecg.modules.ai.client.ProviderObservations observations() { return observations; }
+
+    private boolean isDevelopmentStub() {
+        return properties.isDevelopmentStub() && "remote".equals(properties.getMode())
+                && "stub".equals(properties.getProviderKey());
+    }
+
+    private String stubBindingReason(Capability capability) {
+        if (capability == null || !capability.isSimulated()) return "开发 stub 只接受明确标记的模拟能力";
+        Capability value = capability;
+        String code = value.getSnapshot().getCapabilityCode();
+        String adapter = "image-detection.v1".equals(code) ? "sync-draft-v0.1"
+                : "video-file-analysis.v1".equals(code) ? "video-draft-v0.2"
+                : "video-stream-analysis.v1".equals(code) ? "stream-draft-v0.2" : "";
+        return !adapter.isEmpty() && ProviderRequestChecks.binding(value.getSnapshot(), "stub", adapter, code)
+                ? "" : "能力绑定不受开发 stub 支持";
+    }
 }

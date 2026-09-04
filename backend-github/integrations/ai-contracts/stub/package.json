@@ -1,0 +1,13 @@
+{
+  "name": "wgai-remote-inference-stub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Explicit development-only HTTP provider stub for WGAI remote inference",
+  "scripts": {
+    "start": "node index.cjs",
+    "test": "node --test test/*.test.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

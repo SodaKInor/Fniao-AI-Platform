@@ -1,4 +1,18 @@
-# 第五轮 05 真实联调前置审计
+# 第五轮 05 模拟 HTTP 闭环与真实联调前置审计
+
+## 2026-09-04 模拟闭环
+
+用户明确要求真实服务未开工期间先用假服务推进。当前已新增独立 Node.js HTTP stub，并通过显式
+`remote-ai-stub` 开发 profile 接入原后端的 remote 客户端。图片、上传视频、合成流事件、截图下载
+和确认停止均跨容器通过；stub 自测 5/5、provider 门禁 12/12、Java 8 能力门禁 9/9、Java 8
+remote→stub wire 验收 1/1，`docker-core` 构建 6/6 模块通过。机器可读收据见
+`simulated-stub-validation.json`。
+
+这只完成重设计后的模拟 5.1—5.4。所有响应带 `X-WGAI-Simulated: true`，业务绑定也必须
+`simulated=true`；未包含显式覆盖文件时默认仍为 disabled。真实 RTX 5070/4090 契约、请求、成果、
+RTSP 来源和停止语义仍未完成，不能据此生成真实 RC 或部署生产。
+
+下文保留真实联调的 fail-closed 审计和后续输入要求。
 
 05 已从 00 的前端统一验收提交
 `b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d` 纯快进，02→03→04a→04b 的串行代码前置
