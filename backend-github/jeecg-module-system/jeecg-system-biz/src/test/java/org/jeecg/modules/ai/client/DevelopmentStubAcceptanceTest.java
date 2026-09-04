@@ -59,6 +59,7 @@ public class DevelopmentStubAcceptanceTest {
                 new VideoParameters(new BigDecimal("0.5"), 1000, 100, true, false),
                 new ContentMetadata("input.mp4", "video/mp4", 4L, null),
                 new ClientTestInputs.CountingSource(new byte[]{0, 1, 2, 3})));
+        assertEquals("stub-video-acceptance", video.getProviderRequestId());
         assertEquals(1, video.getEvents().size());
         assertEquals(1250, video.getEvents().get(0).getOffsetMillis());
 

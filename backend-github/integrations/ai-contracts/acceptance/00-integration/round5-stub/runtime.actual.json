@@ -1,0 +1,31 @@
+{
+  "status": "PASS_SIMULATED_ONLY",
+  "at": "2026-09-04T14:31:26Z",
+  "composeProject": "wgai-ri-00-integration",
+  "images": {
+    "backend": "wgai-integration-backend@sha256:d41a853c87752fb69f48945bed2a3b299658480d74466051996d0e4441c8bc45",
+    "frontend": "wgai-integration-frontend@sha256:e73a6fa198f0ecdbf2776b5548a8b3e7bce5bc9cfdb3804d675fe8b9848e3dc4",
+    "stub": "wgai-remote-ai-stub@sha256:b196c105f2ef3ef3e96da7e922ca7d24261f5eb22080f79201afad0cd550f6a8"
+  },
+  "containers": {
+    "backend": { "port": "127.0.0.1:19100", "health": "healthy" },
+    "frontend": { "port": "127.0.0.1:18100", "health": "healthy" },
+    "stub": { "hostPublished": false, "health": "healthy" },
+    "mysql": { "volumePreserved": true, "health": "healthy" },
+    "redis": { "health": "healthy" }
+  },
+  "database": {
+    "schema": "wgai_ri_00_integration",
+    "migration": "V002__04a_video_stream.sql",
+    "backupSha256": "ae847c3baab7bb857891094f792a1273807a2654e40ccac4e0797c73ab6347fd",
+    "rowsAfterAcceptance": { "jobs": 39, "assets": 51, "sessions": 4, "events": 4 },
+    "historicalRowsDeletedOrRewritten": false
+  },
+  "logSecretScan": {
+    "backendRtspOccurrences": 0,
+    "backendDevelopmentTokenOccurrences": 0,
+    "stubRtspOccurrences": 0,
+    "stubDevelopmentTokenOccurrences": 0
+  },
+  "realProviderValidated": false
+}

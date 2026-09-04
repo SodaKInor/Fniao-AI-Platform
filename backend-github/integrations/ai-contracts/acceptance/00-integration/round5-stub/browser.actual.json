@@ -1,0 +1,40 @@
+{
+  "status": "PASS_SIMULATED_ONLY",
+  "at": "2026-09-04T14:31:26Z",
+  "baseUrl": "http://127.0.0.1:18100",
+  "account": "ri00_owner_a",
+  "checks": {
+    "videoPage": {
+      "path": "/ai/video",
+      "capability": "模拟上传视频分析（HTTP stub）（模拟）",
+      "inputLimit": "10.0 MiB",
+      "simulatedWarningVisible": true
+    },
+    "streamPage": {
+      "path": "/ai/streams",
+      "capability": "模拟实时事件（HTTP stub）（模拟）",
+      "source": "合成演示来源",
+      "sessionId": "10cfc11f-7385-4b4f-b286-979e190bafae",
+      "event": "synthetic-person",
+      "offset": "00:00:02.500",
+      "stateBeforeStop": "RUNNING",
+      "stateAfterConfirmedStop": "STOPPED"
+    },
+    "historyPage": {
+      "path": "/ai/history",
+      "latestVideoRequestId": "182ebaa8-30b4-486d-84e1-08af1c588773",
+      "latestImageRequestId": "a6d96664-a254-4fbb-bef9-cd294b2761c8",
+      "simulatedLabelsVisible": true,
+      "unknownHistoryPreserved": true
+    },
+    "videoDetail": {
+      "path": "/ai/jobs/182ebaa8-30b4-486d-84e1-08af1c588773",
+      "state": "SUCCEEDED",
+      "warning": "模拟数据 · 未执行真实推理",
+      "event": "synthetic-person",
+      "offset": "00:00:01.250",
+      "authorizedSnapshotActionVisible": true
+    }
+  },
+  "realProviderValidated": false
+}

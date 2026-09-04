@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.*;
 import java.util.*;
 import org.jeecg.modules.ai.api.controller.CapabilityController;
+import org.jeecg.modules.ai.api.dto.CapabilityDto;
 import org.jeecg.modules.ai.api.mapper.capabilities.CapabilityMapper;
 import org.jeecg.modules.ai.client.*;
 import org.jeecg.modules.ai.client.mock.*;
@@ -19,6 +20,12 @@ import static org.jeecg.modules.ai.client.ClientTestInputs.*;
 public class CapabilityTest {
     private Capability capability(boolean enabled) {
         return new Capability(binding(true), "模拟图片检测", enabled, true, true, "", Arrays.asList("image/png", "image/jpeg"),
+                10485760, 10485760, 1500);
+    }
+    private Capability capability(String code, String adapter, List<String> mediaTypes) {
+        CapabilitySnapshot snapshot = new CapabilitySnapshot(code, "1.1.0", "stub", adapter, code,
+                "stub-simulated-v1", new ProviderFeatures(true, true, true));
+        return new Capability(snapshot, "开发模拟能力", true, true, true, "", mediaTypes,
                 10485760, 10485760, 1500);
     }
     private Capability stubCapability() {
@@ -102,9 +109,15 @@ public class CapabilityTest {
     }
 
     @Test public void mapperPreservesFrozenShapeWithoutProviderSecrets() throws Exception {
-        String json = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(new CapabilityMapper().map(Collections.singletonList(capability(true))));
+        List<CapabilityDto> mapped = new CapabilityMapper().map(Arrays.asList(
+                capability(true),
+                capability("video-file-analysis.v1", "async-draft-v0.2", Collections.singletonList("video/mp4")),
+                capability("video-stream-analysis.v1", "stream-draft-v0.2", Collections.<String>emptyList())));
+        String json = new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(mapped);
         assertFalse(json.contains("providerKey")); assertFalse(json.contains("adapterId")); assertFalse(json.contains("token"));
-        assertTrue(json.contains("\"parametersSchema\":\"detection.v1\""));
+        assertEquals("detection.v1", mapped.get(0).getParametersSchema());
+        assertEquals("video-analysis.v1", mapped.get(1).getParametersSchema());
+        assertEquals("stream-analysis.v1", mapped.get(2).getParametersSchema());
         assertTrue(json.contains("\"unavailableReason\":\"\""));
     }
     @Test public void capabilityHttpUsesFrozenEnvelopeAndReportsMissingDependency() throws Exception {

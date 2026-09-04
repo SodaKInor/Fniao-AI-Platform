@@ -13,7 +13,7 @@ import org.jeecg.modules.ai.domain.*;
 
 @RestController
 @RequestMapping("/ai/v1")
-public final class StreamController {
+public class StreamController {
     private final StartStreamSessionService start;
     private final StreamQueryService query;
     private final StopStreamSessionService stop;

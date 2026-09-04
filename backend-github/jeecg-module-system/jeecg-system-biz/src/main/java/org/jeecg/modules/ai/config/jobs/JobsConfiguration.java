@@ -77,9 +77,18 @@ public class JobsConfiguration implements WebMvcConfigurer {
     @Bean public JobQueryService aiQueryService(JobRepository jobs,AssetRepository assets) { return new JobQueryService(jobs,assets); }
     @Bean public CancelJobService aiCancelService(JobRepository jobs) { return new CancelJobService(jobs,Clock.systemUTC()); }
     @Bean public org.jeecg.modules.ai.application.streams.StartStreamSessionService aiStartStreamService(
-            StreamSessionRepository sessions,StreamSourceRepository sources,CapabilityRepository capabilities) {
+            StreamSessionRepository sessions,StreamSourceRepository sources,CapabilityRepository capabilities,
+            ObjectProvider<org.jeecg.modules.ai.config.provider.ProviderAvailability> availability) {
+        org.jeecg.modules.ai.config.provider.ProviderAvailability gates=availability.getIfAvailable();
         return new org.jeecg.modules.ai.application.streams.StartStreamSessionService(sessions,sources,capabilities,
-                capability -> new org.jeecg.modules.ai.domain.StreamProviderFeatures(false,false,false,false),Clock.systemUTC());
+                capability -> {
+                    boolean supported=gates!=null && gates.reason(capability).isEmpty();
+                    return new org.jeecg.modules.ai.domain.StreamProviderFeatures(
+                            supported && gates.streamSessionQueryReason().isEmpty(),
+                            supported && gates.streamEventQueryReason().isEmpty(),
+                            supported && gates.streamStopReason().isEmpty(),
+                            supported && capability.getSnapshot().getFeatures().isDeduplication());
+                },Clock.systemUTC());
     }
     @Bean public org.jeecg.modules.ai.application.streams.StreamQueryService aiStreamQueryService(
             StreamSourceRepository sources,StreamSessionRepository sessions,StreamEventRepository events) {

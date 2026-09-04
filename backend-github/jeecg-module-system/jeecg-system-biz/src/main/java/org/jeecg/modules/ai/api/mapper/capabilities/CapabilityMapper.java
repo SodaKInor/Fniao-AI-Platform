@@ -14,7 +14,8 @@ public final class CapabilityMapper {
 
     private CapabilityDto map(Capability source) {
         CapabilityDto dto = new CapabilityDto();
-        dto.setCode(source.getSnapshot().getCapabilityCode());
+        String capabilityCode = source.getSnapshot().getCapabilityCode();
+        dto.setCode(capabilityCode);
         dto.setVersion(source.getSnapshot().getCapabilityVersion());
         dto.setDisplayName(source.getDisplayName());
         dto.setAvailable(source.isAvailable());
@@ -24,7 +25,14 @@ public final class CapabilityMapper {
         dto.setMaxInputBytes(source.getMaxInputBytes());
         dto.setMaxOutputBytes(source.getMaxOutputBytes());
         dto.setMaxWaitMillis(source.getMaxWaitMillis());
-        dto.setParametersSchema("detection.v1");
+        dto.setParametersSchema(parametersSchema(capabilityCode));
         return dto;
+    }
+
+    private String parametersSchema(String capabilityCode) {
+        if ("image-detection.v1".equals(capabilityCode)) return "detection.v1";
+        if ("video-file-analysis.v1".equals(capabilityCode)) return "video-analysis.v1";
+        if ("video-stream-analysis.v1".equals(capabilityCode)) return "stream-analysis.v1";
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package org.jeecg.modules.ai.api.controller;
 
 import java.util.stream.Collectors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.jeecg.common.api.vo.Result;
@@ -18,6 +19,7 @@ public class JobController {
     private final CancelJobService cancel;
     private final JobDtoMapper mapper=new JobDtoMapper();
     public JobController(JobQueryService query) { this(query,null); }
+    @Autowired
     public JobController(JobQueryService query,CancelJobService cancel) { this.query=query; this.cancel=cancel; }
     @GetMapping("/{id}")
     public ResponseEntity<Result<JobDto>> get(@PathVariable String id) {

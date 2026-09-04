@@ -27,7 +27,7 @@ function video(metadata, scenario) {
   const reference = scenario === 'artifact-interrupted' ? 'interrupted.png' : 'snapshot.png';
   return {
     simulated: true,
-    provider_request_id: `stub-${metadata.request_id}`,
+    provider_request_id: metadata.request_id,
     provider_version: 'stub-simulated-v1',
     events: empty ? [] : [{ event_id: `stub-video-event-${metadata.request_id}`, offset_ms: 1250,
       event_type: 'synthetic-person', score: 0.91,
