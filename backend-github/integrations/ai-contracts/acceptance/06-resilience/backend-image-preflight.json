@@ -4,13 +4,12 @@
   "dockerCliAvailable": true,
   "dockerEngineReady": false,
   "dockerProbeTimedOut": true,
-  "freeBytes": 2360070144,
+  "freeBytes": 12432506880,
   "requiredFreeBytes": 4294967296,
   "baselineImageBytes": 1111539550,
   "imageSafetyMultiple": 3,
   "reasons": [
-    "DOCKER_ENGINE_UNAVAILABLE",
-    "HOST_FREE_SPACE_BELOW_REQUIRED_MINIMUM"
+    "DOCKER_ENGINE_UNAVAILABLE"
   ],
   "destructiveCleanupPerformed": false
 }
