@@ -10,10 +10,10 @@ assert.equal(git(original, 'status', '--porcelain'), '')
 assert.equal(git(root, 'branch', '--show-current'), 'feature/remote-inference')
 assert.equal(git(root, 'diff', '--check'), '')
 const tasks = fs.readFileSync(path.join(root, 'openspec/changes/remote-inference-platform/tasks.md'), 'utf8')
-assert.equal((tasks.match(/^- \[x\]/gm) || []).length, 21)
-assert(tasks.includes('- [ ] 3.4 ') && tasks.includes('- [ ] 4.7 '))
+assert.equal((tasks.match(/^- \[x\]/gm) || []).length, 23)
+assert(tasks.includes('- [x] 3.4 ') && tasks.includes('- [x] 4.7 '))
 const gates = ['preflight', 'migration', 'java-tests', 'frontend-checks', 'contract-checks', 'architecture',
-  'spring-boot-smoke', 'api-e2e', 'runtime-modes', 'safety-e2e', 'menu-e2e', 'live-contracts', 'artifacts']
+  'spring-boot-smoke', 'api-e2e', 'runtime-modes', 'safety-e2e', 'menu-e2e', 'live-contracts', 'artifacts', 'browser-e2e']
 for (const name of gates) assert.equal(JSON.parse(fs.readFileSync(path.join(evidence, name + '.json'))).status, 'PASS', name)
 const dependencies = ['05-lan', '06-resilience', '07-cleanup', '08-release'].map(id => {
   const dir = path.resolve(root, '../../', id, 'code')
@@ -44,9 +44,9 @@ for (const file of files(evidence).filter(p => !p.endsWith('/final-checks.json')
   for (const account of accounts) assert(!bytes.includes(Buffer.from(account.password)), 'Credential found in evidence')
   manifest[path.relative(evidence, file)] = crypto.createHash('sha256').update(bytes).digest('hex')
 }
-fs.writeFileSync(path.join(evidence, 'final-checks.json'), JSON.stringify({ status: 'PARTIAL_PENDING_USER',
-  passedTasks: 21, totalTasks: 41, pendingIntegration: ['3.4 frontend joint acceptance', '4.7 real browser workflow'],
-  blocker: 'Browser CAPTCHA action awaits user authorization; no browser workflow completion claimed.',
+fs.writeFileSync(path.join(evidence, 'final-checks.json'), JSON.stringify({ status: 'PASS',
+  passedTasks: 23, totalTasks: 41, pendingIntegration: [],
+  releaseBoundary: 'round4-mock-gate',
   gatesPassed: gates, dependencies, services, evidenceSha256: manifest,
-  limits: ['No real provider protocol approval', 'No production deployment/push/archive', 'No downstream release before complete joint acceptance'] }, null, 2) + '\n')
-console.log('PASS: completed gates verified; 21/41, browser acceptance pending; original services untouched and dependencies held')
+  limits: ['No real provider protocol approval', 'No production deployment/push/archive', '05/06/07/08 remain gated by their own prerequisites'] }, null, 2) + '\n')
+console.log('PASS: 23/41 including real browser acceptance; round4 mock gate released, later packages remain gated')

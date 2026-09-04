@@ -1,12 +1,9 @@
 {
-  "status": "PARTIAL_PENDING_USER",
-  "passedTasks": 21,
+  "status": "PASS",
+  "passedTasks": 23,
   "totalTasks": 41,
-  "pendingIntegration": [
-    "3.4 frontend joint acceptance",
-    "4.7 real browser workflow"
-  ],
-  "blocker": "Browser CAPTCHA action awaits user authorization; no browser workflow completion claimed.",
+  "pendingIntegration": [],
+  "releaseBoundary": "round4-mock-gate",
   "gatesPassed": [
     "preflight",
     "migration",
@@ -20,7 +17,8 @@
     "safety-e2e",
     "menu-e2e",
     "live-contracts",
-    "artifacts"
+    "artifacts",
+    "browser-e2e"
   ],
   "dependencies": [
     {
@@ -53,7 +51,7 @@
       "name": "wgai-ri-00-integration-backend-1",
       "healthy": true,
       "imageId": "sha256:776eca1beabd397e267eb45858ea23487b0c557cc044725e63ac92d640e64392",
-      "startedAt": "2026-09-03T12:20:45.135107621Z",
+      "startedAt": "2026-09-04T04:20:46.371743661Z",
       "ports": {
         "8080/tcp": [
           {
@@ -171,10 +169,11 @@
   ],
   "evidenceSha256": {
     "FIXES.md": "c986cfb685f7fbd99d56163df34d166146e725fe09f7ce826013e885e42c6db9",
-    "README.md": "f35f35bda9756a708307b9be9fbcf91a1c32be63440c8a242048a09707d2bb53",
+    "README.md": "fad2925ff6df5657058cf0db55491cc63f5e3f05607ace673621b29ee1839362",
     "api-e2e.json": "a3200de55d5f01b10297dbe3a185df17406fca46080649c2a25cbf4724b28107",
     "architecture.json": "3aaa7f96b6cae3a0990f9769ff83fdb00dbd835c4d350ac516d9dd3bdd1c51c4",
     "artifacts.json": "2ad374b8f32ad8360a506678dbf89cb690348c45d961d8b83bc0e08b6c4b317e",
+    "browser-e2e.json": "7412cbec693bfd03fa14898449c78db8ad25ae077476b45e9170d3c06b3192d9",
     "browser-pending.png": "e60b5c71a88a19a64746f958dcacbd11a751853f4965526d1730c1a1e2c12861",
     "browser-pending.txt": "cda11f8e12ec354b7f367aa5dfd1ff81f4c3b0a25174db954309f946c72add52",
     "contract-checks.json": "0aaf29f8124153dcccf8620291ece9bafbb235495b8de5496e1d2acd60ff3e57",
@@ -193,7 +192,7 @@
     "scripts/artifacts.py": "9893fb1b7c8be4d075ca0948b60e6472d1e81dc982a45b8013da064eed764f6c",
     "scripts/contracts-architecture.py": "846c05bcc026b1dc816c5416e4b7b2691e00bbcc7dad80120f041b7e83f30dd2",
     "scripts/fault-runtime.cjs": "31357a166a263e7b68a59436d9d3e96bb10775cbe95e1f7c229b1d7b48a58ab4",
-    "scripts/final-checks.cjs": "d5770e03f80d0b45e5fabc3107cbde78a47077144606eb74177df9b527aaebaf",
+    "scripts/final-checks.cjs": "8c6ed17429794a17e5998e7b994cb9bfd1604033d166b0e25fe0cd705446c794",
     "scripts/frontend-evidence.cjs": "fc1004487aabdc600eff992036d6346ddb308e5674cdac17f9e291fe427857d3",
     "scripts/http.cjs": "0aadb01f02f443aaa51aa1ec570dc33bbead5bd8b76820fd72aff1e9883fe62c",
     "scripts/java-tests.py": "4e4420d5a48e66fe65d7f0aa8663a3604f250247aceda0d7dd9ae3870b1dd6d3",
@@ -212,6 +211,6 @@
   "limits": [
     "No real provider protocol approval",
     "No production deployment/push/archive",
-    "No downstream release before complete joint acceptance"
+    "05/06/07/08 remain gated by their own prerequisites"
   ]
 }
