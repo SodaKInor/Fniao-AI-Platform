@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -66,7 +67,7 @@ public class ResilienceTest {
 
     @Test public void pendingRestartDispatchesExactlyOnce() throws Exception {
         JobRecord pending=f.submit(f.input("a"),"pending-restart");
-        JobWorker worker=jobWorker(f.provider(f.result(false)),f.reader(),10,AiRuntimeMetrics.disabled());
+        JobWorker worker=jobWorker(f.provider(f.result(false)),f.reader(),1000,AiRuntimeMetrics.disabled());
         worker.start();
         try { waitFor(() -> f.get(pending).getState()==JobState.SUCCEEDED); } finally { worker.close(); }
         assertEquals(1,f.calls.get());
@@ -122,6 +123,29 @@ public class ResilienceTest {
         assertNull(stream(running).getCursor());
         assertTrue(f.streamEvents.listOwned(sid(running),"a",null,20).getItems().isEmpty());
         assertEquals(0,f.countFiles());
+    }
+
+    @Test public void invalidSnapshotBatchIsAtomicAndCannotCrossStreamSessions() throws Exception {
+        f.close(); f=new DbFixture(20,2);
+        f.streamSource("a","snapshot_batch_source",true);
+        StreamSession first=manualRunning("snapshot-batch-a","snapshot_batch_source");
+        StreamSession second=manualRunning("snapshot-batch-b","snapshot_batch_source");
+        String providerEvent="snapshot_origin";
+        String firstSnapshot=snapshotId(sid(first),providerEvent);
+        f.files.collect(firstSnapshot,"a",new ContentMetadata("snapshot.png","image/png",(long)f.png.length,null),
+                new ByteArrayInputStream(f.png),10*1024*1024);
+
+        assertTrue(f.streamEvents.appendAndAdvance(sid(first),first.getVersion(),null,
+                Collections.singletonList(new StreamEvent("first_event",providerEvent,1,f.clock.instant(),
+                        "person",null,firstSnapshot)),"first-cursor",Instant.now()));
+
+        List<StreamEvent> invalidBatch=Arrays.asList(event("valid_before_invalid","valid_provider",2),
+                new StreamEvent("cross_session","foreign_provider",3,f.clock.instant(),"person",null,firstSnapshot));
+        assertFalse(f.streamEvents.appendAndAdvance(sid(second),second.getVersion(),null,invalidBatch,
+                "must-not-advance",Instant.now()));
+        assertNull(stream(second).getCursor());
+        assertTrue(f.streamEvents.listOwned(sid(second),"a",null,20).getItems().isEmpty());
+        assertEquals(1,f.streamEvents.listOwned(sid(first),"a",null,20).getItems().size());
     }
 
     @Test public void boundedMetricsExposeQueuesDurationsErrorsAndEventDeduplication() throws Exception {
@@ -209,6 +233,10 @@ public class ResilienceTest {
     }
     private StreamEvent event(String id,String provider,long offset) {
         return new StreamEvent(id,provider,offset,f.clock.instant(),"person",new BigDecimal("0.8"),null);
+    }
+    private String snapshotId(String session,String providerEvent) {
+        return "out_"+UUID.nameUUIDFromBytes(
+                (session+"\n"+providerEvent+"-snapshot").getBytes(StandardCharsets.UTF_8));
     }
     private JobRecord job(String id) { return f.jobs.findOwned(id,"a").get(); }
     private StreamSession stream(StreamSession session) { return f.streamSessions.findOwned(sid(session),"a").get(); }

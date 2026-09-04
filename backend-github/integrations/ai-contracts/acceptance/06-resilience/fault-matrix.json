@@ -53,9 +53,9 @@
       "expected": "operation rejected; state remains RUNNING"
     },
     {
-      "case": "event deduplication and late event",
-      "evidence": "StreamWorkflowTest.eventsAreDeduplicatedPagedAndRejectedAfterTerminalState",
-      "expected": "duplicates ignored; terminal state/cursor cannot be overwritten"
+      "case": "event deduplication, late event, and snapshot batch integrity",
+      "evidence": "StreamWorkflowTest.eventsAreDeduplicatedPagedAndRejectedAfterTerminalState; ResilienceTest.invalidSnapshotBatchIsAtomicAndCannotCrossStreamSessions",
+      "expected": "duplicates ignored; terminal state/cursor cannot be overwritten; invalid snapshot batches commit no partial events and cannot link a snapshot across sessions"
     },
     {
       "case": "stream snapshot interruption",

@@ -1,10 +1,10 @@
 {
   "status": "PASS",
-  "tests": 58,
+  "tests": 59,
   "exitCode": 0,
   "javaClassMajor": 52,
   "database": "06-owned disposable schema; dropped after test",
   "sourceReadOnly": true,
   "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/drafts/validation/java/tests.log",
-  "logSha256": "f594bc44c430eda3194382a2e3654a7382dd4c5b3d34d4a1cdc61ba59cd0226e"
+  "logSha256": "d4f6e97626185436f4dee77041de3f4d3e733f901bfcae642e7a34bb1851ca23"
 }

@@ -8,6 +8,7 @@
   "dependenciesUnchanged": true,
   "productionProviderContract": "UNCONFIRMED",
   "productionCapabilitiesRemainDisabled": true,
+  "streamEventBatchAtomicAndSessionBound": true,
   "metricsUseBoundedTags": true,
   "allFileLogsHaveSizeAndTimeRollover": true,
   "remotePostReplayGuardPresent": true,

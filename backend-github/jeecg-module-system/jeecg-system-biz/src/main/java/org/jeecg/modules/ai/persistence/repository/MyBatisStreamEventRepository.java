@@ -54,14 +54,27 @@ public final class MyBatisStreamEventRepository implements StreamEventRepository
             if (row==null || row.version!=version || !Objects.equals(row.providerCursor,expectedCursor)
                     || !"RUNNING".equals(row.state)) return false;
             for (StreamEvent event:values) {
-                if (event.getSnapshotAssetId()!=null && assets.findOwned(event.getSnapshotAssetId(),row.ownerId)==null) return false;
+                if (event==null) return false;
+                String snapshot=event.getSnapshotAssetId();
+                if (snapshot!=null && (!snapshot.equals(snapshotId(sessionId,event.getProviderEventId()))
+                        || assets.findOwned(snapshot,row.ownerId)==null)) return false;
+            }
+            for (StreamEvent event:values) {
                 if (events.insertIgnore(converter.event(sessionId,event))==1) counts[0]++; else counts[1]++;
             }
             row.providerCursor=nextCursor; row.updatedAt=now.toEpochMilli(); row.version++;
-            return sessions.update(row)==1;
+            if (sessions.update(row)==1) return true;
+            status.setRollbackOnly(); return false;
         }));
         if (applied) { inserted.accept(counts[0]); duplicate.accept(counts[1]); }
         return applied;
+    }
+
+    /** Snapshot identities are bound to one local session and provider event, never merely to an owner. */
+    private String snapshotId(String sessionId,String providerEventId) {
+        if (providerEventId==null) return "";
+        return "out_"+UUID.nameUUIDFromBytes(
+                (sessionId+"\n"+providerEventId+"-snapshot").getBytes(StandardCharsets.UTF_8));
     }
 
     private Cursor cursor(String value) {

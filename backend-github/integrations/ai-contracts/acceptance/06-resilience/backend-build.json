@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "PASS_COMPILE_IMAGE_EXPORT_BLOCKED",
   "command": "docker build --progress=plain -f deploy/backend/Dockerfile -t wgai-resilience-backend:local-check .",
   "profile": "prod,docker-core",
   "java": 8,
@@ -7,8 +7,11 @@
   "testsExecutedInBuild": false,
   "testsEvidence": "java8-tests.json",
   "image": "wgai-resilience-backend:local-check",
-  "imageDigest": "sha256:6cf76c79932586d7c26c86dcb19b1dcbfa28ef4b5b55f598cd17c5e0155ba54f",
-  "sizeBytes": 1111539550,
+  "imageDigest": null,
+  "sizeBytes": null,
+  "imageExport": "BLOCKED_HOST_DISK_FULL",
+  "hostFreeSpaceAtBlock": "146MiB",
+  "buildExit": "terminated during silent image export after Maven reactor BUILD SUCCESS to avoid exhausting the host disk",
   "privateArtifacts": "temporarily hard-linked from the accepted 00 workspace, ignored by Git, removed after build",
   "originalContainersOrVolumesModified": false,
   "productionDeploymentPerformed": false

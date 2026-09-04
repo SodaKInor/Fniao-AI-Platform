@@ -55,6 +55,10 @@ def main():
     stream=(ROOT/AI/'config/jobs/StreamSessionWorker.java').read_text()
     assert stream.count('provider.start(')==1 and stream.count('provider.stop(')==1
     assert 'Work.AMBIGUOUS_START' in stream and 'Work.STOP_RECOVERY' in stream
+    event_repository=(ROOT/AI/'persistence/repository/MyBatisStreamEventRepository.java').read_text()
+    assert 'snapshot.equals(snapshotId(sessionId,event.getProviderEventId()))' in event_repository
+    assert event_repository.index('for (StreamEvent event:values) {') < event_repository.index('events.insertIgnore(')
+    assert 'status.setRollbackOnly()' in event_repository
     jobs=(ROOT/AI/'config/jobs/JobWorker.java').read_text()
     assert 'findFetchingResult(staleBefore' in jobs and 'markUncertainUnknown' in jobs
     logback=ROOT/'backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/logback-spring.xml'
@@ -72,6 +76,7 @@ def main():
         'dependenciesUnchanged':True,
         'productionProviderContract':'UNCONFIRMED',
         'productionCapabilitiesRemainDisabled':True,
+        'streamEventBatchAtomicAndSessionBound':True,
         'metricsUseBoundedTags':True,
         'allFileLogsHaveSizeAndTimeRollover':True,
         'remotePostReplayGuardPresent':True,
