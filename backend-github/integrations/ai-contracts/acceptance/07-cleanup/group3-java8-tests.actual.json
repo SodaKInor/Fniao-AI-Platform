@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "tests": 60,
+  "exitCode": 0,
+  "javaClassMajor": 52,
+  "database": "07-owned disposable schema; dropped after test",
+  "sourceReadOnly": true,
+  "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup/drafts/validation/java/tests.log",
+  "logSha256": "7c962671004a4088182f743b7704e4f29ca43cda90cdbfe23891527b6e31ede6"
+}

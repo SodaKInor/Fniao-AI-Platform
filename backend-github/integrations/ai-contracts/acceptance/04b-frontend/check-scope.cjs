@@ -9,8 +9,7 @@ const contract = '1177de8be45123d043d7cb26b845ee9d94c26784'
 const acceptance = 'backend-github/integrations/ai-contracts/acceptance/04b-frontend/'
 const areas = ['frontend-vue/src/modules/ai/']
 const existing = ['store/modules/user.js', 'views/tab/TabAiModelBundList.vue',
-  'views/video/TabAiModelBundList.vue', 'views/audio/audio.vue',
-  'views/tab/live/audio.vue', 'views/teasy/TabEasyConfigList.vue'].map(p => 'frontend-vue/src/' + p)
+  'views/video/TabAiModelBundList.vue'].map(p => 'frontend-vue/src/' + p)
 const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim()
 const lines = text => text ? text.split('\n') : []
 const changed = [...new Set([...lines(git('diff', '--name-only', baseline)),

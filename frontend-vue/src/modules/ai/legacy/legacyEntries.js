@@ -10,7 +10,8 @@ const missingVideoPages = [
 export function isDisabledEntry(component = '') {
   const name = component.replace(/^\//, '').replace(/\.vue$/, '')
   return /^(maxkb|tchat|teasy|train|face|szr|audio)\//.test(name) ||
-    name === 'easy' || name === 'tab/live/audio' ||
+    name === 'easy' || /^tab\/(live|livecanvas)\//.test(name) ||
+    name === 'video/TabVideoUtilList' ||
     name.startsWith('tab/testAI') || missingVideoPages.includes(name)
 }
 

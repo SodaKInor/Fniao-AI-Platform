@@ -14,6 +14,7 @@ import org.jeecg.modules.ai.result.domain.ProviderArtifact;
 import org.jeecg.modules.ai.result.port.ProviderArtifactReader;
 import org.jeecg.modules.ai.video.domain.ProviderVideoEvent;
 import org.jeecg.modules.ai.video.domain.VideoProviderResult;
+import org.jeecg.modules.ai.video.api.VideoJobController;
 import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
 
 import java.io.ByteArrayInputStream;
@@ -42,7 +43,7 @@ public class VideoApiTest {
     @Before public void before() throws Exception {
         f=new DbFixture(); owner("a");
         mvc=MockMvcBuilders.standaloneSetup(new AssetController(f.files),new InferenceController(f.submit,f.query),
-                new JobController(f.query,new CancelJobService(f.jobs,f.clock)))
+                new VideoJobController(f.submit,f.query),new JobController(f.query,new CancelJobService(f.jobs,f.clock)))
                 .setControllerAdvice(new JobsApiExceptionHandler())
                 .setMessageConverters(new StrictInferenceJsonConverter(),new MappingJackson2HttpMessageConverter(json)).build();
     }

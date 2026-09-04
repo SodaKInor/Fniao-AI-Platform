@@ -9,14 +9,11 @@ import java.util.stream.Collectors;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.demo.tab.entity.TabAiHistory;
 import org.jeecg.modules.demo.tab.entity.TabAiModelBund;
@@ -27,10 +24,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 
-import org.jeecg.modules.message.websocket.WebSocket;
-import org.jeecg.modules.tab.AIModel.AIModelYolo3;
-import org.jeecg.modules.tab.entity.TabAiModel;
-import org.jeecg.modules.tab.service.ITabAiModelService;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -38,7 +31,6 @@ import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -61,11 +53,6 @@ import org.jeecg.common.aspect.annotation.AutoLog;
 public class TabAiHistoryController extends JeecgController<TabAiHistory, ITabAiHistoryService> {
 	@Autowired
 	private ITabAiHistoryService tabAiHistoryService;
-	 @Autowired
-	 private ITabAiModelService iTabAiModelService;
-
-	 @Resource
-	 WebSocket webSocket;
 	/**
 	 * 分页列表查询
 	 *
@@ -102,58 +89,29 @@ public class TabAiHistoryController extends JeecgController<TabAiHistory, ITabAi
 		tabAiHistoryService.save(tabAiHistory);
 		return Result.OK("添加成功！");
 	}
-	 @Value(value = "${jeecg.path.upload}")
-	 private String uploadpath;
-
-	 /**
-	  *   添加识别结果
-	  *
-	  * @param
-	  * @return
-	  */
 	 @AutoLog(value = "AI识别结果历史-添加")
-	 @ApiOperation(value="AI识别结果历史-添加", notes="AI识别结果历史-添加")
-	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
-	 @PostMapping(value = "/addIdentify")
-	 public Result<String> addIdentify(@RequestBody TabAiModelBund tabAiModelBund) {
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-		 return tabAiHistoryService.startAi(tabAiModelBund,uploadpath,sysUser.getId());
-	 }
+	@ApiOperation(value="AI识别结果历史-添加", notes="旧执行入口已停用")
+	@PostMapping(value = "/addIdentify")
+	public Result<String> addIdentify(@RequestBody TabAiModelBund tabAiModelBund) {
+		LegacyExecutionGuard.reject();
+		return Result.error("旧 AI 执行入口已停用");
+	}
 
 
-	 /**
-	  *   添加识别结果
-	  *
-	  * @param
-	  * @return
-	  */
 	 @AutoLog(value = "AI语音结果识别结果历史-添加")
-	 @ApiOperation(value="AI语音结果识别结果历史-添加", notes="AI语音结果识别结果历史-添加")
-	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
-	 @GetMapping(value = "/addAudio")
-	 public Result<?> addAudio(@RequestParam(name="path",required=true) String path) {
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-//		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-		 return tabAiHistoryService.aiAudio(path,uploadpath);
-	 }
-	 /**
-	  *   结束识别结果
-	  *
-	  * @param
-	  * @return
-	  */
-	 @AutoLog(value = "AI识别结果历史-添加")
-	 @ApiOperation(value="AI识别结果历史-添加", notes="AI识别结果历史-添加")
-	 //@RequiresPermissions("org.jeecg.modules.demo:tab_ai_history:add")
-	 @PostMapping(value = "/addIdentifyClose")
-	 public Result<String> addIdentifyClose(@RequestBody TabAiModelBund tabAiModelBund) {
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-		 LoginUser sysUser = (LoginUser) SecurityUtils.getSubject().getPrincipal();
-		 tabAiHistoryService.closedentify(tabAiModelBund,sysUser);
-//e9ca23d68d884d4ebb19d07889727dae
-		 return Result.error("结束识别成功");
-	 }
+	@ApiOperation(value="AI语音结果识别结果历史-添加", notes="旧执行入口已停用")
+	@GetMapping(value = "/addAudio")
+	public Result<?> addAudio(@RequestParam(name="path",required=true) String path) {
+		LegacyExecutionGuard.reject();
+		return Result.error("旧 AI 执行入口已停用");
+	}
+	 @AutoLog(value = "AI识别结果历史-关闭")
+	@ApiOperation(value="AI识别结果历史-关闭", notes="旧关闭入口不能代表远程停止")
+	@PostMapping(value = "/addIdentifyClose")
+	public Result<String> addIdentifyClose(@RequestBody TabAiModelBund tabAiModelBund) {
+		LegacyExecutionGuard.reject();
+		return Result.error("旧 AI 执行入口已停用");
+	}
 	/**
 	 *  编辑
 	 *

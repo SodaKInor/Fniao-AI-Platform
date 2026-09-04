@@ -16,8 +16,6 @@
 - 证据见 `group1-runtime.actual.json`、`group1-retirement.actual.json` 和
   `group1-build.actual.json`。
 
-后续组继续执行本地执行/训练代码清理与零调用者原生算法依赖清理；每组均重新构建并回归。
-
 ## 第二组 A：后端功能模块
 
 - 将 182 个生产 AI Java 文件从旧的横向技术层目录迁入 capability、asset、job、result、image、
@@ -40,3 +38,21 @@
   截图入口和停止终态均正常显示。
 - 证据见 `group2-frontend-modules.actual.json`、`group2-frontend-build.actual.json`、
   `group2-frontend-runtime.actual.json` 和 `group2-frontend-browser.actual.json`。
+
+## 第三组：旧本地执行与训练入口
+
+- 删除 31 个后端本地图片/视频/OCR/训练执行文件与 99 个对应旧前端页面；旧模型绑定新增动作不再
+  下载外部图片，通用 WebSocket 不再在连接时启动 RTSP/本地识别线程。
+- 六个遗留执行入口对匿名访问返回 401、对已登录访问返回
+  `409 / CAPABILITY_UNAVAILABLE`；模型、绑定、订阅、基础配置和历史管理 CRUD 及数据库表行保留。
+- 用户明确要求为后续新目录重构保留可复用依赖，因此 OpenCV、ONNX Runtime、JavaCV、ASRT、
+  RapidOCR、Tess4J、私有 JAR 安装/Java 8 OpenCV 重编译脚本及播放器制品均未删除；生产 Java
+  已无这些本地算法的活动引用。
+- Java 8 测试 60/60、前端行为 27/27、前后端生产构建与镜像构建、本地 simulated
+  图片/上传视频/流/截图/停止/历史/跨用户拒绝均通过。真实供应商仍未验证。
+- 证据见 `group3-legacy-execution.actual.json`、`group3-direct-retirement.actual.json`、
+  `group3-java8-tests.actual.json`、`group3-backend-build.actual.json`、
+  `group3-frontend-build.actual.json` 和 `group3-runtime.actual.json`。
+
+本轮到此不继续全项目目录重构；最终集成只生成明确标注 simulated/disabled 的本地候选与新目录重构
+HANDOFF，不把真实 GPU/RTSP 未知项标记为成功。

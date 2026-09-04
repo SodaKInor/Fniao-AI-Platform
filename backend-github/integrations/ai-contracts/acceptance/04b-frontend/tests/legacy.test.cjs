@@ -9,8 +9,11 @@ test('retired menu entries become inert pages while retained history and pending
     'maxkb/userchat', 'tchat/userchat', 'teasy/TabEasyConfigList']) {
     assert.equal(isDisabledEntry(name), true, name)
   }
-  for (const name of ['tab/TabAiModelBundList', 'tab/TabAiHistoryList',
-    'video/TabVideoUtilList', 'tab/live/AddressList']) {
+  for (const name of ['video/TabVideoUtilList', 'tab/live/AddressList',
+    'tab/livecanvas/AddressList']) {
+    assert.equal(isDisabledEntry(name), true, name)
+  }
+  for (const name of ['tab/TabAiModelBundList', 'tab/TabAiHistoryList']) {
     assert.equal(isDisabledEntry(name), false, name)
   }
   const input = [{ component: 'layouts/RouteView', children: [{ component: 'easy',
@@ -25,7 +28,8 @@ test('retired menu entries become inert pages while retained history and pending
 
 test('calling retired component methods directly cannot send execution or upload requests', () => {
   let notices = 0
-  const context = { $message: { warning() { notices++ } } }
+  const context = { $message: { warning() { notices++ } },
+    $router: { push() { assert.fail('unexpected legacy navigation') } } }
   const mocks = { 'ant-design-vue': { message: context.$message },
     './modules/TabAiModelBundModal': {},
     '@/api/manage': new Proxy({}, { get() { return () => assert.fail('unexpected request') } }) }
@@ -33,12 +37,7 @@ test('calling retired component methods directly cannot send execution or upload
     const component = loadSource('views/' + name, mocks).default
     component.methods.handleIdentify.call(context)
     component.methods.handleIdentifyClose.call(context)
+    component.methods.handleOpenVideo.call(context)
   }
-  for (const name of ['audio/audio.vue', 'tab/live/audio.vue']) {
-    const component = loadSource('views/' + name, mocks).default
-    component.methods.uploadAudio.call(context)
-    component.methods.AiAudio.call(context)
-    if (component.methods.initWebSocket) component.methods.initWebSocket.call(context)
-  }
-  assert.equal(notices, 8)
+  assert.equal(notices, 6)
 })

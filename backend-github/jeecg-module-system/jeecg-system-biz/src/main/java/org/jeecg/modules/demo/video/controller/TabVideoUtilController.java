@@ -5,8 +5,6 @@ import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -31,7 +29,6 @@ import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -107,57 +104,22 @@ public class TabVideoUtilController extends JeecgController<TabVideoUtil, ITabVi
 		return Result.OK("编辑成功!");
 	}
 
-	 @Value(value = "${jeecg.path.upload}")
-	 private String uploadpath;
-	 /**
-	  *  开始区域检测
-	  *
-	  * @param tabVideoUtil
-	  * @return
-	  */
 	 @AutoLog(value = "区域入侵配置-开启")
-	 @ApiOperation(value="区域入侵配置-开启", notes="区域入侵配置-开启")
-	 //@RequiresPermissions("org.jeecg.modules.demo:tab_video_util:edit")
-	 @RequestMapping(value = "/startVideoUtil", method = {RequestMethod.POST})
-	 public Result<String> startVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-		 try {
-			 CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
-				 try {
-					 tabVideoUtilService.startVideoUtil(tabVideoUtil, uploadpath);
-				 } catch (Exception e) {
-					 throw new RuntimeException(e);
-				 }
-			 }, Executors.newSingleThreadExecutor());
-			 TabVideoUtil tabVideoUtil1=tabVideoUtilService.getById(tabVideoUtil.getId());
-			 tabVideoUtil1.setSpareOne("1");
-			 tabVideoUtilService.updateById(tabVideoUtil1);
-		 } catch (Exception e) {
-			 e.printStackTrace();
-			 return Result.error("开启失败!");
-		 }
-		 return Result.OK("开启成功!");
-	 }
+	@ApiOperation(value="区域入侵配置-开启", notes="旧执行入口已停用")
+	@RequestMapping(value = "/startVideoUtil", method = {RequestMethod.POST})
+	public Result<String> startVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
+		LegacyExecutionGuard.reject();
+		return Result.error("旧 AI 执行入口已停用");
+	}
 
 
-	 /**
-	  *  结束区域检测
-	  *
-	  * @param tabVideoUtil
-	  * @return
-	  */
 	 @AutoLog(value = "区域入侵配置-结束")
-	 @ApiOperation(value="区域入侵配置-结束", notes="区域入侵配置-结束")
-	 //@RequiresPermissions("org.jeecg.modules.demo:tab_video_util:edit")
-	 @RequestMapping(value = "/stopVideoUtil", method = {RequestMethod.POST})
-	 public Result<String> stopVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-		 tabVideoUtilService.endVideoUtil(tabVideoUtil);
-		 TabVideoUtil tabVideoUtil1=tabVideoUtilService.getById(tabVideoUtil.getId());
-		 tabVideoUtil1.setSpareOne("0");
-		 tabVideoUtilService.updateById(tabVideoUtil1);
-		 return Result.OK("结束成功!");
-	 }
+	@ApiOperation(value="区域入侵配置-结束", notes="旧停止入口不能代表远程停止")
+	@RequestMapping(value = "/stopVideoUtil", method = {RequestMethod.POST})
+	public Result<String> stopVideoUtil(@RequestBody TabVideoUtil tabVideoUtil) {
+		LegacyExecutionGuard.reject();
+		return Result.error("旧 AI 执行入口已停用");
+	}
 	/**
 	 *   通过id删除
 	 *

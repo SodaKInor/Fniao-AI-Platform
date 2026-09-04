@@ -247,7 +247,7 @@ import { filterObj } from '@/utils/util';
         this.$message.warning('旧关闭入口已停用，关闭页面不代表停止外部处理');
       },
       handleOpenVideo(info){
-       this.$router.push('livecanvas/AddressList');
+        this.$message.warning('旧实时视频入口已停用；只有登记了 provider source ID 的来源才可使用统一实时事件页面')
       }
     }
   }

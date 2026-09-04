@@ -12,9 +12,6 @@ import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.base.BaseMap;
 import org.jeecg.common.constant.WebsocketConst;
 import org.jeecg.common.modules.redis.client.JeecgRedisClient;
-import org.jeecg.common.util.SpringContextUtils;
-import org.jeecg.modules.demo.tab.service.ITabAiHistoryService;
-import org.jeecg.modules.demo.tab.service.impl.TabAiHistoryServiceImpl;
 import org.jeecg.modules.system.mapper.SysCategoryMapper;
 import org.jeecg.modules.system.service.ISysDepartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,21 +42,14 @@ public class WebSocket {
 
 
 
-    //==========【websocket接受、推送消息等方法 —— 具体服务节点推送ws消息】========================================================================================
     @OnOpen
     public void onOpen(Session session, @PathParam(value = "userId") String userId) {
         try {
             sessionPool.put(userId, session);
-            log.info("连接人：{}",userId);
-            if(userId.indexOf("rtsp")>-1){
-                System.out.println("连接开始了");
-
-                ITabAiHistoryService baseMapper = (ITabAiHistoryService) SpringContextUtils.getBean("tabAiHistoryServiceImpl");
-                baseMapper.sendUrlFLV();//sendUrl();
-            }
-
+            log.info("连接人：{}", userId);
             log.info("【系统 WebSocket】有新的连接，总数为:" + sessionPool.size());
         } catch (Exception e) {
+            log.warn("WebSocket 连接登记失败", e);
         }
     }
 

@@ -3,7 +3,6 @@ package org.jeecg.modules.demo.tab.controller;
 import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -11,18 +10,14 @@ import java.net.URLDecoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.util.RedisUtil;
 import org.jeecg.common.util.oConvertUtils;
-import org.jeecg.modules.demo.easy.entity.TabEasyConfig;
 import org.jeecg.modules.demo.tab.entity.PushInfo;
 import org.jeecg.modules.demo.tab.entity.TabAiModelBund;
 import org.jeecg.modules.demo.tab.entity.TabAiSubscription;
-import org.jeecg.modules.demo.tab.service.ITabAiBaseService;
 import org.jeecg.modules.demo.tab.service.ITabAiSubscriptionService;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -30,8 +25,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 
-import org.jeecg.modules.system.entity.SysDictItem;
-import org.jeecg.modules.tab.AIModel.AIModelYolo3;
 import org.jeecg.modules.tab.entity.TabAiModel;
 import org.jeecg.modules.tab.service.impl.TabAiModelServiceImpl;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
@@ -41,7 +34,6 @@ import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -66,20 +58,11 @@ public class TabAiSubscriptionController extends JeecgController<TabAiSubscripti
 	private ITabAiSubscriptionService tabAiSubscriptionService;
 	@Autowired
 	private TabAiModelServiceImpl tabAiModelServiceImpl;
-	@Autowired
-	RedisTemplate  redisTemplate;
-	 @Autowired
-	 private ITabAiBaseService tabAiBaseService;
-	 @ApiOperation(value="Ai事件订阅-test", notes="Ai事件订阅-test")
+	 @ApiOperation(value="Ai事件订阅-test", notes="旧执行入口已停用")
 	@RequestMapping(value = "/subInfo")
-	public List<PushInfo>  getSub(){
-        org.jeecg.modules.ai.legacy.LegacyExecutionGuard.reject();
-		log.info("输出结果");
-		List<PushInfo> object1= (List<PushInfo> ) redisTemplate.opsForValue().get("sendPush");
-		 tabAiBaseService.SendRedisBase();
-		 AIModelYolo3  modelYolo3=new AIModelYolo3();
-		 modelYolo3.SendPicThread(redisTemplate);
-		return object1;
+	public List<PushInfo> getSub() {
+		LegacyExecutionGuard.reject();
+		return Collections.emptyList();
 	}
 	 @ApiOperation(value="Ai事件订阅-test", notes="Ai事件订阅-test")
 	 @PostMapping(value = "/subInfo2")

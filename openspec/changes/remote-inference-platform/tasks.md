@@ -71,10 +71,10 @@
 
 前置：6.5 本地验收 SHA、最终保留/退役清单和模块依赖矩阵。交付：按功能分包的业务代码及可回退的旧功能清理。
 
-- [ ] 7.1 建立 capability、asset、job、result、image、video、stream、provider、operations、legacy 的后端/前端文件映射和允许依赖矩阵；用 Graphify 与 import 检查验证现状并确定逐组迁移顺序，不创建 audio/chat/training 空模块。
-- [ ] 7.2 将后端 AI 代码按功能分包且在功能内部保留必要 api/application/domain/port/persistence 层；逐模块编译和测试，验证 Controller、provider、存储与持久化职责没有越界或循环依赖。
-- [ ] 7.3 将前端 AI 页面、API、服务、组件和路由归入对应功能模块；验证图片、上传视频、实时流、任务历史和结果下载行为不变，轮询代次与页面销毁清理继续通过。
-- [ ] 7.4 退役全部 MaxKB、tchat、easyAi 聊天和训练执行入口；按引用清单分组清理旧 `AIModel`、本地图片/视频/语音/OCR/训练执行代码及确认无调用者的 native 依赖，保留历史、管理 CRUD 和仍被使用的通用组件。
+- [x] 7.1 建立 capability、asset、job、result、image、video、stream、provider、operations、legacy 的后端/前端文件映射和允许依赖矩阵；用 Graphify 与 import 检查验证现状并确定逐组迁移顺序，不创建 audio/chat/training 空模块。
+- [x] 7.2 将后端 AI 代码按功能分包且在功能内部保留必要 api/application/domain/port/persistence 层；逐模块编译和测试，验证 Controller、provider、存储与持久化职责没有越界或循环依赖。
+- [x] 7.3 将前端 AI 页面、API、服务、组件和路由归入对应功能模块；验证图片、上传视频、实时流、任务历史和结果下载行为不变，轮询代次与页面销毁清理继续通过。
+- [x] 7.4 退役全部 MaxKB、tchat、easyAi 聊天和训练执行入口；按引用清单分组清理旧 `AIModel`、本地图片/视频/语音/OCR/训练执行代码，保留历史、管理 CRUD 和仍被使用的通用组件。根据用户后续将在新目录重构的决定，无活动调用者的 native 依赖和配套构建脚本也保留为预留能力，但不得接回已退役入口。
 - [ ] 7.5 每组前后验证引用、前后端构建、remote→stub 流程、disabled 模式、历史成果、数据库表/行摘要和 Graphify；独立提交并记录回滚点，真实服务未知项保持 disabled。
 
 ## 8. 第 8 批：最终仓库目录整合与本地交付

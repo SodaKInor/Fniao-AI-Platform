@@ -5,7 +5,6 @@ import org.jeecg.common.util.RedisUtil;
 import org.jeecg.modules.demo.tab.entity.TabAiBase;
 import org.jeecg.modules.demo.tab.mapper.TabAiBaseMapper;
 import org.jeecg.modules.demo.tab.service.ITabAiBaseService;
-import org.jeecg.modules.tab.AIModel.VideoSendReadCfg;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -25,9 +24,8 @@ public class TabAiBaseServiceImpl extends ServiceImpl<TabAiBaseMapper, TabAiBase
     RedisUtil redisUtil;
     @Override
     public void SendRedisBase() {
-        List<TabAiBase> base=this.list();
+        List<TabAiBase> base = this.list();
         redisUtil.set("AIModelBase", JSONObject.toJSONString(base));
-        redisUtil.expire("AIModelBase",(24*60*60*365*1000));
-        VideoSendReadCfg.map=VideoSendReadCfg.getMap(base);
+        redisUtil.expire("AIModelBase", (24 * 60 * 60 * 365 * 1000));
     }
 }

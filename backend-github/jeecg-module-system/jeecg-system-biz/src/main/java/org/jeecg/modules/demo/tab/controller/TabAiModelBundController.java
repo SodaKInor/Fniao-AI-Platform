@@ -23,7 +23,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 
-import org.jeecg.modules.tab.AIModel.AIModelYolo3;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -31,7 +30,6 @@ import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -108,27 +106,10 @@ public class TabAiModelBundController extends JeecgController<TabAiModelBund, IT
 		 queryWrapper.eq(TabAiModelBund::getSpaceOne,"1");
 		 return Result.OK(tabAiModelBundService.list(queryWrapper));
 	 }
-	 @Value(value = "${jeecg.path.upload}")
-	 private String uploadpath;
-	/**
-	 *   添加
-	 *
-	 * @param tabAiModelBund
-	 * @return
-	 */
 	@AutoLog(value = "模型绑定-添加")
 	@ApiOperation(value="模型绑定-添加", notes="模型绑定-添加")
-	//@RequiresPermissions("org.jeecg.modules.demo:tab_ai_model_bund:add")
 	@PostMapping(value = "/add")
 	public Result<String> add(@RequestBody TabAiModelBund tabAiModelBund) {
-		if(tabAiModelBund.getSpaceOne().equals("0")){
-			if(StringUtils.isEmpty(tabAiModelBund.getSaveUrl())&&StringUtils.isNotEmpty(tabAiModelBund.getSendUrl())){
-				AIModelYolo3 modelYolo3=new AIModelYolo3();
-				String saveurl=modelYolo3.SavePicInLocalhost(tabAiModelBund.getSendUrl(),uploadpath);
-				log.info("图片下载保存地址{}",saveurl);
-				tabAiModelBund.setSaveUrl(saveurl);
-			}
-		}
 		tabAiModelBundService.save(tabAiModelBund);
 		return Result.OK("添加成功！");
 	}

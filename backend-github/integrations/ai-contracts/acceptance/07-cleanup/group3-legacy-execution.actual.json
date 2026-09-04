@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "scope": "retired local AI execution and training code",
+  "removedBackendFiles": 31,
+  "removedFrontendFiles": 99,
+  "forbiddenProductionJavaReferences": [],
+  "protectedLegacyRoutes": [
+    "/tab/tabAiHistory/addIdentify",
+    "/tab/tabAiHistory/addAudio",
+    "/tab/tabAiHistory/addIdentifyClose",
+    "/video/tabVideoUtil/startVideoUtil",
+    "/video/tabVideoUtil/stopVideoUtil",
+    "/tab/tabAiSubscription/subInfo"
+  ],
+  "retainedManagementAndPlayerFiles": [
+    "frontend-vue/public/index.html",
+    "frontend-vue/public/static/jessibuca-pro-multi.js",
+    "frontend-vue/public/static/decoder-pro-audio.js",
+    "frontend-vue/src/views/tab/TabAiModelList.vue",
+    "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+    "frontend-vue/src/views/tab/TabAiHistoryList.vue",
+    "frontend-vue/src/views/tab/TabAiSubscriptionList.vue"
+  ],
+  "dependenciesRetainedByDecision": [
+    "backend-github/jeecg-module-system/jeecg-system-biz/pom.xml",
+    "backend-github/jeecg-module-system/jeecg-system-start/pom.xml",
+    "backend-github/pom.xml",
+    "deploy/backend/install-private-jars.sh",
+    "deploy/backend/rebuild-opencv-java8.sh"
+  ],
+  "note": "Reusable OpenCV/ONNX/JavaCV/ASRT/RapidOCR/Tess4J dependencies and their build scripts are intentionally retained for future use; retired code has no active reference to them."
+}
