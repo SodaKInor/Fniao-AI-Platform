@@ -18,6 +18,7 @@ import org.jeecg.modules.ai.persistence.converter.*;
 import org.jeecg.modules.ai.persistence.repository.*;
 import org.jeecg.modules.ai.application.assets.AssetService;
 import org.jeecg.modules.ai.application.jobs.*;
+import org.jeecg.modules.ai.config.jobs.AiRuntimeMetrics;
 import org.jeecg.modules.ai.storage.PrivateFileArtifactStore;
 
 public final class DbFixture implements AutoCloseable {
@@ -45,8 +46,9 @@ public final class DbFixture implements AutoCloseable {
     public final AtomicInteger reads=new AtomicInteger();
     public final AtomicInteger closes=new AtomicInteger();
 
-    public DbFixture() throws Exception { this(20,1); }
-    public DbFixture(int pending,int active) throws Exception {
+    public DbFixture() throws Exception { this(20,1,AiRuntimeMetrics.disabled()); }
+    public DbFixture(int pending,int active) throws Exception { this(pending,active,AiRuntimeMetrics.disabled()); }
+    public DbFixture(int pending,int active,AiRuntimeMetrics metrics) throws Exception {
         DriverManagerDataSource source=new DriverManagerDataSource(System.getProperty("ai.test.jdbc",
                 "jdbc:mysql://mysql:3306/wgai_ri_04a_assets_jobs?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"),
                 "foundation",System.getenv("MYSQL_PASSWORD"));
@@ -69,7 +71,9 @@ public final class DbFixture implements AutoCloseable {
                 new DataSourceTransactionManager(source),pending,active);
         streamEvents=new MyBatisStreamEventRepository(template.getMapper(StreamSessionMapper.class),
                 template.getMapper(StreamEventMapper.class),template.getMapper(AssetMapper.class),streams,
-                new DataSourceTransactionManager(source));
+                new DataSourceTransactionManager(source),count -> metrics.streamEvents("inserted",count),
+                count -> metrics.streamEvents("duplicate",count));
+        metrics.bindJobs(jobs); metrics.bindStreams(streamSessions);
         privateRoot=Files.createTempDirectory(Paths.get("/validation"),"private-");
         store=new PrivateFileArtifactStore(privateRoot,Collections.singletonList(Paths.get("/validation/public")),4096);
         files=new AssetService(assets,store,clock,10*1024*1024,512L*1024*1024,

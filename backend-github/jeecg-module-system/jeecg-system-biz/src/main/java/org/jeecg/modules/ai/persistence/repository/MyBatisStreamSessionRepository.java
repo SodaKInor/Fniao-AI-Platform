@@ -45,6 +45,8 @@ public final class MyBatisStreamSessionRepository implements StreamSessionReposi
     }
     public List<StreamSession> findPending(int limit) { requireLimit(limit); return rows(mapper.pending(limit)); }
     public List<StreamSession> findRecoverable(int limit) { requireLimit(limit); return rows(mapper.recoverable(limit)); }
+    public int pendingCount() { return mapper.pendingCount(); }
+    public int activeCount() { return mapper.activeCount(); }
 
     public Optional<StreamSession> claimPending(String id,long version,String token,Instant now) {
         requireToken(token);

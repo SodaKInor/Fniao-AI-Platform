@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "command": "docker build --progress=plain -f deploy/backend/Dockerfile -t wgai-resilience-backend:local-check .",
+  "profile": "prod,docker-core",
+  "java": 8,
+  "mavenReactor": "BUILD SUCCESS",
+  "testsExecutedInBuild": false,
+  "testsEvidence": "java8-tests.json",
+  "image": "wgai-resilience-backend:local-check",
+  "imageDigest": "sha256:6cf76c79932586d7c26c86dcb19b1dcbfa28ef4b5b55f598cd17c5e0155ba54f",
+  "sizeBytes": 1111539550,
+  "privateArtifacts": "temporarily hard-linked from the accepted 00 workspace, ignored by Git, removed after build",
+  "originalContainersOrVolumesModified": false,
+  "productionDeploymentPerformed": false
+}

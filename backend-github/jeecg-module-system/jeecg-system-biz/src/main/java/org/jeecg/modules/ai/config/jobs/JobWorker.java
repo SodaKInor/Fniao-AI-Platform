@@ -1,13 +1,14 @@
 package org.jeecg.modules.ai.config.jobs;
 
 import java.time.Clock;
+import java.time.Instant;
 import java.util.concurrent.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.jeecg.modules.ai.application.jobs.*;
 import org.jeecg.modules.ai.application.assets.AssetService;
-import org.jeecg.modules.ai.domain.JobRecord;
+import org.jeecg.modules.ai.domain.*;
 import org.jeecg.modules.ai.port.*;
 import org.jeecg.modules.ai.persistence.repository.MyBatisJobRepository;
 
@@ -26,17 +27,29 @@ public final class JobWorker implements AutoCloseable {
     private final long maxOutput;
     private final CapabilityRepository capabilities;
     private final MyBatisJobRepository recoveryJobs;
+    private final long recoveryLeaseMs;
+    private final AiRuntimeMetrics metrics;
     private boolean scanFailed;
 
     public JobWorker(JobRepository jobs,ObjectProvider<InferenceProvider> providers,ObjectProvider<ProviderArtifactReader> readers,
                      AssetService assets,Clock clock,int parallelism,long maxOutput,CapabilityRepository capabilities) {
-        this(jobs,null,providers,null,readers,assets,clock,parallelism,maxOutput,capabilities);
+        this(jobs,null,providers,null,readers,assets,clock,parallelism,maxOutput,capabilities,
+                TimeUnit.HOURS.toMillis(1),AiRuntimeMetrics.disabled());
     }
     public JobWorker(JobRepository jobs,MyBatisJobRepository recoveryJobs,ObjectProvider<InferenceProvider> providers,
                      ObjectProvider<VideoAnalysisProvider> videoProviders,ObjectProvider<ProviderArtifactReader> readers,
                      AssetService assets,Clock clock,int parallelism,long maxOutput,CapabilityRepository capabilities) {
+        this(jobs,recoveryJobs,providers,videoProviders,readers,assets,clock,parallelism,maxOutput,capabilities,
+                TimeUnit.HOURS.toMillis(1),AiRuntimeMetrics.disabled());
+    }
+    public JobWorker(JobRepository jobs,MyBatisJobRepository recoveryJobs,ObjectProvider<InferenceProvider> providers,
+                     ObjectProvider<VideoAnalysisProvider> videoProviders,ObjectProvider<ProviderArtifactReader> readers,
+                     AssetService assets,Clock clock,int parallelism,long maxOutput,CapabilityRepository capabilities,
+                     long recoveryLeaseMs,AiRuntimeMetrics metrics) {
+        if (recoveryLeaseMs<1) throw new IllegalArgumentException("Invalid recovery lease");
         this.jobs=jobs; this.recoveryJobs=recoveryJobs; this.providers=providers; this.videoProviders=videoProviders;
         this.readers=readers; this.assets=assets; this.clock=clock; this.maxOutput=maxOutput; this.capabilities=capabilities;
+        this.recoveryLeaseMs=recoveryLeaseMs; this.metrics=metrics==null ? AiRuntimeMetrics.disabled() : metrics;
         idle=new Semaphore(parallelism);
         workers=new ThreadPoolExecutor(parallelism,parallelism,0,TimeUnit.MILLISECONDS,new SynchronousQueue<>(),
                 r -> thread(r,"ai-04a-dispatch"),new ThreadPoolExecutor.AbortPolicy());
@@ -45,6 +58,7 @@ public final class JobWorker implements AutoCloseable {
     public void start() { scanner.scheduleWithFixedDelay(this::scan,0,100,TimeUnit.MILLISECONDS); }
     private void scan() {
         try {
+            recoverUncertain();
             InferenceProvider provider=providers.getIfAvailable();
             VideoAnalysisProvider video=videoProviders==null ? null : videoProviders.getIfAvailable();
             ProviderArtifactReader reader=readers.getIfAvailable();
@@ -63,28 +77,58 @@ public final class JobWorker implements AutoCloseable {
     }
     private void recover(ProviderArtifactReader reader) {
         if (recoveryJobs==null || idle.availablePermits()==0) return;
-        for (JobRecord candidate:recoveryJobs.findFetchingResult(Math.min(100,idle.availablePermits()))) {
+        Instant staleBefore=clock.instant().minusMillis(recoveryLeaseMs);
+        for (JobRecord candidate:recoveryJobs.findFetchingResult(staleBefore,Math.min(100,idle.availablePermits()))) {
             if (!idle.tryAcquire()) break;
             java.util.Optional<JobRecord> claimed=recoveryJobs.claimFetchingResult(candidate.getRequest().getRequestId(),
-                    candidate.getVersion(),java.util.UUID.randomUUID().toString(),clock.instant());
+                    candidate.getVersion(),java.util.UUID.randomUUID().toString(),staleBefore,clock.instant());
             if (!claimed.isPresent()) { idle.release(); continue; }
             try { workers.execute(() -> collect(claimed.get(),reader)); }
             catch (RejectedExecutionException e) { idle.release(); }
         }
     }
+    private void recoverUncertain() {
+        if (recoveryJobs==null) return;
+        Instant now=clock.instant(),staleBefore=now.minusMillis(recoveryLeaseMs);
+        for (JobRecord candidate:recoveryJobs.findUncertain(staleBefore,100)) {
+            long started=System.nanoTime();
+            boolean changed=recoveryJobs.markUncertainUnknown(candidate.getRequest().getRequestId(),candidate.getVersion(),
+                    candidate.getDispatchToken(),staleBefore,now);
+            String outcome=changed ? "unknown" : "race_lost";
+            metrics.record(kind(candidate),"stale_reconcile",outcome,
+                    changed ? ErrorCode.RESULT_UNKNOWN : null,System.nanoTime()-started);
+            if (changed) log.warn("AI request {} stage stale_reconcile outcome=UNKNOWN reason={} durationMs={}",
+                    candidate.getRequest().getRequestId(),UnknownOperationReason.PROVIDER_QUERY_UNAVAILABLE,
+                    TimeUnit.NANOSECONDS.toMillis(System.nanoTime()-started));
+        }
+    }
     private void collect(JobRecord job,ProviderArtifactReader reader) {
+        long started=System.nanoTime();
         try { new CollectResultService(reader,assets,clock,maxOutput,capabilities).recover(jobs,job); }
         catch (RuntimeException e) { log.warn("AI result {} requires inspection ({})",
                 job.getRequest().getRequestId(),e.getClass().getSimpleName()); }
-        finally { idle.release(); }
+        finally { record(job,"result_recovery",started); idle.release(); }
     }
     private void dispatch(JobRecord job,InferenceProvider provider,VideoAnalysisProvider video,ProviderArtifactReader reader) {
+        long started=System.nanoTime();
         try {
             CollectResultService collector=new CollectResultService(reader,assets,clock,maxOutput,capabilities);
             new DispatchJobService(jobs,provider,video,assets,collector,clock).dispatch(job);
         } catch (RuntimeException e) {
             log.warn("AI request {} requires inspection ({})",job.getRequest().getRequestId(),e.getClass().getSimpleName());
-        } finally { idle.release(); }
+        } finally { record(job,"dispatch",started); idle.release(); }
+    }
+    private void record(JobRecord original,String stage,long started) {
+        JobRecord current=jobs.findOwned(original.getRequest().getRequestId(),original.getRequest().getOwnerId()).orElse(original);
+        String outcome=current.getState().name().toLowerCase(java.util.Locale.ROOT);
+        ErrorCode error=current.getError()==null ? null : current.getError().getCode();
+        long elapsed=System.nanoTime()-started;
+        metrics.record(kind(current),stage,outcome,error,elapsed);
+        log.info("AI request {} stage {} outcome={} durationMs={}",current.getRequest().getRequestId(),stage,
+                current.getState(),TimeUnit.NANOSECONDS.toMillis(elapsed));
+    }
+    private String kind(JobRecord job) {
+        return job.getRequest().getJobType()==JobType.VIDEO_FILE_ANALYSIS ? "video" : "image";
     }
     public void close() { scanner.shutdownNow(); workers.shutdown(); }
 }

@@ -18,13 +18,16 @@ public class JobsProperties {
     private int maxImageDimension=4096;
     private int inputRetentionDays=7;
     private int outputRetentionDays=30;
+    /** Must exceed the longest confirmed provider call/artifact attempt; bounded to one day. */
+    private long recoveryLeaseMs=3600000;
 
     public void validate() {
         if (parallelism<1 || parallelism>32 || maxQueued<1 || maxQueued>1000
                 || maxInputBytes<1 || maxInputBytes>10*1024*1024 || maxOutputBytes<1 || maxOutputBytes>10*1024*1024
                 || maxVideoInputBytes<1 || maxVideoInputBytes>512L*1024*1024
                 || maxVideoOutputBytes<1 || maxVideoOutputBytes>512L*1024*1024
-                || maxImageDimension<1 || maxImageDimension>4096 || inputRetentionDays<1 || outputRetentionDays<1)
+                || maxImageDimension<1 || maxImageDimension>4096 || inputRetentionDays<1 || outputRetentionDays<1
+                || recoveryLeaseMs<60000 || recoveryLeaseMs>86400000)
             throw new IllegalArgumentException("Invalid AI jobs configuration");
     }
 }

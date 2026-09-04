@@ -151,7 +151,7 @@ public class StreamWorkflowTest {
         beans.registerSingleton("reader",(ProviderArtifactReader)(snapshot,artifact,limit) -> new ByteArrayInputStream(f.png));
         return new StreamSessionWorker(f.streamSessions,f.streamSources,f.streamEvents,
                 beans.getBeanProvider(StreamSessionProvider.class),beans.getBeanProvider(ProviderArtifactReader.class),
-                f.files,f.clock,1,10*1024*1024);
+                f.files,f.clock,1,10*1024*1024,10,org.jeecg.modules.ai.config.jobs.AiRuntimeMetrics.disabled());
     }
     private StreamSessionProvider provider(ThrowingStart start) {
         return new StreamSessionProvider() {

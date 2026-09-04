@@ -64,20 +64,45 @@ public final class MyBatisJobRepository implements JobRepository {
         return mapper.pending(limit).stream().map(converter::job).collect(Collectors.toList());
     }
 
-    /** 04a restart recovery: candidates retain their original claim and checkpoint. */
-    public List<JobRecord> findFetchingResult(int limit) {
-        if (limit < 1 || limit > 100) throw new IllegalArgumentException("Invalid candidate limit");
-        return mapper.fetching(limit).stream().map(converter::job).collect(Collectors.toList());
+    /** Stale result candidates retain their checkpoint; active downloads are never stolen. */
+    public List<JobRecord> findFetchingResult(Instant staleBefore,int limit) {
+        requireRecoveryArguments(staleBefore,limit);
+        return mapper.fetching(staleBefore.toEpochMilli(),limit).stream().map(converter::job).collect(Collectors.toList());
     }
 
-    public Optional<JobRecord> claimFetchingResult(String id,long version,String token,Instant now) {
+    public Optional<JobRecord> claimFetchingResult(String id,long version,String token,Instant staleBefore,Instant now) {
         if (token==null || !token.matches("[A-Za-z0-9_-]{1,80}")) throw new IllegalArgumentException("Invalid claim token");
+        if (staleBefore==null || now==null || staleBefore.isAfter(now)) throw new IllegalArgumentException("Invalid recovery time");
         return transaction.execute(status -> {
             JobRow row=mapper.lock(id);
-            if (row==null || !"FETCHING_RESULT".equals(row.state) || row.version!=version) return Optional.empty();
+            if (row==null || !"FETCHING_RESULT".equals(row.state) || row.version!=version
+                    || row.updatedAt>staleBefore.toEpochMilli()) return Optional.empty();
             row.version++; row.dispatchToken=token; row.updatedAt=now.toEpochMilli(); save(row);
             return Optional.of(converter.job(row));
         });
+    }
+
+    /** Dispatched work without a query contract is terminally uncertain after its lease expires. */
+    public List<JobRecord> findUncertain(Instant staleBefore,int limit) {
+        requireRecoveryArguments(staleBefore,limit);
+        return mapper.uncertain(staleBefore.toEpochMilli(),limit).stream().map(converter::job).collect(Collectors.toList());
+    }
+
+    public boolean markUncertainUnknown(String id,long version,String token,Instant staleBefore,Instant now) {
+        if (staleBefore==null || now==null || staleBefore.isAfter(now)) throw new IllegalArgumentException("Invalid recovery time");
+        return Boolean.TRUE.equals(transaction.execute(status -> {
+            JobRow row=mapper.lock(id);
+            if (row==null || row.version!=version || token==null || !token.equals(row.dispatchToken)
+                    || row.updatedAt>staleBefore.toEpochMilli()
+                    || !("DISPATCHING".equals(row.state) || "WAITING".equals(row.state))) return false;
+            JobRecord old=converter.job(row);
+            JobUpdate update=new JobUpdate(JobState.UNKNOWN,null,null,null,null,
+                    new JobError(ErrorCode.RESULT_UNKNOWN,"Provider execution cannot be confirmed after restart",
+                            old.getRequest().isSimulated()),
+                    UnknownOperationReason.PROVIDER_QUERY_UNAVAILABLE,now);
+            if (!rules.allows(old,update,codec)) return false;
+            converter.update(row,update); save(row); return true;
+        }));
     }
 
     public Optional<JobRecord> claimPending(String id, long version, String token, Instant now) {
@@ -122,6 +147,13 @@ public final class MyBatisJobRepository implements JobRepository {
             row.state="CANCELLED"; row.version++; row.updatedAt=now.toEpochMilli(); save(row);
             return Optional.of(converter.job(row));
         });
+    }
+
+    public int pendingCount() { return mapper.pendingCount(); }
+    public int activeCount() { return mapper.activeCount(); }
+
+    private void requireRecoveryArguments(Instant staleBefore,int limit) {
+        if (staleBefore==null || limit<1 || limit>100) throw new IllegalArgumentException("Invalid recovery candidates");
     }
 
     private void save(JobRow row) {

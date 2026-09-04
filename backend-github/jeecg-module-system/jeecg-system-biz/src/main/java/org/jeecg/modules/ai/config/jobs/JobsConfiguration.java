@@ -5,6 +5,7 @@ import java.net.URI;
 import java.nio.file.*;
 import java.time.*;
 import java.util.*;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -20,11 +21,15 @@ import org.jeecg.modules.ai.persistence.converter.*;
 import org.jeecg.modules.ai.persistence.repository.*;
 import org.jeecg.modules.ai.application.assets.AssetService;
 import org.jeecg.modules.ai.application.jobs.*;
+import org.jeecg.modules.ai.config.provider.ProviderProperties;
 
 @Configuration
 @EnableConfigurationProperties(JobsProperties.class)
 @MapperScan("org.jeecg.modules.ai.persistence.mapper")
 public class JobsConfiguration implements WebMvcConfigurer {
+    @Bean public AiRuntimeMetrics aiRuntimeMetrics(ObjectProvider<MeterRegistry> registry) {
+        return new AiRuntimeMetrics(registry.getIfAvailable());
+    }
     @Bean public SnapshotCodec aiSnapshotCodec() { return new SnapshotCodec(); }
     @Bean public VideoSnapshotCodec aiVideoSnapshotCodec() { return new VideoSnapshotCodec(); }
     @Bean public StreamSnapshotCodec aiStreamSnapshotCodec() { return new StreamSnapshotCodec(); }
@@ -51,8 +56,9 @@ public class JobsConfiguration implements WebMvcConfigurer {
         return new MyBatisStreamSessionRepository(mapper,converter,manager,properties.getMaxQueued(),properties.getParallelism());
     }
     @Bean public StreamEventRepository aiStreamEventRepository(StreamSessionMapper sessions,StreamEventMapper events,
-            AssetMapper assets,StreamRecordConverter converter,PlatformTransactionManager manager) {
-        return new MyBatisStreamEventRepository(sessions,events,assets,converter,manager);
+            AssetMapper assets,StreamRecordConverter converter,PlatformTransactionManager manager,AiRuntimeMetrics metrics) {
+        return new MyBatisStreamEventRepository(sessions,events,assets,converter,manager,
+                count -> metrics.streamEvents("inserted",count),count -> metrics.streamEvents("duplicate",count));
     }
     @Bean public ArtifactStore aiArtifactStore(JobsProperties p,Environment env) throws IOException {
         p.validate(); List<Path> publicRoots=new ArrayList<>();
@@ -100,16 +106,30 @@ public class JobsConfiguration implements WebMvcConfigurer {
     @Bean(initMethod="start",destroyMethod="close")
     public JobWorker aiJobWorker(MyBatisJobRepository jobs,ObjectProvider<InferenceProvider> provider,
                                  ObjectProvider<VideoAnalysisProvider> video,ObjectProvider<ProviderArtifactReader> reader,
-                                 AssetService assets,JobsProperties p,CapabilityRepository capabilities) {
+                                 AssetService assets,JobsProperties p,CapabilityRepository capabilities,
+                                 ObjectProvider<ProviderProperties> remote,AiRuntimeMetrics metrics) {
+        metrics.bindJobs(jobs);
         return new JobWorker(jobs,jobs,provider,video,reader,assets,Clock.systemUTC(),p.getParallelism(),
-                Math.max(p.getMaxOutputBytes(),p.getMaxVideoOutputBytes()),capabilities);
+                Math.max(p.getMaxOutputBytes(),p.getMaxVideoOutputBytes()),capabilities,
+                recoveryLease(p,remote.getIfAvailable()),metrics);
     }
     @Bean(initMethod="start",destroyMethod="close")
     public StreamSessionWorker aiStreamWorker(MyBatisStreamSessionRepository sessions,StreamSourceRepository sources,
             StreamEventRepository events,ObjectProvider<StreamSessionProvider> provider,ObjectProvider<ProviderArtifactReader> reader,
-            AssetService assets,JobsProperties p) {
+            AssetService assets,JobsProperties p,ObjectProvider<ProviderProperties> remote,AiRuntimeMetrics metrics) {
+        metrics.bindStreams(sessions);
         return new StreamSessionWorker(sessions,sources,events,provider,reader,assets,Clock.systemUTC(),
-                p.getParallelism(),p.getMaxOutputBytes());
+                p.getParallelism(),p.getMaxOutputBytes(),recoveryLease(p,remote.getIfAvailable()),metrics);
+    }
+    private long recoveryLease(JobsProperties jobs,ProviderProperties provider) {
+        long minimum=60000;
+        if (provider!=null) {
+            long request=(long)provider.getConnectTimeoutMs()+provider.getRequestTimeoutMs()+5000;
+            long transfer=(long)provider.getConnectTimeoutMs()+3L*provider.getTransferTimeoutMs()+8000;
+            minimum=Math.max(minimum,Math.max(request,transfer));
+        }
+        if (minimum>86400000) throw new IllegalArgumentException("Provider timeouts exceed bounded AI recovery lease");
+        return Math.max(jobs.getRecoveryLeaseMs(),minimum);
     }
     @Override public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(0,new StrictInferenceJsonConverter());

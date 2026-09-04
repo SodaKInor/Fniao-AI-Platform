@@ -47,8 +47,18 @@ public class ConfigurationTest {
     @Test public void videoLimitsAreExplicitlyBounded() {
         org.jeecg.modules.ai.config.jobs.JobsProperties properties=new org.jeecg.modules.ai.config.jobs.JobsProperties();
         properties.validate(); assertEquals(512L*1024*1024,properties.getMaxVideoInputBytes());
+        assertEquals(3600000,properties.getRecoveryLeaseMs());
         properties.setMaxVideoOutputBytes(512L*1024*1024+1);
         try { properties.validate(); fail(); } catch (IllegalArgumentException expected) { }
+    }
+
+    @Test public void recoveryLeaseCannotBeDisabledOrMadeUnbounded() {
+        org.jeecg.modules.ai.config.jobs.JobsProperties shortLease=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        shortLease.setRecoveryLeaseMs(59999);
+        try { shortLease.validate(); fail(); } catch (IllegalArgumentException expected) { }
+        org.jeecg.modules.ai.config.jobs.JobsProperties unbounded=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        unbounded.setRecoveryLeaseMs(86400001);
+        try { unbounded.validate(); fail(); } catch (IllegalArgumentException expected) { }
     }
 
     @Test public void stricterCapabilityOutputLimitReachesReaderAndStore() throws Exception {

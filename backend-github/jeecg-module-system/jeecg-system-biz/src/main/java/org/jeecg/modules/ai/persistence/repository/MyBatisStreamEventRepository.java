@@ -3,6 +3,7 @@ package org.jeecg.modules.ai.persistence.repository;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.*;
+import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 import org.springframework.transaction.*;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -18,9 +19,16 @@ public final class MyBatisStreamEventRepository implements StreamEventRepository
     private final AssetMapper assets;
     private final StreamRecordConverter converter;
     private final TransactionTemplate transaction;
+    private final IntConsumer inserted;
+    private final IntConsumer duplicate;
     public MyBatisStreamEventRepository(StreamSessionMapper sessions,StreamEventMapper events,AssetMapper assets,
             StreamRecordConverter converter,PlatformTransactionManager manager) {
+        this(sessions,events,assets,converter,manager,count -> {},count -> {});
+    }
+    public MyBatisStreamEventRepository(StreamSessionMapper sessions,StreamEventMapper events,AssetMapper assets,
+            StreamRecordConverter converter,PlatformTransactionManager manager,IntConsumer inserted,IntConsumer duplicate) {
         this.sessions=sessions; this.events=events; this.assets=assets; this.converter=converter;
+        this.inserted=Objects.requireNonNull(inserted); this.duplicate=Objects.requireNonNull(duplicate);
         transaction=new TransactionTemplate(manager); transaction.setIsolationLevel(TransactionDefinition.ISOLATION_READ_COMMITTED);
         transaction.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
     }
@@ -40,17 +48,20 @@ public final class MyBatisStreamEventRepository implements StreamEventRepository
     public boolean appendAndAdvance(String sessionId,long version,String expectedCursor,List<StreamEvent> values,
             String nextCursor,Instant now) {
         if (values==null || values.size()>200 || nextCursor!=null && nextCursor.length()>512) return false;
-        return Boolean.TRUE.equals(transaction.execute(status -> {
+        int[] counts=new int[2];
+        boolean applied=Boolean.TRUE.equals(transaction.execute(status -> {
             StreamSessionRow row=sessions.lock(sessionId);
             if (row==null || row.version!=version || !Objects.equals(row.providerCursor,expectedCursor)
                     || !"RUNNING".equals(row.state)) return false;
             for (StreamEvent event:values) {
                 if (event.getSnapshotAssetId()!=null && assets.findOwned(event.getSnapshotAssetId(),row.ownerId)==null) return false;
-                events.insertIgnore(converter.event(sessionId,event));
+                if (events.insertIgnore(converter.event(sessionId,event))==1) counts[0]++; else counts[1]++;
             }
             row.providerCursor=nextCursor; row.updatedAt=now.toEpochMilli(); row.version++;
             return sessions.update(row)==1;
         }));
+        if (applied) { inserted.accept(counts[0]); duplicate.accept(counts[1]); }
+        return applied;
     }
 
     private Cursor cursor(String value) {

@@ -31,8 +31,13 @@ public interface JobMapper {
     @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state='PENDING' ORDER BY created_at,request_id LIMIT #{limit}")
     List<JobRow> pending(int limit);
 
-    @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state='FETCHING_RESULT' ORDER BY updated_at,request_id LIMIT #{limit}")
-    List<JobRow> fetching(int limit);
+    @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state='FETCHING_RESULT' AND updated_at<=#{before} "
+            + "ORDER BY updated_at,request_id LIMIT #{limit}")
+    List<JobRow> fetching(@Param("before") long before, @Param("limit") int limit);
+
+    @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state IN ('DISPATCHING','WAITING') AND updated_at<=#{before} "
+            + "ORDER BY updated_at,request_id LIMIT #{limit}")
+    List<JobRow> uncertain(@Param("before") long before, @Param("limit") int limit);
 
     @Select({"<script>SELECT " + COLUMNS + " FROM ai_job WHERE owner_id=#{owner}",
             "<if test='state != null'> AND state=#{state}</if>",
