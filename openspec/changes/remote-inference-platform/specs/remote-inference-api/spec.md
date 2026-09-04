@@ -32,6 +32,38 @@
 - **WHEN** 外部响应不符合约定的成果格式
 - **THEN** 系统显示接口协议错误，不把无法解释的数据标记为成功成果
 
+### Requirement: Business contract version 1.1.0 preserves image compatibility
+
+系统 SHALL 发布 `1.1.0` 业务契约并继续支持 `image-detection.v1` 的 `POST /ai/v1/infer` 与 `/ai/v1/jobs` 查询语义。系统 SHALL 为 `video-file-analysis.v1` 提供 `POST /ai/v1/video-jobs`，并复用同一任务身份、幂等、权限、历史与成果下载规则。
+
+#### Scenario: Existing image client upgrades to 1.1.0
+- **WHEN** 旧图片客户端按原字段调用 `/ai/v1/infer` 并查询 `/ai/v1/jobs/{id}`
+- **THEN** 系统按兼容的图片 JSON 和状态语义处理，不要求客户端改用视频字段
+
+#### Scenario: Uploaded video is submitted
+- **WHEN** 有权限用户使用受支持的视频资产调用 `/ai/v1/video-jobs`
+- **THEN** 系统返回同一体系的持久 requestId，并只接受 `video-file-analysis.v1` 定义的有界参数
+
+### Requirement: Provider payloads use bounded typed data
+
+系统 SHALL 使用有界的视频参数、视频事件、结果类型与未知操作原因转换供应商输入输出。供应商额外字段 SHALL 被明确忽略或拒绝，不得以无约束键值映射进入业务响应、持久结果或日志。
+
+#### Scenario: Provider adds an unknown nested field
+- **WHEN** 外部响应包含契约未定义的供应商字段
+- **THEN** 适配器按冻结兼容策略忽略或报协议错误，稳定业务 DTO 不透传该字段
+
+#### Scenario: Video event is malformed
+- **WHEN** 事件缺少时间偏移、类型或截图引用等必需字段
+- **THEN** 系统返回协议错误并保持任务未成功，不合成默认值掩盖缺项
+
+### Requirement: Real provider activation requires confirmed evidence
+
+remote 能力 SHALL 仅在方法、路径、TLS/CA、服务鉴权、请求/结果样例、错误确定性、输入限额、并发、事件查询及取消/停止能力均按适用范围确认后启用。服务端口可达但资料不完整 SHALL 只算预检，相关能力保持 disabled。
+
+#### Scenario: Service is reachable but video contract is incomplete
+- **WHEN** 后端能连接 RTX 5070 服务，但缺少视频结果样例或限额确认
+- **THEN** 图片能力可按自身完整证据独立判断，视频能力保持 disabled 且不得标为已联调
+
 ### Requirement: Provider capabilities are explicit
 
 系统 SHALL 支持对接普通同步请求/返回接口。外部异步查询、取消、回调或请求去重 SHALL 仅在双方确认支持时启用，不能因本地存在任务 ID 而推定外部存在对应能力。
@@ -39,6 +71,10 @@
 #### Scenario: Sync-only provider
 - **WHEN** 同事仅提供一次请求返回成果的接口
 - **THEN** 本项目可以在后台执行该调用并向前端返回本地任务 ID，同时不展示未提供的外部查询/取消能力
+
+#### Scenario: Inference POST response is lost
+- **WHEN** 图片或视频推理 POST 已发送但响应丢失，且对方未确认查询或幂等语义
+- **THEN** 系统记录明确 UNKNOWN 原因，不透明重发 POST，也不把结果未知标为成功
 
 ### Requirement: Errors preserve cause and user session
 

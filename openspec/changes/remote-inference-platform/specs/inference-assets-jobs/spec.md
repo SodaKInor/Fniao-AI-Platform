@@ -24,6 +24,22 @@
 - **WHEN** 成果下载未完成或已知校验值不匹配
 - **THEN** 记录获取中或明确错误，不提前将任务标记为成功
 
+### Requirement: Uploaded video input and results are constrained
+
+上传视频首期 SHALL 只在真实能力确认后接受 MP4/H.264，并按已确认的大小、时长和并发限制在外呼前拒绝超限输入。最低成功结果 SHALL 包含按视频时间偏移排序的有界事件时间线及归属于该任务的授权截图；标注视频 MAY 作为可选本地成果，缺失时不得使最低成果失败。
+
+#### Scenario: Supported video produces minimum result
+- **WHEN** 已启用的视频能力完成一个有效 MP4/H.264 输入
+- **THEN** 历史记录包含事件时间偏移、事件类型和授权截图，且每个成果均可按任务归属下载
+
+#### Scenario: Provider omits optional annotated video
+- **WHEN** 外部返回完整事件时间线和截图但没有标注视频
+- **THEN** 系统可以将任务标为成功，并明确标注视频未提供而不是伪造下载项
+
+#### Scenario: Unsupported video is submitted
+- **WHEN** 视频格式、编码、大小或时长不在已确认限制内
+- **THEN** 系统在外呼前拒绝请求，不自动开放其他格式或尝试旧本地算法
+
 ### Requirement: Accepted calls have durable local identity
 
 系统 SHALL 在向前端返回已受理前保存调用 ID、归属、输入、参数和服务配置快照。短等待超出预算 SHALL 返回同一记录的 202；刷新页面 SHALL 不重新提交。
@@ -31,6 +47,18 @@
 #### Scenario: Long synchronous external call
 - **WHEN** 外部同步调用仍在处理且前端短等待预算到期
 - **THEN** 前端得到本地任务 ID 并查询本项目记录，后台继续原调用，不重新向外部提交
+
+### Requirement: Persisted tasks have compatible media type discrimination
+
+系统 SHALL 以增量迁移为任务增加图片或上传视频类型判别，并使迁移前的记录按既有图片语义继续读取。迁移 SHALL 可重复执行，不得删除、重写或清空历史任务、资产和成果表。
+
+#### Scenario: Existing image history is read after migration
+- **WHEN** 增量迁移应用到包含旧图片任务和成果的数据库副本
+- **THEN** 旧记录仍以兼容的图片 DTO 展示，行与资产内容不被改写或删除
+
+#### Scenario: Migration is applied twice
+- **WHEN** 同一增量迁移在已升级数据库上再次执行
+- **THEN** 数据库结构和历史行保持一致，不生成重复事件或重复成果
 
 ### Requirement: Local duplicates and remote retries are distinct
 
@@ -56,6 +84,10 @@
 - **WHEN** 外部提供已约定的任务查询且外部任务 ID 已持久保存
 - **THEN** 后端恢复后查询原任务并按实际返回更新本地记录
 
+#### Scenario: Restart during result fetch
+- **WHEN** 推理已确认完成而本地处于 FETCHING_RESULT 时后端重启
+- **THEN** 恢复流程只重取同一外部成果，不重新提交图片或视频推理
+
 ### Requirement: Cancellation must not imply unsupported GPU control
 
 系统 SHALL 可取消未派发的本地任务。已发送任务仅在外部支持取消时发起取消并等待确认；否则 SHALL 明确告知无法停止外部处理，关闭页面或终止等待不能标为已取消执行。
@@ -68,6 +100,14 @@
 - **WHEN** 有权限用户取消尚未派发的本地任务
 - **THEN** 任务标记为已取消，且不再向外部发送
 
+#### Scenario: Dispatched request cancellation is confirmed
+- **WHEN** 用户调用 `POST /ai/v1/jobs/{id}/cancel`，外部明确支持取消并确认停止该任务
+- **THEN** 系统才进入取消终态，并保留外部确认与状态竞争记录
+
+#### Scenario: Dispatched request cancellation is unknown
+- **WHEN** 外部取消请求响应丢失、超时或未提供可确认的停止语义
+- **THEN** 系统记录有界未知操作原因，保持结果未确认或原进行状态，不声称 GPU 已停止
+
 ### Requirement: Completed results survive provider unavailability
 
 系统 SHALL 在成果本地保存完成后标记 SUCCEEDED，并为任务查询、成果下载和取消应用一致的归属权限。历史成果在自身保留期内 SHALL 不依赖 GPU 服务持续在线。
@@ -75,3 +115,7 @@
 #### Scenario: GPU service offline after success
 - **WHEN** 外部服务在成果回存完成后下线
 - **THEN** 有权限的用户仍可查看记录与下载本地成果
+
+#### Scenario: Late event arrives after a terminal state
+- **WHEN** 视频任务已经失败、取消或成功后收到迟到事件或重复截图引用
+- **THEN** 系统按事件身份去重并保护终态，不覆盖既有最终结果或跨任务归属
