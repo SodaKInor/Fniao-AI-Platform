@@ -4,7 +4,7 @@
 
 同事尚未提供 RTX 5070 开发服务或 RTX 4090 48GB 正式服务，因此真实方法、路径、鉴权、TLS、限额、来源映射、查询与停止语义仍不能确认。现阶段能完成的是业务端、独立契约 stub、故障恢复和最终项目结构；真实 GPU 验收必须继续保持开放。
 
-并行 worktree 是施工隔离机制，不是最终产品结构。最终仓库需要由已验收提交合并而成，再通过一次独立重构保留 Git 历史并形成干净的新克隆。
+并行 worktree 是施工隔离机制，不是最终产品结构。独立最终仓库已经从已验收本地基线建立在 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`；剩余结构重构直接在该仓库及其同级临时工作树完成，保留 Git 历史且不再二次复制项目。
 
 ## Goals / Non-Goals
 
@@ -146,9 +146,9 @@ stub 提供可控延迟、响应丢失、协议错误、重复事件和成果中
 
 worktree 之间只合并提交，不复制目录。功能、恢复和清理在原路径完成验收后，从集成 SHA 创建独立结构重构分支，使用 `git mv` 迁移路径并集中更新 Maven/npm、Docker、脚本、文档、Graphify 与项目工具配置。这样可把行为改动与路径改动分开审阅和回退。
 
-结构分支通过后合回 `feature/remote-inference`，再按既定流程合入 `main`。随后从远程 `main` 克隆 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`；它不是旧仓库的 worktree，也不复制旧 graphify-out、Serena cache 或并行目录。
+结构分支为 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 中的 `codex/final-layout`。该目录已经是独立 clone，正式远程为 GitHub `origin`，旧本地集成仓库仅登记为 `source-wgai` 以追溯未推送基线。结构通过后在本目录合入 `main` 并推送；不再重新克隆或覆盖该目录。
 
-截至集成提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d`，stub、恢复故障、功能分包和旧入口清理已经验收。剩余目录迁移采用四段门禁：08-release 先串行建立 `apps` 壳；00 冻结 `08A_SHA`；08b-database-layout 与 08c-remote-boundary 从同一 SHA 并行移动互不重叠文件；00 合并后由 08-release 串行修复共享路径并生成 RC。这样保留真实并行，又避免一个包移动父目录时另一个包移动其子目录。
+截至集成提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d`，stub、恢复故障、功能分包和旧入口清理已经验收；包含最新规划的施工起点为 `c58df289674c2b246334a4d005ad5ba1c90fae80`。剩余目录迁移采用三段门禁：最终目录先串行建立 `apps` 壳并冻结 `08A_SHA`；从该 SHA 创建 `codex/database-layout` 与 `codex/remote-boundary` 两个同级工作树并行移动互不重叠文件；最后回到 `codex/final-layout` 串行合并、修复共享路径并生成 RC。
 
 ## Risks / Trade-offs
 
@@ -161,12 +161,12 @@ worktree 之间只合并提交，不复制目录。功能、恢复和清理在�
 
 ## Migration Plan
 
-1. 已完成并验收 01—07，当前唯一本地功能基线为 `a14450ec0ed82cd329a666e52ac12c15cce3515d`。
-2. 08-release 阶段 A 只迁移 `backend-github → apps/backend` 与 `frontend-vue → apps/frontend`，完成最小 Maven/npm 路径修复后交给 00 验收。
-3. 00 从阶段 A 验收 SHA 创建 08b-database-layout 与 08c-remote-boundary 两个 worktree；前者只迁移数据库文件，后者只迁移契约、fixtures、stub、证据、文档和非数据库 remote 部署文件，两者并行。
-4. 00 按提交合并 08b/08c 并冻结共同 SHA；08-release 从该 SHA 统一修复 Compose、Docker、脚本、OpenSpec、AGENTS 和活动链接。
-5. 在独立数据库和文件目录执行完整本地验收，生成只声明 stub/disabled 范围的 RC。
-6. 00 验收后合入并推送 `main`，创建独立最终克隆，在新目录重新建立 Graphify、Serena 和 OpenSpec 工具定位。
+1. 已完成并验收 01—07；独立最终仓库从包含功能基线的规划提交 `c58df289674c2b246334a4d005ad5ba1c90fae80` 建立，当前工作分支为 `codex/final-layout`。
+2. 在 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 串行迁移 `backend-github → apps/backend` 与 `frontend-vue → apps/frontend`，完成最小 Maven/npm 路径修复和验证后提交并冻结 `08A_SHA`。
+3. 从 `08A_SHA` 创建 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/database-layout`（`codex/database-layout`）和 `.../remote-boundary`（`codex/remote-boundary`）；前者只迁移数据库文件，后者只迁移契约、fixtures、stub、证据、文档和非数据库 remote 部署文件，两者并行。
+4. 两包提交后回到最终目录，先核对文件集合零重叠，再依次合并两个分支；统一修复 Compose、Docker、脚本、OpenSpec、AGENTS 和活动链接。
+5. 在独立数据库和文件目录执行完整本地验收，生成只声明 stub/disabled 范围的 RC；完成后只在最终 Git 根重建一次 Graphify 索引并将 Serena 指向该根，OpenSpec 直接使用仓库内现有目录。
+6. 验收通过后将 `codex/final-layout` 合入并推送 `main`。目标目录本身就是最终独立仓库，不再重新克隆；同级临时工作树只在合并和状态核对完成后清理。
 7. 同事服务可用后，在独立后续门禁中完成 RTX 5070 契约与局域网验收，再完成 RTX 4090 48GB 正式验收；真实证据齐全前不归档整个变更。
 
 ## Open Questions

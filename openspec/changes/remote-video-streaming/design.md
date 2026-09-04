@@ -112,7 +112,7 @@ stub 预先登记不含 RTSP 秘密的合成 `streamSourceId`，按冻结契约�
 2. 05 建立独立 HTTP stub，用登记的合成来源完成 remote→stub 会话、事件、截图和停止组合验收。
 3. 06 使用 stub 完成恢复、去重、迟到事件、停止竞争和观测验证；00 只放行本地 stub/disabled 候选。
 4. 07 将后端和前端归入 stream 功能模块并按引用证据处理旧 RTSP 入口；未映射真实来源保持 disabled。
-5. 08-release 先建立 apps 壳；随后 08b 并行迁移 V002，08c 迁移流契约、fixtures、stub 和证据；00 合并后由 08-release 统一修复路径并执行完整数据库与流回归。
+5. 在最终目录的 `codex/final-layout` 先串行建立 apps 壳；随后从同一 `08A_SHA` 创建同级 `codex/database-layout` 与 `codex/remote-boundary` 工作树，前者迁移 V002，后者迁移流契约、fixtures、stub 和证据；两包完成后回到最终目录依次合并、统一修复路径并执行完整数据库与流回归。
 6. 同事服务可用后分别完成 RTX 5070 和 RTX 4090 48GB 门禁；回滚应用时停用新会话创建并保留流表、事件和截图，不猜测远程终止。
 
 ## Open Questions

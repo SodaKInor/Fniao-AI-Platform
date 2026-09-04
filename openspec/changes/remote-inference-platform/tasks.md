@@ -81,12 +81,12 @@
 
 前置：第 7 批完成且业务行为回归通过。交付：单一、可独立克隆的 `Fniao-AI-Platform` 仓库和本地 stub/disabled 发布候选。
 
-- [ ] 8.1 由 08-release 从 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 或包含它的最新规划提交开始，用 `git mv` 仅将 `backend-github`、`frontend-vue` 迁到 `apps/backend`、`apps/frontend`；更新 Maven、npm、测试、许可证和最小构建入口，00 验收后冻结 `08A_SHA`。
-- [ ] 8.2 由 08b-database-layout 从 `08A_SHA` 建立 `database/{bootstrap,migrations/ai-core,migrations/stream,seeds/stub,private}`；保留 V001/V002 字节、校验值和顺序，代码生成器 SQL 留在所属源码，私有数据保持忽略，并在数据库副本验证初始化和重复迁移。
-- [ ] 8.3 由 08c-remote-boundary 与 8.2 并行，将契约、fixtures、stub、验收证据、handoff、非数据库远程部署文件和架构文档分别迁入 `remote-inference`、`deploy/remote-inference` 与 `docs/remote-inference`；逐文件移动避免接管 8.2 的迁移和 seed，验证不存在两份可执行规范来源。
-- [ ] 8.4 00 合入 8.2/8.3 并冻结 `08BC_SHA` 后，由 08-release 更新 Compose、Dockerfile、环境模板、备份恢复脚本、AGENTS、OpenSpec 链接、Graphify 和 Serena 管理脚本，使活动路径从 Git 根动态解析；验证正式 Compose 默认无 stub，旧 WGAI 与 worktree 绝对路径不出现在活动配置。
-- [ ] 8.5 由 08-release 执行 Java、Vue、数据库、Compose、权限、remote→stub、disabled、历史读取、秘密扫描、文件规模、模块依赖和两个 `openspec validate --strict`；生成最终集成报告与本地 RC，明确真实 GPU 门禁未完成。
-- [ ] 8.6 由 00 验收 08 的结构提交后合入并推送 main，从远程 main 克隆 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`；确认它不共享旧 `.git`，不包含并行目录、backend-master 或旧工具缓存，并在新目录重新建立 Graphify、Serena 和 OpenSpec 定位。
+- [ ] 8.1 在独立最终仓库 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 的 `codex/final-layout` 分支，从 `c58df289674c2b246334a4d005ad5ba1c90fae80` 开始，用 `git mv` 仅将 `backend-github`、`frontend-vue` 迁到 `apps/backend`、`apps/frontend`；更新 Maven、npm、测试、许可证和最小构建入口，验证并提交后冻结 `08A_SHA`。
+- [ ] 8.2 从 `08A_SHA` 创建同级工作树 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/database-layout`，分支 `codex/database-layout`；建立 `database/{bootstrap,migrations/ai-core,migrations/stream,seeds/stub,private}`，保留 V001/V002 字节、校验值和顺序，代码生成器 SQL 留在所属源码，私有数据保持忽略，并在数据库副本验证初始化和重复迁移。
+- [ ] 8.3 从同一 `08A_SHA` 创建同级工作树 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/remote-boundary`，分支 `codex/remote-boundary`，与 8.2 并行；将契约、fixtures、stub、验收证据、handoff、非数据库远程部署文件和架构文档分别迁入 `remote-inference`、`deploy/remote-inference` 与 `docs/remote-inference`，逐文件移动避免接管 8.2 的迁移和 seed，验证不存在两份可执行规范来源。
+- [ ] 8.4 两个并行分支提交后回到 `codex/final-layout`，核对实际文件集合零重叠并依次合并；更新 Compose、Dockerfile、环境模板、备份恢复脚本、AGENTS、OpenSpec 链接、Graphify 和 Serena 管理脚本，使活动路径从 Git 根动态解析；验证正式 Compose 默认无 stub，旧 WGAI 与临时工作树绝对路径不出现在活动配置。
+- [ ] 8.5 在最终目录执行 Java、Vue、数据库、Compose、权限、remote→stub、disabled、历史读取、秘密扫描、文件规模、模块依赖和两个 `openspec validate --strict`；生成最终集成报告与本地 RC，明确真实 GPU 门禁未完成；只在最终 Git 根重建一次 Graphify 并将 Serena 指向该根，OpenSpec 不另行复制或注册三遍。
+- [ ] 8.6 验收 08 的结构提交后，将 `codex/final-layout` 合入并推送 `main`；确认当前目录保持独立 `.git`，不包含同级并行工作树、backend-master、旧工具缓存、真实数据库、凭据、素材或模型。合并和状态核对完成后再移除临时 worktree 登记，不重新克隆或覆盖最终目录。
 
 ## 9. 第 9 批：真实 GPU 服务验收与正式交付
 

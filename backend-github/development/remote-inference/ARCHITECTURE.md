@@ -1,6 +1,6 @@
 # 远程推理平台架构与代码约束
 
-状态：2026-09-04 基于集成提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 的最新设计。1—7 批、独立 HTTP stub、本地故障门禁及前后端功能模块迁移均已完成；当前只实施第 8 批最终目录整合。真实 RTX 5070/4090 服务验收继续等待同事交付。
+状态：2026-09-04 基于功能验收提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 和规划起点 `c58df289674c2b246334a4d005ad5ba1c90fae80` 的最新设计。1—7 批、独立 HTTP stub、本地故障门禁及前后端功能模块迁移均已完成；独立最终仓库已建立在 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`，当前只实施第 8 批最终目录整合。真实 RTX 5070/4090 服务验收继续等待同事交付。
 
 ## 1. 项目边界
 
@@ -120,9 +120,9 @@ stub 内部至少拆分启动、配置、鉴权、路由、校验、场景服务
 
 ## 8. 实施顺序
 
-1. 已完成：05 stub、06 故障恢复、07 功能模块与旧入口清理，由 00 在 `a14450e` 验收。
-2. 08-release 阶段 A 串行使用 `git mv` 建立 `apps/backend` 和 `apps/frontend`，00 验收并冻结 `08A_SHA`。
-3. 08b-database-layout 与 08c-remote-boundary 从同一 `08A_SHA` 建立独立 worktree，并行移动互不重叠的目录。
-4. 00 串行合入两个目录包并冻结 `08BC_SHA`；08-release 阶段 D 从该 SHA 修复共享路径、完整构建并生成本地 RC。
-5. 00 独立验收后合入 main，克隆独立最终目录，并在新目录重新建立 Graphify、Serena 和 OpenSpec 定位。
+1. 已完成：05 stub、06 故障恢复、07 功能模块与旧入口清理，功能基线为 `a14450e`；最终目录的施工起点为 `c58df289`。
+2. 在最终目录 `codex/final-layout` 串行使用 `git mv` 建立 `apps/backend` 和 `apps/frontend`，验证并冻结 `08A_SHA`。
+3. 从同一 `08A_SHA` 在最终目录同级建立 `codex/database-layout` 与 `codex/remote-boundary` 两个独立 worktree，并行移动互不重叠的目录。
+4. 两包完成后回到 `codex/final-layout`，核对零重叠并依次合并，串行修复共享路径、完整构建并生成本地 RC。
+5. 只在最终 Git 根重建一次 Graphify 和 Serena 定位；OpenSpec 直接使用仓库内现有目录。通过后安全合入并推送 main，不重新克隆最终目录。
 6. 同事服务可用后单独完成 RTX 5070 局域网和 RTX 4090 48GB 正式验收；真实证据未齐前不归档整体变更。

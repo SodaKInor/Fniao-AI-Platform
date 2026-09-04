@@ -7,14 +7,14 @@
 - 保持业务 API `1.1.0`、图片兼容、上传视频、实时流、私有资产、持久任务、UNKNOWN、取消/停止确认和历史成果行为不变。
 - 增加开发期独立 HTTP stub，按当前 provider 草案返回确定性图片、视频和流样例以及受控故障；它通过真实网络适配器调用，但所有结果和证据明确标为模拟。
 - 将真实 RTX 5070 局域网联调与 RTX 4090 48GB 正式验收改为外部服务到位后的独立门禁；stub 通过不能替代任何真实服务任务。
-- 最终仓库收敛为 `apps/backend`、`apps/frontend`、`database`、`remote-inference`、`deploy`、`docs`、`openspec` 和 `tools`，并从远程 `main` 建立一个不共享旧 `.git`、索引或缓存的新克隆。
+- 最终仓库收敛为 `apps/backend`、`apps/frontend`、`database`、`remote-inference`、`deploy`、`docs`、`openspec` 和 `tools`。独立仓库已建立在 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`，不共享旧 `.git`、索引或缓存。
 - 后端 AI 代码从仅按技术层横向堆放，调整为 capability、asset、job、result、image、video、stream、provider、operations、legacy 功能模块；每个功能内部再按 api/application/domain/port/persistence 等必要层次拆分。
 - 前端改为与业务概念对应的功能模块，每个真实模块按需包含 API、服务、组件、页面与路由；不创建空目录，不在单个页面或状态文件中容纳完整流程。
 - 数据库初始化和增量迁移集中到 `database`；现有跨资产/任务/结果的 V001 原样归入 `migrations/ai-core`，V002 原样归入 `migrations/stream`，stub 绑定归入 `seeds/stub`。代码生成模板内的 SQL 保留原位，原始数据库和真实数据继续本地忽略。
 - 远程契约、fixtures、stub 与验收证据从业务后端源码中分离到 `remote-inference`；业务后端仅保留 provider 端口和适配器。
 - 不按人脸、车牌、安全帽等具体算法名称建立代码模块；它们作为外部能力绑定，只有请求、结果或业务流程确实不同才增加子模块。
 - **BREAKING**：全部已确定淘汰的 MaxKB、tchat、easyAi 聊天与训练执行入口继续退役；未确认保留或缺真实服务证据的执行入口保持 disabled，不回退旧本地算法。
-- 并行 `WGAI-parallel/*/code` 只作为临时 Git 工作树。最终目录先串行建立 apps 壳，再让 database 与 remote-inference 两个零重叠工作包并行，最后串行修复共享路径；集成只合并已提交分支，不复制目录。
+- `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 是剩余改造的唯一集成目录。它先串行建立 apps 壳，再从同一提交在同级 `Fniao-AI-Platform-worktrees` 下创建 database 与 remote-inference 两个零重叠工作树并行实施，最后回到集成目录串行合并并修复共享路径；只合并已提交分支，不复制目录。
 
 ## Capabilities
 
