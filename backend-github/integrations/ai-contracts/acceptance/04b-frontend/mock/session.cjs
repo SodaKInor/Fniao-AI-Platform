@@ -7,7 +7,7 @@ function menu(path, component, title) {
 function owner(req) {
   return ({ 'mock-demo': 'demo', 'mock-viewer': 'viewer', 'mock-other': 'other' })[req.headers['x-access-token']]
 }
-async function session(req, res, url) {
+async function session(req, res, url, state) {
   if (url.pathname.startsWith('/jeecg-boot/sys/randomImage/')) {
     const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="110" height="40"><rect width="110" height="40" fill="#eee"/><text x="15" y="28" font-size="24">1234</text></svg>'
     json(res, envelope('data:image/svg+xml;base64,' + Buffer.from(svg).toString('base64'))); return true
@@ -26,7 +26,7 @@ async function session(req, res, url) {
     if (!user) { fail(res, 401, 'UNAUTHENTICATED', '请登录本地模拟账号'); return true }
     const home = menu('/dashboard/analysis', 'ai/DisabledEntryPage', '首页')
     const menus = [home]
-    if (user !== 'viewer') {
+    if (user !== 'viewer' && !state.config.forceViewer) {
       home.redirect = '/ai/inference'
       menus.push(menu('/tab/TabAiModelList', 'tab/TabAiModelList', '模型登记'),
         menu('/tab/TabAiHistoryList', 'tab/TabAiHistoryList', '旧识别历史'),

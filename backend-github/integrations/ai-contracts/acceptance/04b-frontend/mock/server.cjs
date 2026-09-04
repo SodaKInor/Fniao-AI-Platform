@@ -2,12 +2,14 @@
 const http = require('node:http')
 const fs = require('node:fs')
 const path = require('node:path')
-const { createState, read, envelope, input } = require('./fixtures.cjs')
+const { createState, capabilities, envelope, input, videoInput } = require('./fixtures.cjs')
 const { json, fail } = require('./http.cjs')
 const { session, owner } = require('./session.cjs')
 const { control } = require('./control.cjs')
 const assets = require('./assets.cjs')
 const jobs = require('./jobs.cjs')
+const video = require('./video.cjs')
+const streams = require('./streams.cjs')
 const root = path.resolve(__dirname, '../../../../../..')
 
 async function handleApi(req, res, state) {
@@ -18,24 +20,35 @@ async function handleApi(req, res, state) {
     res.on('finish', () => { record.status = res.statusCode })
     res.on('close', () => { if (!res.writableFinished) record.interrupted = true })
   }
-  if (await control(req, res, url, state) || await session(req, res, url)) return
+  if (await control(req, res, url, state) || await session(req, res, url, state)) return
   if (url.pathname === '/_demo/input.png') {
     res.writeHead(200, { 'Content-Type': 'image/png' }); res.end(input); return
+  }
+  if (url.pathname === '/_demo/input.mp4') {
+    res.writeHead(200, { 'Content-Type': 'video/mp4' }); res.end(videoInput); return
   }
   const user = owner(req)
   if (!user) { fail(res, 401, 'UNAUTHENTICATED', '请登录本地模拟账号'); return }
   const p = url.pathname.replace(/^\/jeecg-boot\/ai\/v1/, '')
   if (p === '/capabilities' && req.method === 'GET') {
-    const capabilities = read('capabilities').result
-    capabilities[0].available = state.config.available
-    capabilities[0].unavailableReason = state.config.available ? '' : '模拟能力停用'
-    json(res, envelope(capabilities)); return
+    json(res, envelope(capabilities(state))); return
   }
   if (p === '/assets' && req.method === 'POST') { await assets.upload(req, res, state, user); return }
   if (p === '/infer' && req.method === 'POST') { await jobs.submit(req, res, state, user); return }
+  if (p === '/video-jobs' && req.method === 'POST') { await video.submit(req, res, state, user); return }
+  if (p === '/stream-sources' && req.method === 'GET') { json(res, envelope(streams.sources(state))); return }
+  if (p === '/stream-sessions' && req.method === 'POST') { await streams.start(req, res, state, user); return }
   if (p === '/jobs' && req.method === 'GET') { jobs.history(res, url, state, user); return }
   let match = /^\/jobs\/([A-Za-z0-9_-]+)$/.exec(p)
   if (match && req.method === 'GET') { await jobs.get(res, state, user, match[1]); return }
+  match = /^\/jobs\/([A-Za-z0-9_-]+)\/cancel$/.exec(p)
+  if (match && req.method === 'POST') { jobs.cancel(res, state, user, match[1]); return }
+  match = /^\/stream-sessions\/([A-Za-z0-9_-]+)$/.exec(p)
+  if (match && req.method === 'GET') { streams.get(res, state, user, match[1]); return }
+  match = /^\/stream-sessions\/([A-Za-z0-9_-]+)\/events$/.exec(p)
+  if (match && req.method === 'GET') { streams.events(res, url, state, user, match[1]); return }
+  match = /^\/stream-sessions\/([A-Za-z0-9_-]+)\/stop$/.exec(p)
+  if (match && req.method === 'POST') { streams.stop(res, state, user, match[1]); return }
   match = /^\/assets\/([A-Za-z0-9_-]+)\/content$/.exec(p)
   if (match && req.method === 'GET') { assets.download(req, res, state, user, match[1]); return }
   fail(res, 404, 'NOT_FOUND', '本地模拟未提供此接口')

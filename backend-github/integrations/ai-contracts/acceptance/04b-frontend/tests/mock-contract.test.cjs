@@ -7,7 +7,7 @@ const Ajv = require(path.join(frontend, 'node_modules/ajv'))
 const { startServers } = require('../mock/server.cjs')
 const { input } = require('../mock/fixtures.cjs')
 const contracts = path.join(root, 'backend-github/integrations/ai-contracts')
-const document = JSON.parse(fs.readFileSync(path.join(contracts, 'v1/business.openapi.json')))
+const document = JSON.parse(fs.readFileSync(path.join(contracts, 'v1.1/business.openapi.json')))
 
 function expand(value) {
   if (Array.isArray(value)) return value.map(expand)
@@ -18,10 +18,11 @@ function expand(value) {
   return copy
 }
 const ajv = new Ajv({ allErrors: true, formats: { int64: { type: 'number', validate: Number.isSafeInteger } } })
-const validators = Object.fromEntries(['CapabilityListResponse', 'AssetResponse', 'JobResponse', 'JobPageResponse', 'ErrorResponse']
+const validators = Object.fromEntries(['CapabilityListResponse', 'AssetResponse', 'JobResponse', 'JobPageResponse', 'StreamSourceListResponse',
+  'StreamSessionResponse', 'StreamEventPageResponse', 'ErrorResponse']
   .map(name => [name, ajv.compile(expand(document.components.schemas[name]))]))
 
-test('live mock HTTP responses obey frozen v1, including upload, idempotency, faults and cursor history', async t => {
+test('live mock HTTP responses obey frozen v1.1 for image, video, stream, identity and faults', async t => {
   const servers = await startServers({ apiPort: 0, frontendPort: 0 }); t.after(() => servers.close())
   const base = 'http://127.0.0.1:' + servers.api.address().port
   async function call(route, schema, options = {}) {
@@ -68,4 +69,38 @@ test('live mock HTTP responses obey frozen v1, including upload, idempotency, fa
   await call('/jobs', 'JobPageResponse')
   servers.state.config.available = false
   assert.equal((await call('/capabilities', 'CapabilityListResponse')).result[0].available, false)
+
+  const videoForm = new FormData(); videoForm.append('file', new Blob([Buffer.from('mock-video')], { type: 'video/mp4' }), 'input.mp4')
+  const videoAsset = await call('/assets', 'AssetResponse', { method: 'POST', body: videoForm })
+  servers.state.config.scenario = 'success'
+  const videoRequest = { capabilityCode: 'video-file-analysis.v1', inputAssetId: videoAsset.result.assetId,
+    parameters: { threshold: 0.5, sampleIntervalMillis: 1000, maxEvents: 100, includeSnapshots: true, annotate: false } }
+  const videoOptions = { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': 'video_contract_1' }, body: JSON.stringify(videoRequest) }
+  const videoJob = await call('/video-jobs', 'JobResponse', videoOptions); assert.equal(videoJob.code, 202)
+  const videoRepeat = await call('/video-jobs', 'JobResponse', videoOptions); assert.equal(videoRepeat.result.requestId, videoJob.result.requestId)
+  await call('/video-jobs', 'ErrorResponse', { ...videoOptions, body: JSON.stringify({ ...videoRequest, parameters: { ...videoRequest.parameters, maxEvents: 99 } }) })
+  const videoRecord = servers.state.jobs.get(videoJob.result.requestId); videoRecord.finishAt = 1
+  const videoDone = await call('/jobs/' + videoJob.result.requestId, 'JobResponse'); assert.equal(videoDone.result.videoResult.resultType, 'VIDEO_TIMELINE')
+  const snap = videoDone.result.videoResult.snapshots[0]
+  const snapBytes = await fetch(base + '/jeecg-boot/ai/v1/assets/' + snap.assetId + '/content', { headers: { 'X-Access-Token': 'mock-demo' } })
+  assert.equal((await snapBytes.arrayBuffer()).byteLength, snap.sizeBytes)
+  const cancelOptions = { ...videoOptions, headers: { ...videoOptions.headers, 'Idempotency-Key': 'video_cancel_1' } }
+  const cancellable = await call('/video-jobs', 'JobResponse', cancelOptions)
+  const cancelled = await call('/jobs/' + cancellable.result.requestId + '/cancel', 'JobResponse', { method: 'POST' })
+  assert.equal(cancelled.result.state, 'CANCELLED')
+
+  const sourceList = await call('/stream-sources', 'StreamSourceListResponse'); assert.equal(sourceList.result.length, 2)
+  const streamRequest = { capabilityCode: 'video-stream-analysis.v1', streamSourceId: 'mock_source_ready',
+    parameters: { maxEventsPerPoll: 50, pollIntervalMillis: 2000, includeSnapshots: true } }
+  const streamOptions = { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': 'stream_contract_1' }, body: JSON.stringify(streamRequest) }
+  const stream = await call('/stream-sessions', 'StreamSessionResponse', streamOptions); assert.equal(stream.code, 202)
+  const streamRepeat = await call('/stream-sessions', 'StreamSessionResponse', streamOptions); assert.equal(streamRepeat.result.sessionId, stream.result.sessionId); assert.equal(servers.state.streamSequence, 1)
+  const firstEvents = await call('/stream-sessions/' + stream.result.sessionId + '/events?limit=50', 'StreamEventPageResponse'); assert.equal(firstEvents.result.items.length, 1)
+  const emptyEvents = await call('/stream-sessions/' + stream.result.sessionId + '/events?cursor=' + firstEvents.result.nextCursor, 'StreamEventPageResponse'); assert.equal(emptyEvents.result.items.length, 0)
+  await call('/stream-sessions/' + stream.result.sessionId, 'ErrorResponse', { headers: { 'X-Access-Token': 'mock-other' } })
+  servers.state.config.stop = 'unknown'; const pendingStop = await call('/stream-sessions/' + stream.result.sessionId + '/stop', 'StreamSessionResponse', { method: 'POST' }); assert.equal(pendingStop.result.state, 'STOP_REQUESTED')
+  assert.notEqual(pendingStop.result.state, 'STOPPED')
+  servers.state.config.stop = 'unsupported'; await call('/stream-sessions/' + stream.result.sessionId + '/stop', 'ErrorResponse', { method: 'POST' })
+  const badStream = { ...streamRequest, endpoint: 'forbidden' }
+  await call('/stream-sessions', 'ErrorResponse', { ...streamOptions, headers: { ...streamOptions.headers, 'Idempotency-Key': 'stream_bad_1' }, body: JSON.stringify(badStream) })
 })

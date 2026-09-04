@@ -1,0 +1,36 @@
+{
+  "at": "2026-09-04T08:13:10Z",
+  "status": "PASS_SIMULATED_FRONTEND_ONLY",
+  "baseline": "f242a027a2e2827f5445bea80e517c472ff1e3c9",
+  "contract": {
+    "version": "1.1.0",
+    "commit": "1177de8be45123d043d7cb26b845ee9d94c26784"
+  },
+  "checks": {
+    "nodeTests": { "passed": 27, "failed": 0 },
+    "eslint": "PASS",
+    "productionBuild": "PASS_WITH_5_EXISTING_WARNINGS",
+    "scope": { "passed": true, "disallowed": 0, "oversized": 0, "frozenChanges": 0 },
+    "openspecRemoteInferencePlatformStrict": "PASS",
+    "openspecRemoteVideoStreamingStrict": "PASS",
+    "runtimeSecretFieldScan": "PASS",
+    "dependencyLockChanges": 0
+  },
+  "build": {
+    "indexSha256": "fd34962ce83ae37d605735dd52e4891b9888dbcc84b91139c3de90c8a577b35c",
+    "appSha256": "22dbba8ed860bfa68bf58abb72a9704725731e204493dec33c7502305d5907f5",
+    "mainChunkSha256": "da77d066a4155256d3e826908c095e7876a4fa665d9f9eb15d0330b3fc235351"
+  },
+  "graphify": {
+    "nodes": 30014,
+    "edges": 73491,
+    "communities": 1278,
+    "existingPartialVueParses": 6,
+    "newModuleParseFailures": 0
+  },
+  "limitations": [
+    "All 04b remote results are explicitly simulated.",
+    "This evidence does not complete provider confirmation or real RTX 5070 integration.",
+    "Production video and stream capabilities remain disabled until package 05 confirms the external contract."
+  ]
+}

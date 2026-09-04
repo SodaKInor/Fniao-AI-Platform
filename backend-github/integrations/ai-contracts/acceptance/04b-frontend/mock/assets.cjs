@@ -14,7 +14,7 @@ async function upload(req, res, state, owner) {
   const bytes = raw.subarray(headerEnd + 4, end)
   const fileName = (/filename="([^"]+)"/.exec(header) || [])[1] || 'input.png'
   const type = (/Content-Type:\s*([^\r\n]+)/i.exec(header) || [])[1]
-  if (!['image/png', 'image/jpeg'].includes(type)) { fail(res, 415, 'UNSUPPORTED_MEDIA', '只接受图片'); return }
+  if (!['image/png', 'image/jpeg', 'video/mp4'].includes(type)) { fail(res, 415, 'UNSUPPORTED_MEDIA', '不支持此文件类型'); return }
   if (!bytes.length || bytes.length > 10485760) { fail(res, 413, 'LIMIT_EXCEEDED', '输入超限'); return }
   const meta = asset('input_' + crypto.randomBytes(8).toString('hex'), bytes, fileName, type)
   state.assets.set(meta.assetId, { meta, bytes, owner }); json(res, envelope(meta, 201), 201)

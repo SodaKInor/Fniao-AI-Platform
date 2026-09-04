@@ -4,8 +4,8 @@ const path = require('node:path')
 const crypto = require('node:crypto')
 const { execFileSync } = require('node:child_process')
 const root = path.resolve(__dirname, '../../../../..')
-const baseline = 'ab9809d23919ea5d61dfc7d8b34d7f30bb9d607c'
-const contract = '5a55ca5cc6ea8fde09898f44519d62c715af12db'
+const baseline = 'f242a027a2e2827f5445bea80e517c472ff1e3c9'
+const contract = '1177de8be45123d043d7cb26b845ee9d94c26784'
 const acceptance = 'backend-github/integrations/ai-contracts/acceptance/04b-frontend/'
 const areas = ['api/ai/', 'components/ai/', 'services/ai/', 'views/ai/'].map(p => 'frontend-vue/src/' + p)
 const existing = ['store/modules/user.js', 'views/tab/TabAiModelBundList.vue',

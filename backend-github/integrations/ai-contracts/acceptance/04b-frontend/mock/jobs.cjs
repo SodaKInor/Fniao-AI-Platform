@@ -77,4 +77,12 @@ function history(res, url, state, owner) {
   if (offset + limit < all.length) page.nextCursor = Buffer.from(JSON.stringify({ owner, filter, offset: offset + limit })).toString('base64url')
   json(res, envelope(page))
 }
-module.exports = { submit, get, history }
+function cancel(res, state, owner, id) {
+  const record = state.jobs.get(id)
+  if (!record || record.owner !== owner) { fail(res, 404, 'NOT_FOUND', '任务不存在或无权访问'); return }
+  const job = current(record)
+  if (job.state !== 'PENDING') { fail(res, 409, 'CANCEL_NOT_SUPPORTED', '仅未派发任务可取消'); return }
+  job.state = 'CANCELLED'; job.updatedAt = now(); record.finishAt = null; record.completed = job
+  json(res, envelope(clone(job)))
+}
+module.exports = { submit, get, history, cancel }
