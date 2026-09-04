@@ -26,4 +26,6 @@ MP4/H.264、已登记 source ID 的真实请求/成功/空/错误样例；输入
 实际后端容器完成应用层请求、成果回存、页面和历史验收。端口、ping、草案或模拟结果均不计作
 真实联调成功。
 
-机器可读结论见 `preflight.json`。本记录不勾选 OpenSpec 5.x，不释放 06、07 或 RC。
+机器可读结论见 `preflight.json`。`backend-github/deploy/remote-ai/validate-contract-intake.cjs`
+提供资料到齐后的 fail-closed 校验，配套测试覆盖占位地址、HTTP、URL 凭据、内联密钥、RTSP、
+视频限制和停止确认；模板按预期不能通过。本记录不勾选 OpenSpec 5.x，不释放 06、07 或 RC。

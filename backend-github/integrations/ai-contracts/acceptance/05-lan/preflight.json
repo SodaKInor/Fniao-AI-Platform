@@ -29,6 +29,12 @@
     "backendPort19106Listening": false,
     "containerApplicationRequestAttempted": false
   },
+  "contractIntakeTooling": {
+    "status": "PASS_FAIL_CLOSED_TOOLING_ONLY",
+    "testsPassed": 6,
+    "testsFailed": 0,
+    "unconfirmedTemplateRejected": true
+  },
   "blockedTasks": ["5.1", "5.2", "5.3", "5.4", "remote-video-streaming:5.1", "remote-video-streaming:5.2"],
   "downstreamReleased": {
     "06": false,

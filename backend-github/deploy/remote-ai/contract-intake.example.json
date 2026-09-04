@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "UNCONFIRMED",
+  "environment": "development",
+  "confirmation": {
+    "confirmedBy": "",
+    "confirmedAt": "",
+    "providerApiVersion": ""
+  },
+  "service": {
+    "baseUrl": "https://gpu-development.invalid",
+    "approvedOrigin": "https://gpu-development.invalid",
+    "tls": {
+      "trustMode": "PRIVATE_CA",
+      "caFile": "/absolute/path/outside/repository/wgai-inference-ca.crt",
+      "certificateSan": ""
+    },
+    "authentication": {
+      "scheme": "UNCONFIRMED",
+      "headerName": "",
+      "credentialFile": "/absolute/path/outside/repository/wgai-inference-token"
+    },
+    "limits": {
+      "maxConcurrent": 0,
+      "artifactRetentionSeconds": 0
+    },
+    "errorSemantics": {
+      "responseLostOutcome": "UNCONFIRMED",
+      "transparentPostRetry": null,
+      "providerAuthClearsBusinessSession": null,
+      "notStartedEvidence": "",
+      "terminalFailureEvidence": ""
+    }
+  },
+  "capabilities": {
+    "image": {
+      "status": "UNCONFIRMED",
+      "capabilityCode": "image-detection.v1"
+    },
+    "video": {
+      "status": "UNCONFIRMED",
+      "capabilityCode": "video-file-analysis.v1"
+    },
+    "stream": {
+      "status": "UNCONFIRMED",
+      "capabilityCode": "video-stream-analysis.v1"
+    }
+  }
+}

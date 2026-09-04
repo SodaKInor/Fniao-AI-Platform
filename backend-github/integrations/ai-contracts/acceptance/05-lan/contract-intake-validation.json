@@ -1,0 +1,33 @@
+{
+  "status": "PASS_FAIL_CLOSED_TOOLING_ONLY",
+  "at": "2026-09-04T08:38:56Z",
+  "nodeTests": {
+    "passed": 6,
+    "failed": 0
+  },
+  "unconfirmedTemplate": {
+    "exitCode": 1,
+    "issueCount": 20,
+    "expectedFailure": true,
+    "sensitiveValuesEchoed": false
+  },
+  "coveredBoundaries": [
+    "HTTPS and exact approved origin",
+    "placeholder and loopback rejection",
+    "URL credentials and inline secret rejection",
+    "external credential and CA file references",
+    "explicit provider version and error certainty",
+    "MP4 H.264 video limits and sample references",
+    "opaque registered stream source mappings",
+    "event polling and confirmed stop semantics",
+    "RTSP rejection"
+  ],
+  "openspecTasksCompleted": [],
+  "realProviderRequestAttempted": false,
+  "productionCapabilityEnabled": false,
+  "limitations": [
+    "A passing intake validates completeness and safety structure only.",
+    "Actual provider examples still require human semantic review and owner adapter implementation.",
+    "Container-level network, TLS, authentication, result persistence and browser checks remain 5.2-5.4."
+  ]
+}
