@@ -40,6 +40,18 @@
 - **WHEN** 创建请求包含 RTSP 地址、GPU URL 或连接凭据
 - **THEN** 系统拒绝请求且不保存或转发这些字段
 
+### Requirement: Stub stream sources remain simulated and isolated
+
+开发环境 SHALL 可通过独立 HTTP stub 提供预先登记的合成 `streamSourceId`、确定性事件和截图，以验证会话、游标、去重、停止与恢复。stub 来源和成果 SHALL 明确标识为模拟，且 SHALL 不能使真实 provider 来源映射或 RTX 5070/4090 验收变为完成。正式配置 SHALL 不启动或回退到 stub。
+
+#### Scenario: Synthetic stub source starts a session
+- **WHEN** 开发环境显式选择一个已登记的 stub `streamSourceId`
+- **THEN** 系统通过正常 provider HTTP 边界创建和查询会话，并将来源、事件、截图与验收证据标记为模拟
+
+#### Scenario: Real provider mapping is unavailable
+- **WHEN** 正式环境没有同事确认的 provider source 映射
+- **THEN** 真实流能力保持 disabled，系统不使用同名 stub 来源、不接收原始 RTSP，也不声称真实会话可用
+
 ### Requirement: Session state preserves execution certainty
 
 系统 SHALL 使用有界会话状态和未知操作原因区分待启动、启动中、运行中、停止请求中、已停止、失败与结果未知。启动请求发送后响应丢失且 provider 无查询能力时 SHALL 保持 UNKNOWN，不自动重复启动。

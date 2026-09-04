@@ -20,6 +20,14 @@
 - **WHEN** 用户绕过界面直接请求已停用的能力
 - **THEN** 后端拒绝执行并返回停用原因
 
+#### Scenario: Stub capability is available for development
+- **WHEN** 开发环境显式启用 stub 并且对应契约夹具可用
+- **THEN** 系统可以提供模拟业务入口，但必须向管理状态和结果元数据标明模拟来源，真实 provider 可用性仍保持未确认
+
+#### Scenario: Stub is absent from production
+- **WHEN** 正式配置未连接真实 provider
+- **THEN** 对应能力显示未配置或不可用，不把开发 stub 状态继承为生产可用
+
 ### Requirement: Missing legacy implementations are not offered as runnable
 
 系统 SHALL 对缺少目标后端实现、已从构建排除或明确淘汰的执行功能停用入口；保留管理查询 SHALL 不被描述为算法已可运行。

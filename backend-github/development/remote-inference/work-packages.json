@@ -1,19 +1,23 @@
 {
   "schema_version": 1,
   "change": "remote-inference-platform",
-  "task_count": 41,
+  "task_count": 56,
   "packages": [
     {
       "id": "00-integration",
       "title": "集成与总体验收",
       "tasks": [
-        "4.7"
+        "2.7",
+        "4.7",
+        "4.10",
+        "6.5",
+        "8.6"
       ],
       "depends_on": [
         "01-foundation"
       ],
-      "ready_after": "集成工作区就绪；4.7 等待 03、04a、04b 交付",
-      "scope": "集成分支、OpenSpec 总表、架构与文件归属、公共构建/配置冲突；核实其他包交接并执行组合验收。",
+      "ready_after": "当前集成分支就绪；按05→06→07→08逐包验收，最后由00完成main与独立clone。",
+      "scope": "OpenSpec、架构、共享冲突、分支合并、组合验收、任务状态和最终交付门禁。",
       "can_parallel": "可协调已具备条件的包；合并和整体回归串行执行。",
       "branch": "feature/remote-inference",
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration",
@@ -50,7 +54,9 @@
         "2.2",
         "2.3",
         "2.4",
-        "2.5"
+        "2.5",
+        "2.6",
+        "2.7"
       ],
       "depends_on": [
         "01-foundation"
@@ -72,7 +78,9 @@
         "3.2",
         "3.3",
         "3.4",
-        "3.5"
+        "3.5",
+        "3.6",
+        "3.7"
       ],
       "depends_on": [
         "02-contract"
@@ -94,7 +102,8 @@
         "4.2",
         "4.3",
         "4.4",
-        "4.5"
+        "4.5",
+        "4.8"
       ],
       "depends_on": [
         "02-contract"
@@ -112,10 +121,13 @@
       "id": "04b-frontend",
       "title": "前端页面与组件",
       "tasks": [
-        "4.6"
+        "4.6",
+        "4.9"
       ],
       "contributes_to": [
-        "3.4"
+        "3.4",
+        "4.7",
+        "4.10"
       ],
       "depends_on": [
         "02-contract"
@@ -131,7 +143,7 @@
     },
     {
       "id": "05-lan",
-      "title": "局域网真实联调",
+      "title": "独立 HTTP 占位服务与本地联调",
       "tasks": [
         "5.1",
         "5.2",
@@ -141,9 +153,9 @@
       "depends_on": [
         "00-integration"
       ],
-      "ready_after": "任务 4.7 已验收，同事提供可调用的开发服务",
-      "scope": "真实契约对齐记录、开发配置和联调证据；实现缺陷交给对应所有者或经 00 分派。",
-      "can_parallel": "与 06 本地故障验证、08 发布草案并行；共享客户端和配置修改先交接。",
+      "ready_after": "04b已由00验收；同步最新规划并保留既有fail-closed工具后实施，不依赖同事服务。",
+      "scope": "stub契约场景、独立HTTP进程、fixtures、开发Compose profile和remote→stub图片/视频/流证据。",
+      "can_parallel": "05先完成；00验收后才释放06。",
       "branch": "work/remote-inference/05-lan",
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan/code",
@@ -163,9 +175,9 @@
       "depends_on": [
         "00-integration"
       ],
-      "ready_after": "任务 4.7 已验收；6.5 中真实接入回归等待 05 交付",
-      "scope": "交接后的任务恢复/取消、运行指标和故障测试；外部查询/取消仅按已确认接口实现。",
-      "can_parallel": "本地恢复工作与 05、08 草案并行；6.5 的最终回归在 05/06 结果集成后串行完成。",
+      "ready_after": "等待05 stub由00验收并提供新共同起点。",
+      "scope": "用stub验证恢复、UNKNOWN、取消/停止、故障、指标和日志；真实provider能力保持未知。",
+      "can_parallel": "前置未满足时只读检查；与05的共享行为不并行修改。",
       "branch": "work/remote-inference/06-resilience",
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
@@ -174,19 +186,19 @@
     },
     {
       "id": "07-cleanup",
-      "title": "保留业务迁移与旧实现清理",
+      "title": "功能模块迁移与旧业务清理",
       "tasks": [
         "7.1",
         "7.2",
         "7.3",
-        "7.4"
+        "7.4",
+        "7.5"
       ],
       "depends_on": [
-        "05-lan",
-        "06-resilience"
+        "00-integration"
       ],
-      "ready_after": "05/06 已集成并回归，保留/退役清单明确",
-      "scope": "按已验收替代流程逐组清理旧页面/调用/依赖，保留历史成果；仅接管明确交接的文件。",
+      "ready_after": "等待00完成6.5并提供唯一本地stub/disabled验收SHA。",
+      "scope": "按功能重组前后端、建立依赖矩阵、逐组清理已确认退役的旧入口。",
       "can_parallel": "仅可提前只读整理引用清单；删除和迁移在上一轮统一回归之后串行实施。",
       "branch": "work/remote-inference/07-cleanup",
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup",
@@ -196,7 +208,7 @@
     },
     {
       "id": "08-release",
-      "title": "正式服务器接入与交付",
+      "title": "最终仓库目录整合与本地交付",
       "tasks": [
         "8.1",
         "8.2",
@@ -207,9 +219,9 @@
       "depends_on": [
         "07-cleanup"
       ],
-      "ready_after": "发布资料可在 4.7 后准备；正式验收等待 07 发布候选与正式服务",
-      "scope": "业务端 Ubuntu 发布材料、正式配置、代表性真实验收、隔离恢复和回滚；不开发 GPU 部署。",
-      "can_parallel": "发布资料草案可与 05/06 并行；正式迁移、真实验收和最终交付串行执行。",
+      "ready_after": "等待07由00验收并提供唯一结构迁移起点SHA。",
+      "scope": "顶层git mv、数据库/remote-inference/deploy/docs归整、活动路径修复、全量本地RC和HANDOFF。",
+      "can_parallel": "前置未满足时仅做只读迁移清单；目录移动和RC串行执行。",
       "branch": "work/remote-inference/08-release",
       "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release",
       "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/08-release/code",
@@ -217,5 +229,33 @@
       "suggested_backend_port": 19109
     }
   ],
-  "runtime_registry": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/WORKSPACES.json"
+  "runtime_registry": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/WORKSPACES.json",
+  "companion_changes": [
+    {
+      "change": "remote-video-streaming",
+      "task_count": 27
+    }
+  ],
+  "latest_plan_status": "MODULAR_LOCAL_DELIVERY_READY",
+  "future_external_gate": {
+    "id": "future-real-gpu",
+    "tasks": [
+      "9.1",
+      "9.2",
+      "9.3",
+      "9.4",
+      "9.5",
+      "9.6",
+      "remote-video-streaming:8.1",
+      "remote-video-streaming:8.2",
+      "remote-video-streaming:8.3",
+      "remote-video-streaming:8.4"
+    ],
+    "ready_after": "同事提供实际服务、接口资料、局域网/正式网络和凭据",
+    "sequence": [
+      "RTX 5070 LAN acceptance",
+      "RTX 4090 48GB production acceptance"
+    ],
+    "worktree": "create only when the external service is available"
+  }
 }

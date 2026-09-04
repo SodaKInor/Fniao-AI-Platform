@@ -64,6 +64,18 @@ remote 能力 SHALL 仅在方法、路径、TLS/CA、服务鉴权、请求/结�
 - **WHEN** 后端能连接 RTX 5070 服务，但缺少视频结果样例或限额确认
 - **THEN** 图片能力可按自身完整证据独立判断，视频能力保持 disabled 且不得标为已联调
 
+### Requirement: Development stub is distinguishable from a real provider
+
+系统 SHALL 可通过独立 HTTP stub 验证已冻结的 provider 请求、响应和故障语义。stub 的能力、结果、日志及验收证据 SHALL 明确标识为模拟，且 SHALL 不能使 RTX 5070 或 RTX 4090 的真实服务门禁变为完成。正式配置 SHALL 不默认启动或回退到 stub。
+
+#### Scenario: Business flow runs against the stub
+- **WHEN** 开发环境以 remote 模式调用 stub 并得到成功成果
+- **THEN** 系统按正常业务流程保存和展示成果，同时在来源元数据和验收记录中明确标识 stub，不记录为真实 GPU 成果
+
+#### Scenario: Production provider configuration is missing
+- **WHEN** 正式环境没有有效的真实 provider 地址或凭据
+- **THEN** 相应能力保持 disabled，系统不自动调用 stub 或旧本地算法
+
 ### Requirement: Provider capabilities are explicit
 
 系统 SHALL 支持对接普通同步请求/返回接口。外部异步查询、取消、回调或请求去重 SHALL 仅在双方确认支持时启用，不能因本地存在任务 ID 而推定外部存在对应能力。
@@ -98,11 +110,15 @@ remote 能力 SHALL 仅在方法、路径、TLS/CA、服务鉴权、请求/结�
 
 ### Requirement: Remote integration has explicit module boundaries
 
-新增远程接入代码 SHALL 按架构文档拆分接口、应用流程、领域规则、端口、外部适配、存储和持久化职责。前端 SHALL 分开页面编排、可复用组件、业务 API 和轮询生命周期。Controller 和页面 SHALL 不承担远程协议转换、数据库访问和整个任务流程；不得用单个大型文件容纳完整功能。
+新增远程接入代码 SHALL 按 capability、asset、job、result、image、video、stream、provider、operations 和 legacy 等稳定业务功能组织，每个功能内部再按需要拆分接口、应用流程、领域规则、端口、外部适配、存储和持久化职责。前端 SHALL 以对应功能模块分开页面编排、可复用组件、业务 API 和轮询生命周期。Controller 和页面 SHALL 不承担远程协议转换、数据库访问和整个任务流程；不得用单个大型文件容纳完整功能，也不得按每个具体算法名称创建无独立业务流程的模块。
 
 #### Scenario: New request-to-result capability is implemented
 - **WHEN** 实施一个包含上传、调用、等待和成果展示的能力
-- **THEN** 各职责位于相应模块，依赖方向符合架构约束，新增手写业务文件满足文件规模和单一职责检查
+- **THEN** 相关文件归入所属功能模块，模块内部职责与依赖方向符合架构约束，新增手写业务文件满足文件规模和单一职责检查
+
+#### Scenario: External model catalogue adds another detection model
+- **WHEN** provider 增加一个沿用既有图片请求和结果语义的模型标识
+- **THEN** 系统通过能力绑定接入该模型，不为模型名称复制 Controller、任务状态机、资产或结果模块
 
 ### Requirement: Parallel work uses isolated ownership and integration
 

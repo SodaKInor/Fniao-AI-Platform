@@ -1,143 +1,177 @@
 ## Context
 
-第四轮图片检测模拟闭环已经在统一验收提交 `75757103b6ad9a60305a081bce22f68e54459a16` 通过，现有业务契约为 `1.0.0`。真实 RTX 5070 服务目前仅确认可达，方法、TLS/CA、鉴权、图片/视频/流样例、错误确定性、限额、事件查询和停止能力仍需逐项确认，因此不能启用 remote 能力或释放清理包。
+`feature/remote-inference` 已完成版本基线、`1.1.0` 业务契约、provider 客户端、私有资产、持久任务、图片/上传视频/实时流页面以及本地模拟组合验收。当前代码主要位于 `backend-github`、`frontend-vue`，远程契约、部署增量、数据库迁移和验收材料又分散在后端及根部署目录中；Java AI 代码采用 api/application/domain/client/persistence 横向分层，随着图片、视频和流扩展，单一层目录内的类型已经过多。
 
-本轮沿用 Java 8 / Spring Boot 2.6.6、Vue 2、现有登录、MySQL/Redis 和私有文件存储。`backend-github` 与 `frontend-vue` 是唯一实现目标，`backend-master`、同事 GPU 源码、权重、现用数据卷及历史数据保持不变。模块职责和文件归属继续遵守远程推理架构、归属表与串行集成规则。
+同事尚未提供 RTX 5070 开发服务或 RTX 4090 48GB 正式服务，因此真实方法、路径、鉴权、TLS、限额、来源映射、查询与停止语义仍不能确认。现阶段能完成的是业务端、独立契约 stub、故障恢复和最终项目结构；真实 GPU 验收必须继续保持开放。
+
+并行 worktree 是施工隔离机制，不是最终产品结构。最终仓库需要由已验收提交合并而成，再通过一次独立重构保留 Git 历史并形成干净的新克隆。
 
 ## Goals / Non-Goals
 
 **Goals:**
 
-- 将稳定业务契约升级为 `1.1.0`，兼容图片并加入上传视频分析。
-- 为图片、视频事件、截图和可选标注视频建立有界类型、统一任务身份、历史、幂等、取消与恢复语义。
-- 将 RTSP 实时事件作为伴随变更 `remote-video-streaming` 实施，共享身份、权限、资产与错误语义。
-- 以真实接口能力为启用条件，确保 UNKNOWN、取消和停止不会被误标为成功或终态。
-- 串行重开原所有者并在每个包后由 00 验收，最终按 05→06→6.5→07→RC 推进。
+- 建立一个可独立克隆、构建、部署和理解的最终仓库。
+- 顶层按运行边界区分业务后端、业务前端、数据库、远程契约/stub 和部署；代码内部按稳定业务功能组织。
+- 用独立 HTTP stub 验证真实网络适配路径，并让模拟证据与真实 GPU 证据无法混淆。
+- 保留已完成 API、状态、权限、幂等、恢复、历史数据和前端行为。
+- 允许同事服务到位后仅增加或调整 provider 适配和配置，不改写业务页面与持久任务模型。
 
 **Non-Goals:**
 
-- 不实现 GPU 服务、算法、模型、驱动、视频中继、回调入口或标注直播通道。
-- 不向浏览器传递 GPU URL、RTSP 地址、凭据、权重路径或供应商原始 Map。
-- 不保留任何智能聊天或训练执行入口；历史数据不删除。
-- 不删除仍被通用 WebSocket、播放器、管理 CRUD 或其他业务引用的资产和依赖。
-- 不混入 Vue/Java 大版本升级，不推送、不部署生产，也不归档整体 OpenSpec。
+- 不拆分业务微服务，不升级 Java/Vue 大版本，不重写 JEECG 核心。
+- 不开发 GPU、算法、权重、CUDA、训练或视频中继。
+- 不为每个模型名称创建模块；不为将来可能的能力生成空壳代码。
+- 不移动代码生成器专用 SQL，不提交原始数据库、真实用户数据或凭据。
 
 ## Decisions
 
-### 1. 契约分为图片、上传视频和实时流三族
-
-`1.1.0` 保持 `image-detection.v1` 的 `POST /ai/v1/infer`、`GET /ai/v1/jobs` 与任务详情兼容。`video-file-analysis.v1` 使用 `POST /ai/v1/video-jobs` 创建同一任务体系的记录，并复用幂等 key、归属、历史、成果下载与取消接口。`POST /ai/v1/jobs/{id}/cancel` 对两种文件任务一致生效。
-
-实时流使用独立资源模型和伴随变更定义的接口：
+### 1. 最终仓库采用顶层运行边界
 
 ```text
-GET  /ai/v1/stream-sources
-POST /ai/v1/stream-sessions
-GET  /ai/v1/stream-sessions/{id}
-GET  /ai/v1/stream-sessions/{id}/events
-POST /ai/v1/stream-sessions/{id}/stop
+Fniao-AI-Platform/
+├── apps/
+│   ├── backend/
+│   └── frontend/
+├── database/
+│   ├── bootstrap/
+│   ├── migrations/
+│   ├── seeds/
+│   └── private/
+├── remote-inference/
+│   ├── contracts/
+│   ├── fixtures/
+│   ├── stub/
+│   └── acceptance/
+├── deploy/
+├── docs/remote-inference/
+├── openspec/
+└── tools/
 ```
 
-文件任务是有界输入的单次处理，流会话是持续事件资源；将二者塞进同一 job 状态机会模糊停止、恢复和事件游标，因此保持独立 API 与持久化，但共享用户身份、资产授权和错误分类。实时流的完整行为在 `remote-video-streaming` 中定义。
+这一结构让运行单元和资料边界一眼可见。保留 `backend-github`、`frontend-vue` 原名虽然改动较少，但继续携带来源含义且无法解决契约、数据库和部署散落问题；把每个业务功能做成顶层仓库则会重新造成碎片化。
 
-### 2. 供应商 DTO 必须严格类型化
+### 2. 后端采用按功能分包、功能内分层的模块化单体
 
-公共类型包含图片参数、视频参数、视频事件、结果类型、流会话状态及未知操作原因。视频事件至少有稳定事件身份、相对视频起点的时间偏移、事件类型、置信信息和可选截图资产引用。业务层只接收冻结字段；供应商扩展字段由 client 层按版本策略忽略或拒绝，禁止把无约束 Map 写入业务响应、数据库或日志。
-
-旧图片 JSON 保持字段兼容。任务/结果增加显式类型判别，使读取方先按类型选择有界 DTO，再做字段校验；迁移前记录缺少判别时按旧图片记录解释。
-
-### 3. 视频最低成果是时间线与截图
-
-上传视频首期默认只考虑 MP4/H.264，只有真实服务确认媒体、大小、时长、并发和成果格式后才启用。最低成功结果为按时间偏移排序的事件时间线与归属明确的截图；标注视频是可选本地成果，不能因供应商未提供而把最低成果判失败，也不能伪造下载项。
-
-实时流同样只要求事件时间线与截图。浏览器按游标主动查询事件，不建设标注直播或后端视频中继。
-
-### 4. Provider 边界按业务方法和执行确定性拆分
-
-03 提供图片、上传视频与流会话 provider 方法，分别转换真实协议。远程地址必须命中批准基址和路径，TLS 使用明确 CA，服务凭据仅后端读取。图片/视频推理 POST 发送后若响应丢失：有已确认查询能力时按原身份对账，否则记录 UNKNOWN；不得透明重发 POST。查询、成果读取等只有在语义安全时重试。
-
-连接失败且请求确定未发送可记为 NOT_STARTED；外部明确失败可记 FAILED；任何无法证明未执行或已停止的情况使用有界 UNKNOWN 原因。外部鉴权错误是服务配置故障，不清除业务用户会话。
-
-### 5. 真实能力以资料和容器内请求共同确认
-
-05 必须从实际业务后端容器发出图片、上传视频和流请求，并以 request/session ID、资产哈希和接口版本串联证据。端口可达、ping 或健康页只算预检。每种能力独立核对方法、TLS/CA、鉴权、样例、错误码、确定性、限额、成果有效期和查询/取消/停止能力；缺项的能力保持 disabled，5.1 不完成。
-
-若 GPU 端不能将本地 `streamSourceId` 映射为已登记来源，停止流实现并修订契约，不自动改为业务后端中继或向浏览器暴露明文 RTSP。
-
-### 6. V002 只做增量兼容迁移
-
-04a 交付 V002 增量迁移。它为既有任务结果增加类型判别并兼容缺少判别的图片记录；与伴随流变更协调新增：
+现有 JEECG Maven 工程整体迁入 `apps/backend`，不因整理目录拆成独立部署服务。AI 代码目标结构：
 
 ```text
-ai_stream_source
-ai_stream_session
-ai_stream_event
+org.jeecg.modules.ai/
+├── capability/{api,application,domain,persistence}
+├── asset/{api,application,domain,port,persistence,storage}
+├── job/{api,application,domain,port,persistence,worker}
+├── result/{api,application,domain,port}
+├── image/{api,application,domain}
+├── video/{api,application,domain}
+├── stream/{api,application,domain}
+├── provider/{port,client,dto,config}
+├── operations/{api,application}
+└── legacy/
 ```
 
-三张流表保存本地来源授权、会话状态/外部身份/配置快照，以及带去重身份的事件与截图引用。迁移可重复执行，不删除、重命名或重写历史表和资产内容；对包含既有图片记录的数据库副本验证前后表/行摘要。
+capability 管理能力和绑定；asset 管理私有文件；job 管理请求身份、状态、幂等、调度和取消；result 管理成果解释与回存；image/video/stream 只保存各自特有业务类型和用例；provider 封装外部 wire 协议与网络；operations 提供健康和管理观测；legacy 只容纳过渡适配和停用守卫。
 
-### 7. 恢复、取消和停止只接受可证明的终态
+备选的“先按 api/application/domain 横向分层”已在能力扩展后变得难以定位；“每个功能独立 Maven 模块”会为当前规模增加循环构建和公共类型管理成本。因此采用 Java 包级功能模块，并用依赖检查约束边界。
 
-本地 PENDING 任务可在重启后恢复派发。已派发且供应商不可查询的任务保持 UNKNOWN。FETCHING_RESULT 恢复时只重取同一成果，不重新推理。取消尚未派发任务可立即进入 CANCELLED；已派发任务仅在供应商明确支持并返回确认后进入取消终态。
-
-流停止采用相同原则：本地未启动会话可结束；已启动会话只有在供应商确认后进入 STOPPED。停止不支持、停止响应丢失或对账失败都保留非终态/UNKNOWN 原因。重复或迟到事件按 providerEventId（或冻结的组合身份）去重，任何迟到数据不得覆盖失败、取消、停止或成功终态。
-
-### 8. 前端页面隔离轮询代次
-
-04b 保留图片页面并新增上传视频任务页、视频事件时间线与截图预览。流页面由伴随变更提供来源选择、会话状态、事件时间线和截图，不展示 RTSP 或 GPU 细节。轮询器在离开页面时清理定时器和请求引用，以 generation/token 隔离旧响应，并在终态后停止更新；刷新页面只读同一记录，不重新提交。
-
-### 9. 串行所有权和验收提交
-
-第四轮统一提交是所有新工作的祖先。规划完成后按下列顺序推进，每包提交独立 HANDOFF、证据与 Graphify 更新，00 验收后才释放下一包：
+### 3. 功能模块依赖保持单向
 
 ```text
-02 contract 1.1.0
-  -> 00 contract acceptance / new common start
-  -> 03 providers and protocol boundary
-  -> 00 acceptance
-  -> 04a persistence, recovery, cancel, V002
-  -> 00 acceptance
-  -> 04b video and event UI
-  -> 00 acceptance
-  -> 05 real integration
-  -> 06 resilience
-  -> 00 unified 6.5
-  -> 07 grouped cleanup
-  -> 00 release candidate
+image/video/stream api -> 各自 application
+各媒体 application    -> capability + asset + job + result 的公开应用端口
+job application        -> job domain + provider port + asset/result port
+provider client        -> provider port + 严格 wire DTO
+persistence/storage    -> 所属模块 port + domain
+config/bootstrap       -> 负责装配，不承载业务流程
 ```
 
-公共 DTO、OpenAPI、样例和迁移归属变更必须先由对应所有者提交，其他包不得复制或抢改。任何真实缺项、UNKNOWN 误标、重复派发、越权或远程停止未确认都保留为未完成。
+provider 不访问业务表、不决定用户归属；asset 不更新任务状态；Controller 不直接调用 HTTP 客户端或 Mapper；domain 不依赖 Spring、MyBatis 或供应商 JSON。跨模块只调用公开应用端口或稳定领域标识，禁止通过新的 CommonService、Utils 或共享可变对象绕过边界。
 
-### 10. 07 按引用清单分组清理
+### 4. 前端按功能组织并与业务概念对应
 
-07 从 5.1—5.4、6.1—6.5 和流变更全部通过后的验收 SHA 开始。第一组停用菜单、旧页面与全部聊天入口；第二组清理旧 `AIModel`、本地图片/视频/语音/OCR 执行和训练代码；第三组只删除引用审查确认无调用者的 OpenCV、ONNX Runtime、JavaCV、ASRT、RapidOCR、Tess4J 及构建脚本。
+```text
+apps/frontend/src/modules/ai/
+├── capability/
+├── asset/
+├── job/
+├── result/
+├── image/
+├── video/
+├── stream/
+├── operations/
+└── legacy/
+```
 
-每组前后保存引用清单，验证前后端构建、真实远程业务、历史成果读取、数据库表/行摘要和 Graphify 更新，并独立提交以便回退。名称类似 AI 不是删除依据。
+每个已实现模块按需要包含 `api`、`services`、`components`、`views`、`routes`。页面负责组合，API 模块负责业务后端调用，轮询服务负责生命周期，结果模块提供通用容器，媒体模块提供特定渲染。audio、chat、training 在没有保留业务契约时不创建空模块。
+
+按功能归档可以让一次业务修改集中在相邻文件；继续维护根级 `api/ai`、`services/ai`、`components/ai` 和 `views/ai` 会使同一功能横跨多个远目录。
+
+### 5. 数据库按业务所有权集中管理
+
+`database/bootstrap` 只保存可版本化的脱敏结构和必要基础数据；`database/migrations` 按 capability、asset、job、result、stream 分组并保持全局唯一版本；`database/seeds` 只保存明确的本地演示数据；`database/private` 保存本机原始基线且被 Git 忽略。
+
+已经交付的 V001/V002 不改写内容，只通过移动和迁移清单保留校验值与执行顺序。Java/Vue 生成模板中的 `*_menu_insert.sql` 属于生成器或原功能源码，继续留在原模块。部署预检在私有数据库缺失时给出明确获取说明，不生成伪造生产数据。
+
+### 6. 契约、stub 和验收证据独立于业务后端
+
+`remote-inference/contracts` 保存业务与 provider 版本契约；`fixtures` 保存成功、空结果和错误样例；`stub` 是可独立启动的 HTTP 进程；`acceptance` 保存契约和组合证据。业务后端只保留 provider 端口与适配器，不拥有同事的服务代码。
+
+stub 按当前 provider 草案实现健康、能力、图片、视频和流中已冻结的路径。代码分为启动、配置、路由、请求校验、场景服务、响应编码和测试，不能集中在单个 server 文件。它不读业务数据库、不访问旧算法、不包含 GPU 依赖，只返回确定性 fixtures。
+
+采用独立 HTTP 进程而不是只使用进程内 mock，是为了覆盖 DNS/地址、鉴权头、multipart、超时、响应转换和成果下载等真实适配路径。采用固定 fixtures 而不是伪造算法，是为了让输出可复现且不制造算法已实现的误解。
+
+### 7. disabled、mock、remote 三种模式语义不变
+
+- `disabled`：拒绝新推理，历史和管理仍可用。
+- `mock`：只用于后端进程内的针对性测试。
+- `remote`：走真实 HTTP provider；开发地址可以指向 stub，未来指向同事服务。
+
+stub 通过显式 Compose profile 启动，结果和能力元数据必须标识模拟来源。正式配置不启动也不允许解析到 stub；正式地址缺失时保持 disabled，绝不回退旧算法或 stub。
+
+### 8. 现有图片、上传视频和实时流契约保持稳定
+
+`image-detection.v1` 保持 `/ai/v1/infer` 和任务查询兼容；`video-file-analysis.v1` 使用上传视频任务；`video-stream-analysis.v1` 只接受授权 `streamSourceId`。供应商 DTO 继续严格类型化，未知字段按冻结策略忽略或拒绝，不以无约束 Map 进入业务响应、持久结果或日志。
+
+上传视频最低成果仍为事件时间线和授权截图，标注视频可选。流事件继续使用游标、去重身份和授权截图。stub 只能验证这些契约和业务流程，不能确定真实编码支持、吞吐、时延、来源映射或停止能力。
+
+### 9. 执行确定性、恢复与终态规则不因 stub 放宽
+
+推理或启动请求可能已发出而响应丢失时保持 UNKNOWN，除非 provider 有已确认查询或幂等语义，否则不透明重发。FETCHING_RESULT 恢复只重取成果；远程取消和流停止只有收到确认才进入终态；迟到事件不能覆盖终态。
+
+stub 提供可控延迟、响应丢失、协议错误、重复事件和成果中断场景，用于完成本地故障验证。真实 provider 的确定性和恢复能力仍需用真实资料及容器内请求单独验收。
+
+### 10. 旧入口按业务决定和引用证据清理
+
+聊天和训练执行入口按已确认决定退役；图片、上传视频和流入口映射到统一 API，真实 provider 资料未到时可在开发 stub 环境演示，在正式配置保持 disabled。每组清理保存前后引用清单，验证构建、历史数据和保留页面，不以名称含 AI 作为删除依据。
+
+### 11. 先合并功能提交，再单独迁移目录
+
+worktree 之间只合并提交，不复制目录。功能、恢复和清理在原路径完成验收后，从集成 SHA 创建独立结构重构分支，使用 `git mv` 迁移路径并集中更新 Maven/npm、Docker、脚本、文档、Graphify 与项目工具配置。这样可把行为改动与路径改动分开审阅和回退。
+
+结构分支通过后合回 `feature/remote-inference`，再按既定流程合入 `main`。随后从远程 `main` 克隆 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`；它不是旧仓库的 worktree，也不复制旧 graphify-out、Serena cache 或并行目录。
 
 ## Risks / Trade-offs
 
-- [真实服务资料不全] → 能力保持 disabled，5.1 和依赖项不完成，不用模拟结果替代。
-- [大视频传输和成果回存超时] → 独立连接/处理/传输预算，流式 I/O 与外呼前限额；首期只开已确认 MP4/H.264。
-- [供应商已处理但响应丢失] → 保持 UNKNOWN 并禁止透明 POST 重试，优先用已确认查询接口对账。
-- [停止或取消竞争] → 保存请求身份、外部确认和状态事件，用版本/终态守卫拒绝迟到覆盖。
-- [流来源不能映射] → 停止实施并修订契约，不引入未批准的 RTSP 明文或中继架构。
-- [清理误删共用依赖] → 分组引用审查与构建/业务/历史回归，保留任何仍有调用者的通用模块。
+- [大范围路径迁移造成构建或脚本引用遗漏] → 单独结构提交，维护旧到新路径清单，执行 Maven、npm、Compose、SQL、OpenSpec 和旧路径扫描。
+- [功能分包引入循环依赖] → 先建立公开端口与依赖矩阵，逐模块移动并运行 import/Graphify 检查，禁止跨模块直接访问实现。
+- [stub 被误认为真实算法] → 响应、能力、日志和验收材料均标识 stub；真实任务保持未完成，正式配置禁止 stub。
+- [没有真实服务导致错误的清理判断] → 只清理已明确退役且无保留调用者的组；真实能力不确定的入口 disabled 并记录，不推测支持。
+- [数据库归整破坏初始化顺序] → 保留已交付迁移内容与校验值，建立单一清单，在数据库副本重复执行并核对历史摘要。
+- [一次性移动过多文件使审阅困难] → 行为开发结束后再迁移，按后端、前端、数据库、remote-inference、部署/文档分提交并逐步验证。
 
 ## Migration Plan
 
-1. 以 `75757103b6ad9a60305a081bce22f68e54459a16` 作为第四轮唯一放行点，提交本轮两个 OpenSpec 规划变更；本规划回合不改代码。
-2. 02 从放行祖先快进并冻结 `1.1.0` DTO、端口、OpenAPI、样例和流会话契约；00 验收后记录新共同起点。
-3. 严格按 03→04a→04b 串行实施和验收。04a 在数据库副本应用 V002 两次并核对历史摘要；回滚应用版本时保留新增表/列和数据，不执行破坏性降级。
-4. 05 从实际后端容器完成真实图片、视频、流证据；06 完成恢复、取消/停止、断流、响应丢失、事件去重、迟到事件、Micrometer 和滚动日志。
-5. 00 按 05 后 06 的顺序合入并执行 6.5；全部通过后生成供 07 使用的验收 SHA。
-6. 07 分三组迁移与清理，每组独立提交和回归；00 合入后重跑登录、权限、图片、上传视频、实时事件、文件、历史成果、聊天退役、迁移重复执行和完整构建。
-7. 通过后记录本地 `remote-inference-rc1` 的唯一 Git SHA、后端/前端镜像摘要、契约版本、迁移集合与证据，可创建本地标签但不推送或部署。
+1. 以当前 `feature/remote-inference` 已验收 SHA 为起点，保留 1–4 批完成状态和证据。
+2. 将 05 调整为独立 HTTP stub 与 `remote → stub` 组合验收；06 使用 stub 完成本地故障、恢复、取消、停止和观测验证。
+3. 07 只清理已确认退役入口，并把新增 AI 后端和前端改为功能模块；每组独立提交。
+4. 从通过本地回归的集成 SHA 创建结构分支，迁移顶层目录、数据库、契约、stub、验收证据、部署和文档，更新所有有效路径。
+5. 在独立数据库和文件目录执行完整本地验收，生成只声明 stub/disabled 范围的 RC。
+6. 合入并推送 `main` 后创建独立最终克隆，在新目录重新建立 Graphify、Serena 和 OpenSpec 工具定位。
+7. 同事服务可用后，在独立后续门禁中完成 RTX 5070 契约与局域网验收，再完成 RTX 4090 48GB 正式验收；真实证据齐全前不归档整个变更。
 
 ## Open Questions
 
 - RTX 5070 服务对图片、上传视频和流会话分别使用什么方法、路径、鉴权、TLS/CA 与接口版本？
-- 视频最大大小/时长/并发、事件/截图样例及标注视频是否提供？
-- 图片/视频查询、幂等、取消，以及流事件查询、停止是否有可确认语义？
-- GPU 端登记来源如何与本地 `streamSourceId` 映射？
+- 视频最大大小、时长与并发限制，以及事件、截图和可选标注视频格式是什么？
+- 图片/视频查询、幂等、取消，以及流事件查询、停止是否具备可确认语义？
+- GPU 端登记来源如何与业务端 `streamSourceId` 映射？
 
-这些问题不通过猜测解决；答案缺失时相应能力保持 disabled，任务与发布门禁保持未完成。
+这些问题只影响未来真实 provider 适配和启用门禁，不影响当前模块结构、stub 范围或业务 API；答案缺失时相应真实能力保持 disabled。

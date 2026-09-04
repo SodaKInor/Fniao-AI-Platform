@@ -1,43 +1,43 @@
 ## Why
 
-第四轮已经完成图片检测的模拟闭环，但真实 GPU 契约仍未确认，上传视频、取消、恢复及旧聊天入口也没有统一边界。现在需要在不破坏既有图片 JSON 和历史数据的前提下，把首期业务收紧为图片检测与上传视频分析，并为伴随的实时流变更建立明确门禁。
+图片、上传视频和实时流的本地业务闭环已经形成，但同事尚未提供可调用的 GPU 服务；现有仓库又按来源和技术层散落，继续开发会让契约、前端、后端、数据库与验收材料越来越难定位。现在需要在保留既有行为和验收证据的前提下，引入明确标识的独立 HTTP 占位服务，并将最终仓库整理为按业务功能组织的模块化单体。
 
 ## What Changes
 
-- 将业务契约提升为 `1.1.0`，保持 `image-detection.v1` 的 `/ai/v1/infer` 与 `/ai/v1/jobs` 兼容，并新增 `video-file-analysis.v1` 的 `POST /ai/v1/video-jobs`。
-- 上传视频首期只开放经真实服务确认的 MP4/H.264；最低成果为带时间偏移的事件时间线与授权截图，标注视频为可选本地成果。
-- 新增有界视频参数、事件、结果与未知操作原因类型；禁止用无约束 Map 透传供应商数据。旧图片 JSON 保持可读。
-- 泛化私有资产与持久任务，补齐 `POST /ai/v1/jobs/{id}/cancel`、恢复、成果重取和远程取消确认语义；响应丢失仍为 UNKNOWN，禁止透明重发推理 POST。
-- 首期在同一局域网连接管理机与 Ubuntu RTX 5070 服务；TLS/CA、服务鉴权、输入限额、错误确定性、查询、取消和去重均以真实资料为准，资料不全时能力保持 disabled。
-- **BREAKING**：全部 MaxKB、tchat、easyAi 智能聊天执行入口和训练执行入口退役，后端直接请求同样拒绝；数据库历史与已有成果保留。
-- RTSP 实时事件拆分到伴随 OpenSpec 变更 `remote-video-streaming`。平台只共享身份、资产、权限和状态语义，不在浏览器暴露 GPU URL、RTSP 地址或凭据。
-- 继续按工作包归属串行实施：02 冻结契约，03 实现 provider，04a 实现持久化/迁移，04b 实现页面，00 逐包验收后才释放下一包；随后严格按 05→06→6.5→07→最终 RC 顺序推进。
-- 07 只按引用清单分组迁移和清理，不修改 `backend-master`、同事 GPU 代码、历史数据或现用数据卷，不混入 Vue/Java 大版本升级。
+- 保持业务 API `1.1.0`、图片兼容、上传视频、实时流、私有资产、持久任务、UNKNOWN、取消/停止确认和历史成果行为不变。
+- 增加开发期独立 HTTP stub，按当前 provider 草案返回确定性图片、视频和流样例以及受控故障；它通过真实网络适配器调用，但所有结果和证据明确标为模拟。
+- 将真实 RTX 5070 局域网联调与 RTX 4090 48GB 正式验收改为外部服务到位后的独立门禁；stub 通过不能替代任何真实服务任务。
+- 最终仓库收敛为 `apps/backend`、`apps/frontend`、`database`、`remote-inference`、`deploy`、`docs`、`openspec` 和 `tools`，并从远程 `main` 建立一个不共享旧 `.git`、索引或缓存的新克隆。
+- 后端 AI 代码从仅按技术层横向堆放，调整为 capability、asset、job、result、image、video、stream、provider、operations、legacy 功能模块；每个功能内部再按 api/application/domain/port/persistence 等必要层次拆分。
+- 前端改为与业务概念对应的功能模块，每个真实模块按需包含 API、服务、组件、页面与路由；不创建空目录，不在单个页面或状态文件中容纳完整流程。
+- 数据库初始化和增量迁移集中到 `database`，按 capability、asset、job、result、stream 等功能分组；代码生成模板内的 SQL 保留原位，原始数据库和真实数据继续本地忽略。
+- 远程契约、fixtures、stub 与验收证据从业务后端源码中分离到 `remote-inference`；业务后端仅保留 provider 端口和适配器。
+- 不按人脸、车牌、安全帽等具体算法名称建立代码模块；它们作为外部能力绑定，只有请求、结果或业务流程确实不同才增加子模块。
+- **BREAKING**：全部已确定淘汰的 MaxKB、tchat、easyAi 聊天与训练执行入口继续退役；未确认保留或缺真实服务证据的执行入口保持 disabled，不回退旧本地算法。
+- 并行 `WGAI-parallel/*/code` 只作为临时 Git 工作树。最终集成只合并已提交的分支，不复制目录；完成验收后再形成独立最终项目目录。
 
 ## Capabilities
 
 ### New Capabilities
 
-- `remote-inference-api`：统一图片/上传视频业务接口、真实 provider 适配、鉴权、严格转换、可用性和错误确定性。
-- `inference-assets-jobs`：图片/视频私有输入、事件与成果回存、类型化任务、取消、恢复、幂等和访问权限。
-- `model-capability-lifecycle`：管理图片/视频能力绑定，停用全部聊天与训练执行入口，并在分组清理后保留历史结果。
+- `remote-inference-api`：稳定业务 API、严格 provider 适配、开发 stub 与真实 provider 的证据隔离、鉴权、可用性和错误确定性。
+- `inference-assets-jobs`：图片、视频和流相关私有资产、持久任务、结构化成果、恢复、取消、幂等与访问权限。
+- `model-capability-lifecycle`：业务能力绑定、模拟/真实可用性标识、旧入口退役和历史成果保留。
 
 ### Modified Capabilities
 
-无；当前没有已有主规格可修改。
+无；当前没有已归档的主规格需要修改。
 
 ## Impact
 
-- `backend-github`：扩展远程调用客户端、业务 OpenAPI、类型化成果、恢复/取消和持久化；不新增 GPU 服务工程。
-- `frontend-vue`：保留图片页并新增上传视频事件时间线/截图页面，统一轮询生命周期，退役全部聊天与训练执行入口。
-- 数据库：用增量迁移为旧任务增加类型判别并兼容既有图片记录；实时流的 `ai_stream_source`、`ai_stream_session`、`ai_stream_event` 由伴随变更管理。不得删除或重写历史表。
-- 同事负责：GPU 服务代码、模型、驱动和运行时、服务部署、内部执行与成果生成。双方仅在约定接口和验收样例上协作。
-- 部署：本项目维护调用方的开发/正式环境配置；GPU 端部署文件由同事维护。
-- 版本管理：本项目统一仓库及改造分支；同事的服务可独立维护仓库，通过接口版本兼容，不要求合并代码历史。
-- `backend-master` 继续只读参考。
+- `apps/backend`：由现有 `backend-github` 迁移；保留 JEECG 基础和 Maven 构建，新增 AI 代码按功能分包。
+- `apps/frontend`：由现有 `frontend-vue` 迁移；AI 页面、API、轮询与渲染器按功能归档。
+- `database`：接收脱敏 bootstrap、功能迁移、演示 seed 与被忽略的 private 数据入口。
+- `remote-inference`：接收 provider 契约、fixtures、独立 stub 与验收证据；不含 GPU 模型、权重、CUDA、驱动或训练实现。
+- `deploy`：同时编排业务前端、业务后端、MySQL、Redis及显式可选的 stub profile；正式配置不默认启动 stub。
+- OpenSpec、Graphify、Serena、脚本、Docker 构建上下文和文档链接需要随最终路径统一更新。
+- `backend-master` 继续只读参考且不进入最终仓库。真实 GPU 服务仍由同事独立维护，通过版本化接口对接。
 
 ## Non-goals
 
-本项目不负责 GPU 服务源码、算法、模型权重、显卡调优、视频中继、回调入口、标注直播通道或训练平台。浏览器不提交明文 RTSP；实时流默认只接受已登记的 `streamSourceId`，若真实服务不能映射则停止实施并修订契约。
-
-第四轮模拟闭环已在 `75757103b6ad9a60305a081bce22f68e54459a16` 放行；它不能替代第 5 批真实图片/视频/流验收。任何 UNKNOWN 被误标成功、重复派发、越权、远程停止未确认或真实能力缺项都阻断 07 与发布候选。
+本变更不实现真实算法、GPU 服务、模型管理、显卡调优、训练平台或视频中继；不将模块化单体拆成一组业务微服务；不重写 JEECG 系统管理和权限基础；不把 stub 当作生产降级路径，也不根据 stub 结果决定真实算法已可用。
