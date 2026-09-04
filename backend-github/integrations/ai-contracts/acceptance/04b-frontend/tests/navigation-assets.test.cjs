@@ -3,7 +3,7 @@ const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
 
 test('independent navigation inherits exact AI management menus and is idempotent', () => {
-  const { prepareAiMenus } = loadSource('services/ai/navigation.js')
+  const { prepareAiMenus } = loadSource('modules/ai/legacy/navigation.js')
   const input = [{ component: 'layouts/RouteView', path: '/tab', children: [
     { component: 'tab/TabAiModelList', path: '/tab/TabAiModelList' }] }]
   const output = prepareAiMenus(input)
@@ -19,8 +19,8 @@ test('independent navigation inherits exact AI management menus and is idempoten
 test('video and stream APIs use only frozen paths, bounded query values and exact request bodies', async () => {
   const calls = []
   const axios = config => { calls.push(config); return Promise.resolve({ success: true, result: config.data || { items: [] } }) }
-  const jobs = loadSource('api/ai/jobs.js', { '@/utils/request': { axios } })
-  const streams = loadSource('api/ai/streams.js', { '@/utils/request': { axios } })
+  const jobs = loadSource('modules/ai/job/api.js', { '@/utils/request': { axios } })
+  const streams = loadSource('modules/ai/stream/api.js', { '@/utils/request': { axios } })
   const video = { capabilityCode: 'video-file-analysis.v1', inputAssetId: 'asset_A', parameters: { threshold: 0.5 } }
   await jobs.submitVideoJob(video, 'key_12345678'); await jobs.cancelJob('job_A')
   const start = { capabilityCode: 'video-stream-analysis.v1', streamSourceId: 'source_A', parameters: { maxEventsPerPoll: 50 } }
@@ -35,7 +35,7 @@ test('video and stream APIs use only frozen paths, bounded query values and exac
 
 test('event screenshots require a non-empty authorized image response', async () => {
   let response = new Blob(['x'], { type: 'image/jpeg' })
-  const { downloadSnapshotAsset } = loadSource('api/ai/assets.js', { '@/utils/request': { axios: () => Promise.resolve(response) } })
+  const { downloadSnapshotAsset } = loadSource('modules/ai/asset/api.js', { '@/utils/request': { axios: () => Promise.resolve(response) } })
   assert.equal(await downloadSnapshotAsset('snapshot_A'), response)
   response = new Blob([], { type: 'image/png' }); await assert.rejects(downloadSnapshotAsset('snapshot_A'), /为空/)
   response = new Blob(['x'], { type: 'video/mp4' }); await assert.rejects(downloadSnapshotAsset('snapshot_A'), /格式/)
@@ -43,7 +43,7 @@ test('event screenshots require a non-empty authorized image response', async ()
 
 test('downloads preserve authentication wrapper, validate bytes, and decode JSON failures', async () => {
   let response = new Blob(['abc'], { type: 'image/png' })
-  const { downloadAsset } = loadSource('api/ai/assets.js', {
+  const { downloadAsset } = loadSource('modules/ai/asset/api.js', {
     '@/utils/request': { axios(config) {
       assert.equal(config.url, '/ai/v1/assets/asset_A/content')
       assert.equal(config.responseType, 'blob')

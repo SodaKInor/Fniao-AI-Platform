@@ -12,6 +12,6 @@
   </section>
 </template>
 <script>
-import { formatOffset } from '@/services/ai/presentation'
+import { formatOffset } from '@/modules/ai/result/presentation'
 export default { name: 'EventTimeline', props: { events: { type: Array, default: () => [] } }, methods: { offset: formatOffset } }
 </script>

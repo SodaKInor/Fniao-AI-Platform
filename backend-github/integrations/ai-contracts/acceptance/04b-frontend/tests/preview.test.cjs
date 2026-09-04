@@ -1,12 +1,12 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
-const presentation = loadSource('services/ai/presentation.js')
+const presentation = loadSource('modules/ai/result/presentation.js')
 
 test('preview rejects obsolete blobs and releases preview/download URLs on lifecycle exits', async () => {
   const pending = [], created = [], revoked = [], timers = new Map()
-  const c = loadSource('components/ai/ResultPreview.vue', {
-    './renderers/DetectionResult': {}, '@/services/ai/presentation': presentation
+  const c = loadSource('modules/ai/result/ResultPreview.vue', {
+    '../image/renderers/DetectionResult': {}, '@/modules/ai/result/presentation': presentation
   }, {
     URL: { createObjectURL() { const url = 'blob:' + created.length; created.push(url); return url },
       revokeObjectURL(url) { revoked.push(url) } },

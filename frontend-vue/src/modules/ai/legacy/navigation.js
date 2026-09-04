@@ -25,12 +25,12 @@ export function prepareAiMenus(menus) {
     const group = aiMenu('/ai', 'AiWorkspace', 'AI 工作台', 'layouts/RouteView')
     group.redirect = '/ai/inference'
     group.children = [
-      aiMenu('/ai/inference', 'AiInference', '图片检测', 'ai/InferencePage'),
-      aiMenu('/ai/video', 'AiVideoInference', '上传视频分析', 'ai/VideoInferencePage'),
-      aiMenu('/ai/streams', 'AiStreamStart', '实时事件分析', 'ai/StreamStartPage'),
-      aiMenu('/ai/history', 'AiHistory', '任务历史', 'ai/HistoryPage'),
-      aiMenu('/ai/jobs/:requestId', 'AiJobDetail', '任务详情', 'ai/JobDetailPage', true),
-      aiMenu('/ai/streams/:sessionId', 'AiStreamSession', '实时会话', 'ai/StreamSessionPage', true)
+      aiMenu('/ai/inference', 'AiInference', '图片检测', 'modules/ai/image/InferencePage'),
+      aiMenu('/ai/video', 'AiVideoInference', '上传视频分析', 'modules/ai/video/VideoInferencePage'),
+      aiMenu('/ai/streams', 'AiStreamStart', '实时事件分析', 'modules/ai/stream/StreamStartPage'),
+      aiMenu('/ai/history', 'AiHistory', '任务历史', 'modules/ai/job/HistoryPage'),
+      aiMenu('/ai/jobs/:requestId', 'AiJobDetail', '任务详情', 'modules/ai/job/JobDetailPage', true),
+      aiMenu('/ai/streams/:sessionId', 'AiStreamSession', '实时会话', 'modules/ai/stream/StreamSessionPage', true)
     ]
     result.push(group)
   }

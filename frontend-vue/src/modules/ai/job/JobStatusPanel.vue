@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import { stateLabels, errorMessage, jobTypeLabel } from '@/services/ai/presentation'
-import { terminalStates } from '@/services/ai/jobPolling'
+import { stateLabels, errorMessage, jobTypeLabel } from '@/modules/ai/result/presentation'
+import { terminalStates } from '@/modules/ai/job/polling'
 export default {
   name: 'JobStatusPanel',
   props: { job: { type: Object, default: null } },

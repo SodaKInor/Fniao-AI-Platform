@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { listJobs } from '@/api/ai'
-import { stateLabels, errorMessage, jobTypeLabel } from '@/services/ai/presentation'
+import { listJobs } from '@/modules/ai'
+import { stateLabels, errorMessage, jobTypeLabel } from '@/modules/ai/result/presentation'
 export default {
   name: 'AiHistoryPage',
   data: () => ({ state: '',

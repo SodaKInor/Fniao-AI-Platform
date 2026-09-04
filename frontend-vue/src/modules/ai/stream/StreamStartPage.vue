@@ -28,11 +28,11 @@
   </a-card>
 </template>
 <script>
-import CapabilityPanel from '@/components/ai/CapabilityPanel'
-import StreamSourcePanel from '@/components/ai/StreamSourcePanel'
-import StreamParameters from '@/components/ai/StreamParameters'
-import { listCapabilities, listStreamSources, startStreamSession } from '@/api/ai'
-import { streamCapabilitySupported, errorMessage } from '@/services/ai/presentation'
+import CapabilityPanel from '@/modules/ai/capability/CapabilityPanel'
+import StreamSourcePanel from '@/modules/ai/stream/StreamSourcePanel'
+import StreamParameters from '@/modules/ai/stream/StreamParameters'
+import { listCapabilities, listStreamSources, startStreamSession } from '@/modules/ai'
+import { streamCapabilitySupported, errorMessage } from '@/modules/ai/result/presentation'
 const defaults = () => ({ maxEventsPerPoll: 50, pollIntervalMillis: 2000, includeSnapshots: true })
 function key() {
   const bytes = new Uint8Array(16)

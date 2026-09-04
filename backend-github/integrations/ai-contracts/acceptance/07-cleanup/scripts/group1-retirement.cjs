@@ -6,7 +6,7 @@ const { request, login } = require('../../00-integration/round3/scripts/http.cjs
 const { loadSource } = require('../../04b-frontend/tests/load-source.cjs')
 
 const output = path.resolve(__dirname, '..', 'group1-retirement.actual.json')
-const { prepareAiMenus } = loadSource('services/ai/navigation.js')
+const { prepareAiMenus } = loadSource('modules/ai/legacy/navigation.js')
 const flatten = rows => rows.flatMap(row => [row, ...flatten(row.children || [])])
 const retired = /^(maxkb|tchat|teasy)\//
 
@@ -41,7 +41,7 @@ async function main() {
   for (const item of rawRetired) {
     const resolved = prepared.find(candidate => candidate.id === item.id)
     assert(resolved)
-    assert.equal(resolved.component, 'ai/DisabledEntryPage')
+    assert.equal(resolved.component, 'modules/ai/legacy/DisabledEntryPage')
   }
 
   const anonymous = await request('/maxkb/tabMaxkbModel/testConnect', {

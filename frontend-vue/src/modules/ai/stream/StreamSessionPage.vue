@@ -25,11 +25,11 @@
   </a-card>
 </template>
 <script>
-import EventTimeline from '@/components/ai/EventTimeline'
-import AuthorizedImage from '@/components/ai/AuthorizedImage'
-import { getStreamSession, getStreamEvents, stopStreamSession, downloadSnapshotAsset } from '@/api/ai'
-import { createStreamPolling, streamTerminalStates } from '@/services/ai/streamPolling'
-import { streamStateLabels, errorMessage } from '@/services/ai/presentation'
+import EventTimeline from '@/modules/ai/stream/EventTimeline'
+import AuthorizedImage from '@/modules/ai/result/AuthorizedImage'
+import { getStreamSession, getStreamEvents, stopStreamSession, downloadSnapshotAsset } from '@/modules/ai'
+import { createStreamPolling, streamTerminalStates } from '@/modules/ai/stream/polling'
+import { streamStateLabels, errorMessage } from '@/modules/ai/result/presentation'
 export default { name: 'AiStreamSessionPage',
   components: { EventTimeline, AuthorizedImage },
   data: () => ({ session: null,

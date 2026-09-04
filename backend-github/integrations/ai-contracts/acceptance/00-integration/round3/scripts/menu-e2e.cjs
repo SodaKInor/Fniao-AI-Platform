@@ -4,7 +4,7 @@ const assert = require('node:assert/strict')
 const { root, evidence } = require('./runtime.cjs')
 const { request, login } = require('./http.cjs')
 const { loadSource } = require(path.join(root, 'backend-github/integrations/ai-contracts/acceptance/04b-frontend/tests/load-source.cjs'))
-const { prepareAiMenus } = loadSource('services/ai/navigation.js')
+const { prepareAiMenus } = loadSource('modules/ai/legacy/navigation.js')
 const flatten = rows => rows.flatMap(r => [r, ...flatten(r.children || [])])
 async function main() {
   const rows = []
@@ -16,7 +16,7 @@ async function main() {
     const actual = flatten(menus)
     const aiMenu = actual.some(m => m.path === '/ai/inference')
     assert.equal(aiMenu, name !== 'nomenu')
-    if (name !== 'nomenu') assert(actual.some(m => m.component === 'ai/DisabledEntryPage'))
+    if (name !== 'nomenu') assert(actual.some(m => m.component === 'modules/ai/legacy/DisabledEntryPage'))
     const capabilities = (await request('/ai/v1/capabilities', {}, token)).body.result
     assert.equal(capabilities.some(c => c.available), name.startsWith('owner'))
     rows.push({ account: name, aiMenu, canInfer: capabilities.some(c => c.available),

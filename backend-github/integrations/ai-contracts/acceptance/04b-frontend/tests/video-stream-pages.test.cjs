@@ -3,11 +3,11 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const path = require('node:path')
 const { loadSource, frontend } = require('./load-source.cjs')
-const presentation = loadSource('services/ai/presentation.js')
+const presentation = loadSource('modules/ai/result/presentation.js')
 const flush = () => new Promise(resolve => setImmediate(resolve))
 
-function page(file, api, extra = {}, globals = {}) {
-  const component = loadSource('views/ai/' + file, { '@/api/ai': api, '@/services/ai/presentation': presentation }, globals).default
+function page(feature, file, api, extra = {}, globals = {}) {
+  const component = loadSource('modules/ai/' + feature + '/' + file, { '@/modules/ai': api, '@/modules/ai/result/presentation': presentation }, globals).default
   const instance = { ...component.data(), ...extra }
   for (const [name, method] of Object.entries(component.methods)) instance[name] = method.bind(instance)
   for (const [name, getter] of Object.entries(component.computed || {})) Object.defineProperty(instance, name, { get: getter.bind(instance) })
@@ -19,7 +19,7 @@ const streamCapability = { code: 'video-stream-analysis.v1', parametersSchema: '
 
 test('video retry preserves exact key and body; leaving rejects a late success', async () => {
   const calls = [], pushes = []
-  const { component: c, instance: v } = page('VideoInferencePage.vue', { listCapabilities: async () => [videoCapability],
+  const { component: c, instance: v } = page('video', 'VideoInferencePage.vue', { listCapabilities: async () => [videoCapability],
     submitVideoJob(request, key) { return new Promise((resolve, reject) => calls.push({ request, key, resolve, reject })) } },
   { $router: { push(value) { pushes.push(value) } } }, { window: { crypto: { getRandomValues(bytes) { bytes.fill(9) } } } })
   try {
@@ -33,7 +33,7 @@ test('video retry preserves exact key and body; leaving rejects a late success',
 
 test('stream start chooses only available opaque source and retry preserves exact payload', async () => {
   const calls = [], pushes = [], sources = [{ streamSourceId: 'disabled', displayName: '停用', available: false }, { streamSourceId: 'ready', displayName: '可用', available: true }]
-  const { component: c, instance: v } = page('StreamStartPage.vue', { listCapabilities: async () => [streamCapability], listStreamSources: async () => sources,
+  const { component: c, instance: v } = page('stream', 'StreamStartPage.vue', { listCapabilities: async () => [streamCapability], listStreamSources: async () => sources,
     startStreamSession(request, key) { return new Promise((resolve, reject) => calls.push({ request, key, resolve, reject })) } }, { $router: { push(value) { pushes.push(value) } } }, { window: { crypto: { getRandomValues(bytes) { bytes.fill(4) } } } })
   try {
     c.mounted.call(v); await flush(); assert.equal(v.sourceId, 'ready'); v.sourceId = 'disabled'; assert.equal(v.canStart, false); v.sourceId = 'ready'
@@ -53,9 +53,14 @@ test('video result validation accepts empty timeline and rejects unbounded shape
 })
 
 test('frontend runtime has no connection-secret fields and no direct provider addresses', () => {
-  const roots = ['api/ai', 'services/ai', 'components/ai', 'views/ai']
-  const files = roots.flatMap(dir => fs.readdirSync(path.join(frontend, 'src', dir), { withFileTypes: true })
-    .filter(entry => entry.isFile()).map(entry => path.join(frontend, 'src', dir, entry.name)))
+  const root = path.join(frontend, 'src/modules/ai')
+  const files = []
+  const visit = directory => fs.readdirSync(directory, { withFileTypes: true }).forEach(entry => {
+    const target = path.join(directory, entry.name)
+    if (entry.isDirectory()) visit(target)
+    else files.push(target)
+  })
+  visit(root)
   const source = files.map(file => fs.readFileSync(file, 'utf8')).join('\n').toLowerCase()
   for (const forbidden of ['providersessionid', 'provider_source_id', 'gpuurl', 'rtspurl', 'streamcredential', 'authorization: bearer']) assert.equal(source.includes(forbidden), false, forbidden)
 })
@@ -66,8 +71,8 @@ test('leaving a stream page never sends stop; only explicit stop resumes an unco
   const response = { sessionId: 'session_A', state: 'STOP_REQUESTED' }
   const api = { getStreamSession() {}, getStreamEvents() {}, downloadSnapshotAsset() {},
     stopStreamSession() { calls.remote++; return Promise.resolve(response) } }
-  const component = loadSource('views/ai/StreamSessionPage.vue', { '@/api/ai': api,
-    '@/services/ai/streamPolling': polling, '@/services/ai/presentation': presentation }).default
+  const component = loadSource('modules/ai/stream/StreamSessionPage.vue', { '@/modules/ai': api,
+    '@/modules/ai/stream/polling': polling, '@/modules/ai/result/presentation': presentation }).default
   const instance = { ...component.data(), $route: { params: { sessionId: 'session_A' } } }
   for (const [name, method] of Object.entries(component.methods)) instance[name] = method.bind(instance)
   for (const [name, getter] of Object.entries(component.computed || {})) Object.defineProperty(instance, name, { get: getter.bind(instance) })

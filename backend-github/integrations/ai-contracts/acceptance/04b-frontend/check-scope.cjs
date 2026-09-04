@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '../../../../..')
 const baseline = 'f242a027a2e2827f5445bea80e517c472ff1e3c9'
 const contract = '1177de8be45123d043d7cb26b845ee9d94c26784'
 const acceptance = 'backend-github/integrations/ai-contracts/acceptance/04b-frontend/'
-const areas = ['api/ai/', 'components/ai/', 'services/ai/', 'views/ai/'].map(p => 'frontend-vue/src/' + p)
+const areas = ['frontend-vue/src/modules/ai/']
 const existing = ['store/modules/user.js', 'views/tab/TabAiModelBundList.vue',
   'views/video/TabAiModelBundList.vue', 'views/audio/audio.vue',
   'views/tab/live/audio.vue', 'views/teasy/TabEasyConfigList.vue'].map(p => 'frontend-vue/src/' + p)

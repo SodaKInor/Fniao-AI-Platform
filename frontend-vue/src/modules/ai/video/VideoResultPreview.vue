@@ -20,9 +20,9 @@
   </section>
 </template>
 <script>
-import EventTimeline from './EventTimeline'
-import AuthorizedImage from './AuthorizedImage'
-import { supportedVideoResult } from '@/services/ai/presentation'
+import EventTimeline from '../stream/EventTimeline'
+import AuthorizedImage from '../result/AuthorizedImage'
+import { supportedVideoResult } from '@/modules/ai/result/presentation'
 export default {
   name: 'VideoResultPreview',
   components: { EventTimeline, AuthorizedImage },

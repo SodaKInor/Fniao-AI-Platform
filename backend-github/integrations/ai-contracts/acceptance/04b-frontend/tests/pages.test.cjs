@@ -2,12 +2,12 @@ const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
 const flush = () => new Promise(resolve => setImmediate(resolve))
-const polling = loadSource('services/ai/jobPolling.js')
-const presentation = loadSource('services/ai/presentation.js')
+const polling = loadSource('modules/ai/job/polling.js')
+const presentation = loadSource('modules/ai/result/presentation.js')
 
-function page(file, api, extra = {}, globals = {}) {
-  const component = loadSource('views/ai/' + file, { '@/api/ai': api,
-    '@/services/ai/jobPolling': polling, '@/services/ai/presentation': presentation }, globals).default
+function page(feature, file, api, extra = {}, globals = {}) {
+  const component = loadSource('modules/ai/' + feature + '/' + file, { '@/modules/ai': api,
+    '@/modules/ai/job/polling': polling, '@/modules/ai/result/presentation': presentation }, globals).default
   const instance = { ...component.data(), ...extra }
   for (const [name, method] of Object.entries(component.methods)) instance[name] = method.bind(instance)
   for (const [name, getter] of Object.entries(component.computed || {})) Object.defineProperty(instance, name, { get: getter.bind(instance) })
@@ -17,7 +17,7 @@ function page(file, api, extra = {}, globals = {}) {
 
 test('detail lifecycle stops in flight; activation starts once; route reuse rejects old responses', async () => {
   const requests = []
-  const { component: c, instance: v } = page('JobDetailPage.vue', {
+  const { component: c, instance: v } = page('job', 'JobDetailPage.vue', {
     downloadAsset() { throw new Error('unexpected download') },
     getJob(id) { return new Promise((resolve, reject) => requests.push({ id, resolve, reject })) }
   }, { $route: { params: { requestId: 'A' } } })
@@ -35,7 +35,7 @@ test('detail lifecycle stops in flight; activation starts once; route reuse reje
 
 test('history filtering and leaving discard obsolete pages', async () => {
   const requests = []
-  const { component: c, instance: v } = page('HistoryPage.vue', {
+  const { component: c, instance: v } = page('job', 'HistoryPage.vue', {
     listJobs(query) { return new Promise(resolve => requests.push({ query, resolve })) }
   })
   c.mounted.call(v); v.state = 'SUCCEEDED'; v.refresh()
@@ -50,7 +50,7 @@ test('submission retry preserves key and body; late response after leaving canno
   const calls = [], pushes = []
   const capability = { code: 'image-detection.v1', parametersSchema: 'detection.v1', available: true,
     inputMediaTypes: ['image/png'], maxWaitMillis: 1500 }
-  const { component: c, instance: v } = page('InferencePage.vue', {
+  const { component: c, instance: v } = page('image', 'InferencePage.vue', {
     listCapabilities: async () => [capability],
     submitInference(request, key) { return new Promise((resolve, reject) => calls.push({ request, key, resolve, reject })) }
   }, { $router: { push(value) { pushes.push(value) } } }, {
@@ -67,7 +67,7 @@ test('submission retry preserves key and body; late response after leaving canno
 })
 
 test('upload panel blocks unsupported and oversized inputs before sending a file', () => {
-  const c = loadSource('components/ai/UploadPanel.vue').default
+  const c = loadSource('modules/ai/asset/UploadPanel.vue').default
   const emitted = []
   const v = { capability: { inputMediaTypes: ['image/png'], maxInputBytes: 10 },
     $emit(...args) { emitted.push(args) } }

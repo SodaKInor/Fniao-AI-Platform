@@ -1,7 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
-const { disableLegacyMenus, isDisabledEntry } = loadSource('services/ai/legacyEntries.js')
+const { disableLegacyMenus, isDisabledEntry } = loadSource('modules/ai/legacy/legacyEntries.js')
 
 test('retired menu entries become inert pages while retained history and pending video stay reachable', () => {
   for (const name of ['train/TabTrainPythonList', 'face/TabFaceTest', 'szr/SzrThreeJs',
@@ -16,7 +16,7 @@ test('retired menu entries become inert pages while retained history and pending
   const input = [{ component: 'layouts/RouteView', children: [{ component: 'easy',
     path: '/easy', redirect: '/old', meta: { url: 'old-execution', title: '在线识别' } }] }]
   const output = disableLegacyMenus(input)
-  assert.equal(output[0].children[0].component, 'ai/DisabledEntryPage')
+  assert.equal(output[0].children[0].component, 'modules/ai/legacy/DisabledEntryPage')
   assert.equal(output[0].children[0].meta.url, '')
   assert.equal(output[0].children[0].redirect, undefined)
   assert.equal(input[0].children[0].component, 'easy')

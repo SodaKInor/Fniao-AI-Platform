@@ -1,5 +1,5 @@
 import { axios } from '@/utils/request'
-import { resourceId, unwrapResponse } from './response'
+import { resourceId, unwrapResponse } from '../result/response'
 
 export function submitInference(request, idempotencyKey, waitMillis) {
   return axios({ url: '/ai/v1/infer',

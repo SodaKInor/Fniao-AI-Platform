@@ -107,6 +107,8 @@ function  generateChildRouters (data) {
     let component = "";
     if(item.component.indexOf("layouts")>=0){
       component = "components/"+item.component;
+    }else if(item.component.indexOf("modules/")===0){
+      component = item.component;
     }else{
       component = "views/"+item.component;
     }

@@ -1,5 +1,5 @@
 import { axios } from '@/utils/request'
-import { resourceId, unwrapResponse } from './response'
+import { resourceId, unwrapResponse } from '../result/response'
 
 export function uploadAsset(file) {
   const data = new FormData()

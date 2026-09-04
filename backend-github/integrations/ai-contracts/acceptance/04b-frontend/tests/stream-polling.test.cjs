@@ -1,7 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
-const { createStreamPolling, streamTerminalStates } = loadSource('services/ai/streamPolling.js')
+const { createStreamPolling, streamTerminalStates } = loadSource('modules/ai/stream/polling.js')
 const flush = () => new Promise(resolve => setImmediate(resolve))
 
 function harness() {

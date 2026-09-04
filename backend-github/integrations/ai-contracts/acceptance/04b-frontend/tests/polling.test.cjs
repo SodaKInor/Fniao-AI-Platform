@@ -1,7 +1,7 @@
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
-const { createJobPolling, terminalStates } = loadSource('services/ai/jobPolling.js')
+const { createJobPolling, terminalStates } = loadSource('modules/ai/job/polling.js')
 const flush = () => new Promise(resolve => setImmediate(resolve))
 
 function harness() {

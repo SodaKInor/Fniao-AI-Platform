@@ -17,7 +17,7 @@ function loadSource(relative, mocks = {}, globals = {}) {
   const module = { exports: {} }
   const localRequire = name => {
     if (Object.prototype.hasOwnProperty.call(mocks, name)) return mocks[name]
-    if (name.startsWith('./')) {
+    if (name.startsWith('./') || name.startsWith('../')) {
       const target = path.join(path.dirname(relative), name)
       return loadSource(target.endsWith('.js') ? target : target + '.js', mocks, globals)
     }

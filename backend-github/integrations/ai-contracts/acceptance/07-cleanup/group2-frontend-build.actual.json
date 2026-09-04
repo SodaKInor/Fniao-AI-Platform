@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-09-04T16:30:15Z",
+  "baseCommit": "c2ae8ed1d0f251c5b8b0cadc44624654101bd8f5",
+  "scope": "frontend AI functional-module migration",
+  "checks": {
+    "behaviorTests": "27/27 PASS",
+    "scopedEslint": "PASS",
+    "productionBuild": "PASS",
+    "dockerBuild": "PASS",
+    "moduleBoundaryCheck": "PASS"
+  },
+  "artifact": {
+    "image": "wgai-cleanup-frontend:modules",
+    "imageId": "sha256:83ee92067c1669602947845025d1a0399b188bb209e773bdbb3cf254ccc00084",
+    "repoDigest": "wgai-cleanup-frontend@sha256:83ee92067c1669602947845025d1a0399b188bb209e773bdbb3cf254ccc00084"
+  },
+  "warnings": [
+    "Existing CSS order, asset size, and Browserslist freshness warnings remain non-blocking."
+  ],
+  "simulated": true,
+  "realProviderValidated": false
+}

@@ -4,7 +4,7 @@ import { ACCESS_TOKEN, USER_NAME,USER_INFO,USER_AUTH,SYS_BUTTON_AUTH,UI_CACHE_DB
 import { welcome } from "@/utils/util"
 import { queryPermissionsByUser } from '@/api/api'
 import { getAction } from '@/api/manage'
-import { prepareAiMenus } from '@/services/ai/navigation'
+import { prepareAiMenus } from '@/modules/ai/legacy/navigation'
 
 const user = {
   state: {

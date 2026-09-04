@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import JobStatusPanel from '@/components/ai/JobStatusPanel'
-import ResultPreview from '@/components/ai/ResultPreview'
-import VideoResultPreview from '@/components/ai/VideoResultPreview'
-import { getJob, downloadAsset, cancelJob } from '@/api/ai'
-import { createJobPolling } from '@/services/ai/jobPolling'
-import { errorMessage } from '@/services/ai/presentation'
+import JobStatusPanel from '@/modules/ai/job/JobStatusPanel'
+import ResultPreview from '@/modules/ai/result/ResultPreview'
+import VideoResultPreview from '@/modules/ai/video/VideoResultPreview'
+import { getJob, downloadAsset, cancelJob } from '@/modules/ai'
+import { createJobPolling } from '@/modules/ai/job/polling'
+import { errorMessage } from '@/modules/ai/result/presentation'
 export default {
   name: 'AiJobDetailPage',
   components: { JobStatusPanel, ResultPreview, VideoResultPreview },

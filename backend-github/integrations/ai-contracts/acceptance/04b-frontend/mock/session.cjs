@@ -24,7 +24,7 @@ async function session(req, res, url, state) {
   if (url.pathname === '/jeecg-boot/sys/permission/getUserPermissionByToken') {
     const user = owner(req)
     if (!user) { fail(res, 401, 'UNAUTHENTICATED', '请登录本地模拟账号'); return true }
-    const home = menu('/dashboard/analysis', 'ai/DisabledEntryPage', '首页')
+    const home = menu('/dashboard/analysis', 'modules/ai/legacy/DisabledEntryPage', '首页')
     const menus = [home]
     if (user !== 'viewer' && !state.config.forceViewer) {
       home.redirect = '/ai/inference'

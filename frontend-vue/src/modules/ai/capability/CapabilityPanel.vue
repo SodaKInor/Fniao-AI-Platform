@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { capabilitySupported } from '@/services/ai/presentation'
+import { capabilitySupported } from '@/modules/ai/result/presentation'
 export default {
   name: 'CapabilityPanel',
   props: { capabilities: { type: Array, default: () => [] },

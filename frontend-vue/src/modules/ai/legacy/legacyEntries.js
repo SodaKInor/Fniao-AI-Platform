@@ -18,7 +18,7 @@ export function disableLegacyMenus(menus) {
   return (menus || []).map(item => {
     const menu = { ...item, meta: { ...item.meta } }
     if (isDisabledEntry(menu.component)) {
-      menu.component = 'ai/DisabledEntryPage'
+      menu.component = 'modules/ai/legacy/DisabledEntryPage'
       menu.meta.url = ''
       menu.meta.internalOrExternal = false
       delete menu.redirect

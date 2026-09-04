@@ -28,3 +28,15 @@
   视频控制器不可代理后已修复；最终镜像健康启动，图片/视频/流/成果下载/历史/跨用户拒绝再次通过。
 - 证据见 `MODULE_MATRIX.md`、`group2-backend-modules.actual.json`、
   `group2-backend-build.actual.json` 和 `group2-backend-runtime.actual.json`。
+
+## 第二组 B：前端功能模块
+
+- 将 31 个生产 AI 前端文件从 api、components、services、views 四套横向目录迁入 asset、capability、
+  image、job、legacy、result、stream、video 八个功能根，并由模块根入口统一导出公共 API。
+- 独立模块检查确认旧横向目录没有活动文件、没有 audio/chat/training/provider/operations 空模块、局部
+  import 均可解析且无文件级环，六个动态菜单目标均指向实际文件。
+- 前端行为回归 27/27、局部 ESLint、本机生产构建和容器镜像构建通过。镜像装入隔离环境后，使用测试
+  账号在浏览器中逐项打开图片、上传视频、实时事件、历史、任务详情和流会话详情；模拟标识、时间线、
+  截图入口和停止终态均正常显示。
+- 证据见 `group2-frontend-modules.actual.json`、`group2-frontend-build.actual.json`、
+  `group2-frontend-runtime.actual.json` 和 `group2-frontend-browser.actual.json`。

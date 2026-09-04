@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import DetectionResult from './renderers/DetectionResult'
-import { supportedResult } from '@/services/ai/presentation'
+import DetectionResult from '../image/renderers/DetectionResult'
+import { supportedResult } from '@/modules/ai/result/presentation'
 export default {
   name: 'ResultPreview',
   components: { DetectionResult },
