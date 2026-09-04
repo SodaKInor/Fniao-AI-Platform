@@ -12,6 +12,14 @@ public final class JobQueryService {
         if (job.getResult()!=null) for (String id:job.getResult().getArtifactIds())
             result.add(assets.findOwned(id,job.getRequest().getOwnerId())
                     .orElseThrow(() -> new AiRequestException(ErrorCode.NOT_FOUND,"Result asset not found")));
+        if (job.getVideoResult()!=null) {
+            for (String id:job.getVideoResult().getSnapshotAssetIds())
+                result.add(assets.findOwned(id,job.getRequest().getOwnerId())
+                        .orElseThrow(() -> new AiRequestException(ErrorCode.NOT_FOUND,"Video snapshot not found")));
+            String annotated=job.getVideoResult().getAnnotatedVideoAssetId();
+            if (annotated!=null) result.add(assets.findOwned(annotated,job.getRequest().getOwnerId())
+                    .orElseThrow(() -> new AiRequestException(ErrorCode.NOT_FOUND,"Annotated video not found")));
+        }
         return result;
     }
     public JobRecord owned(String id,String owner) {

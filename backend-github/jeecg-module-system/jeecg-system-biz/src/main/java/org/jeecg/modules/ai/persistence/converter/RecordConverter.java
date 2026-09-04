@@ -6,7 +6,9 @@ import org.jeecg.modules.ai.persistence.entity.*;
 
 public final class RecordConverter {
     private final SnapshotCodec codec;
-    public RecordConverter(SnapshotCodec codec) { this.codec = codec; }
+    private final VideoSnapshotCodec video;
+    public RecordConverter(SnapshotCodec codec) { this(codec,new VideoSnapshotCodec()); }
+    public RecordConverter(SnapshotCodec codec,VideoSnapshotCodec video) { this.codec=codec; this.video=video; }
 
     public Asset asset(AssetRow r) {
         return new Asset(r.assetId,r.ownerId,r.fileName,r.mediaType,
@@ -23,9 +25,14 @@ public final class RecordConverter {
     }
 
     public JobRecord job(JobRow r) {
-        return new JobRecord(codec.request(r.requestJson),JobState.valueOf(r.state),r.version,r.dispatchToken,
-                codec.checkpoint(r.checkpointJson),codec.result(r.resultJson),codec.error(r.errorJson),
-                Instant.ofEpochMilli(r.updatedAt));
+        JobRequest request=codec.request(r.requestJson);
+        boolean videoJob=request.getJobType()==JobType.VIDEO_FILE_ANALYSIS;
+        return new JobRecord(request,JobState.valueOf(r.state),r.version,r.dispatchToken,
+                videoJob ? null : codec.checkpoint(r.checkpointJson),
+                videoJob ? video.checkpoint(r.checkpointJson) : null,
+                videoJob ? null : codec.result(r.resultJson),
+                videoJob ? video.result(r.resultJson) : null,
+                codec.error(r.errorJson),codec.unknownReason(r.errorJson),Instant.ofEpochMilli(r.updatedAt));
     }
 
     public JobRow create(JobRequest q) {
@@ -37,8 +44,15 @@ public final class RecordConverter {
     }
 
     public void update(JobRow r, JobUpdate u) {
-        r.state=u.getState().name(); r.checkpointJson=codec.write(u.getProviderResult());
-        r.resultJson=codec.write(u.getResult()); r.errorJson=codec.write(u.getError());
+        r.state=u.getState().name();
+        r.checkpointJson=u.getVideoProviderResult()==null ? codec.write(u.getProviderResult()) : video.write(u.getVideoProviderResult());
+        r.resultJson=u.getVideoResult()==null ? codec.write(u.getResult()) : video.write(u.getVideoResult());
+        UnknownOperationReason reason=u.getUnknownReason();
+        if (u.getState()==JobState.UNKNOWN && reason==null && u.getError()!=null
+                && u.getError().getCode()==ErrorCode.RESULT_UNKNOWN) {
+            reason=UnknownOperationReason.PROVIDER_RESPONSE_LOST;
+        }
+        r.errorJson=codec.errorSnapshot(u.getError(),reason);
         r.updatedAt=u.getUpdatedAt().toEpochMilli(); r.version++;
     }
 }

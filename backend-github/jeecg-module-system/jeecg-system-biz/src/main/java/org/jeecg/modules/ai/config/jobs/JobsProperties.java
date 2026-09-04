@@ -13,6 +13,8 @@ public class JobsProperties {
     private int maxQueued=20;
     private long maxInputBytes=10*1024*1024;
     private long maxOutputBytes=10*1024*1024;
+    private long maxVideoInputBytes=512L*1024*1024;
+    private long maxVideoOutputBytes=512L*1024*1024;
     private int maxImageDimension=4096;
     private int inputRetentionDays=7;
     private int outputRetentionDays=30;
@@ -20,6 +22,8 @@ public class JobsProperties {
     public void validate() {
         if (parallelism<1 || parallelism>32 || maxQueued<1 || maxQueued>1000
                 || maxInputBytes<1 || maxInputBytes>10*1024*1024 || maxOutputBytes<1 || maxOutputBytes>10*1024*1024
+                || maxVideoInputBytes<1 || maxVideoInputBytes>512L*1024*1024
+                || maxVideoOutputBytes<1 || maxVideoOutputBytes>512L*1024*1024
                 || maxImageDimension<1 || maxImageDimension>4096 || inputRetentionDays<1 || outputRetentionDays<1)
             throw new IllegalArgumentException("Invalid AI jobs configuration");
     }

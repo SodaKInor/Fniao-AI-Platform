@@ -14,6 +14,10 @@ XML
 java -Dlogback.configurationFile=/validation/logback.xml -cp '/validation/test-classes:/validation/classes:/validation/lib/*' org.junit.runner.JUnitCore \
  org.jeecg.modules.ai.assetsjobs.PersistenceTest \
  org.jeecg.modules.ai.assetsjobs.WorkflowTest \
+ org.jeecg.modules.ai.assetsjobs.VideoWorkflowTest \
  org.jeecg.modules.ai.assetsjobs.ApiTest \
+ org.jeecg.modules.ai.assetsjobs.VideoApiTest \
+ org.jeecg.modules.ai.assetsjobs.StreamWorkflowTest \
+ org.jeecg.modules.ai.assetsjobs.StreamApiTest \
  org.jeecg.modules.ai.assetsjobs.StorageTest \
  org.jeecg.modules.ai.assetsjobs.ConfigurationTest

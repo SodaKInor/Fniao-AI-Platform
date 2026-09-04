@@ -64,6 +64,22 @@ public final class MyBatisJobRepository implements JobRepository {
         return mapper.pending(limit).stream().map(converter::job).collect(Collectors.toList());
     }
 
+    /** 04a restart recovery: candidates retain their original claim and checkpoint. */
+    public List<JobRecord> findFetchingResult(int limit) {
+        if (limit < 1 || limit > 100) throw new IllegalArgumentException("Invalid candidate limit");
+        return mapper.fetching(limit).stream().map(converter::job).collect(Collectors.toList());
+    }
+
+    public Optional<JobRecord> claimFetchingResult(String id,long version,String token,Instant now) {
+        if (token==null || !token.matches("[A-Za-z0-9_-]{1,80}")) throw new IllegalArgumentException("Invalid claim token");
+        return transaction.execute(status -> {
+            JobRow row=mapper.lock(id);
+            if (row==null || !"FETCHING_RESULT".equals(row.state) || row.version!=version) return Optional.empty();
+            row.version++; row.dispatchToken=token; row.updatedAt=now.toEpochMilli(); save(row);
+            return Optional.of(converter.job(row));
+        });
+    }
+
     public Optional<JobRecord> claimPending(String id, long version, String token, Instant now) {
         if (token == null || !token.matches("[A-Za-z0-9_-]{1,80}")) throw new IllegalArgumentException("Invalid claim token");
         return transaction.execute(status -> {
@@ -83,7 +99,14 @@ public final class MyBatisJobRepository implements JobRepository {
             if (row == null || token == null || !token.equals(row.dispatchToken) || version != row.version) return false;
             if (!rules.allows(converter.job(row),update,codec)) return false;
             if (update.getState() == JobState.SUCCEEDED) {
-                for (String assetId : update.getResult().getArtifactIds())
+                List<String> ids=new ArrayList<>();
+                if (update.getResult()!=null) ids.addAll(update.getResult().getArtifactIds());
+                if (update.getVideoResult()!=null) {
+                    ids.addAll(update.getVideoResult().getSnapshotAssetIds());
+                    if (update.getVideoResult().getAnnotatedVideoAssetId()!=null)
+                        ids.add(update.getVideoResult().getAnnotatedVideoAssetId());
+                }
+                for (String assetId : ids)
                     if (assets.findOwned(assetId,row.ownerId) == null) return false;
             }
             converter.update(row,update); save(row);

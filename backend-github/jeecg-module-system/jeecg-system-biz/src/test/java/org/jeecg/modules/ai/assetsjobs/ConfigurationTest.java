@@ -33,7 +33,22 @@ public class ConfigurationTest {
                 fail("Missing provider policy must reject new submissions");
             } catch (AiRequestException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE,error.getCode()); }
             assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.InferenceProvider.class).size());
+            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.VideoAnalysisProvider.class).size());
+            assertEquals(0,context.getBeansOfType(org.jeecg.modules.ai.port.StreamSessionProvider.class).size());
+            f.streamSource("a","spring_source",true);
+            try {
+                context.getBean(org.jeecg.modules.ai.application.streams.StartStreamSessionService.class).start(
+                        "a","spring-stream","video-stream-analysis.v1","spring_source",f.streamParameters());
+                fail("Unconfirmed production stream feature must stay disabled");
+            } catch (AiRequestException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE,error.getCode()); }
         }
+    }
+
+    @Test public void videoLimitsAreExplicitlyBounded() {
+        org.jeecg.modules.ai.config.jobs.JobsProperties properties=new org.jeecg.modules.ai.config.jobs.JobsProperties();
+        properties.validate(); assertEquals(512L*1024*1024,properties.getMaxVideoInputBytes());
+        properties.setMaxVideoOutputBytes(512L*1024*1024+1);
+        try { properties.validate(); fail(); } catch (IllegalArgumentException expected) { }
     }
 
     @Test public void stricterCapabilityOutputLimitReachesReaderAndStore() throws Exception {

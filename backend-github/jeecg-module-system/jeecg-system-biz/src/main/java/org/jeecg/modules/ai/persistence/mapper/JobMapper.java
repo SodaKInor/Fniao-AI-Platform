@@ -31,6 +31,9 @@ public interface JobMapper {
     @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state='PENDING' ORDER BY created_at,request_id LIMIT #{limit}")
     List<JobRow> pending(int limit);
 
+    @Select("SELECT " + COLUMNS + " FROM ai_job WHERE state='FETCHING_RESULT' ORDER BY updated_at,request_id LIMIT #{limit}")
+    List<JobRow> fetching(int limit);
+
     @Select({"<script>SELECT " + COLUMNS + " FROM ai_job WHERE owner_id=#{owner}",
             "<if test='state != null'> AND state=#{state}</if>",
             "<if test='beforeId != null'> AND (created_at &lt; #{beforeTime} OR (created_at=#{beforeTime} AND request_id &lt; #{beforeId}))</if>",

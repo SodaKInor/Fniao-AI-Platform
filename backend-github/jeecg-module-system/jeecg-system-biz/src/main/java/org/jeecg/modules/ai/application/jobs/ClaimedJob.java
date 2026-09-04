@@ -12,8 +12,16 @@ final class ClaimedJob {
     ClaimedJob(JobRepository jobs,Clock clock,JobRecord record) { this.jobs=jobs; this.clock=clock; this.record=record; }
     JobRecord record() { return record; }
     void move(JobState state,ProviderResult checkpoint,InferenceResult result,JobError error) {
+        move(new JobUpdate(state,checkpoint,null,result,null,error,
+                state==JobState.UNKNOWN ? UnknownOperationReason.PROVIDER_RESPONSE_LOST : null,
+                Instant.ofEpochMilli(clock.millis())));
+    }
+    void move(JobState state,VideoProviderResult checkpoint,VideoResult result,JobError error,
+              UnknownOperationReason reason) {
+        move(new JobUpdate(state,null,checkpoint,null,result,error,reason,Instant.ofEpochMilli(clock.millis())));
+    }
+    private void move(JobUpdate update) {
         JobRequest q=record.getRequest();
-        JobUpdate update=new JobUpdate(state,checkpoint,result,error,Instant.ofEpochMilli(clock.millis()));
         if (!jobs.updateClaimed(q.getRequestId(),record.getVersion(),record.getDispatchToken(),update))
             throw new IllegalStateException("Dispatch claim no longer current");
         record=jobs.findOwned(q.getRequestId(),q.getOwnerId()).orElseThrow(() -> new IllegalStateException("Request disappeared"));

@@ -15,7 +15,7 @@ import org.jeecg.modules.ai.api.mapper.jobs.*;
 import org.jeecg.modules.ai.application.jobs.AiRequestException;
 import org.jeecg.modules.ai.domain.*;
 
-@RestControllerAdvice(assignableTypes={InferenceController.class,JobController.class,AssetController.class})
+@RestControllerAdvice(assignableTypes={InferenceController.class,JobController.class,AssetController.class,StreamController.class})
 public final class JobsApiExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Result<ErrorDto>> handle(Exception failure,HttpServletResponse response) {
@@ -41,7 +41,7 @@ public final class JobsApiExceptionHandler {
             case ASSET_EXPIRED: return 410;
             case LIMIT_EXCEEDED: return 413;
             case UNSUPPORTED_MEDIA: return 415;
-            case CAPABILITY_UNAVAILABLE: case JOB_STATE_CONFLICT: return 409;
+            case CAPABILITY_UNAVAILABLE: case JOB_STATE_CONFLICT: case CANCEL_NOT_SUPPORTED: return 409;
             case INVALID_REQUEST: return 400;
             default: return 500;
         }

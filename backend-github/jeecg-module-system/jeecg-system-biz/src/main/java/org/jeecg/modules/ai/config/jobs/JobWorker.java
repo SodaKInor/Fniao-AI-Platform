@@ -9,6 +9,7 @@ import org.jeecg.modules.ai.application.jobs.*;
 import org.jeecg.modules.ai.application.assets.AssetService;
 import org.jeecg.modules.ai.domain.JobRecord;
 import org.jeecg.modules.ai.port.*;
+import org.jeecg.modules.ai.persistence.repository.MyBatisJobRepository;
 
 /** Database is the bounded durable queue. Only idle worker slots request dispatch candidates. */
 public final class JobWorker implements AutoCloseable {
@@ -18,16 +19,24 @@ public final class JobWorker implements AutoCloseable {
     private final Semaphore idle;
     private final JobRepository jobs;
     private final ObjectProvider<InferenceProvider> providers;
+    private final ObjectProvider<VideoAnalysisProvider> videoProviders;
     private final ObjectProvider<ProviderArtifactReader> readers;
     private final AssetService assets;
     private final Clock clock;
     private final long maxOutput;
     private final CapabilityRepository capabilities;
+    private final MyBatisJobRepository recoveryJobs;
     private boolean scanFailed;
 
     public JobWorker(JobRepository jobs,ObjectProvider<InferenceProvider> providers,ObjectProvider<ProviderArtifactReader> readers,
                      AssetService assets,Clock clock,int parallelism,long maxOutput,CapabilityRepository capabilities) {
-        this.jobs=jobs; this.providers=providers; this.readers=readers; this.assets=assets; this.clock=clock; this.maxOutput=maxOutput; this.capabilities=capabilities;
+        this(jobs,null,providers,null,readers,assets,clock,parallelism,maxOutput,capabilities);
+    }
+    public JobWorker(JobRepository jobs,MyBatisJobRepository recoveryJobs,ObjectProvider<InferenceProvider> providers,
+                     ObjectProvider<VideoAnalysisProvider> videoProviders,ObjectProvider<ProviderArtifactReader> readers,
+                     AssetService assets,Clock clock,int parallelism,long maxOutput,CapabilityRepository capabilities) {
+        this.jobs=jobs; this.recoveryJobs=recoveryJobs; this.providers=providers; this.videoProviders=videoProviders;
+        this.readers=readers; this.assets=assets; this.clock=clock; this.maxOutput=maxOutput; this.capabilities=capabilities;
         idle=new Semaphore(parallelism);
         workers=new ThreadPoolExecutor(parallelism,parallelism,0,TimeUnit.MILLISECONDS,new SynchronousQueue<>(),
                 r -> thread(r,"ai-04a-dispatch"),new ThreadPoolExecutor.AbortPolicy());
@@ -36,11 +45,14 @@ public final class JobWorker implements AutoCloseable {
     public void start() { scanner.scheduleWithFixedDelay(this::scan,0,100,TimeUnit.MILLISECONDS); }
     private void scan() {
         try {
-            InferenceProvider provider=providers.getIfAvailable(); ProviderArtifactReader reader=readers.getIfAvailable();
-            if (provider==null || reader==null || idle.availablePermits()==0) return;
+            InferenceProvider provider=providers.getIfAvailable();
+            VideoAnalysisProvider video=videoProviders==null ? null : videoProviders.getIfAvailable();
+            ProviderArtifactReader reader=readers.getIfAvailable();
+            if (reader==null || idle.availablePermits()==0) return;
+            recover(reader);
             for (JobRecord job:jobs.findPending(Math.min(100,idle.availablePermits()))) {
                 if (!idle.tryAcquire()) break;
-                try { workers.execute(() -> dispatch(job,provider,reader)); }
+                try { workers.execute(() -> dispatch(job,provider,video,reader)); }
                 catch (RejectedExecutionException e) { idle.release(); }
             }
             scanFailed=false;
@@ -49,10 +61,27 @@ public final class JobWorker implements AutoCloseable {
             scanFailed=true;
         }
     }
-    private void dispatch(JobRecord job,InferenceProvider provider,ProviderArtifactReader reader) {
+    private void recover(ProviderArtifactReader reader) {
+        if (recoveryJobs==null || idle.availablePermits()==0) return;
+        for (JobRecord candidate:recoveryJobs.findFetchingResult(Math.min(100,idle.availablePermits()))) {
+            if (!idle.tryAcquire()) break;
+            java.util.Optional<JobRecord> claimed=recoveryJobs.claimFetchingResult(candidate.getRequest().getRequestId(),
+                    candidate.getVersion(),java.util.UUID.randomUUID().toString(),clock.instant());
+            if (!claimed.isPresent()) { idle.release(); continue; }
+            try { workers.execute(() -> collect(claimed.get(),reader)); }
+            catch (RejectedExecutionException e) { idle.release(); }
+        }
+    }
+    private void collect(JobRecord job,ProviderArtifactReader reader) {
+        try { new CollectResultService(reader,assets,clock,maxOutput,capabilities).recover(jobs,job); }
+        catch (RuntimeException e) { log.warn("AI result {} requires inspection ({})",
+                job.getRequest().getRequestId(),e.getClass().getSimpleName()); }
+        finally { idle.release(); }
+    }
+    private void dispatch(JobRecord job,InferenceProvider provider,VideoAnalysisProvider video,ProviderArtifactReader reader) {
         try {
             CollectResultService collector=new CollectResultService(reader,assets,clock,maxOutput,capabilities);
-            new DispatchJobService(jobs,provider,assets,collector,clock).dispatch(job);
+            new DispatchJobService(jobs,provider,video,assets,collector,clock).dispatch(job);
         } catch (RuntimeException e) {
             log.warn("AI request {} requires inspection ({})",job.getRequest().getRequestId(),e.getClass().getSimpleName());
         } finally { idle.release(); }

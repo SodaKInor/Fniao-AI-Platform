@@ -46,4 +46,35 @@ public final class SubmitInferenceService {
                 capability.getSnapshot(),retryOf,capability.isSimulated(),Instant.ofEpochMilli(clock.millis()));
         return jobs.createOrGet(request);
     }
+
+    public JobSubmission submitVideo(String owner,String key,String capabilityCode,String assetId,
+                                     VideoParameters parameters,String retryOf) {
+        if (owner==null || owner.isEmpty()) throw new AiRequestException(ErrorCode.UNAUTHENTICATED,"Login required");
+        fingerprint.key(key);
+        String digest=fingerprint.digest(capabilityCode,assetId,parameters,retryOf);
+        Optional<JobRecord> existing=jobs.findByKeyOwned(owner,key);
+        if (existing.isPresent()) {
+            if (!digest.equals(existing.get().getRequest().getRequestDigest())) throw new IdempotencyConflictException();
+            return new JobSubmission(existing.get(),false);
+        }
+        if (retryOf!=null) {
+            JobRecord previous=jobs.findOwned(retryOf,owner)
+                    .orElseThrow(() -> new AiRequestException(ErrorCode.NOT_FOUND,"Previous request not found"));
+            if (previous.getState()!=JobState.UNKNOWN || previous.getRequest().getJobType()!=JobType.VIDEO_FILE_ANALYSIS)
+                throw new AiRequestException(ErrorCode.JOB_STATE_CONFLICT,"Only an unknown video request may be retried");
+        }
+        Capability capability=capabilities.find(capabilityCode)
+                .orElseThrow(() -> new AiRequestException(ErrorCode.CAPABILITY_UNAVAILABLE,"Capability unavailable"));
+        if (!capability.isEnabled() || !capability.isAvailable())
+            throw new AiRequestException(ErrorCode.CAPABILITY_UNAVAILABLE,"Capability unavailable");
+        Asset asset=assets.owned(assetId,owner);
+        if (!capability.getInputMediaTypes().contains(asset.getMediaType()))
+            throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Capability does not support this media");
+        if (asset.getStored().getSizeBytes()>capability.getMaxInputBytes())
+            throw new AiRequestException(ErrorCode.LIMIT_EXCEEDED,"Input exceeds capability limit");
+        JobRequest request=new JobRequest(UUID.randomUUID().toString(),owner,key,digest,assetId,
+                JobType.VIDEO_FILE_ANALYSIS,null,parameters,capability.getSnapshot(),retryOf,
+                capability.isSimulated(),Instant.ofEpochMilli(clock.millis()));
+        return jobs.createOrGet(request);
+    }
 }

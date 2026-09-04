@@ -1,6 +1,7 @@
 package org.jeecg.modules.ai.persistence.converter;
 
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.Instant;
 import java.util.*;
@@ -35,8 +36,11 @@ public final class SnapshotCodec {
 
     public JobRequest request(String value) {
         JsonNode n = read(value);
+        JobType type=n.hasNonNull("jobType") ? JobType.valueOf(text(n,"jobType")) : JobType.IMAGE_DETECTION;
+        DetectionParameters image=type==JobType.IMAGE_DETECTION ? parameters(n.get("parameters")) : null;
+        VideoParameters video=type==JobType.VIDEO_FILE_ANALYSIS ? videoParameters(n.get("videoParameters")) : null;
         return new JobRequest(text(n,"requestId"), text(n,"ownerId"), text(n,"idempotencyKey"),
-                text(n,"requestDigest"), text(n,"inputAssetId"), parameters(n.get("parameters")),
+                text(n,"requestDigest"), text(n,"inputAssetId"),type,image,video,
                 snapshot(n.get("capability")), text(n,"retryOfRequestId"), n.path("simulated").asBoolean(),
                 instant(n,"createdAt"));
     }
@@ -44,6 +48,11 @@ public final class SnapshotCodec {
     private DetectionParameters parameters(JsonNode n) {
         return new DetectionParameters(n.get("threshold").decimalValue(), n.get("maxDetections").asInt(),
                 n.get("annotate").asBoolean());
+    }
+
+    private VideoParameters videoParameters(JsonNode n) {
+        return new VideoParameters(n.get("threshold").decimalValue(),n.get("sampleIntervalMillis").asLong(),
+                n.get("maxEvents").asInt(),n.get("includeSnapshots").asBoolean(),n.get("annotate").asBoolean());
     }
 
     private CapabilitySnapshot snapshot(JsonNode n) {
@@ -100,6 +109,24 @@ public final class SnapshotCodec {
     public JobError error(String value) {
         if (value == null) return null;
         JsonNode n = read(value);
-        return new JobError(ErrorCode.valueOf(text(n,"code")), text(n,"message"), n.path("simulated").asBoolean());
+        String code=text(n,"code");
+        return code==null ? null : new JobError(ErrorCode.valueOf(code), text(n,"message"), n.path("simulated").asBoolean());
+    }
+
+    public String errorSnapshot(JobError error,UnknownOperationReason reason) {
+        if (error==null && reason==null) return null;
+        ObjectNode node=json.createObjectNode();
+        if (error!=null) {
+            node.put("code",error.getCode().name()); node.put("message",error.getMessage());
+            node.put("simulated",error.isSimulated());
+        }
+        if (reason!=null) node.put("unknownReason",reason.name());
+        return write(node);
+    }
+
+    public UnknownOperationReason unknownReason(String value) {
+        if (value==null) return null;
+        String reason=text(read(value),"unknownReason");
+        return reason==null ? null : UnknownOperationReason.valueOf(reason);
     }
 }

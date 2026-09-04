@@ -7,18 +7,25 @@ import org.jeecg.modules.ai.domain.*;
 import org.jeecg.modules.ai.port.*;
 import org.jeecg.modules.ai.application.jobs.AiRequestException;
 
-/** Ownership and metadata orchestration; paths and image decoding belong to the store. */
+/** Ownership and metadata orchestration; paths and media verification belong to the store. */
 public final class AssetService {
     private final AssetRepository assets;
     private final ArtifactStore store;
     private final Clock clock;
-    private final long maxBytes;
+    private final long maxImageBytes;
+    private final long maxVideoBytes;
     private final Duration inputRetention;
     private final Duration outputRetention;
 
     public AssetService(AssetRepository assets, ArtifactStore store, Clock clock, long maxBytes,
                         Duration inputRetention, Duration outputRetention) {
-        this.assets=assets; this.store=store; this.clock=clock; this.maxBytes=maxBytes;
+        this(assets,store,clock,maxBytes,maxBytes,inputRetention,outputRetention);
+    }
+
+    public AssetService(AssetRepository assets, ArtifactStore store, Clock clock, long maxImageBytes,
+                        long maxVideoBytes, Duration inputRetention, Duration outputRetention) {
+        this.assets=assets; this.store=store; this.clock=clock;
+        this.maxImageBytes=maxImageBytes; this.maxVideoBytes=maxVideoBytes;
         this.inputRetention=inputRetention; this.outputRetention=outputRetention;
     }
 
@@ -29,19 +36,21 @@ public final class AssetService {
     }
 
     public Asset upload(String owner, ContentMetadata metadata, InputStream input) {
-        validateMetadata(metadata,maxBytes);
+        long limit=mediaLimit(metadata);
+        validateMetadata(metadata,limit);
         ContentMetadata safe=new ContentMetadata(fileName(metadata.getFileName()),metadata.getMediaType(),metadata.getSizeBytes(),null);
-        try { return save(UUID.randomUUID().toString(),owner,safe,new UploadLimitStream(input,maxBytes),maxBytes,inputRetention); }
-        catch (IllegalArgumentException e) { throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Invalid or oversized image dimensions"); }
+        try { return save(UUID.randomUUID().toString(),owner,safe,new UploadLimitStream(input,limit),limit,inputRetention); }
+        catch (IllegalArgumentException e) { throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Invalid media content"); }
         catch (IOException e) { throw new AiRequestException(ErrorCode.INTERNAL_ERROR,"Could not save input file"); }
     }
 
     public Asset collect(String id, String owner, ContentMetadata metadata, InputStream input, long limit) throws IOException {
         Optional<Asset> prior=assets.findOwned(id,owner);
         if (prior.isPresent()) return owned(id,owner);
-        validateMetadata(metadata,Math.min(limit,maxBytes));
+        long effective=Math.min(limit,mediaLimit(metadata));
+        validateMetadata(metadata,effective);
         ContentMetadata safe=new ContentMetadata(fileName(metadata.getFileName()),metadata.getMediaType(),metadata.getSizeBytes(),metadata.getSha256());
-        return save(id,owner,safe,input,Math.min(limit,maxBytes),outputRetention);
+        return save(id,owner,safe,input,effective,outputRetention);
     }
 
     public Optional<Asset> collected(String id, String owner) { return assets.findOwned(id,owner); }
@@ -72,10 +81,16 @@ public final class AssetService {
     }
 
     public void validateMetadata(ContentMetadata m, long limit) {
-        if (m==null || !("image/png".equals(m.getMediaType()) || "image/jpeg".equals(m.getMediaType())))
-            throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Only PNG and JPEG are supported");
+        if (m==null || !("image/png".equals(m.getMediaType()) || "image/jpeg".equals(m.getMediaType())
+                || "video/mp4".equals(m.getMediaType())))
+            throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Only PNG, JPEG and MP4/H.264 are supported");
         if (m.getSizeBytes()!=null && (m.getSizeBytes()<1 || m.getSizeBytes()>limit))
             throw new AiRequestException(ErrorCode.LIMIT_EXCEEDED,"File exceeds input limits");
+    }
+
+    private long mediaLimit(ContentMetadata metadata) {
+        if (metadata==null) throw new AiRequestException(ErrorCode.UNSUPPORTED_MEDIA,"Missing media metadata");
+        return "video/mp4".equals(metadata.getMediaType()) ? maxVideoBytes : maxImageBytes;
     }
 
     private String fileName(String name) {

@@ -26,17 +26,33 @@ import org.jeecg.modules.ai.application.jobs.*;
 @MapperScan("org.jeecg.modules.ai.persistence.mapper")
 public class JobsConfiguration implements WebMvcConfigurer {
     @Bean public SnapshotCodec aiSnapshotCodec() { return new SnapshotCodec(); }
-    @Bean public RecordConverter aiRecordConverter(SnapshotCodec codec) { return new RecordConverter(codec); }
+    @Bean public VideoSnapshotCodec aiVideoSnapshotCodec() { return new VideoSnapshotCodec(); }
+    @Bean public StreamSnapshotCodec aiStreamSnapshotCodec() { return new StreamSnapshotCodec(); }
+    @Bean public RecordConverter aiRecordConverter(SnapshotCodec codec,VideoSnapshotCodec video) { return new RecordConverter(codec,video); }
+    @Bean public StreamRecordConverter aiStreamRecordConverter(StreamSnapshotCodec stream,SnapshotCodec common) {
+        return new StreamRecordConverter(stream,common);
+    }
     @Bean public AssetRepository aiAssetRepository(AssetMapper mapper,RecordConverter converter) {
         return new MyBatisAssetRepository(mapper,converter);
     }
     @Bean public CapabilityRepository aiCapabilityRepository(CapabilityMapper mapper,SnapshotCodec codec) {
         return new MyBatisCapabilityRepository(mapper,codec);
     }
-    @Bean public JobRepository aiJobRepository(JobMapper mapper,AssetMapper assets,SnapshotCodec codec,
+    @Bean public MyBatisJobRepository aiJobRepository(JobMapper mapper,AssetMapper assets,SnapshotCodec codec,
                                              PlatformTransactionManager manager,JobsProperties properties) {
         properties.validate();
         return new MyBatisJobRepository(mapper,assets,codec,manager,properties.getMaxQueued(),properties.getParallelism());
+    }
+    @Bean public StreamSourceRepository aiStreamSourceRepository(StreamSourceMapper mapper,StreamRecordConverter converter) {
+        return new MyBatisStreamSourceRepository(mapper,converter);
+    }
+    @Bean public MyBatisStreamSessionRepository aiStreamSessionRepository(StreamSessionMapper mapper,
+            StreamRecordConverter converter,PlatformTransactionManager manager,JobsProperties properties) {
+        return new MyBatisStreamSessionRepository(mapper,converter,manager,properties.getMaxQueued(),properties.getParallelism());
+    }
+    @Bean public StreamEventRepository aiStreamEventRepository(StreamSessionMapper sessions,StreamEventMapper events,
+            AssetMapper assets,StreamRecordConverter converter,PlatformTransactionManager manager) {
+        return new MyBatisStreamEventRepository(sessions,events,assets,converter,manager);
     }
     @Bean public ArtifactStore aiArtifactStore(JobsProperties p,Environment env) throws IOException {
         p.validate(); List<Path> publicRoots=new ArrayList<>();
@@ -51,7 +67,7 @@ public class JobsConfiguration implements WebMvcConfigurer {
         return new PrivateFileArtifactStore(Paths.get(p.getPrivateRoot()),publicRoots,p.getMaxImageDimension());
     }
     @Bean public AssetService aiAssetService(AssetRepository assets,ArtifactStore store,JobsProperties p) {
-        return new AssetService(assets,store,Clock.systemUTC(),p.getMaxInputBytes(),
+        return new AssetService(assets,store,Clock.systemUTC(),p.getMaxInputBytes(),p.getMaxVideoInputBytes(),
                 Duration.ofDays(p.getInputRetentionDays()),Duration.ofDays(p.getOutputRetentionDays()));
     }
     @Bean public SubmitInferenceService aiSubmitService(JobRepository jobs,CapabilityRepository capabilities,AssetService assets,
@@ -59,10 +75,32 @@ public class JobsConfiguration implements WebMvcConfigurer {
         return new SubmitInferenceService(jobs,new SubmissionCapabilities(capabilities,policies::getIfAvailable),assets,Clock.systemUTC());
     }
     @Bean public JobQueryService aiQueryService(JobRepository jobs,AssetRepository assets) { return new JobQueryService(jobs,assets); }
+    @Bean public CancelJobService aiCancelService(JobRepository jobs) { return new CancelJobService(jobs,Clock.systemUTC()); }
+    @Bean public org.jeecg.modules.ai.application.streams.StartStreamSessionService aiStartStreamService(
+            StreamSessionRepository sessions,StreamSourceRepository sources,CapabilityRepository capabilities) {
+        return new org.jeecg.modules.ai.application.streams.StartStreamSessionService(sessions,sources,capabilities,
+                capability -> new org.jeecg.modules.ai.domain.StreamProviderFeatures(false,false,false,false),Clock.systemUTC());
+    }
+    @Bean public org.jeecg.modules.ai.application.streams.StreamQueryService aiStreamQueryService(
+            StreamSourceRepository sources,StreamSessionRepository sessions,StreamEventRepository events) {
+        return new org.jeecg.modules.ai.application.streams.StreamQueryService(sources,sessions,events);
+    }
+    @Bean public org.jeecg.modules.ai.application.streams.StopStreamSessionService aiStopStreamService(StreamSessionRepository sessions) {
+        return new org.jeecg.modules.ai.application.streams.StopStreamSessionService(sessions,Clock.systemUTC());
+    }
     @Bean(initMethod="start",destroyMethod="close")
-    public JobWorker aiJobWorker(JobRepository jobs,ObjectProvider<InferenceProvider> provider,ObjectProvider<ProviderArtifactReader> reader,
+    public JobWorker aiJobWorker(MyBatisJobRepository jobs,ObjectProvider<InferenceProvider> provider,
+                                 ObjectProvider<VideoAnalysisProvider> video,ObjectProvider<ProviderArtifactReader> reader,
                                  AssetService assets,JobsProperties p,CapabilityRepository capabilities) {
-        return new JobWorker(jobs,provider,reader,assets,Clock.systemUTC(),p.getParallelism(),p.getMaxOutputBytes(),capabilities);
+        return new JobWorker(jobs,jobs,provider,video,reader,assets,Clock.systemUTC(),p.getParallelism(),
+                Math.max(p.getMaxOutputBytes(),p.getMaxVideoOutputBytes()),capabilities);
+    }
+    @Bean(initMethod="start",destroyMethod="close")
+    public StreamSessionWorker aiStreamWorker(MyBatisStreamSessionRepository sessions,StreamSourceRepository sources,
+            StreamEventRepository events,ObjectProvider<StreamSessionProvider> provider,ObjectProvider<ProviderArtifactReader> reader,
+            AssetService assets,JobsProperties p) {
+        return new StreamSessionWorker(sessions,sources,events,provider,reader,assets,Clock.systemUTC(),
+                p.getParallelism(),p.getMaxOutputBytes());
     }
     @Override public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(0,new StrictInferenceJsonConverter());

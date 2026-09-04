@@ -14,9 +14,29 @@ public final class RequestFingerprint {
         if (threshold.compareTo(BigDecimal.ZERO)<0 || threshold.compareTo(BigDecimal.ONE)>0
                 || threshold.precision()>1000 || Math.abs((long)threshold.scale())>1000
                 || parameters.getMaxDetections()<1 || parameters.getMaxDetections()>100) invalid();
-        String decimal=threshold.signum()==0 ? "0" : threshold.stripTrailingZeros().toPlainString();
+        String decimal=decimal(threshold);
         String canonical="wgai-inference-v1\n"+capability+"\n"+asset+"\n"+decimal+"\n"
                 +parameters.getMaxDetections()+"\n"+parameters.isAnnotate()+"\n"+(retry==null ? "" : retry)+"\n";
+        return hash(canonical);
+    }
+    public String digest(String capability,String asset,VideoParameters parameters,String retry) {
+        if (!"video-file-analysis.v1".equals(capability)) invalid();
+        identifier(asset); if (retry!=null) identifier(retry);
+        if (parameters==null || parameters.getThreshold()==null
+                || parameters.getThreshold().compareTo(BigDecimal.ZERO)<0
+                || parameters.getThreshold().compareTo(BigDecimal.ONE)>0
+                || parameters.getSampleIntervalMillis()<100 || parameters.getSampleIntervalMillis()>60000
+                || parameters.getMaxEvents()<1 || parameters.getMaxEvents()>1000) invalid();
+        String canonical="wgai-video-v1\n"+capability+"\n"+asset+"\n"+decimal(parameters.getThreshold())+"\n"
+                +parameters.getSampleIntervalMillis()+"\n"+parameters.getMaxEvents()+"\n"
+                +parameters.isIncludeSnapshots()+"\n"+parameters.isAnnotate()+"\n"+(retry==null ? "" : retry)+"\n";
+        return hash(canonical);
+    }
+    private String decimal(BigDecimal value) {
+        if (value.precision()>1000 || Math.abs((long)value.scale())>1000) invalid();
+        return value.signum()==0 ? "0" : value.stripTrailingZeros().toPlainString();
+    }
+    private String hash(String canonical) {
         try {
             byte[] hash=MessageDigest.getInstance("SHA-256").digest(canonical.getBytes(StandardCharsets.UTF_8));
             StringBuilder out=new StringBuilder(64);

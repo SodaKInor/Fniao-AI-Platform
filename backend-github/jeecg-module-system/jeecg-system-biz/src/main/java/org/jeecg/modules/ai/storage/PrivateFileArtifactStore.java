@@ -14,6 +14,7 @@ import org.jeecg.modules.ai.port.ArtifactStore;
 public final class PrivateFileArtifactStore implements ArtifactStore {
     private final Path root;
     private final ImageFileVerifier images;
+    private final VideoFileVerifier videos=new VideoFileVerifier();
 
     public PrivateFileArtifactStore(Path directory, List<Path> publicRoots, int maxDimension) throws IOException {
         if (!directory.isAbsolute()) throw new IllegalArgumentException("Private asset root must be absolute");
@@ -57,7 +58,8 @@ public final class PrivateFileArtifactStore implements ArtifactStore {
             if (count == 0 || (expected.getSizeBytes()!=null && count!=expected.getSizeBytes())
                     || (expected.getSha256()!=null && !hash.equals(expected.getSha256())))
                 throw new IOException("Artifact integrity check failed");
-            images.verify(temporary,expected.getMediaType());
+            if ("video/mp4".equals(expected.getMediaType())) videos.verify(temporary);
+            else images.verify(temporary,expected.getMediaType());
             String key=UUID.randomUUID().toString().replace("-","")+".bin";
             Files.move(temporary,path(key),StandardCopyOption.ATOMIC_MOVE);
             published=true;

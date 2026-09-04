@@ -35,6 +35,22 @@ public class InferenceController {
                 mapper.map(job,query.resultAssets(job)));
     }
 
+    @PostMapping("/video-jobs")
+    public ResponseEntity<Result<JobDto>> video(@RequestHeader("Idempotency-Key") String key,
+            @RequestBody VideoJobRequestDto body) {
+        if (body==null || body.getParameters()==null || body.getParameters().getThreshold()==null
+                || body.getParameters().getSampleIntervalMillis()==null || body.getParameters().getMaxEvents()==null
+                || body.getParameters().getIncludeSnapshots()==null || body.getParameters().getAnnotate()==null)
+            throw new AiRequestException(ErrorCode.INVALID_REQUEST,"Required video parameters are missing");
+        VideoParametersDto p=body.getParameters();
+        JobSubmission accepted=submit.submitVideo(JobApiIdentity.owner(),key,body.getCapabilityCode(),
+                body.getInputAssetId(),new VideoParameters(p.getThreshold(),p.getSampleIntervalMillis(),
+                        p.getMaxEvents(),p.getIncludeSnapshots(),p.getAnnotate()),body.getRetryOfRequestId());
+        JobRecord job=accepted.getJob();
+        return JobApiResponse.of(!accepted.isCreated() && JobQueryService.finished(job) ? 200 : 202,
+                mapper.map(job,query.resultAssets(job)));
+    }
+
     private JobSubmission accept(String owner,String key,InferenceRequestDto body) {
         if (body==null || body.getParameters()==null || body.getParameters().getThreshold()==null
                 || body.getParameters().getMaxDetections()==null || body.getParameters().getAnnotate()==null)
