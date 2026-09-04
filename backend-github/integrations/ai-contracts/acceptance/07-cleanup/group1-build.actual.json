@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "sourceBase": "722aad3",
+  "frontendTests": { "passed": 27, "failed": 0 },
+  "java8Tests": { "passed": 43, "failed": 0, "classMajor": 52 },
+  "openSpecStrict": { "passed": 2, "failed": 0 },
+  "backendBuild": {
+    "profile": "prod,docker-core",
+    "reactorModules": 8,
+    "image": "wgai-cleanup-backend:group1",
+    "imageId": "sha256:97aa88462e16b9ac4c0c5c4fcca43d509ad88c96023e59bcb176b80fb9771141"
+  },
+  "frontendBuild": {
+    "image": "wgai-cleanup-frontend:group1",
+    "imageId": "sha256:2ea1730195920bd27b670f593ae35dd2f8010ed51d69bd29548cb4657a40227e"
+  },
+  "deletedFrontendFiles": 59,
+  "legacyDataDeleted": false,
+  "realProviderValidated": false
+}

@@ -1,5 +1,5 @@
-// Scope follows acceptance/01-foundation/ENTRYPOINTS.md. Pending businesses
-// (continuous video, MaxKB and existing configuration/history) are retained.
+// Scope follows the round-6.5 retain/retire decision. Database history and
+// management APIs remain intact, but retired UI families never reach dynamic imports.
 const missingVideoPages = [
   'video/TabAiWarningList',
   'video/TabAiVideoSettingList',
@@ -9,7 +9,7 @@ const missingVideoPages = [
 
 export function isDisabledEntry(component = '') {
   const name = component.replace(/^\//, '').replace(/\.vue$/, '')
-  return /^(train|face|szr|audio)\//.test(name) ||
+  return /^(maxkb|tchat|teasy|train|face|szr|audio)\//.test(name) ||
     name === 'easy' || name === 'tab/live/audio' ||
     name.startsWith('tab/testAI') || missingVideoPages.includes(name)
 }

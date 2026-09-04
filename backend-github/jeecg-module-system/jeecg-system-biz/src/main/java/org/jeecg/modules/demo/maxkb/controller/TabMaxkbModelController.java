@@ -10,19 +10,18 @@ import java.net.URLDecoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.demo.maxkb.entity.TabMaxkbModel;
 import org.jeecg.modules.demo.maxkb.service.ITabMaxkbModelService;
+import org.jeecg.modules.ai.legacy.LegacyExecutionGuard;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 
-import org.jeecg.modules.demo.maxkb.util.maxkbutil;
 import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
@@ -116,25 +115,8 @@ public class TabMaxkbModelController extends JeecgController<TabMaxkbModel, ITab
 	 @ApiOperation(value="语言模型列表-连接模型更新模型状态", notes="语言模型列表-连接模型更新模型状态")
 	 @PostMapping(value = "/testConnect")
 	 public Result<String> testConnect(@RequestBody TabMaxkbModel tabMaxkbModel) {
-		 try {
-			 String result=maxkbutil.getModelInfo(tabMaxkbModel.getStartUrl(),tabMaxkbModel.getApiKey());
-			 JSONObject object=JSONObject.parseObject(result);
-			 Integer code=object.getInteger("code");
-			 if(code==200){
-				 JSONObject data= (JSONObject) object.get("data");
-				 tabMaxkbModel.setModelId(data.getString("id"));
-				 tabMaxkbModel.setStatus("启用");
-				 tabMaxkbModelService.updateById(tabMaxkbModel);
-				 return Result.OK("更新模型成功");
-			 }else{
-				 return Result.error("更新模型失败请检查问题");
-			 }
-		 }catch (Exception ex){
-			 ex.printStackTrace();
-			 return Result.error("更新模型失败请检查问题");
-		 }
-
-
+		 LegacyExecutionGuard.reject();
+		 return Result.error("旧 MaxKB 执行入口已停用");
 	 }
 
 

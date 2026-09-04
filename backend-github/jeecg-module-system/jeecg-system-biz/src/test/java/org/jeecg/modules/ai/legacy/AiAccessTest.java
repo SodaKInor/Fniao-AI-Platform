@@ -89,7 +89,8 @@ public class AiAccessTest {
     @Test public void legacyEndpointsAreStoppedForAuthorizedOperators() throws Exception {
         for (String path : new String[]{"/tab/tabAiHistory/addIdentify", "/tab/tabAiHistory/addIdentifyClose", "/tab/tabAiHistory/addAudio",
                 "/tab/testAI/test", "/tab/testAI/testAIModel", "/tab/testAI/testAIModel2", "/tab/testAI/testSavePic",
-                "/video/tabVideoUtil/startVideoUtil", "/video/tabVideoUtil/stopVideoUtil", "/tab/tabAiSubscription/subInfo/"}) {
+                "/video/tabVideoUtil/startVideoUtil", "/video/tabVideoUtil/stopVideoUtil", "/tab/tabAiSubscription/subInfo/",
+                "/maxkb/tabMaxkbModel/testConnect"}) {
             assertEquals(path, 409, call("POST", path, "operator").getStatus());
         }
         assertEquals(0, downstream.get());

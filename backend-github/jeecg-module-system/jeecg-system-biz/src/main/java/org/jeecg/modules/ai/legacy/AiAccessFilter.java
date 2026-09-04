@@ -22,7 +22,8 @@ public final class AiAccessFilter extends AdviceFilter {
     private final UrlPathHelper paths = new UrlPathHelper();
     private final Set<String> legacy = new HashSet<>(Arrays.asList(
             "/tab/tabAiHistory/addIdentify", "/tab/tabAiHistory/addIdentifyClose", "/tab/tabAiHistory/addAudio",
-            "/video/tabVideoUtil/startVideoUtil", "/video/tabVideoUtil/stopVideoUtil", "/tab/tabAiSubscription/subInfo"));
+            "/video/tabVideoUtil/startVideoUtil", "/video/tabVideoUtil/stopVideoUtil", "/tab/tabAiSubscription/subInfo",
+            "/maxkb/tabMaxkbModel/testConnect"));
     private final Set<String> submissions = new HashSet<>(Arrays.asList("/ai/v1/assets", "/ai/v1/infer", "/ai/v1/jobs"));
 
     @Override protected boolean preHandle(ServletRequest req, ServletResponse res) throws Exception {

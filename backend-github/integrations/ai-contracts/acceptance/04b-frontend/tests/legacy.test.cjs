@@ -3,13 +3,14 @@ const assert = require('node:assert/strict')
 const { loadSource } = require('./load-source.cjs')
 const { disableLegacyMenus, isDisabledEntry } = loadSource('services/ai/legacyEntries.js')
 
-test('retired menu entries become inert pages; management and pending businesses remain', () => {
+test('retired menu entries become inert pages while retained history and pending video stay reachable', () => {
   for (const name of ['train/TabTrainPythonList', 'face/TabFaceTest', 'szr/SzrThreeJs',
-    'audio/audio', 'tab/live/audio', 'video/TabAiWarningList', 'easy', 'tab/testAI/Test']) {
+    'audio/audio', 'tab/live/audio', 'video/TabAiWarningList', 'easy', 'tab/testAI/Test',
+    'maxkb/userchat', 'tchat/userchat', 'teasy/TabEasyConfigList']) {
     assert.equal(isDisabledEntry(name), true, name)
   }
   for (const name of ['tab/TabAiModelBundList', 'tab/TabAiHistoryList',
-    'video/TabVideoUtilList', 'tab/live/AddressList', 'maxkb/userchat', 'teasy/TabEasyConfigList']) {
+    'video/TabVideoUtilList', 'tab/live/AddressList']) {
     assert.equal(isDisabledEntry(name), false, name)
   }
   const input = [{ component: 'layouts/RouteView', children: [{ component: 'easy',

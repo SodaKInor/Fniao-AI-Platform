@@ -15,7 +15,8 @@ public final class AiFilterChains {
         Map<String, String> protectedChains = new LinkedHashMap<>();
         String chain = (aiJwtPresent ? "aiJwt" : "jwt") + (accessFilterPresent ? ",aiAccess" : ",perms[ai:infer]");
         for (String path : new String[]{"/ai/v1/**", "/tab/testAI/**", "/tab/tabAiHistory/**",
-                "/tab/tabAiSubscription/**", "/tab/tabAiBase/**", "/video/tabVideoUtil/**"}) {
+                "/tab/tabAiSubscription/**", "/tab/tabAiBase/**", "/video/tabVideoUtil/**",
+                "/maxkb/tabMaxkbModel/testConnect"}) {
             protectedChains.put(path, chain);
         }
         for (Map.Entry<String, String> entry : existing.entrySet()) protectedChains.putIfAbsent(entry.getKey(), entry.getValue());
