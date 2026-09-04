@@ -1,6 +1,6 @@
 ## graphify
 
-This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+This project uses a knowledge graph at `graphify-out/` after the final-root rebuild. A fresh independent clone may not have that local ignored directory yet; when it is absent during stage A or the two parallel moves, use the frozen architecture documents and focused `rg` searches, then build the graph once in stage D.
 
 When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
 
@@ -13,7 +13,7 @@ Rules:
 
 # Fniao AI Platform Development Tool Routing
 
-- Use Graphify first for cross-directory discovery, module relationships, dependencies, and call chains.
+- Use Graphify first for cross-directory discovery, module relationships, dependencies, and call chains when the final-root graph exists; before the stage D rebuild, use the frozen architecture documents and focused searches.
 - Use Serena first for exact symbols, references, and focused code changes.
 - Use OpenSpec for requirements exploration, proposals, implementation tracking, spec synchronization, and archival.
 - 第 8 批阶段 A 前，应用目标是 `backend-github` 和 `frontend-vue`；完成 `git mv` 后，唯一应用目标变为 `apps/backend` 和 `apps/frontend`。

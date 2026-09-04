@@ -16,7 +16,7 @@
 ```text
 请在 /Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform 完成第 8 批阶段 A，并为下一轮并行任务建立两个同级 Git worktree。直接实施、验证并提交，不要只给计划。
 
-开始前核对：Git 根必须正好是上述目录；分支必须是 codex/final-layout；工作区必须干净；HEAD 必须是 c58df289674c2b246334a4d005ad5ba1c90fae80 或仅包含本提示词计划修订的后继提交。读取根 AGENTS.md、backend-github/development/remote-inference/{ARCHITECTURE.md,FILE_OWNERSHIP.md,PARALLEL_PLAN.md,PROMPTS.md}、openspec/changes/remote-inference-platform 和 remote-video-streaming。使用 Graphify 做跨目录定位；不要切换旧 WGAI 的共享 Serena 项目。
+开始前核对：Git 根必须正好是上述目录；分支必须是 codex/final-layout；工作区必须干净；HEAD 必须是 c58df289674c2b246334a4d005ad5ba1c90fae80 或仅包含本提示词计划修订的后继提交。读取根 AGENTS.md、backend-github/development/remote-inference/{ARCHITECTURE.md,FILE_OWNERSHIP.md,PARALLEL_PLAN.md,PROMPTS.md}、openspec/changes/remote-inference-platform 和 remote-video-streaming。若新目录还没有 graphify-out，使用这些冻结文档和 rg 做阶段 A 定位，不要提前生成临时索引；Graphify 在阶段 D 的最终根统一重建。不要切换旧 WGAI 的共享 Serena 项目。
 
 本阶段只完成：
 1. 用 git mv 将 backend-github 整体移动为 apps/backend，将 frontend-vue 整体移动为 apps/frontend。
