@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "deliveryCommit": "46260b93c98c7403bdf3263ea475b281804bae04",
+  "backend": {
+    "image": "wgai-integration-backend:round7-cleanup",
+    "imageId": "sha256:4c118cd50c00200eb9c118ed8cc3a603f0a444778ee3571abbe2d07a5b61856f",
+    "sizeBytes": 1111423876,
+    "fullEightModuleBuild": "PASS",
+    "java8Tests": "60/60 PASS",
+    "classMajor": 52,
+    "moduleBoundaryCheck": "PASS"
+  },
+  "frontend": {
+    "image": "wgai-integration-frontend:round7-cleanup",
+    "imageId": "sha256:8ec673d3d24ca0a45b48dd4ef6dc1d7eaa76168aa136cf1282150726e06591e4",
+    "sizeBytes": 36943069,
+    "productionBuild": "PASS",
+    "nodeTests": "27/27 PASS",
+    "scopedEslint": "PASS",
+    "moduleBoundaryCheck": "PASS",
+    "knownWarnings": "Existing CSS ordering and asset-size warnings; no new build failure"
+  },
+  "openspecStrict": {
+    "remote-inference-platform": "PASS",
+    "remote-video-streaming": "PASS"
+  },
+  "graphify": {
+    "status": "PASS",
+    "nodes": 28982,
+    "edges": 73435,
+    "communities": 1157,
+    "knownVueParseWarnings": 6
+  },
+  "realProviderValidated": false
+}

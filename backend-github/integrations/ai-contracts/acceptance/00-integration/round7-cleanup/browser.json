@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "baseUrl": "http://127.0.0.1:18100",
+  "authenticatedSession": true,
+  "routes": [
+    {
+      "path": "/ai/inference",
+      "heading": "AI 推理",
+      "capability": "模拟图片检测（HTTP stub）（模拟）",
+      "simulationDisclosure": true
+    },
+    {
+      "path": "/ai/video",
+      "heading": "上传视频分析",
+      "capability": "模拟上传视频分析（HTTP stub）（模拟）",
+      "simulationDisclosure": true
+    },
+    {
+      "path": "/ai/streams",
+      "heading": "实时事件分析",
+      "capability": "模拟实时事件（HTTP stub）（模拟）",
+      "source": "合成演示来源",
+      "simulationDisclosure": true
+    },
+    {
+      "path": "/ai/history",
+      "heading": "任务历史",
+      "currentImageRequestId": "ce599ad6-848c-4629-b311-9c9b78b484bb",
+      "currentVideoRequestId": "d987f401-b35e-458a-a30b-b73a359a7544",
+      "unknownAndFailedHistoryVisible": true,
+      "simulationDisclosure": true
+    }
+  ],
+  "retainedWorkspaceMenus": [
+    "图片检测",
+    "上传视频分析",
+    "实时事件分析",
+    "任务历史"
+  ],
+  "realProviderValidated": false,
+  "note": "Browser evidence verifies the freshly built 00 images. Simulated results are visibly labelled and are not evidence of a real GPU or RTSP integration."
+}
