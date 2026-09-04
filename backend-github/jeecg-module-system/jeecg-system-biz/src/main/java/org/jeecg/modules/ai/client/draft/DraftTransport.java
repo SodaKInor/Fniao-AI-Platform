@@ -13,6 +13,8 @@ public final class DraftTransport {
     final String providerKey;
     final long inputLimit;
     final long outputLimit;
+    final long videoInputLimit;
+    final long videoOutputLimit;
     private final OkHttpClient client;
     private final Supplier<String> credential;
     private final Semaphore permits;
@@ -20,6 +22,13 @@ public final class DraftTransport {
 
     public DraftTransport(OkHttpClient client, DraftEndpoint endpoint, String key, Supplier<String> credential,
             int maxInflight, int transferMillis, long inputLimit, long outputLimit) {
+        this(client, endpoint, key, credential, maxInflight, transferMillis,
+                inputLimit, outputLimit, inputLimit, outputLimit);
+    }
+
+    public DraftTransport(OkHttpClient client, DraftEndpoint endpoint, String key, Supplier<String> credential,
+            int maxInflight, int transferMillis, long inputLimit, long outputLimit,
+            long videoInputLimit, long videoOutputLimit) {
         this.client = client;
         this.endpoint = endpoint;
         this.providerKey = key;
@@ -28,6 +37,8 @@ public final class DraftTransport {
         this.transferMillis = transferMillis;
         this.inputLimit = inputLimit;
         this.outputLimit = outputLimit;
+        this.videoInputLimit = videoInputLimit;
+        this.videoOutputLimit = videoOutputLimit;
     }
 
     void acquire() throws ProviderException {
@@ -54,6 +65,15 @@ public final class DraftTransport {
     void checkBinding(CapabilitySnapshot snapshot) throws ProviderException {
         if (!org.jeecg.modules.ai.client.ProviderRequestChecks.binding(snapshot, providerKey, "sync-draft-v0.1")) {
             throw org.jeecg.modules.ai.client.ProviderRequestChecks.unavailable("Provider binding does not match this adapter");
+        }
+    }
+
+    void checkBinding(CapabilitySnapshot snapshot, String capabilityCode, String adapterId)
+            throws ProviderException {
+        if (!org.jeecg.modules.ai.client.ProviderRequestChecks.binding(
+                snapshot, providerKey, adapterId, capabilityCode)) {
+            throw org.jeecg.modules.ai.client.ProviderRequestChecks.unavailable(
+                    "Provider binding does not match this adapter");
         }
     }
 }

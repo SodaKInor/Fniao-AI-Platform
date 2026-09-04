@@ -9,7 +9,7 @@ import javalang
 
 ROOT = Path(__file__).resolve().parents[6]
 OUT = Path(__file__).resolve().parents[1]
-BASE = 'ab9809d23919ea5d61dfc7d8b34d7f30bb9d607c'
+BASE = 'e44041ec050974ee3f36655f6869fb96cf16faad'
 AI = 'backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/'
 LEGACY = 'backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/'
 OWNED_FILES = [
@@ -45,7 +45,7 @@ def main():
     frozen = [AI + p for p in ['domain', 'port', 'api/dto']] + [
         'backend-github/integrations/ai-contracts/v1', 'backend-github/integrations/ai-contracts/provider-draft',
         'backend-github/integrations/ai-contracts/examples']
-    assert not git('diff', '5a55ca5cc6ea8fde09898f44519d62c715af12db', '--', *frozen)
+    assert not git('diff', BASE, '--', *frozen)
     types = load('frozen_type_tools', ROOT / 'backend-github/integrations/ai-contracts/acceptance/02-contract/scripts/check_types.py')
     rows = []
     for file in changed:

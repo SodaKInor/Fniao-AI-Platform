@@ -5,6 +5,9 @@ wgai:
     base-url: ${WGAI_INFERENCE_BASE_URL:}
     approved-origin: ${WGAI_INFERENCE_APPROVED_ORIGIN:}
     api-path: ${WGAI_INFERENCE_API_PATH:/infer}
+    video-api-path: ${WGAI_INFERENCE_VIDEO_API_PATH:/video-jobs}
+    stream-sources-path: ${WGAI_INFERENCE_STREAM_SOURCES_PATH:/stream-sources}
+    stream-sessions-path: ${WGAI_INFERENCE_STREAM_SESSIONS_PATH:/stream-sessions}
     token-file: ${WGAI_INFERENCE_TOKEN_FILE:/run/secrets/wgai-inference-token}
     ca-file: ${WGAI_INFERENCE_CA_FILE:}
     connect-timeout-ms: ${WGAI_INFERENCE_CONNECT_TIMEOUT_MS:3000}
@@ -13,3 +16,5 @@ wgai:
     max-inflight: ${WGAI_INFERENCE_MAX_INFLIGHT:1}
     upload-max-bytes: ${WGAI_INFERENCE_UPLOAD_MAX_BYTES:10485760}
     output-max-bytes: ${WGAI_INFERENCE_OUTPUT_MAX_BYTES:10485760}
+    video-upload-max-bytes: ${WGAI_INFERENCE_VIDEO_UPLOAD_MAX_BYTES:536870912}
+    video-output-max-bytes: ${WGAI_INFERENCE_VIDEO_OUTPUT_MAX_BYTES:536870912}

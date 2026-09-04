@@ -1,46 +1,55 @@
-# 03-client 验收说明
+# 03-client 第五轮验收说明
 
-范围：3.1、3.2、3.3、3.5 和 3.4 后端。代码根为本包独立 code 工作树，分支 work/remote-inference/03-client。共同冻结起点 ab9809d23919ea5d61dfc7d8b34d7f30bb9d607c，公共契约 5a55ca5cc6ea8fde09898f44519d62c715af12db。公共类型、规范和样例未修改。
+范围：在已验收的 3.1—3.5 后端基础上交付 `remote-inference-platform` 3.6、3.7，并覆盖伴随变更 `remote-video-streaming` 2.1—2.3。代码根为本包独立工作树，分支 `work/remote-inference/03-client`。
 
-## 证据
+## 冻结基线
 
-| 文件 | 验证内容 |
+- 00 新共同起点：`e44041ec050974ee3f36655f6869fb96cf16faad`
+- 1.1.0 公共契约提交：`1177de8be45123d043d7cb26b845ee9d94c26784`
+- 本包没有修改公共 domain、port、DTO、OpenAPI、provider draft 或 JSON/PNG 样例。
+- 05 尚未提供已确认的 RTX 5070 方法、TLS/CA、鉴权、视频/流样例、限额、事件查询和停止能力，因此这里只实现可由真实 HTTP 夹具调用的严格草案适配器；生产运行时门禁保持硬关闭，不存在配置升级开关。
+
+## 本轮交付
+
+- 图片适配器保留兼容；图片、视频与流 provider 均支持可选远程委托，但运行配置未注册未确认草案。
+- 上传视频使用一次性 multipart POST；严格校验绑定、媒体/大小、request/job 关联、时间偏移事件、截图和可选标注视频。
+- 实时流实现来源会话创建、会话查询、事件分页和停止草案调用；请求只接收仓储映射后的 provider source ref，浏览器仍只能提交本地 `streamSourceId`。
+- JSON 解码拒绝未知/重复/缺失字段、尾随内容、非法状态、乱序或重复事件和不匹配的 request/session ID。
+- OkHttp 禁止连接重试和 HTTP/HTTPS 重定向，所有 POST body 标记 one-shot。请求发出后断线/超时为 UNKNOWN，不透明重放。
+- 停止只有收到严格 `CONFIRMED_STOPPED` 才确认；失败、丢响应、未知状态不得进入停止终态。
+- 批准地址要求与配置 origin 完全相等；生产只允许 HTTPS，凭据来自独立只读文件，CA 使用 JVM 信任或专用文件。错误正文、凭据、RTSP 和任意 GPU URL 不进入安全错误消息。
+- 新增视频输入/输出上限，默认各 512 MiB；真实格式和供应商限额未确认前能力仍 disabled。
+
+## 可复现证据
+
+| 文件 | 内容 |
 |---|---|
-| java8-tests.json | 29 项真实 JUnit 4 测试、当前源码哈希、Java 8 class major 52、日志哈希 |
-| contract-checks.json | 沿用冻结校验器检查 2 份 OpenAPI、15 个正反 JSON 和 2 个 PNG；输出仅写本包 |
-| scope-and-architecture.json | 精确允许路径、公共契约无差异、Java AST import/类型/方法与文件行数 |
-| build.json | 既有 Dockerfile 完整后端构建和镜像标识；两次运行验收使用同一最终镜像 |
-| runtime-remote-missing.json | remote 配置缺失时核心启动、原健康检查及匿名访问拒绝 |
-| runtime-native-guard.json | disabled 且旧 OpenCV 开关 true、无效库路径时仍完整启动，native 加载被守卫 |
-| final-checks.json | OpenSpec、Graphify、隔离资源停止和最终范围核对 |
+| `java8-tests.json` | 42 项 JUnit 4 测试、源码哈希、Java class major 52、隔离日志哈希 |
+| `contract-checks.json` | 4 份 OpenAPI、34 个正反 JSON、2 个 PNG 和跨字段检查 |
+| `scope-and-architecture.json` | 相对新共同起点的精确允许路径、冻结面无差异、Java AST/规模检查 |
+| `build.json` | 原 Dockerfile 完整构建、镜像摘要、日志哈希和 Spring Boot 包结构检查 |
+| `final-checks.json` | 两个 OpenSpec strict、Graphify、秘密扫描与最终差异检查 |
+
+从当前 code 根运行：
+
+```text
+python3 backend-github/integrations/ai-contracts/acceptance/03-client/scripts/test_package.py --dependency-image wgai-integration-backend:round5-contract-1177de8
+/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/validation-venv/bin/python backend-github/integrations/ai-contracts/acceptance/03-client/scripts/validate.py
+docker build -f deploy/backend/Dockerfile -t wgai-03-client-backend:round5 .
+openspec validate remote-inference-platform --strict
+openspec validate remote-video-streaming --strict
+graphify update .
+```
 
 ## 测试覆盖
 
-- multipart 元数据和独立服务凭据；不发送用户令牌、归属信息或磁盘路径；输入只打开/关闭一次。
-- 正常、有效空成果、版本和关联 ID 不匹配、重复/未知 JSON 字段、坐标越界、非有限数字、尾随 JSON。
-- 400/401/403/408/429/500/503/202/301/307；Retry-After:0、断线、慢响应均检查实际调用次数，不重发推理。
-- 连接拒绝 NOT_STARTED；发送后断线、超时和协议问题 UNKNOWN；外部鉴权为 PROVIDER_AUTH。
-- 并发限额、实际上传字节超限、独立上传传输预算、成果有效期/来源/媒体/长度/截断/下载总预算及双重关闭。
-- 真实回环 HTTPS：默认不信任夹具 CA；加载专用 CA 后成功；主机名不符仍拒绝。
-- mock/disabled/remote 路由、模拟标记与空成果、保存绑定对应成果在停用后仍可读取。
-- 实际 Shiro/JwtFilter 与配置排除顺序；匿名、无 ai:infer、授权后旧入口停用；保留查询；服务凭据失败后业务身份仍有效。
-- 10 个旧 Controller 方法、19 个旧服务方法直接调用全部在依赖、线程或素材访问前拒绝；启动 native 守卫另有容器证据。
-- 能力仓储为测试替身；权限、停用、配置缺失、外部观测与模型就绪未知、Spring 属性绑定、真实 MockMvc 响应契约；无仓储时 Spring 上下文可启动并明确报告依赖未就绪。
+- 图片既有正常、有效空成果、HTTP/TLS/CA、鉴权、超时、并发、大小、成果截断和业务身份隔离回归。
+- 视频 200、事件时间线、截图/标注视频、有效空事件、绑定错误、未知字段、关联 ID 错误、输入上限、401 脱敏、发出后断线 UNKNOWN 和请求次数为 1。
+- 流创建/查询/空事件页/有序事件/停止确认、来源和会话 ID 校验、cursor 编码、未知状态、未知字段、启动响应丢失 UNKNOWN 和停止响应丢失 UNKNOWN。
+- mode Bean 证明真实资料缺失时视频/流均硬关闭；图片旧构造兼容，草案类只有显式测试构造路径。
 
-## 重现
+## 明确未完成
 
-从当前 code 根运行 `python3 backend-github/integrations/ai-contracts/acceptance/03-client/scripts/test_package.py`。脚本使用已存在的 maven:3.8.8-eclipse-temurin-8 与第一轮后端镜像的既有依赖，从本机 Maven 缓存取 JUnit 4.13.2、Hamcrest 2.2、spring-test 5.3.18。当前源代码只读挂入容器、fresh 编译到本包 drafts/validation，不改变 POM。容器网络为 none，只能访问自身回环夹具。测试证书、凭据、日志和临时文件均在本包 drafts，不入库。
+没有宣称真实 GPU、真实视频格式、source ID 映射、远端事件查询或停止通过；这些继续阻断 5.1 和后续发布。任务/流持久化、V002、恢复/取消、成果回存和 API 编排归 04a；上传视频和实时事件页面归 04b；真实联调归 05，韧性归 06。
 
-`validate.py` 需要已有验证环境中的 javalang、jsonschema、openapi-spec-validator。本次使用 02 已有只读虚拟环境执行本包脚本；复用冻结检查函数时把输出目录定向本包，未覆盖 02 回执。校验器依赖提示 LibreSSL/urllib3 兼容警告；校验没有远程 schema 或外部网络请求。
-
-完整构建使用原 deploy/backend/Dockerfile，先运行 01 的哈希核对脚本准备本工作树忽略的两个私有 JAR 和无秘密代码生成配置。Maven 仍按既有配置跳过测试，因此构建记录与独立 JUnit 记录明确分开。
-
-## 审阅与限制
-
-client 不导入应用流程或仓储实现；应用能力服务只读取冻结仓储端口和装配层提供的可用性事实；Controller 不做 HTTP、SQL 或文件搬运。Wire JSON 仅在 draft 编解码器内部按固定字段构造/验证，没有替换业务 DTO 或新增公共端口。
-
-新增 Java 文件/方法均低于 250/50 行。旧历史服务 907→924 行、订阅 Controller 317→318 行等原有超限文件只增加薄守卫，不在本包搬迁其算法代码；基线与当前规模都在 AST 报告中。后续清理/拆分由 07 按交接归属处理。AST 检查不是完整语义证明，结合调用入口审阅与直接调用测试。
-
-真实 GPU、实际账户登录、任务/资产落库、跨用户历史与下载、页面完整链路均未在本包验收。Shiro 身份后端使用明确测试 Realm；仓储替身只在 src/test。运行健康沿用原 doc.html 检查。隔离环境的 Swagger 文档返回空路径表，因此没有把它作为能力路由注册的证明，能力路径和 JSON 已用 MockMvc 验证；00 可结合原运行配置复核文档清单。
-
-3.4 前端仍待 04b，4.7 完整模拟闭环由 00。真实协议尚未确认，remote 永不因配置开关自动启用；不宣称模型就绪、远端查询/取消/去重或 GPU 验收通过。
+本包未推送、未部署、未修改 `backend-master`、GPU 源码、权重、历史表/数据或前端，也未归档 OpenSpec。

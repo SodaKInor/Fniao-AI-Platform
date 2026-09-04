@@ -15,7 +15,8 @@ public final class DraftTransportFactory {
             throw new IllegalArgumentException("Invalid provider configuration");
         }
         DraftEndpoint endpoint = new DraftEndpoint(properties.getBaseUrl(), properties.getApprovedOrigin(),
-                properties.getApiPath(), loopbackFixture);
+                properties.getApiPath(), properties.getVideoApiPath(), properties.getStreamSourcesPath(),
+                properties.getStreamSessionsPath(), loopbackFixture);
         OkHttpClient.Builder http = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(false).followRedirects(false).followSslRedirects(false)
                 .authenticator(Authenticator.NONE).proxyAuthenticator(Authenticator.NONE)
@@ -36,6 +37,7 @@ public final class DraftTransportFactory {
         ProviderCredentials.read(properties.getTokenFile());
         return new DraftTransport(http.build(), endpoint, properties.getProviderKey(),
                 () -> ProviderCredentials.read(properties.getTokenFile()), properties.getMaxInflight(),
-                properties.getTransferTimeoutMs(), properties.getUploadMaxBytes(), properties.getOutputMaxBytes());
+                properties.getTransferTimeoutMs(), properties.getUploadMaxBytes(), properties.getOutputMaxBytes(),
+                properties.getVideoUploadMaxBytes(), properties.getVideoOutputMaxBytes());
     }
 }

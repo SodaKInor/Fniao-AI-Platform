@@ -16,7 +16,9 @@
 - 唯一模拟绑定：capabilityCode/providerCapabilityCode=`image-detection.v1`，capabilityVersion=`mock-v1`，providerKey=`mock`，adapterId=`mock-v1`，query/cancel/deduplication 全 false。由 04a 的 CapabilityRepository 提供本地绑定，不在 03 注册运行时假仓储。
 - 模拟器读取图像尺寸，生成合成检测与固定 16×16 合成预览；预览不是原图标注。threshold 大于 0.95 时返回有效空成果；annotate=false 无文件成果。引用有效期为生成后 1 小时。
 - remote 在真实接口经 02/00 确认前始终不可用；不存在把草案变成正式协议的配置开关。草案适配器仅供独立协议夹具构造，不会自动注册到业务派发器。
-- draft 夹具绑定 adapterId=`sync-draft-v0.1`，providerKey 匹配其后端配置；HTTP 只允许显式夹具中的字面量回环地址。部署配置只接受 HTTPS 批准地址。
+- 图片 draft 夹具绑定 adapterId=`sync-draft-v0.1`；视频和实时流夹具分别绑定 `video-draft-v0.2`、`stream-draft-v0.2`。providerKey 必须匹配后端配置；HTTP 只允许测试夹具中的字面量回环地址，部署配置只接受与批准 origin 完全一致的 HTTPS 地址。
+- 视频/流草案客户端已经实现真实的一次性 HTTP 请求、严格响应转换和故障确定性，供 05 提供正式样例后逐字段核对。它们没有生产 Bean；`VideoAnalysisProvider` 与 `StreamSessionProvider` 当前只注册硬关闭模式。流请求只接收仓储映射后的 provider source ref，浏览器仍只能提交本地 `streamSourceId`，不得传 RTSP、GPU URL 或凭据。
+- 视频与流的 POST 禁止自动重试和重定向；请求发出后断线保持 UNKNOWN。流停止只有收到严格的 `CONFIRMED_STOPPED` 响应才算停止，失败、超时或未知响应均不得写入停止终态。
 - 新上传和推理必须有 `ai:infer`。00/04a 负责按角色登记权限，03 不修改迁移或默认给全部用户授权。重复提交须先按冻结的用户/key 返回已有记录，再检查新提交能力；不得在 HTTP 过滤器里按全局模式提前拦截这一去重流程。04a 在去重后接入能力可用性检查，03 派发端还会在外呼前再次守卫。
 - 04a 仓储未合入时，能力查询明确报依赖未就绪；核心后端仍可启动。真实上传/任务/历史归属和成果落库由 04a 完成。
 
@@ -26,13 +28,15 @@
 |---|---|
 | mode | ModeInferenceProvider、ProviderAvailability |
 | provider-key/base-url/approved-origin/api-path | DraftTransportFactory、DraftEndpoint、ProviderAvailability |
+| video-api-path、stream-sources-path、stream-sessions-path | DraftEndpoint 的视频提交、来源会话创建、会话/事件查询和停止地址；不允许跨 origin 或自由 URL |
 | token-file/ca-file | ProviderCredentials、ProviderTrust；能力配置检查和协议传输共用 |
 | connect/request/transfer-timeout-ms | HTTP 连接、总调用/读取、上传 deadline/写入和成果下载总预算 |
 | max-inflight | mock 与草案 transport 的信号量；不另建任务队列 |
 | upload/output-max-bytes | 请求/成果流限制、mock、能力描述的更严格上限 |
+| video-upload/video-output-max-bytes | 视频输入、事件截图和可选标注视频的有界传输；首期默认各 512 MiB，仍受真实服务限额确认门禁 |
 
 初值：3 秒连接，120 秒总调用，30 秒传输，并发 1，输入/单成果各 10 MiB。超过当前模拟范围的配置拒绝启用，实际 GPU 容量留第 5 批确认。前端短等待最多 1500ms，任务队列归 04a；不沿用旧设计中已被冻结契约替代的 30 秒前端等待示例。
 
-外部观测只记录连接事实，60 秒过期后回到未确认；不注册影响核心健康聚合的外部 HealthIndicator，也不调用虚构的健康/就绪接口。外部版本、查询、取消和远端去重仍未确认。
+外部观测只记录连接事实，60 秒过期后回到未确认；不注册影响核心健康聚合的外部 HealthIndicator，也不调用虚构的健康/就绪接口。外部版本、视频格式/限额、流来源映射、事件查询、停止、取消和远端去重仍未确认；这些缺项都保持能力 disabled。
 
 故障时切换 disabled；旧执行守卫保持有效，已产生的模拟成果可按保存的绑定继续收集。生产历史读取由本地资产提供。回滚仅选择兼容且仍有守卫的版本，不重新开启旧本地模型。

@@ -9,6 +9,9 @@ public class ProviderProperties {
     private String baseUrl = "";
     private String approvedOrigin = "";
     private String apiPath = "/infer";
+    private String videoApiPath = "/video-jobs";
+    private String streamSourcesPath = "/stream-sources";
+    private String streamSessionsPath = "/stream-sessions";
     private String providerKey = "remote";
     private String tokenFile = "";
     private String caFile = "";
@@ -18,6 +21,8 @@ public class ProviderProperties {
     private int maxInflight = 1;
     private long uploadMaxBytes = 10485760;
     private long outputMaxBytes = 10485760;
+    private long videoUploadMaxBytes = 536870912;
+    private long videoOutputMaxBytes = 536870912;
 
     public String getMode() { return mode; }
     public void setMode(String value) { mode = value; }
@@ -27,6 +32,12 @@ public class ProviderProperties {
     public void setApprovedOrigin(String value) { approvedOrigin = value; }
     public String getApiPath() { return apiPath; }
     public void setApiPath(String value) { apiPath = value; }
+    public String getVideoApiPath() { return videoApiPath; }
+    public void setVideoApiPath(String value) { videoApiPath = value; }
+    public String getStreamSourcesPath() { return streamSourcesPath; }
+    public void setStreamSourcesPath(String value) { streamSourcesPath = value; }
+    public String getStreamSessionsPath() { return streamSessionsPath; }
+    public void setStreamSessionsPath(String value) { streamSessionsPath = value; }
     public String getProviderKey() { return providerKey; }
     public void setProviderKey(String value) { providerKey = value; }
     public String getTokenFile() { return tokenFile; }
@@ -45,10 +56,16 @@ public class ProviderProperties {
     public void setUploadMaxBytes(long value) { uploadMaxBytes = value; }
     public long getOutputMaxBytes() { return outputMaxBytes; }
     public void setOutputMaxBytes(long value) { outputMaxBytes = value; }
+    public long getVideoUploadMaxBytes() { return videoUploadMaxBytes; }
+    public void setVideoUploadMaxBytes(long value) { videoUploadMaxBytes = value; }
+    public long getVideoOutputMaxBytes() { return videoOutputMaxBytes; }
+    public void setVideoOutputMaxBytes(long value) { videoOutputMaxBytes = value; }
 
     public boolean validLimits() {
         return connectTimeoutMs > 0 && requestTimeoutMs > 0 && transferTimeoutMs > 0
                 && maxInflight > 0 && maxInflight <= 100 && uploadMaxBytes > 0 && outputMaxBytes > 0
-                && uploadMaxBytes <= 10485760 && outputMaxBytes <= 10485760;
+                && uploadMaxBytes <= 10485760 && outputMaxBytes <= 10485760
+                && videoUploadMaxBytes > 0 && videoUploadMaxBytes <= 2147483648L
+                && videoOutputMaxBytes > 0 && videoOutputMaxBytes <= 2147483648L;
     }
 }

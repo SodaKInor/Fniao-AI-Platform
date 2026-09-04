@@ -125,15 +125,25 @@ public class CapabilityTest {
         } finally { org.apache.shiro.util.ThreadContext.remove(); }
     }
 
-    @Test public void springBindsProviderLimitsAndDoesNotRegisterDraftRuntimeClient() {
+    @Test public void springBindsProviderLimitsAndRegistersOnlyClosedRuntimeGates() throws Exception {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
             org.springframework.test.context.support.TestPropertySourceUtils.addInlinedPropertiesToEnvironment(context,
-                    "wgai.inference.mode=mock", "wgai.inference.max-inflight=2", "wgai.inference.upload-max-bytes=512");
+                    "wgai.inference.mode=mock", "wgai.inference.max-inflight=2", "wgai.inference.upload-max-bytes=512",
+                    "wgai.inference.video-upload-max-bytes=1024", "wgai.inference.video-api-path=/fixture-video");
             context.register(ProviderConfiguration.class); context.refresh();
             ProviderProperties p = context.getBean(ProviderProperties.class);
             assertEquals("mock", p.getMode()); assertEquals(2, p.getMaxInflight()); assertEquals(512, p.getUploadMaxBytes());
+            assertEquals(1024, p.getVideoUploadMaxBytes()); assertEquals("/fixture-video", p.getVideoApiPath());
             assertEquals(1, context.getBeansOfType(InferenceProvider.class).size());
+            assertEquals(1, context.getBeansOfType(VideoAnalysisProvider.class).size());
+            assertEquals(1, context.getBeansOfType(StreamSessionProvider.class).size());
             assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftHttpProvider.class).isEmpty());
+            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftVideoHttpProvider.class).isEmpty());
+            assertTrue(context.getBeansOfType(org.jeecg.modules.ai.client.draft.DraftStreamHttpProvider.class).isEmpty());
+            try { context.getBean(VideoAnalysisProvider.class).analyze(videoRequest(new CountingSource(), false, false, null)); fail(); }
+            catch (ProviderException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE, error.getErrorCode()); }
+            try { context.getBean(StreamSessionProvider.class).start(streamRequest(false)); fail(); }
+            catch (ProviderException error) { assertEquals(ErrorCode.CAPABILITY_UNAVAILABLE, error.getErrorCode()); }
             assertFalse(org.jeecg.modules.ai.legacy.LegacyExecutionGuard.isLocalExecutionAllowed());
         }
     }

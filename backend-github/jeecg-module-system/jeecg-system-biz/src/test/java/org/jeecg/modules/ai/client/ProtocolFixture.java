@@ -17,6 +17,8 @@ public final class ProtocolFixture implements AutoCloseable {
     public volatile byte[] response = new byte[0];
     public volatile String requestBody;
     public volatile String authorization;
+    public volatile String method;
+    public volatile String requestUri;
     public volatile long delayHeaders;
     public volatile long delayInput;
     public volatile long delayBody;
@@ -52,6 +54,8 @@ public final class ProtocolFixture implements AutoCloseable {
         try {
             if (delayInput > 0) Thread.sleep(delayInput);
             authorization = exchange.getRequestHeaders().getFirst("Authorization");
+            method = exchange.getRequestMethod();
+            requestUri = exchange.getRequestURI().toString();
             requestBody = new String(read(exchange.getRequestBody()), StandardCharsets.UTF_8);
             calls.incrementAndGet();
             if (disconnect) return;

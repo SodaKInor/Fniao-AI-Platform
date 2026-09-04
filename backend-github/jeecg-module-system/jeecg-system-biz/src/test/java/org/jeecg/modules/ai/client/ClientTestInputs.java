@@ -13,6 +13,8 @@ public final class ClientTestInputs {
     private ClientTestInputs() { }
     public static final Path EXAMPLES = Paths.get("/workspace/backend-github/integrations/ai-contracts/examples");
     public static final String REQUEST_ID = "mock_job_0001";
+    public static final String VIDEO_REQUEST_ID = "video-request-001";
+    public static final String STREAM_SESSION_ID = "stream-session-001";
 
     public static String example(String name) throws IOException {
         return new String(Files.readAllBytes(EXAMPLES.resolve(name)), java.nio.charset.StandardCharsets.UTF_8);
@@ -21,6 +23,11 @@ public final class ClientTestInputs {
     public static CapabilitySnapshot binding(boolean mock) {
         return new CapabilitySnapshot("image-detection.v1", "mock-v1", mock ? "mock" : "fixture",
                 mock ? "mock-v1" : "sync-draft-v0.1", "image-detection.v1", null, new ProviderFeatures(false, false, false));
+    }
+
+    public static CapabilitySnapshot draftBinding(String capability, String adapter) {
+        return new CapabilitySnapshot(capability, "draft-v1", "fixture", adapter,
+                capability, null, new ProviderFeatures(false, false, false));
     }
 
     public static ProviderRequest request(CountingSource source, boolean mock, boolean annotate, Long size) {
@@ -39,6 +46,29 @@ public final class ClientTestInputs {
 
     public static DraftHttpProvider provider(ProviderProperties p) {
         return new DraftHttpProvider(DraftTransportFactory.create(p, true), new ProviderObservations(Clock.systemUTC()));
+    }
+
+    public static DraftVideoHttpProvider videoProvider(ProviderProperties p) {
+        return new DraftVideoHttpProvider(
+                DraftTransportFactory.create(p, true), new ProviderObservations(Clock.systemUTC()));
+    }
+
+    public static DraftStreamHttpProvider streamProvider(ProviderProperties p) {
+        return new DraftStreamHttpProvider(
+                DraftTransportFactory.create(p, true), new ProviderObservations(Clock.systemUTC()));
+    }
+
+    public static VideoProviderRequest videoRequest(CountingSource source, boolean snapshots, boolean annotate, Long size) {
+        return new VideoProviderRequest(VIDEO_REQUEST_ID,
+                draftBinding("video-file-analysis.v1", "video-draft-v0.2"),
+                new VideoParameters(new BigDecimal("0.5"), 1000, 100, snapshots, annotate),
+                new ContentMetadata("input.mp4", "video/mp4", size, null), source);
+    }
+
+    public static ProviderStreamStartRequest streamRequest(boolean snapshots) {
+        return new ProviderStreamStartRequest(STREAM_SESSION_ID,
+                draftBinding("video-stream-analysis.v1", "stream-draft-v0.2"),
+                "source-001", new StreamParameters(50, 2000, snapshots));
     }
 
     public static final class CountingSource implements ContentSource {

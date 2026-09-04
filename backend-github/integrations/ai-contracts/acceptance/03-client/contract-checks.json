@@ -1,81 +1,210 @@
 {
   "status": "PASS",
-  "openapi_documents": 2,
+  "openapi_documents": 4,
   "fixtures": [
     {
       "file": "submit.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "success.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "accepted.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "empty.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "unknown.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "error.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "asset.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "history.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "capabilities.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": true
     },
     {
       "file": "provider-metadata.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
     },
     {
       "file": "provider-success.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
     },
     {
       "file": "provider-empty.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
     },
     {
       "file": "provider-error.json",
       "expected_valid": true,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
     },
     {
       "file": "invalid-threshold.json",
       "expected_valid": false,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
     },
     {
       "file": "invalid-provider-url.json",
       "expected_valid": false,
-      "passed": true
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "video-submit.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "video-success.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "video-empty.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "invalid-video-provider-url.json",
+      "expected_valid": false,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-sources.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-start.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-running.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-events.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-empty-events.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "stream-stop-unknown.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "invalid-stream-rtsp.json",
+      "expected_valid": false,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "invalid-stream-gpu-url.json",
+      "expected_valid": false,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "invalid-stream-credentials.json",
+      "expected_valid": false,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-video-metadata.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-video-success.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-stream-start.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-stream-running.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-stream-events.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
+    },
+    {
+      "file": "provider-stream-stop.json",
+      "expected_valid": true,
+      "passed": true,
+      "compatible_with_1_1": false
     }
   ],
   "binary_fixtures": "2 PNG files: signature, chunk CRC, decoded dimensions, size and SHA-256",
@@ -85,6 +214,10 @@
     "normalized boxes/count",
     "wire/business parameter correspondence",
     "local/provider/file artifact hashes",
+    "image 1.0 fixture compatibility",
+    "video event ordering/snapshot ownership/optional annotation",
+    "opaque stream source and secret-field rejection",
+    "UNKNOWN stop is not STOPPED",
     "unconfirmed optional features disabled"
   ],
   "scope": "Declarations and synthetic fixtures only; no live API, authentication or GPU execution"

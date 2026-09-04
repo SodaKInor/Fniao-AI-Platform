@@ -4,6 +4,8 @@ import java.time.Clock;
 import org.jeecg.modules.ai.application.capabilities.CapabilityQueryService;
 import org.jeecg.modules.ai.client.ModeArtifactReader;
 import org.jeecg.modules.ai.client.ModeInferenceProvider;
+import org.jeecg.modules.ai.client.ModeStreamSessionProvider;
+import org.jeecg.modules.ai.client.ModeVideoAnalysisProvider;
 import org.jeecg.modules.ai.client.mock.MockArtifactReader;
 import org.jeecg.modules.ai.client.mock.MockInferenceProvider;
 import org.jeecg.modules.ai.legacy.AiAccessFilter;
@@ -31,6 +33,19 @@ public class ProviderConfiguration {
 
     @Bean public ProviderArtifactReader providerArtifactReader(ProviderProperties p) {
         return new ModeArtifactReader(new MockArtifactReader(Clock.systemUTC()), p.getOutputMaxBytes());
+    }
+
+    @Bean public VideoAnalysisProvider videoAnalysisProvider(ProviderAvailability availability) {
+        return new ModeVideoAnalysisProvider(availability::videoReason, null);
+    }
+
+    @Bean public StreamSessionProvider streamSessionProvider(ProviderAvailability availability) {
+        return new ModeStreamSessionProvider(
+                availability::streamStartReason,
+                availability::streamSessionQueryReason,
+                availability::streamEventQueryReason,
+                availability::streamStopReason,
+                null);
     }
 
     @Bean public CapabilityQueryService capabilityQueryService(ObjectProvider<CapabilityRepository> repositories,

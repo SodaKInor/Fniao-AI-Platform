@@ -14,4 +14,5 @@ javac -encoding UTF-8 -source 8 -target 8 -cp '/validation/classes:/validation/l
 java -Djava.io.tmpdir=/validation/tmp -Dlogback.configurationFile=/validation/logback-test.xml \
   -cp '/validation/test-classes:/validation/classes:/validation/libs/*' org.junit.runner.JUnitCore \
   org.jeecg.modules.ai.client.DraftInferenceTest org.jeecg.modules.ai.client.DraftArtifactTest \
+  org.jeecg.modules.ai.client.DraftVideoProviderTest org.jeecg.modules.ai.client.DraftStreamProviderTest \
   org.jeecg.modules.ai.application.capabilities.CapabilityTest org.jeecg.modules.ai.legacy.AiAccessTest

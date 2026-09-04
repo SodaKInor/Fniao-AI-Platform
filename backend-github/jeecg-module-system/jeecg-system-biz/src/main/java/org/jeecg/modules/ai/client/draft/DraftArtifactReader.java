@@ -18,7 +18,7 @@ public final class DraftArtifactReader implements ProviderArtifactReader {
     public DraftArtifactReader(DraftTransport transport, Clock clock) { this.transport = transport; this.clock = clock; }
 
     @Override public InputStream open(CapabilitySnapshot snapshot, ProviderArtifact artifact, long maxBytes) throws ProviderException {
-        transport.checkBinding(snapshot);
+        checkBinding(snapshot);
         validate(artifact, maxBytes);
         transport.acquire();
         Response response = null;
@@ -27,10 +27,13 @@ public final class DraftArtifactReader implements ProviderArtifactReader {
             response = transport.execute(request, new AtomicBoolean(), true);
             if (response.code() != 200 || response.body() == null || response.body().contentType() == null
                     || !artifact.getMetadata().getMediaType().equals(response.body().contentType().type() + "/" + response.body().contentType().subtype())
-                    || (response.body().contentLength() >= 0 && response.body().contentLength() != artifact.getMetadata().getSizeBytes())) {
+                    || (response.body().contentLength() >= 0
+                    && artifact.getMetadata().getSizeBytes() != null
+                    && response.body().contentLength() != artifact.getMetadata().getSizeBytes())
+                    || response.body().contentLength() > Math.min(maxBytes, configuredLimit(artifact))) {
                 throw new IOException("Invalid artifact response");
             }
-            return ownedStream(response, artifact, Math.min(maxBytes, transport.outputLimit));
+            return ownedStream(response, artifact, Math.min(maxBytes, configuredLimit(artifact)));
         } catch (IOException | RuntimeException | ProviderException error) {
             if (response != null) response.close();
             transport.release();
@@ -39,13 +42,15 @@ public final class DraftArtifactReader implements ProviderArtifactReader {
     }
 
     private void validate(ProviderArtifact artifact, long maxBytes) throws ProviderException {
-        if (artifact == null || artifact.getExpiresAt() == null || !artifact.getExpiresAt().isAfter(clock.instant())) {
+        if (artifact == null || (artifact.getExpiresAt() != null && !artifact.getExpiresAt().isAfter(clock.instant()))) {
             throw new ProviderException(ErrorCode.ARTIFACT_EXPIRED, ExecutionCertainty.UNKNOWN, "Provider artifact has expired");
         }
         ContentMetadata m = artifact.getMetadata();
-        if (maxBytes <= 0 || m == null || m.getSizeBytes() == null || m.getSizeBytes() < 1
-                || m.getSizeBytes() > Math.min(maxBytes, transport.outputLimit)
-                || !("image/png".equals(m.getMediaType()) || "image/jpeg".equals(m.getMediaType()))) {
+        if (maxBytes <= 0 || m == null
+                || (m.getSizeBytes() != null && (m.getSizeBytes() < 1
+                || m.getSizeBytes() > Math.min(maxBytes, configuredLimit(artifact))))
+                || !("image/png".equals(m.getMediaType()) || "image/jpeg".equals(m.getMediaType())
+                || "video/mp4".equals(m.getMediaType()))) {
             throw new ProviderException(ErrorCode.ARTIFACT_TRANSFER, ExecutionCertainty.UNKNOWN, "Invalid artifact metadata or limit");
         }
         try { transport.endpoint.artifact(artifact.getReference()); }
@@ -70,5 +75,24 @@ public final class DraftArtifactReader implements ProviderArtifactReader {
                 }
             }
         };
+    }
+
+    private void checkBinding(CapabilitySnapshot snapshot) throws ProviderException {
+        String capability = snapshot == null ? "" : snapshot.getCapabilityCode();
+        if ("image-detection.v1".equals(capability)) {
+            transport.checkBinding(snapshot);
+        } else if ("video-file-analysis.v1".equals(capability)) {
+            transport.checkBinding(snapshot, capability, "video-draft-v0.2");
+        } else if ("video-stream-analysis.v1".equals(capability)) {
+            transport.checkBinding(snapshot, capability, "stream-draft-v0.2");
+        } else {
+            throw org.jeecg.modules.ai.client.ProviderRequestChecks.unavailable(
+                    "Provider artifact binding is unsupported");
+        }
+    }
+
+    private long configuredLimit(ProviderArtifact artifact) {
+        return "video/mp4".equals(artifact.getMetadata().getMediaType())
+                ? transport.videoOutputLimit : transport.outputLimit;
     }
 }
