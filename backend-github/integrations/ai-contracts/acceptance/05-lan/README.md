@@ -46,3 +46,17 @@ MP4/H.264、已登记 source ID 的真实请求/成功/空/错误样例；输入
 不回显供应商坐标。本阶段共 11 项 Node 测试通过；详见
 `real-integration-evidence-validation.json`。这仍是 fail-closed tooling 证据，`realProviderRequestAttempted`
 保持 false，5.1—5.4 和伴随流 5.1—5.2 仍全部未完成。
+
+## 正式 provider 装配前置（当前明确未就绪）
+
+`provider-activation-preflight.json` 以八个实际源文件的 SHA-256 固化当前启用链。检查确认：
+
+- `ProviderConfiguration` 没有图片 remote 实例，视频与流 remote 参数为 `null`，成果读取只装配 mock；
+- `ProviderAvailability` 即使地址、凭据和 CA 完整，仍会拒绝未确认 remote，并分别关闭视频、流启动、
+  会话查询、事件查询和停止；
+- draft HTTP 类只供协议夹具，没有生产 Bean；配置中的 `remote` 字样不能提升 draft；
+- 当前部署模板默认 disabled、只读挂载配置且不声明 GPU 服务。
+
+`tests/provider-activation-preflight.test.cjs` 会在上述源文件或硬关闭断言被改变时失败，要求先用新的
+已确认 owner 交付替换本收据，避免仅修改环境变量就绕过 03/00。当前完整 05 工具集共 12 项测试；
+该新增检查仍不完成任何 OpenSpec 5.x，也不授权 05 修改 client/provider 装配。

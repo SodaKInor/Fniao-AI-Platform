@@ -1,0 +1,102 @@
+{
+  "status": "WAITING_OWNER_ADAPTER_AND_EXTERNAL_CONTRACT",
+  "at": "2026-09-04T09:56:38Z",
+  "inspectedCommit": "ee2fae7319b88a936433c16858f9d62567c6889f",
+  "contractVersion": "1.1.0",
+  "sourceChecks": [
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderConfiguration.java",
+      "sha256": "403798d0fb184c1c4f7b285ab418d22650108934b34315281d7f8b834922194c",
+      "facts": {
+        "imageRemoteRegistered": false,
+        "videoRemoteRegistered": false,
+        "streamRemoteRegistered": false,
+        "remoteArtifactReaderRegistered": false
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderAvailability.java",
+      "sha256": "1e678d12346794b99885457c7adbe9e51081a685b53a43946b2958dbc60aadb8",
+      "facts": {
+        "remoteAlwaysRejectedAsUnconfirmed": true,
+        "videoAlwaysRejectedAsMockUnsupported": true,
+        "streamStartAlwaysRejectedAsMockUnsupported": true,
+        "streamQueryEventStopAlwaysRejectedAsUnconfirmed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeInferenceProvider.java",
+      "sha256": "bbe78c8610f9d490c39f50842a3d2620848cbe8e557be81dec7886fc8f52aeed",
+      "facts": {
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeArtifactReader.java",
+      "sha256": "b015b0c70a6d46c00eb4c08d905f4a71b8e76d49ac54752e5dbe72e93682383f",
+      "facts": {
+        "savedMockArtifactsRemainReadable": true,
+        "remoteRequiresNonNullReader": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeVideoAnalysisProvider.java",
+      "sha256": "767dbc968ed914c78c37a9f880724c817870eaebd8c0c0172febf1a23c055dd7",
+      "facts": {
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeStreamSessionProvider.java",
+      "sha256": "120b6fd598ab9914d2ebfc77c41bb662186da5c921cf61490d7c267b93a13805",
+      "facts": {
+        "eachOperationHasIndependentGate": true,
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/deploy/remote-ai/application-remote-ai.yml",
+      "sha256": "090f35e2cb608fc18656e4d997f72bd4cc6967e6f96dd11131c4f4ac22d92ada",
+      "facts": {
+        "defaultMode": "disabled",
+        "configurationCanActivateUnconfirmedDraft": false
+      }
+    },
+    {
+      "path": "backend-github/deploy/remote-ai/core.override.yml",
+      "sha256": "c616f221b4fd9fbf249faf65d7df3856e524ebf474676aca3a349a6aa71abe95",
+      "facts": {
+        "defaultMode": "disabled",
+        "declaresGpuService": false,
+        "mountsRemoteConfigReadOnly": true
+      }
+    }
+  ],
+  "currentActivationResult": {
+    "externalContractConfirmed": false,
+    "formalWireAdapterImplemented": false,
+    "formalProviderAssemblyImplemented": false,
+    "productionCapabilityBindingReady": false,
+    "runtimeMayStartForRealRequests": false,
+    "realProviderRequestAttempted": false
+  },
+  "requiredOwnerSequence": [
+    "05 validates a complete private contract intake and records only confirmed capability facts",
+    "02/00 handles any public contract mismatch; otherwise the frozen 1.1.0 contract remains unchanged",
+    "03 implements a named formal adapter and provider/artifact assembly without promoting draft fixtures",
+    "00 accepts the owner patch and records the exact 05 restart commit",
+    "05 creates only confirmed capability bindings in its isolated database and starts its isolated runtime",
+    "05 performs real image, video and stream application flows from the backend container"
+  ],
+  "openspecTasksCompleted": [],
+  "downstreamReleased": {
+    "06Integration": false,
+    "unifiedRegression6_5": false,
+    "cleanup07": false,
+    "releaseCandidate": false
+  }
+}

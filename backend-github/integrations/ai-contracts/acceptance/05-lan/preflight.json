@@ -1,7 +1,7 @@
 {
   "status": "WAITING_EXTERNAL",
   "at": "2026-09-04T08:22:50Z",
-  "lastUpdatedAt": "2026-09-04T09:40:00Z",
+  "lastUpdatedAt": "2026-09-04T09:56:38Z",
   "acceptedCommonStart": "b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d",
   "codePrerequisite": "PASS",
   "providerContract": "UNCONFIRMED",
@@ -38,11 +38,18 @@
   },
   "realEvidenceTooling": {
     "status": "PASS_FAIL_CLOSED_TOOLING_ONLY",
-    "totalNodeTestsPassed": 11,
+    "totalNodeTestsPassed": 12,
     "totalNodeTestsFailed": 0,
     "incompleteTemplateAccepted": false,
     "realEvidenceValidated": false,
     "containerRequestPerformed": false
+  },
+  "providerActivation": {
+    "status": "WAITING_OWNER_ADAPTER_AND_EXTERNAL_CONTRACT",
+    "sourceFilesHashed": 8,
+    "formalRemoteAssemblyReady": false,
+    "runtimeMayStartForRealRequests": false,
+    "receipt": "provider-activation-preflight.json"
   },
   "blockedTasks": ["5.1", "5.2", "5.3", "5.4", "remote-video-streaming:5.1", "remote-video-streaming:5.2"],
   "downstreamReleased": {
