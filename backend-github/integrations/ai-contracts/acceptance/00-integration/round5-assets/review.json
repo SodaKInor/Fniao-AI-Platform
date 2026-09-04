@@ -1,0 +1,14 @@
+{
+  "status": "PASS_WITH_EXTERNAL_BLOCKER",
+  "base": "0bafd30726e82de74cfeb58ebad12393b36841c7",
+  "delivery": "45ba76ce3d55629041092ecb1230bdc1afb8b230",
+  "changedPathCount": 64,
+  "changedPathsOwned": true,
+  "frozenContractsUnchanged": true,
+  "frontendDependenciesAndBackendMasterUnchanged": true,
+  "productionStreamFeaturesHardDisabled": true,
+  "browserOpaqueSourceBoundary": true,
+  "v002AdditiveOnly": true,
+  "externalBlocker": "Provider draft v0.2 remains UNCONFIRMED; video and stream real capability must remain unavailable until 05 supplies evidence.",
+  "releaseDecision": "04a may be accepted as a fail-closed implementation foundation; this is not 5.1 or an RC."
+}

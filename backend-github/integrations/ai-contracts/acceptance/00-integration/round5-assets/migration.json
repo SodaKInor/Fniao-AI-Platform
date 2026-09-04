@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "sequence": [
+    "V001__04a_assets_jobs.sql",
+    "V002__04a_video_stream.sql"
+  ],
+  "executions": 2,
+  "scratchDatabaseDropped": true,
+  "tables": [
+    "ai_asset",
+    "ai_capability_binding",
+    "ai_job",
+    "ai_job_capacity",
+    "ai_job_event",
+    "ai_stream_event",
+    "ai_stream_session",
+    "ai_stream_source"
+  ],
+  "schemaSha256": {
+    "ai_asset": "6ad28277e74fbf32ac341e65e28607c515ed3884c4bc395086f18c2128b29da9",
+    "ai_capability_binding": "f0de8feee2a10fa834098ee2d5fb0c2ee7894694eebde5a763c5908a8bdd5480",
+    "ai_job": "77ba2473c694bc79e4191c5ef8daf899fa7fca78f51c7920308196adea2242d8",
+    "ai_job_capacity": "71d50c0970efd2f2c81989ded23929a404cfda7f193e4884d96ff8b7d959fc6b",
+    "ai_job_event": "f4cf18083e7907e418c320125188226703cb7719d2127eaeb01a66e226c88aa7",
+    "ai_stream_event": "3d52a06cfcff20ec09d13077f035c237f324d266607ac5fc10fdc3503ac7ef12",
+    "ai_stream_session": "ca7971a54fff790908053f6add7978ce4ea5b60892ac4b207d2458f638c5f787",
+    "ai_stream_source": "e1c72501b77ad211b25490c5441c7590e40b1f067f514f22dc12b0d7d511e2e8"
+  },
+  "scoreNullable": true,
+  "v002AdditiveOnly": true,
+  "migrationSha256": {
+    "V001": "0e50ad45101cc92bff877aa63ae60bb42fbf9720f2dc5d93c604a5f682f9c026",
+    "V002": "40e190fea24cdd476ef7bbd00520fe1b859082a8e8440b7ae4fe3c3845b54a15"
+  },
+  "integrationDatabase": {
+    "tableCount": 128,
+    "beforeSha256": "04a8be3be3637ac011591636b12daa296d32916136c1c6679d66b6c159756c56",
+    "afterSha256": "04a8be3be3637ac011591636b12daa296d32916136c1c6679d66b6c159756c56",
+    "tableListAndAiRowsUnchanged": true,
+    "note": "No write statement targets the integration database; the table list plus existing AI schemas and row counts are compared."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "status": "ACCEPTED_FAIL_CLOSED",
+  "commonStart": "0bafd30726e82de74cfeb58ebad12393b36841c7",
+  "deliveryCommit": "45ba76ce3d55629041092ecb1230bdc1afb8b230",
+  "merge": "fast-forward",
+  "fileOwnership": {
+    "changedPaths": 64,
+    "outOfScopePaths": 0,
+    "frozenContractsUnchanged": true,
+    "frontendDependenciesAndBackendMasterUnchanged": true
+  },
+  "java8": {
+    "status": "PASS",
+    "suites": 9,
+    "tests": 49,
+    "failures": 0,
+    "classMajor": 52,
+    "database": "00-owned disposable MySQL schema; dropped"
+  },
+  "migration": {
+    "status": "PASS",
+    "sequence": ["V001__04a_assets_jobs.sql", "V002__04a_video_stream.sql"],
+    "executions": 2,
+    "tables": 8,
+    "v002AdditiveOnly": true,
+    "scoreNullable": true,
+    "integrationDatabaseTables": 128,
+    "integrationDatabaseUnchanged": true
+  },
+  "contracts": {
+    "openapiDocuments": 4,
+    "jsonCases": 34,
+    "pngFixtures": 2,
+    "javaPublicTypes": 83,
+    "openspecStrict": ["remote-inference-platform", "remote-video-streaming"]
+  },
+  "backendBuild": {
+    "status": "PASS",
+    "image": "wgai-integration-backend:round5-assets-45ba76c",
+    "digest": "sha256:3a5c91104fb4b68fce034fc046116045b2ca9e0bd42e7702063813a3c5be9d84",
+    "sizeBytes": 1111524360,
+    "mavenReactor": "BUILD SUCCESS",
+    "springBootLayers": ["dependencies", "spring-boot-loader", "snapshot-dependencies", "application"]
+  },
+  "graphify": {
+    "status": "PASS_WITH_EXISTING_WARNINGS",
+    "nodes": 29859,
+    "edges": 73200,
+    "communities": 1261,
+    "existingVueWarnings": 6
+  },
+  "acceptedTasks": {
+    "remote-inference-platform": ["4.8"],
+    "remote-video-streaming": ["3.1", "3.2", "3.3", "3.4"]
+  },
+  "capabilityGate": {
+    "providerContract": "UNCONFIRMED",
+    "productionStreamFeaturesHardDisabled": true,
+    "realVideoOrStreamClaimed": false
+  },
+  "notClaimed": [
+    "04b frontend or browser acceptance",
+    "real RTX 5070 image, video or stream integration",
+    "06 resilience and observability matrix",
+    "6.5 unified regression",
+    "07 cleanup or release candidate"
+  ],
+  "newCommonStartCommit": "Recorded after this acceptance receipt commit in the external 00 HANDOFF and WORKSPACES.json."
+}

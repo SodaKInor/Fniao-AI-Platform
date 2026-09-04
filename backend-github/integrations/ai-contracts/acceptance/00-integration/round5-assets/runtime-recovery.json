@@ -1,0 +1,24 @@
+{
+  "status": "PASS_AFTER_HOST_RECOVERY",
+  "dockerVmStoppedAt": "2026-09-04T07:26:32Z",
+  "dockerLogState": "VM has stopped gracefully",
+  "dataResetPerformed": false,
+  "containersDeletedOrRecreated": false,
+  "volumesDeletedOrRecreated": false,
+  "preservedMysqlVolume": "wgai-ri-00-integration_mysql_data",
+  "restoredContainers": [
+    "wgai-ri-00-integration-mysql-1",
+    "wgai-ri-00-integration-redis-1",
+    "wgai-ri-00-integration-backend-1",
+    "wgai-ri-00-integration-frontend-1"
+  ],
+  "healthAfterRecovery": {
+    "mysql": "healthy",
+    "redis": "healthy",
+    "backend": "healthy",
+    "frontend": "healthy",
+    "http18100": 200,
+    "http19100": 200
+  },
+  "migrationReexecutedAfterRecovery": true
+}
