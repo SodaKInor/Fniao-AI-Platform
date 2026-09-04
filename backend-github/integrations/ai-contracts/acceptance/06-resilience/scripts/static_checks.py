@@ -59,6 +59,11 @@ def main():
     assert 'snapshot.equals(snapshotId(sessionId,event.getProviderEventId()))' in event_repository
     assert event_repository.index('for (StreamEvent event:values) {') < event_repository.index('events.insertIgnore(')
     assert 'status.setRollbackOnly()' in event_repository
+    image_preflight=(ROOT/'backend-github/integrations/ai-contracts/acceptance/06-resilience/scripts/preflight-backend-image.sh').read_text()
+    assert 'ABSOLUTE_MIN_FREE_BYTES=4294967296' in image_preflight
+    assert all(field in image_preflight for field in ('dockerEngineReady','dockerProbeTimedOut',
+            'destructiveCleanupPerformed'))
+    assert not any(command in image_preflight for command in ('docker system prune','docker builder prune','rm -rf'))
     jobs=(ROOT/AI/'config/jobs/JobWorker.java').read_text()
     assert 'findFetchingResult(staleBefore' in jobs and 'markUncertainUnknown' in jobs
     logback=ROOT/'backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/logback-spring.xml'
@@ -77,6 +82,7 @@ def main():
         'productionProviderContract':'UNCONFIRMED',
         'productionCapabilitiesRemainDisabled':True,
         'streamEventBatchAtomicAndSessionBound':True,
+        'backendImagePreflightIsFailClosedAndNonDestructive':True,
         'metricsUseBoundedTags':True,
         'allFileLogsHaveSizeAndTimeRollover':True,
         'remotePostReplayGuardPresent':True,

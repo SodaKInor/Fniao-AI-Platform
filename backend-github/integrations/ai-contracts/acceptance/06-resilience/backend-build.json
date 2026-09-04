@@ -10,6 +10,8 @@
   "imageDigest": null,
   "sizeBytes": null,
   "imageExport": "BLOCKED_HOST_DISK_FULL",
+  "currentPreflight": "backend-image-preflight.json",
+  "currentPreflightStatus": "BLOCKED_ENGINE_AND_SPACE",
   "hostFreeSpaceAtBlock": "146MiB",
   "buildExit": "terminated during silent image export after Maven reactor BUILD SUCCESS to avoid exhausting the host disk",
   "privateArtifacts": "temporarily hard-linked from the accepted 00 workspace, ignored by Git, removed after build",

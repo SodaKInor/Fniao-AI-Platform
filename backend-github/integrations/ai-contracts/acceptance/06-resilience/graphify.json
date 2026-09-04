@@ -1,9 +1,9 @@
 {
   "status": "PASS_WITH_EXISTING_WARNINGS",
   "command": "graphify update .",
-  "nodes": 30112,
-  "edges": 73867,
-  "communities": 1289,
+  "nodes": 30116,
+  "edges": 73872,
+  "communities": 1304,
   "warnings": "Six pre-existing Vue syntax parse warnings; no new Java parse error.",
   "artifacts": [
     "graphify-out/graph.json",

@@ -1,0 +1,16 @@
+{
+  "status": "BLOCKED",
+  "checkPath": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
+  "dockerCliAvailable": true,
+  "dockerEngineReady": false,
+  "dockerProbeTimedOut": true,
+  "freeBytes": 2360070144,
+  "requiredFreeBytes": 4294967296,
+  "baselineImageBytes": 1111539550,
+  "imageSafetyMultiple": 3,
+  "reasons": [
+    "DOCKER_ENGINE_UNAVAILABLE",
+    "HOST_FREE_SPACE_BELOW_REQUIRED_MINIMUM"
+  ],
+  "destructiveCleanupPerformed": false
+}

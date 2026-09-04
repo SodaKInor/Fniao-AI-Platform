@@ -27,7 +27,10 @@
   远程 POST 不重放边界。
 - `backend-build.json`：Java 8 `prod,docker-core` Maven reactor 完整编译成功；宿主机仅余 146MiB，
   镜像导出为避免写满磁盘而终止，因此不记录或沿用旧镜像摘要，待释放空间后复验。
-- `graphify.json`：30,112 节点、73,867 边、1,289 社区；仅保留前几轮相同的 6 个 Vue 警告。
+- `backend-image-preflight.json`：在镜像构建前同时检查 Docker 引擎与可用空间；最低保留
+  4GiB（并取已知镜像大小三倍中的较大值）。当前引擎不可用且空间不足，因此确定性阻断，
+  检查不会启动 Docker、清理缓存、删除镜像或修改容器/数据卷。
+- `graphify.json`：30,116 节点、73,872 边、1,304 社区；仅保留前几轮相同的 6 个 Vue 警告。
 - 两个 OpenSpec 变更严格校验，以及 4 份 OpenAPI、34 个 JSON 样例、83 个公共 Java 类型检查。
 
 外层 `06-resilience/HANDOFF.md` 与 `WORKSPACES.json` 记录了 00 对最小持久层查询和日志配置的
