@@ -6,6 +6,7 @@ const http = require('node:http');
 const path = require('node:path');
 const test = require('node:test');
 const { createStubServer } = require('../src/server.cjs');
+const { loadConfig, scenario } = require('../src/config.cjs');
 
 const TOKEN = 'test-development-stub-token';
 let instance;
@@ -55,6 +56,32 @@ test('requires the explicit development bearer token', async () => {
   assert.equal(response.headers['x-wgai-simulated'], 'true');
 });
 
+test('accepts only bounded development default scenarios while request overrides stay available', () => {
+  const config = loadConfig({ WGAI_STUB_TOKEN: TOKEN, WGAI_STUB_DEFAULT_SCENARIO: 'response-lost' });
+  assert.equal(config.defaultScenario, 'response-lost');
+  assert.equal(scenario({ headers: {} }, new URL('http://stub.invalid/infer'), config.defaultScenario),
+    'response-lost');
+  assert.equal(scenario({ headers: { 'x-wgai-stub-scenario': 'empty' } },
+    new URL('http://stub.invalid/infer'), config.defaultScenario), 'empty');
+  assert.throws(() => loadConfig({ WGAI_STUB_TOKEN: TOKEN, WGAI_STUB_DEFAULT_SCENARIO: 'unknown-value' }),
+    /Invalid WGAI_STUB_DEFAULT_SCENARIO/);
+});
+
+test('changes the default scenario only through the authenticated bounded control route', async () => {
+  const invalid = await call('/__stub/scenario', { method: 'POST',
+    body: JSON.stringify({ scenario: 'not-allowed' }), headers: { 'Content-Type': 'application/json' } });
+  assert.equal(invalid.status, 400);
+  const changed = await call('/__stub/scenario', { method: 'POST',
+    body: JSON.stringify({ scenario: 'empty' }), headers: { 'Content-Type': 'application/json' } });
+  assert.equal(changed.status, 200);
+  assert.equal(JSON.parse(changed.body).scenario, 'empty');
+  assert.equal(instance.state.defaultScenario, 'empty');
+  const restored = await call('/__stub/scenario', { method: 'POST',
+    body: JSON.stringify({ scenario: 'success' }), headers: { 'Content-Type': 'application/json' } });
+  assert.equal(restored.status, 200);
+  assert.equal(instance.state.defaultScenario, 'success');
+});
+
 test('returns strict simulated image and video results', async () => {
   const image = multipart({ contract_version: '0.1-draft', request_id: 'image-001',
     capability: 'image-detection.v1', parameters: { threshold: 0.5, max_detections: 10, annotate: true } });
@@ -97,12 +124,19 @@ test('runs a synthetic stream session without exposing RTSP or provider secrets'
 test('supports empty, invalid, lost and interrupted deterministic failures', async () => {
   const empty = await call('/stream-sessions/stub-session-local-session-001/events?limit=10&scenario=empty');
   assert.deepEqual(JSON.parse(empty.body).items, []);
+  const duplicateFirst = JSON.parse((await call(
+    '/stream-sessions/stub-session-local-session-001/events?limit=10&scenario=duplicate-events')).body);
+  const duplicateReplay = JSON.parse((await call(
+    '/stream-sessions/stub-session-local-session-001/events?limit=10&cursor=duplicate-replay&scenario=duplicate-events')).body);
+  assert.equal(duplicateFirst.items.length, 1);
+  assert.equal(duplicateReplay.items.length, 1);
+  assert.equal(duplicateFirst.items[0].event_id, duplicateReplay.items[0].event_id);
   const invalid = await call('/stream-sources/synthetic-camera-01/sessions', { method: 'POST',
     body: JSON.stringify({ contract_version: '0.2-draft', request_id: 'bad', capability: 'video-stream-analysis.v1',
       rtspUrl: 'prohibited', parameters: { max_events_per_poll: 10, poll_interval_ms: 1000,
         include_snapshots: true } }), headers: { 'Content-Type': 'application/json' } });
   assert.equal(invalid.status, 400);
-  await assert.rejects(call('/artifacts/interrupted.png'), /interrupted|aborted/i);
+  await assert.rejects(call('/artifacts/annotated?scenario=artifact-interrupted'), /interrupted|aborted/i);
 });
 
 test('contract is parseable and implementation has no application or algorithm imports', () => {

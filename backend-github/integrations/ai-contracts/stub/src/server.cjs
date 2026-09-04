@@ -7,7 +7,7 @@ const { StubState } = require('./state.cjs');
 
 function createStubServer(options = {}) {
   const config = loadConfig({ ...process.env, ...options });
-  const state = new StubState();
+  const state = new StubState(config.defaultScenario);
   const server = http.createServer(createRouter(config, state));
   server.on('clientError', (_error, socket) => socket.destroy());
   return { server, config, state };

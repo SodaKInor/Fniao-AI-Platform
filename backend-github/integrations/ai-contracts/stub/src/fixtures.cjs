@@ -11,7 +11,7 @@ function artifact(name = 'annotated.png') {
 
 function image(metadata, scenario) {
   const empty = scenario === 'empty';
-  const reference = scenario === 'artifact-interrupted' ? 'interrupted.png' : 'annotated.png';
+  const reference = 'annotated.png';
   return {
     contract_version: '0.1-draft', request_id: metadata.request_id, status: 'succeeded', simulated: true,
     data: { schema_version: 'detection.v1', image_width: 16, image_height: 16,
@@ -24,7 +24,7 @@ function image(metadata, scenario) {
 
 function video(metadata, scenario) {
   const empty = scenario === 'empty';
-  const reference = scenario === 'artifact-interrupted' ? 'interrupted.png' : 'snapshot.png';
+  const reference = 'snapshot.png';
   return {
     simulated: true,
     provider_request_id: metadata.request_id,
@@ -41,10 +41,12 @@ function streamSession(providerSessionId, state = 'RUNNING', cursor = '0') {
 
 function streamEvents(session, scenario, cursor) {
   if (scenario === 'empty' || cursor === '1') return { items: [], next_cursor: '1' };
-  const snapshot = artifact(scenario === 'artifact-interrupted' ? 'interrupted.png' : 'stream-snapshot.png');
+  const snapshot = artifact('stream-snapshot.png');
   const first = { event_id: `stub-stream-event-${session.id}-1`, offset_ms: 2500,
     occurred_at: '2026-09-04T12:00:02.500Z', event_type: 'synthetic-person', score: 0.93, snapshot };
-  if (scenario === 'duplicate-events') return { items: [first, { ...first }], next_cursor: '1' };
+  if (scenario === 'duplicate-events') {
+    return { items: [first], next_cursor: cursor === 'duplicate-replay' ? '1' : 'duplicate-replay' };
+  }
   if (scenario === 'out-of-order-events') {
     const earlier = { ...first, event_id: `${first.event_id}-late`, offset_ms: 1200,
       occurred_at: '2026-09-04T12:00:01.200Z' };

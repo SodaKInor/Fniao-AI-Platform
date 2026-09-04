@@ -12,6 +12,7 @@ services:
       WGAI_STUB_PORT: 18080
       WGAI_STUB_TOKEN: wgai-explicit-development-stub-token
       WGAI_STUB_MAX_BODY_BYTES: 33554432
+      WGAI_STUB_DEFAULT_SCENARIO: ${WGAI_STUB_DEFAULT_SCENARIO:-success}
     healthcheck:
       test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:18080/health',r=>process.exit(r.statusCode===200?0:1)).on('error',()=>process.exit(1))"]
       interval: 3s

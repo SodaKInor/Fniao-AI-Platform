@@ -45,6 +45,22 @@ public class ResilienceTest {
         assertEquals(2,f.countFiles());
     }
 
+    @Test public void initialArtifactInterruptionFailsWithCheckpointAndDoesNotReplayInference() throws Exception {
+        JobRecord pending=f.submit(f.input("a"),"initial-interrupted-fetch");
+        AtomicInteger providerCalls=new AtomicInteger();
+        InferenceProvider provider=request -> { providerCalls.incrementAndGet(); return f.result(true); };
+        ProviderArtifactReader interrupted=(capability,artifact,limit) -> { throw new ProviderException(
+                ErrorCode.ARTIFACT_TRANSFER,ExecutionCertainty.UNKNOWN,"fixture interrupted transfer"); };
+        new DispatchJobService(f.jobs,provider,null,f.files,
+                new CollectResultService(interrupted,f.files,f.clock,10*1024*1024,f.capabilities),f.clock)
+                .dispatch(pending);
+        JobRecord failed=f.get(pending);
+        assertEquals(JobState.FAILED,failed.getState());
+        assertNotNull(failed.getProviderResult());
+        assertEquals(ErrorCode.ARTIFACT_TRANSFER,failed.getError().getCode());
+        assertEquals(1,providerCalls.get());
+    }
+
     @Test public void staleDispatchedWorkBecomesUnknownAndTerminalRaceWins() throws Exception {
         JobRecord waiting=waiting("stale-waiting"); ageJob(waiting,10000);
         AtomicInteger providerCalls=new AtomicInteger();

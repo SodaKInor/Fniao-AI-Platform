@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { authorized } = require('./auth.cjs');
 const { readBody, jsonBody, multipart } = require('./body.cjs');
-const { scenario } = require('./config.cjs');
+const { scenario, SCENARIOS } = require('./config.cjs');
 const fixtures = require('./fixtures.cjs');
 const reply = require('./respond.cjs');
 const validation = require('./validation.cjs');
@@ -20,7 +20,10 @@ function createRouter(config, state) {
     }
     if (!authorized(req, config.token)) return reply.problem(res, 401, 'Stub credential rejected');
     try {
-      const selected = scenario(req, url);
+      if (req.method === 'POST' && url.pathname === '/__stub/scenario') {
+        return await controlScenario(req, res, config, state);
+      }
+      const selected = scenario(req, url, state.defaultScenario);
       if (req.method === 'GET' && url.pathname === '/capabilities') return capabilities(res);
       if (req.method === 'GET' && url.pathname === '/stream-sources') return sources(res);
       if (req.method === 'GET' && url.pathname === '/__stub/requests') {
@@ -29,7 +32,10 @@ function createRouter(config, state) {
       if (req.method === 'POST' && url.pathname === '/__stub/reset') {
         state.reset(); return reply.json(res, 200, { simulated: true, reset: true });
       }
-      if (req.method === 'GET' && url.pathname.startsWith('/artifacts/')) return artifact(res, url.pathname);
+      if (req.method === 'GET' && url.pathname.startsWith('/artifacts/')) {
+        state.record(req.method, url.pathname, selected);
+        return artifact(res, url.pathname, selected);
+      }
       if (req.method === 'POST' && url.pathname === '/infer') {
         return await upload(req, res, url, config, state, selected, 'image');
       }
@@ -50,6 +56,17 @@ function createRouter(config, state) {
       else res.destroy();
     }
   };
+}
+
+async function controlScenario(req, res, config, state) {
+  const body = jsonBody(await readBody(req, config.maxBodyBytes));
+  if (!body || Array.isArray(body) || Object.keys(body).length !== 1 || !SCENARIOS.has(body.scenario)) {
+    const error = new Error('Invalid stub scenario');
+    error.statusCode = 400;
+    throw error;
+  }
+  state.setScenario(body.scenario);
+  return reply.json(res, 200, { simulated: true, scenario: body.scenario });
 }
 
 function capabilities(res) {
@@ -112,10 +129,10 @@ function stop(req, res, state, selected, id) {
   return value ? reply.json(res, 200, value) : reply.problem(res, 404, 'Session not found');
 }
 
-function artifact(res, pathname) {
+function artifact(res, pathname, selected) {
   const name = pathname.slice('/artifacts/'.length);
   if (!/^[A-Za-z0-9_.-]+$/.test(name)) return reply.problem(res, 400, 'Invalid artifact name');
-  return reply.binary(res, imageBytes, name === 'interrupted' || name === 'interrupted.png');
+  return reply.binary(res, imageBytes, selected === 'artifact-interrupted');
 }
 
 module.exports = { createRouter, SOURCE };

@@ -21,7 +21,8 @@
     "GET /stream-sessions/{providerSessionId}",
     "GET /stream-sessions/{providerSessionId}/events",
     "POST /stream-sessions/{providerSessionId}/stop",
-    "GET /artifacts/{artifactName}"
+    "GET /artifacts/{artifactName}",
+    "POST /__stub/scenario"
   ],
   "scenarios": [
     "success",
@@ -39,6 +40,8 @@
   "scenarioSelection": {
     "header": "X-WGAI-Stub-Scenario",
     "query": "scenario",
+    "environmentDefault": "WGAI_STUB_DEFAULT_SCENARIO",
+    "developmentControl": "POST /__stub/scenario",
     "default": "success"
   },
   "prohibitedRequestFields": [

@@ -6,6 +6,9 @@ const { root, sql } = require('../../round3/scripts/runtime.cjs')
 const { request, login, jsonPost, receipts } = require('../../round3/scripts/http.cjs')
 
 const evidence = path.resolve(__dirname, '..')
+const requestedOutput = process.env.WGAI_ACCEPTANCE_OUTPUT
+const output = requestedOutput ? path.resolve(root, requestedOutput) : path.join(evidence, 'app-e2e.actual.json')
+if (!output.startsWith(root + path.sep)) throw new Error('Acceptance output must stay inside the workspace')
 const prefix = 'round5-stub-' + Date.now()
 const sleep = millis => new Promise(resolve => setTimeout(resolve, millis))
 const digest = bytes => crypto.createHash('sha256').update(bytes).digest('hex')
@@ -162,7 +165,8 @@ async function main() {
     downloaded, historyItems: history.body.result.items.length, databaseRows: rows,
     requests: receipts.map(item => ({ method: item.method, url: item.url, status: item.status }))
   }
-  fs.writeFileSync(path.join(evidence, 'app-e2e.actual.json'), JSON.stringify(result, null, 2) + '\n')
+  fs.mkdirSync(path.dirname(output), { recursive: true })
+  fs.writeFileSync(output, JSON.stringify(result, null, 2) + '\n')
   console.log(JSON.stringify(result, null, 2))
 }
 

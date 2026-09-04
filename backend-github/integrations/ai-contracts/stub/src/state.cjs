@@ -3,7 +3,13 @@
 const { streamSession, streamEvents } = require('./fixtures.cjs');
 
 class StubState {
-  constructor() { this.sessions = new Map(); this.records = []; }
+  constructor(defaultScenario = 'success') {
+    this.defaultScenario = defaultScenario;
+    this.sessions = new Map();
+    this.records = [];
+  }
+
+  setScenario(value) { this.defaultScenario = value; }
 
   record(method, path, scenario, requestId = null) {
     this.records.push({ method, path, scenario, requestId, simulated: true, at: new Date().toISOString() });
