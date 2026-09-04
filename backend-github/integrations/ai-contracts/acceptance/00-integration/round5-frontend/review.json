@@ -1,0 +1,15 @@
+{
+  "status": "PASS_WITH_EXTERNAL_BLOCKER",
+  "base": "f242a027a2e2827f5445bea80e517c472ff1e3c9",
+  "delivery": "d81a89648eba104995c4e26b6c607a850077226e",
+  "changedPathCount": 38,
+  "changedPathsOwned": true,
+  "backendBusinessCodeUnchanged": true,
+  "frozenContractsUnchanged": true,
+  "frontendDependenciesUnchanged": true,
+  "backendMasterUnchanged": true,
+  "productionVideoAndStreamHardDisabled": true,
+  "browserOpaqueSourceBoundary": true,
+  "externalBlocker": "Provider draft v0.2 remains UNCONFIRMED; 05 must obtain actual method, TLS/CA, authentication, media examples, limits, event query and stop semantics before enabling remote video or stream capabilities.",
+  "releaseDecision": "04b and the serial 03→04a→04b integration gate are accepted; this is not 5.1, 6.5 or an RC."
+}
