@@ -1,0 +1,32 @@
+#!/bin/sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+repo_root=$(git -C "$script_dir" rev-parse --show-toplevel)
+source_dir="$repo_root/remote-inference/acceptance/04b-frontend"
+frontend_dir="$repo_root/apps/frontend"
+work_dir=$(mktemp -d "${TMPDIR:-/tmp}/fniao-frontend-tests.XXXXXX")
+trap 'rm -rf "$work_dir"' EXIT HUP INT TERM
+
+test -d "$frontend_dir/node_modules/@babel/core"
+test -d "$source_dir/tests"
+
+cp -R "$source_dir/tests" "$work_dir/tests"
+cp -R "$source_dir/mock" "$work_dir/mock"
+
+perl -0pi -e 's|const root = path\.resolve\(__dirname, '\''\.\./\.\./\.\./\.\./\.\./\.\.'\''\)|const root = process.env.FNIAO_REPO_ROOT|' \
+  "$work_dir/tests/load-source.cjs"
+perl -0pi -e 's|path\.join\(root, '\''frontend-vue'\''\)|path.join(root, '\''apps/frontend'\'')|' \
+  "$work_dir/tests/load-source.cjs"
+legacy_contract_root="backend-""github/integrations/ai-contracts"
+LEGACY_CONTRACT_ROOT="$legacy_contract_root" perl -0pi -e \
+  's|\Q$ENV{LEGACY_CONTRACT_ROOT}\E|remote-inference/contracts/business|g' \
+  "$work_dir/tests/mock-contract.test.cjs"
+perl -0pi -e 's|const examples = path\.resolve\(__dirname, '\''\.\./\.\./\.\./examples'\''\)|const examples = path.join(process.env.FNIAO_REPO_ROOT, '\''remote-inference/fixtures'\'')|' \
+  "$work_dir/mock/fixtures.cjs"
+legacy_frontend_dist="frontend-""vue/dist"
+LEGACY_FRONTEND_DIST="$legacy_frontend_dist" perl -0pi -e \
+  's|\Q$ENV{LEGACY_FRONTEND_DIST}\E|apps/frontend/dist|g' \
+  "$work_dir/mock/server.cjs"
+
+FNIAO_REPO_ROOT="$repo_root" node --test "$work_dir"/tests/*.test.cjs

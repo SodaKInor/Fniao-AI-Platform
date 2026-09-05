@@ -2,7 +2,8 @@
 set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-DEPLOY_DIR=$(CDPATH= cd -- "$SCRIPT_DIR/.." && pwd)
+REPO_ROOT=$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)
+DEPLOY_DIR="$REPO_ROOT/deploy"
 
 if [ "$(uname -s)" != "Darwin" ]; then
   echo "This bootstrap targets the current macOS host. See README_DEPLOY.md for Linux prerequisites." >&2

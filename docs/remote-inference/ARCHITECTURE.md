@@ -1,6 +1,6 @@
 # 远程推理平台架构与代码约束
 
-状态：2026-09-04 基于功能验收提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 和规划起点 `c58df289674c2b246334a4d005ad5ba1c90fae80` 的最新设计。1—7 批、独立 HTTP stub、本地故障门禁及前后端功能模块迁移均已完成；独立最终仓库已建立在 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`，当前只实施第 8 批最终目录整合。真实 RTX 5070/4090 服务验收继续等待同事交付。
+状态：2026-09-04 基于功能验收提交 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 和规划起点 `c58df289674c2b246334a4d005ad5ba1c90fae80` 的最新设计。1—8 批的本地 `simulated/stub` 与 `disabled` 候选已经完成；真实 RTX 5070/4090 服务验收继续等待同事交付。
 
 ## 1. 项目边界
 
@@ -18,15 +18,15 @@ Fniao-AI-Platform/
 └── tools/                        项目工具脚本
 ```
 
-当前业务源码仍位于 `backend-github` 和 `frontend-vue`，但内部功能分包已经完成。第 8 批先串行迁移 `apps` 壳，再从同一验收 SHA 并行迁移 database 与 remote-inference，最后串行修复共享路径和生成本地 RC；具体边界见 `PARALLEL_PLAN.md`。
+业务源码已经进入 `apps/backend` 和 `apps/frontend`，database 与 remote-inference 边界也已从同一 `08A_SHA` 完成零重叠迁移并串行合入。01—07 验收材料中的旧绝对路径仅为历史记录；活动工具和运行入口均从当前 Git 根解析。
 
 GPU 服务、算法、模型、权重、驱动和显卡运行时由同事负责，不进入本仓库。`remote-inference/stub` 只模拟版本化 HTTP 接口，不产生真实算法结果。`backend-master` 始终只读且不进入最终仓库。
 
 ## 2. 后端按功能分包
 
-当前已完成迁移的 Java 根为：
+当前 Java 根为：
 
-`backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`
+`apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`
 
 最终 Maven 工程整体进入 `apps/backend`，上述 Java 包名保持 `org.jeecg.modules.ai`，内部已经是：
 
@@ -68,7 +68,7 @@ legacy                 -> 已确认的新 application 入口
 
 ## 4. 前端按功能组织
 
-当前已完成迁移的前端根为 `frontend-vue/src/modules/ai`；最终随 Vue 工程整体迁入：
+当前前端根为 `apps/frontend/src/modules/ai`：
 
 ```text
 apps/frontend/src/modules/ai/

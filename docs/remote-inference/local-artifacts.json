@@ -1,4 +1,6 @@
 {
+  "status": "HISTORICAL_PRE_LAYOUT_MANIFEST",
+  "pathNote": "Paths record the pre-layout source location; current private intake paths are documented in deploy/README_DEPLOY.md.",
   "artifacts": [
     {
       "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/asrt_sdk_maven-1.0-alpha1.jar",

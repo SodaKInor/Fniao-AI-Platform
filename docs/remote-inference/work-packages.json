@@ -1,5 +1,6 @@
 {
   "schema_version": 3,
+  "status": "HISTORICAL_01_TO_07_AND_STAGE_8_CONSTRUCTION_RECORD",
   "change": "remote-inference-platform",
   "task_count": 56,
   "packages": [

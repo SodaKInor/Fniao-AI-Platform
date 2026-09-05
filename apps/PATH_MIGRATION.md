@@ -34,12 +34,12 @@ npm run build
 
 父 POM 仍默认跳过测试以保持原构建行为，但 Surefire 开关现可由验证流程用 `-DskipTests=false` 覆盖。前端沿用现有部署基线的 Node `16.20.2`；Node 24 与本项目旧 webpack/Terser 的 OpenSSL 实现不兼容，不属于受支持的构建运行时。
 
-AI 测试夹具不再依赖旧的 `/workspace/backend-github` 绝对路径；默认从当前 Maven 模块或仓库根向上定位 `integrations/ai-contracts/examples`，也可通过 `-Dai.test.examples=<path>` 明确指定。
+AI 测试夹具不依赖旧的构建绝对路径；默认从当前 Maven 模块向上定位仓库根的 `remote-inference/fixtures`，也可通过 `-Dai.test.examples=<path>` 明确指定。
 
 ## 留给后续阶段
 
 - 阶段 A 不建立或迁移最终的 `database/`、`remote-inference/`、`docs/remote-inference/`、`deploy/remote-inference/`。
-- 根 Compose、Docker 构建上下文、README、Graphify/Serena 管理脚本和其余活动路径在两个并行包合并后的阶段 D 统一修复。
+- 根 Compose、Docker 构建上下文、README、Graphify/Serena 管理脚本和其余活动路径已在阶段 D 统一修复。
 - 01—07 历史验收证据中的旧路径保持原样，作为当时执行环境的可追溯记录。
 
 ## 阶段 A 验证结果

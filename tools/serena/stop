@@ -1,37 +1,29 @@
 #!/bin/zsh
 set -eu
 
-label="com.local.wgai-serena"
-domain="gui/$(id -u)"
-fallback_pid_file="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime/fallback.pid"
-stopped=false
+script_dir="${0:A:h}"
+source "$script_dir/_common"
 
-if launchctl print "$domain/$label" >/dev/null 2>&1; then
-  launchctl bootout "$domain/$label"
-  print "Stopped $label"
-  stopped=true
+if ! screen -ls 2>/dev/null | grep -Eq "[.]${screen_session}[[:space:]]" && \
+   ! launchctl print "gui/$(id -u)/$legacy_launch_label" >/dev/null 2>&1 && \
+   ! lsof -nP -iTCP:"$mcp_port" -sTCP:LISTEN >/dev/null 2>&1; then
+  print "Serena is already stopped for $repo_root"
+  exit 0
 fi
 
-if [ -r "$fallback_pid_file" ]; then
-  fallback_pid="$(<"$fallback_pid_file")"
-  if kill -0 "$fallback_pid" 2>/dev/null; then
-    kill -TERM "$fallback_pid"
-    for attempt in $(seq 1 35); do
-      kill -0 "$fallback_pid" 2>/dev/null || break
-      sleep 1
-    done
-    if kill -0 "$fallback_pid" 2>/dev/null; then
-      command_line="$(ps -p "$fallback_pid" -o command= 2>/dev/null || true)"
-      if [[ "$command_line" == *"wgai-serena-service"* ]]; then
-        kill -KILL "$fallback_pid" 2>/dev/null || true
-      fi
-    fi
-    print "Stopped Serena fallback process (PID $fallback_pid)"
-    stopped=true
+screen -S "$screen_session" -X quit >/dev/null 2>&1 || true
+launchctl remove "$legacy_launch_label" >/dev/null 2>&1 || true
+listener_pids="$(lsof -nP -iTCP:"$mcp_port" -sTCP:LISTEN -t 2>/dev/null || true)"
+if [ -n "$listener_pids" ]; then
+  print -r -- "$listener_pids" | while IFS= read -r listener_pid; do
+    kill -TERM "$listener_pid" 2>/dev/null || true
+  done
+fi
+for attempt in $(seq 1 35); do
+  if ! screen -ls 2>/dev/null | grep -Eq "[.]${screen_session}[[:space:]]" && \
+     ! lsof -nP -iTCP:"$mcp_port" -sTCP:LISTEN >/dev/null 2>&1; then
+    break
   fi
-  rm -f "$fallback_pid_file"
-fi
-
-if [ "$stopped" = false ]; then
-  print "$label is already stopped"
-fi
+  sleep 1
+done
+print "Stopped Serena for $repo_root"

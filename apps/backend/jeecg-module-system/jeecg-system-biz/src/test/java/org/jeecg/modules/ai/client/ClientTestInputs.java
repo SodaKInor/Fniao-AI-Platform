@@ -36,16 +36,12 @@ public final class ClientTestInputs {
             return Paths.get(configured).toAbsolutePath().normalize();
         }
         for (Path root = Paths.get("").toAbsolutePath(); root != null; root = root.getParent()) {
-            Path backendRelative = root.resolve("integrations/ai-contracts/examples");
-            if (Files.isDirectory(backendRelative)) {
-                return backendRelative;
-            }
-            Path repositoryRelative = root.resolve("apps/backend/integrations/ai-contracts/examples");
+            Path repositoryRelative = root.resolve("remote-inference/fixtures");
             if (Files.isDirectory(repositoryRelative)) {
                 return repositoryRelative;
             }
         }
-        throw new IllegalStateException("Cannot locate integrations/ai-contracts/examples");
+        throw new IllegalStateException("Cannot locate remote-inference/fixtures");
     }
 
     public static String example(String name) throws IOException {

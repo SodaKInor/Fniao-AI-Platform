@@ -1,66 +1,31 @@
 #!/bin/zsh
 set -eu
 
-if [ "$(uname -s)" != "Darwin" ]; then
-  print -u2 "This Serena service is managed by macOS launchd."
-  exit 1
-fi
-
-label="com.local.wgai-serena"
-domain="gui/$(id -u)"
-plist="/Users/twowt88/Library/LaunchAgents/${label}.plist"
-runtime_dir="/Users/twowt88/Documents/ChatGPT/WGAI/.serena/runtime"
-port_file="$runtime_dir/port"
-fallback_pid_file="$runtime_dir/fallback.pid"
-stdout_log="$runtime_dir/serena.stdout.log"
-stderr_log="$runtime_dir/serena.stderr.log"
-runner="/Users/twowt88/.local/bin/wgai-serena-service"
 script_dir="${0:A:h}"
-port=9121
-[ -r "$port_file" ] && port="$(<"$port_file")"
-
+source "$script_dir/_common"
 mkdir -p "$runtime_dir"
-if [ -r "$fallback_pid_file" ]; then
-  fallback_pid="$(<"$fallback_pid_file")"
-  if kill -0 "$fallback_pid" 2>/dev/null; then
-    print "Serena fallback process is already running (PID $fallback_pid)."
-    exec "$script_dir/status"
-  fi
-  rm -f "$fallback_pid_file"
+launch_runner="$HOME/.local/bin/fniao-serena-service"
+mkdir -p "${launch_runner:h}"
+install -m 755 "$script_dir/launch" "$launch_runner"
+
+if screen -ls 2>/dev/null | grep -Eq "[.]${screen_session}[[:space:]]"; then
+  print "Serena screen session is already registered for $repo_root."
+  exec "$script_dir/status"
 fi
 
-if launchctl print "$domain/$label" >/dev/null 2>&1; then
-  launchctl enable "$domain/$label"
-  launchctl kickstart -k "$domain/$label"
-else
-  launchctl bootstrap "$domain" "$plist"
-  launchctl enable "$domain/$label"
-fi
+launchctl remove "$legacy_launch_label" >/dev/null 2>&1 || true
+: > "$stdout_log"
+: > "$stderr_log"
+cd "$repo_root"
+screen -DmS "$screen_session" \
+  "$launch_runner" "$serena_bin" "$repo_root" "$mcp_port" "$HOME" "$stdout_log" "$stderr_log" "$node_bin_dir" \
+  >/dev/null 2>&1 &
 
 for attempt in $(seq 1 60); do
-  if lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
+  if lsof -nP -iTCP:"$mcp_port" -sTCP:LISTEN 2>/dev/null | grep -q '127.0.0.1'; then
     exec "$script_dir/status"
   fi
-  if [ "$attempt" -ge 20 ] && ! lsof -nP -iTCP:24282 -sTCP:LISTEN >/dev/null 2>&1; then
-    break
-  fi
-  sleep 1
-done
-
-# macOS can deny launchd access to projects under Documents even though the
-# invoking Terminal/Codex session has access. Fall back to a detached process
-# under the current authorized user session while keeping the LaunchAgent ready
-# for use after the one-time privacy permission is granted.
-launchctl bootout "$domain/$label" >/dev/null 2>&1 || true
-fallback_pid="$(/usr/bin/python3 -c 'import subprocess,sys; out=open(sys.argv[2],"ab",buffering=0); err=open(sys.argv[3],"ab",buffering=0); p=subprocess.Popen([sys.argv[1]],stdin=subprocess.DEVNULL,stdout=out,stderr=err,cwd="/Users/twowt88",start_new_session=True); print(p.pid)' "$runner" "$stdout_log" "$stderr_log")"
-print "$fallback_pid" > "$fallback_pid_file"
-
-for attempt in $(seq 1 60); do
-  if lsof -nP -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
-    print "Serena is running in authorized-session fallback mode (PID $fallback_pid)."
-    exec "$script_dir/status"
-  fi
-  if ! kill -0 "$fallback_pid" 2>/dev/null; then
+  if ! screen -ls 2>/dev/null | grep -Eq "[.]${screen_session}[[:space:]]"; then
     break
   fi
   sleep 1

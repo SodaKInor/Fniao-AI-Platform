@@ -1,7 +1,8 @@
 ARG MYSQL_IMAGE=mysql:8.0.36
 FROM ${MYSQL_IMAGE}
 
-# Initialization files are part of the local image so Docker Desktop does not
-# need a runtime bind mount into the macOS Documents directory.
-COPY backend-github/db/java_ai.sql /docker-entrypoint-initdb.d/001-java_ai.sql
-COPY deploy/db/002-local-sanitize.sql /docker-entrypoint-initdb.d/002-local-sanitize.sql
+# The private baseline is mounted read-only at runtime by Compose because it can
+# exceed BuildKit's 500 KiB secret limit. It remains outside the build context.
+COPY database/bootstrap/002-local-sanitize.sql /docker-entrypoint-initdb.d/002-local-sanitize.sql
+COPY database/migrations/ai-core/V001__04a_assets_jobs.sql /docker-entrypoint-initdb.d/003-V001__04a_assets_jobs.sql
+COPY database/migrations/stream/V002__04a_video_stream.sql /docker-entrypoint-initdb.d/004-V002__04a_video_stream.sql

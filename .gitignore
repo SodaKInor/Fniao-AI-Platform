@@ -44,6 +44,7 @@
 /apps/backend/**/bootstrap*.yaml
 !/apps/backend/jeecg-module-system/jeecg-system-start/src/main/resources/application.yml
 /apps/backend/**/jeecg_database.properties
+!/apps/backend/jeecg-module-system/jeecg-system-start/src/main/resources/jeecg/jeecg_database.properties
 /apps/backend/**/docs/config/
 /apps/backend/docker-compose*.yml
 /apps/backend/jeecg-server-cloud/docker-compose*.yml

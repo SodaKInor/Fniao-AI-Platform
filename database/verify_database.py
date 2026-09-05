@@ -242,6 +242,7 @@ def main():
     parser.add_argument("--baseline", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--image", default="mysql:8.0.36")
+    parser.add_argument("--scope-mode", choices=("integration", "package"), default="integration")
     args = parser.parse_args()
 
     if command(["git", "rev-parse", "--show-toplevel"]).stdout.decode().strip() != str(ROOT):
@@ -251,7 +252,7 @@ def main():
         raise RuntimeError("--baseline must be an existing file outside the repository")
 
     manifest, checksums = load_and_check_manifest(args.base)
-    changed = check_scope(args.base)
+    changed = check_scope(args.base) if args.scope_mode == "package" else []
     codegen_count = check_private_and_codegen()
     mysql = IsolatedMysql(args.image)
     removed = False
@@ -317,6 +318,7 @@ def main():
                 "baseline": "authorized-external-private-snapshot",
             },
             "static": {
+                "scopeMode": args.scope_mode,
                 "changedPaths": changed,
                 "manifestChecksums": checksums,
                 "codeGeneratorSqlFilesRemainingInApps": codegen_count,

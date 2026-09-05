@@ -1,8 +1,8 @@
 # 并行文件归属
 
-01—07 已在 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 完成。以下归属重点约束第 8 批；最终目录为 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`，两个并行包只在同级 `Fniao-AI-Platform-worktrees` 下各自的 worktree 写入并提交，工作树之间只合并提交。
+01—07 已在 `a14450ec0ed82cd329a666e52ac12c15cce3515d` 完成；第 8 批两个并行目录包已从同一 `08A_SHA` 提交并以零重叠方式串行合入。下表保留施工归属作为可追溯记录，后续活动源码只位于当前 Git 根。
 
-当前 Java AI 根为 `backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`，前端 AI 文件位于 `frontend-vue/src`。目标功能模块见 `ARCHITECTURE.md`。
+当前 Java AI 根为 `apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/`，前端 AI 文件位于 `apps/frontend/src/modules/ai`。目标功能模块见 `ARCHITECTURE.md`。
 
 | 区域/文件 | 所有者 | 约束 |
 |---|---|---|
@@ -10,13 +10,13 @@
 | 既有业务/provider 契约、公共 DTO、状态与端口 | 02-contract，经 00 协调 | 已冻结类型不由消费包私自更改；stub 所需新增字段先走契约审查 |
 | `AI_ROOT/client`、provider 端口与配置 | 03-client；后续修复由 00 明确分派 | provider 严格转换、网络、凭据和信任；不访问业务表 |
 | 资产、任务、结果、流会话的应用/持久化/存储 | 04a；恢复补丁由 06 | 06 从已集成 04a 起点工作，不同时修改同一文件 |
-| 当前 `frontend-vue/src/{api,services,components,views}/ai` 及 AI 路由 | 04b；故障补丁由 06 | 07 才统一移动到功能模块；此前保持契约兼容 |
+| 原前端分层目录及 AI 路由 | 04b；故障补丁由 06 | 07 已统一移动到 `apps/frontend/src/modules/ai`，该旧描述只用于追溯 |
 | 旧后端/前端执行守卫和能力门禁 | 03/04b；清理由 07 | 直接请求与菜单一致，remote/disabled 不回退旧算法 |
-| `backend-github/deploy/remote-ai/migrations` 的既有 V001/V002 | 04a 内容所有；08 路径迁移 | 已交付内容、版本、校验值和顺序不得改写 |
+| `database/migrations/{ai-core,stream}` 的 V001/V002 | 04a 内容所有；08 路径迁移 | 已交付内容、版本、校验值和顺序不得改写 |
 | 05 fail-closed 工具、provider stub 契约增量、独立 HTTP stub、fixtures、stub Compose 和模拟证据 | 05-lan | 可在当前仓库根新增 `remote-inference/stub` 等过渡目录；不修改真实证据目录，不冒充 GPU |
 | job/stream 恢复、取消/停止、竞态、指标和日志 | 06-resilience | 先合入 05 stub；用 stub 注入故障，不擅自修改公共契约 |
 | AI_ROOT 与前端 AI 代码的功能模块迁移、旧入口和无引用依赖清理 | 07-cleanup | 按 capability/asset/job/result/image/video/stream/provider/operations/legacy 分组；每组独立提交和回归 |
-| `backend-github`→`apps/backend`、`frontend-vue`→`apps/frontend` | `codex/final-layout` 阶段 A | 只移动两个应用根和最小 Maven/npm 构建入口；不提前移动 database 或 remote-inference |
+| 两个应用根的阶段 A 路径迁移 | `codex/final-layout` 阶段 A | 已完成；旧路径仅在迁移清单和历史证据中保留 |
 | `database/bootstrap`、`migrations/ai-core`、`migrations/stream`、`seeds/stub`、`private` | `codex/database-layout` | 只移动数据库文件和本包验证器；V001/V002 字节、校验值、版本与顺序不变 |
 | `remote-inference/{contracts,fixtures,stub,acceptance,handoff}`、`docs/remote-inference`、`deploy/remote-inference` | `codex/remote-boundary` | 与 database-layout 并行；逐文件移动非数据库内容，不接管 migrations、stub seed、根 Compose 或业务源码 |
 | 根 Compose、Dockerfile 上下文、环境模板、备份恢复、AGENTS、README、OpenSpec 链接、Graphify/Serena 脚本、最终报告 | `codex/final-layout` 阶段 D | 合入两个并行分支后串行修复和全量 RC；从 Git 根动态解析活动路径 |

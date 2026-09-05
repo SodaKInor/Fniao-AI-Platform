@@ -2,7 +2,7 @@
 services:
   remote-ai-stub:
     profiles: [remote-ai-stub]
-    image: wgai-remote-ai-stub:${APP_IMAGE_TAG:-local}
+    image: fniao-ai-platform-remote-inference-stub:${APP_IMAGE_TAG:-local}
     build:
       context: ..
       dockerfile: remote-inference/stub/Dockerfile

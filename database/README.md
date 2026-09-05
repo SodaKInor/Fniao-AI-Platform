@@ -17,10 +17,10 @@ Run the isolated verification with an approved private dump that is outside Git:
 ```sh
 python3 database/verify_database.py \
   --base 07f970bd475a70554946140427c15635e0802cca \
-  --baseline database/private/java_ai.sql \
+  --baseline /absolute/private/path/java_ai.sql \
   --report database/validation/last-run.json
 ```
 
-The verifier starts a network-isolated MySQL container backed by temporary memory, never attaches an existing volume, applies bootstrap and V001→V002 twice, exercises the stub seed twice, then removes the container.
+The verifier starts a network-isolated MySQL container backed by temporary memory, never attaches an existing volume, applies bootstrap and V001→V002 twice, exercises the stub seed twice, then removes the container. `--scope-mode package` is reserved for rechecking the original database-only branch; the final integrated tree uses the default `integration` mode.
 
 Code-generator and feature-owned `*_menu_insert.sql` files remain in `apps/backend` or `apps/frontend`; they are not deployment migrations.

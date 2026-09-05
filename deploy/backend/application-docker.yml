@@ -12,6 +12,10 @@ management:
         include: health,metrics
 
 spring:
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  mail:
+    username: ""
   servlet:
     multipart:
       max-file-size: 2GB
@@ -31,6 +35,19 @@ spring:
     port: ${REDIS_PORT:6379}
     password: ${REDIS_PASSWORD}
 
+mybatis-plus:
+  mapper-locations: classpath*:org/jeecg/modules/**/xml/*Mapper.xml
+  global-config:
+    banner: false
+    db-config:
+      id-type: ASSIGN_ID
+      table-underline: true
+  configuration:
+    call-setters-on-nulls: true
+
+minidao:
+  base-package: org.jeecg.modules.jmreport.*
+
 jeecg:
   uploadType: local
   path:
@@ -38,11 +55,19 @@ jeecg:
     webapp: /data/webapp
   elasticsearch:
     check-enabled: false
+    cluster-nodes: ""
   file-view-domain: ""
   minio:
     minio_url: ""
     minio_name: ""
     minio_pass: ""
+    bucketName: ""
+  oss:
+    endpoint: ""
+    accessKey: ""
+    secretKey: ""
+    bucketName: ""
+    staticDomain: ""
   xxljob:
     enabled: false
   redisson:

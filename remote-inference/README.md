@@ -1,10 +1,9 @@
 # AI 接口共同交付
 
-当前冻结 contracts/business/v1.1/business.openapi.json（内部 1.1.0），并保留不可变的
-contracts/business/v1/business.openapi.json（1.0.0 图片兼容基线）。外部图片草案
-contracts/provider/v0.1.openapi.json 与视频/流扩展草案 contracts/provider/v0.2.openapi.json
-均为 UNCONFIRMED，不是已上线接口。后续 03/04a/04b 必须从 00 记录的同一冻结提交开始，
-不自行改公开字段或类型。
+当前冻结 `contracts/business/v1.1/business.openapi.json`（内部 1.1.0），并保留不可变的
+`contracts/business/v1/business.openapi.json`（1.0.0 图片兼容基线）。外部图片草案
+`contracts/provider/v0.1.openapi.json` 与视频/流扩展草案 `contracts/provider/v0.2.openapi.json`
+均为 UNCONFIRMED，不是已上线接口。业务前后端已按冻结契约实现；未来真实 provider 适配不得自行改公开字段或类型。
 
 - [1.1 图片、上传视频和实时流语义](contracts/business/v1.1/SEMANTICS.md)
 - [1.0 图片兼容基线](contracts/business/v1/SEMANTICS.md)
@@ -15,13 +14,13 @@ contracts/provider/v0.1.openapi.json 与视频/流扩展草案 contracts/provide
 - [来源、备份和环境基线](acceptance/01-foundation/README.md)
 
 内部任务负责登录、用户归属、输入/成果、幂等和等待。外部提供方只通过已冻结 provider
-端口接入；前端看不到服务凭据、路径、原始协议。同步提供方不必实现任务系统。图片查询、
-取消、去重及视频/流查询、事件、停止、去重均未经确认；相关 feature flag 全为 false，
-真实资料不全时对应能力保持 disabled。
+端口接入；前端看不到服务凭据、路径、原始协议。独立 HTTP stub 可验证图片、视频和流的
+本地网络适配与故障语义，但所有结果均标识 `simulated/stub`。真实查询、取消、去重及流停止
+能力未经同事服务证明前保持 disabled。
 
-API DTO 使用已有 Jackson annotations，未增加依赖。领域和端口使用 Java 8 标准库，可单独编译；
-每个公开类型单文件且不使用无约束 Map。本包没有客户端、仓储实现、Controller、业务编排或
-前端实现。实际实现必须执行 schema 中的限制与语义校验，声明本身不是运行时保护。
+API DTO 使用已有 Jackson annotations。领域和端口使用 Java 8 标准库，每个公开类型单文件且
+不使用无约束 Map。业务实现位于 `apps/backend` 与 `apps/frontend`；本目录不拥有 Controller、
+业务持久化或页面源码。
 
 契约引用均为文档内 JSON Pointer，不依赖网络 schema。OpenAPI 校验器同时检查 1.0、1.1 和
 两份 provider 草案，并验证 manifest 的正反样例。私有制品和构建输入依照 01 的复现步骤取得，

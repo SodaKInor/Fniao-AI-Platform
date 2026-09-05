@@ -1,18 +1,18 @@
 # 远程推理平台最新并行与串行计划
 
-## 1. 当前状态
+## 1. 完成状态
 
 截至 2026-09-04，01—07 已完成并验收：独立 HTTP stub、恢复与 UNKNOWN、取消/停止、图片/视频/流闭环、前后端功能分包和确认淘汰的旧执行入口均已处理。功能验收基线为 `a14450ec0ed82cd329a666e52ac12c15cce3515d`，包含最新目录规划的施工起点为 `c58df289674c2b246334a4d005ad5ba1c90fae80`。
 
-剩余工作只包括第 8 批最终目录整合。真实 RTX 5070 局域网和 Ubuntu 单张扩容 48GB RTX 4090 门禁等待同事服务，不阻止本地 stub/disabled RC，但阻止真实服务结论和 OpenSpec 归档。
+第 8 批两个并行目录包已经完成并串行合入；本文保留其拓扑、提交边界和清理门禁作为历史施工记录。真实 RTX 5070 局域网和 Ubuntu 单张扩容 48GB RTX 4090 门禁等待同事服务，不阻止本地 stub/disabled RC，但阻止真实服务结论和 OpenSpec 归档。
 
 独立最终仓库已经建立在：
 
 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform`
 
-当前结构分支为 `codex/final-layout`。旧 WGAI 及 WGAI-parallel 只保留历史和追溯，不再作为剩余第 8 批的写入目录。
+施工分支为 `codex/final-layout`。旧 WGAI、WGAI-parallel 及同级临时工作树只保留历史和追溯，不是活动路径。
 
-## 2. 并行关系
+## 2. 已执行的并行关系
 
 第 8 批采用“一次串行建壳、两个零重叠目录包并行、一次串行收口”：
 

@@ -1,10 +1,12 @@
-# WGAI tool state and backups
+# Generated tool state, private data and frozen historical evidence
 .setup-backups/
 .serena/
 .codex/
 .agents/
 openspec/
 graphify-out/
+database/private/
+remote-inference/acceptance/
 
 # Archives and generated dependencies/builds
 *.zip

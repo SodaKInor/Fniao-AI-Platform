@@ -1,4 +1,5 @@
-# Merge after the existing isolated Compose configuration. Does not declare ports, volumes or GPU services.
+# Optional compatibility overlay for an external Compose file. The repository's
+# canonical deploy/docker-compose.yml already loads this disabled-by-default profile.
 services:
   backend:
     environment:
@@ -22,8 +23,3 @@ services:
       WGAI_INFERENCE_OUTPUT_MAX_BYTES: ${WGAI_INFERENCE_OUTPUT_MAX_BYTES:-10485760}
       WGAI_INFERENCE_VIDEO_UPLOAD_MAX_BYTES: ${WGAI_INFERENCE_VIDEO_UPLOAD_MAX_BYTES:-536870912}
       WGAI_INFERENCE_VIDEO_OUTPUT_MAX_BYTES: ${WGAI_INFERENCE_VIDEO_OUTPUT_MAX_BYTES:-536870912}
-    volumes:
-      - type: bind
-        source: ${WGAI_REMOTE_AI_CONFIG_FILE:?absolute path to application-remote-ai.yml required}
-        target: /app/config/application-remote-ai.yml
-        read_only: true

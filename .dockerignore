@@ -1,9 +1,13 @@
 .git
 *.zip
 backend-master
+database/private
+remote-inference/acceptance
+graphify-out
+.serena
 deploy/.env
 deploy/diffs
 **/node_modules
 **/target
-frontend-vue/dist
+apps/frontend/dist
 .DS_Store

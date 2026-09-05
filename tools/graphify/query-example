@@ -1,10 +1,12 @@
 #!/bin/zsh
 set -eu
 
-workspace="/Users/twowt88/Documents/ChatGPT/WGAI"
-cd "$workspace"
+script_dir="${0:A:h}"
+repo_root="$(git -C "$script_dir" rev-parse --show-toplevel)"
+graphify_bin="$(command -v graphify)"
+cd "$repo_root"
 
 print "== 中文查询 =="
-/Users/twowt88/.local/bin/graphify query "帮我梳理后端启动入口、前端 API 调用入口、数据库初始化脚本与核心模块关系"
+"$graphify_bin" query "帮我梳理后端启动入口、前端 API 调用入口、数据库初始化脚本与核心模块关系"
 print "== Equivalent English query =="
-/Users/twowt88/.local/bin/graphify query "backend startup entry frontend API call entry database initialization scripts and core module relationships"
+"$graphify_bin" query "backend startup entry frontend API call entry database initialization scripts and core module relationships"

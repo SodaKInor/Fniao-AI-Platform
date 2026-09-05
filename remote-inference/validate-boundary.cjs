@@ -171,8 +171,13 @@ function validateProductionIsolation() {
       || !application.includes('development-stub: ${WGAI_INFERENCE_DEVELOPMENT_STUB:false}')) {
     fail('application profile must default to disabled with the development stub off');
   }
-  if (/remote-ai-stub|WGAI_INFERENCE_DEVELOPMENT_STUB|stub\.override/.test(rootCompose)) {
+  if (/^\s{2}remote-ai-stub:/m.test(rootCompose)
+      || /remote-inference\/stub\/Dockerfile|stub\.override/.test(rootCompose)) {
     fail('root Compose must not start or reference the development stub by default');
+  }
+  if (!rootCompose.includes('WGAI_INFERENCE_MODE: ${WGAI_INFERENCE_MODE:-disabled}')
+      || !rootCompose.includes('WGAI_INFERENCE_DEVELOPMENT_STUB: ${WGAI_INFERENCE_DEVELOPMENT_STUB:-false}')) {
+    fail('root Compose must load remote inference in disabled, non-stub mode by default');
   }
   const stubOverride = read('deploy/remote-inference/stub.override.yml');
   if (!stubOverride.includes('profiles: [remote-ai-stub]')

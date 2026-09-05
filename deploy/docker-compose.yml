@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: wgai-mysql:${APP_IMAGE_TAG:-local}
+    image: fniao-ai-platform-mysql:${APP_IMAGE_TAG:-local}
     build:
       context: ..
       dockerfile: deploy/mysql/Dockerfile
@@ -21,6 +21,10 @@ services:
       - --max_allowed_packet=256M
     volumes:
       - mysql_data:/var/lib/mysql
+      - type: bind
+        source: ${DATABASE_BASELINE_FILE:-../database/private/java_ai.sql}
+        target: /docker-entrypoint-initdb.d/001-java_ai.sql
+        read_only: true
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$${MYSQL_ROOT_PASSWORD}\" --silent"]
       interval: 10s
@@ -45,7 +49,7 @@ services:
     networks: [app]
 
   backend:
-    image: wgai-backend:${APP_IMAGE_TAG:-local}
+    image: fniao-ai-platform-backend:${APP_IMAGE_TAG:-local}
     build:
       context: ..
       dockerfile: deploy/backend/Dockerfile
@@ -55,7 +59,16 @@ services:
     restart: unless-stopped
     environment:
       TZ: Asia/Shanghai
-      SPRING_PROFILES_ACTIVE: prod,docker
+      SPRING_PROFILES_ACTIVE: prod,docker,remote-ai
+      SPRING_CONFIG_LOCATION: classpath:/application.yml,file:/app/config/application-docker.yml,file:/app/config/application-remote-ai.yml
+      SPRING_AUTOCONFIGURE_EXCLUDE: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+      JEECG_ELASTICSEARCH_CLUSTER_NODES: ""
+      JEECG_OSS_ENDPOINT: ""
+      JEECG_OSS_ACCESSKEY: ""
+      JEECG_OSS_SECRETKEY: ""
+      JEECG_OSS_BUCKETNAME: ""
+      JEECG_MINIO_BUCKETNAME: ""
+      SPRING_MAIL_USERNAME: ""
       SERVER_PORT: ${BACKEND_INTERNAL_PORT:-8080}
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
@@ -79,8 +92,19 @@ services:
       WGAI_ASR_PORT: ${WGAI_ASR_PORT:-}
       WGAI_ASR_PROTOCOL: ${WGAI_ASR_PROTOCOL:-http}
       WGAI_CAMERA_STREAM_URL: ${WGAI_CAMERA_STREAM_URL:-}
+      WGAI_INFERENCE_MODE: ${WGAI_INFERENCE_MODE:-disabled}
+      WGAI_INFERENCE_DEVELOPMENT_STUB: ${WGAI_INFERENCE_DEVELOPMENT_STUB:-false}
+      WGAI_INFERENCE_PROVIDER_KEY: ${WGAI_INFERENCE_PROVIDER_KEY:-remote}
+      WGAI_INFERENCE_BASE_URL: ${WGAI_INFERENCE_BASE_URL:-}
+      WGAI_INFERENCE_APPROVED_ORIGIN: ${WGAI_INFERENCE_APPROVED_ORIGIN:-}
+      WGAI_INFERENCE_TOKEN_FILE: ${WGAI_INFERENCE_TOKEN_FILE:-/run/secrets/wgai-inference-token}
+      WGAI_INFERENCE_CA_FILE: ${WGAI_INFERENCE_CA_FILE:-}
     volumes:
       - backend_uploads:/data/uploads
+      - backend_ai_private:/data/ai-private
+      - ./backend/application-docker.yml:/app/config/application-docker.yml:ro
+      - ./remote-inference/application-remote-ai.yml:/app/config/application-remote-ai.yml:ro
+      - ../apps/backend/jeecg-module-system/jeecg-system-start/src/main/resources/jeecg/jeecg_database.properties:/app/config/jeecg/jeecg_database.properties:ro
       - ./assets/models:/opt/wgai/models:ro
       - ./assets/native:/opt/wgai/native:ro
     depends_on:
@@ -97,7 +121,7 @@ services:
     networks: [app]
 
   frontend:
-    image: wgai-frontend:${APP_IMAGE_TAG:-local}
+    image: fniao-ai-platform-frontend:${APP_IMAGE_TAG:-local}
     build:
       context: ..
       dockerfile: deploy/frontend/Dockerfile
@@ -130,3 +154,4 @@ volumes:
   mysql_data:
   redis_data:
   backend_uploads:
+  backend_ai_private:
