@@ -82,6 +82,8 @@ Final tool verification: PASS. The Codex MCP inventory contains the built-in too
 - Only the current Fniao AI Platform MySQL, Redis, backend, and frontend containers remain running. The explicit current stub image is retained for reproducible RC checks, but no stub container runs in the default deployment.
 - Legacy named database/data volumes were intentionally retained as recoverable data. No old WGAI repository or volume was deleted.
 - The old `com.local.wgai-serena` login service is disabled and unloaded; only the current Fniao Serena session is active.
+- The verified database and remote-boundary commits are present on `main`; both temporary sibling worktrees were clean and were removed through Git after the first successful `origin/main` push.
+- The trace-only `source-wgai` remote was removed after that push. `origin` is the sole remaining remote; the old WGAI repository itself remains untouched.
 
 ## Historical-path retention
 

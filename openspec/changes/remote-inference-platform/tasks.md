@@ -88,7 +88,7 @@
 - [x] 8.3 从同一 `08A_SHA` 创建同级工作树 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/remote-boundary`，分支 `codex/remote-boundary`，与 8.2 并行；将契约、fixtures、stub、验收证据、handoff、非数据库远程部署文件和架构文档分别迁入 `remote-inference`、`deploy/remote-inference` 与 `docs/remote-inference`，逐文件移动避免接管 8.2 的迁移和 seed，验证不存在两份可执行规范来源。
 - [x] 8.4 两个并行分支提交后回到 `codex/final-layout`，核对实际文件集合零重叠并依次合并；更新 Compose、Dockerfile、环境模板、备份恢复脚本、AGENTS、OpenSpec 链接、Graphify 和 Serena 管理脚本，使活动路径从 Git 根动态解析；验证正式 Compose 默认无 stub，旧 WGAI 与临时工作树绝对路径不出现在活动配置。
 - [x] 8.5 在最终目录执行 Java、Vue、数据库、Compose、权限、remote→stub、disabled、历史读取、秘密扫描、文件规模、模块依赖和两个 `openspec validate --strict`；生成最终集成报告与本地 RC，明确真实 GPU 门禁未完成；只在最终 Git 根重建一次 Graphify 并将 Serena 指向该根，OpenSpec 不另行复制或注册三遍。
-- [ ] 8.6 验收 08 的结构提交后，将 `codex/final-layout` 合入并推送 `main`；确认当前目录保持独立 `.git`，不包含同级并行工作树、backend-master、旧工具缓存、真实数据库、凭据、素材或模型。合并和状态核对完成后再移除临时 worktree 登记，不重新克隆或覆盖最终目录。
+- [x] 8.6 验收 08 的结构提交后，将 `codex/final-layout` 合入并推送 `main`；确认当前目录保持独立 `.git`，不包含同级并行工作树、backend-master、旧工具缓存、真实数据库、凭据、素材或模型。合并和状态核对完成后再移除临时 worktree 登记，不重新克隆或覆盖最终目录。
 
 ## 9. 第 9 批：真实 GPU 服务验收与正式交付
 
