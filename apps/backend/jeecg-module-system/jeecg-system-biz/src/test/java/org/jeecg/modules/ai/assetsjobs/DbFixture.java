@@ -10,6 +10,7 @@ import org.jeecg.modules.ai.capability.domain.CapabilitySnapshot;
 import org.jeecg.modules.ai.capability.domain.ProviderFeatures;
 import org.jeecg.modules.ai.capability.persistence.repository.MyBatisCapabilityRepository;
 import org.jeecg.modules.ai.capability.port.CapabilityRepository;
+import org.jeecg.modules.ai.client.ClientTestInputs;
 import org.jeecg.modules.ai.image.domain.DetectionData;
 import org.jeecg.modules.ai.image.domain.DetectionParameters;
 import org.jeecg.modules.ai.image.domain.ProviderResult;
@@ -130,7 +131,7 @@ public final class DbFixture implements AutoCloseable {
         sql.update("INSERT INTO ai_capability_binding(capability_code,descriptor_json) VALUES(?,?),(?,?)",
                 "video-file-analysis.v1",codec.write(videoCapability),"video-stream-analysis.v1",codec.write(streamCapability));
         submit=new SubmitInferenceService(jobs,capabilities,files,clock); query=new JobQueryService(jobs,assets);
-        png=Files.readAllBytes(Paths.get("/workspace/backend-github/integrations/ai-contracts/examples/input.png"));
+        png=Files.readAllBytes(ClientTestInputs.EXAMPLES.resolve("input.png"));
         mp4=new byte[]{0,0,0,24,'f','t','y','p','i','s','o','m',0,0,0,0,'i','s','o','m','a','v','c','1'};
     }
     public DetectionParameters parameters() { return new DetectionParameters(new BigDecimal("0.50"),10,true); }

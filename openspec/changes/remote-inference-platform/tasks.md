@@ -81,7 +81,7 @@
 
 前置：第 7 批完成且业务行为回归通过。交付：单一、可独立克隆的 `Fniao-AI-Platform` 仓库和本地 stub/disabled 发布候选。
 
-- [ ] 8.1 在独立最终仓库 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 的 `codex/final-layout` 分支，从 `c58df289674c2b246334a4d005ad5ba1c90fae80` 开始，用 `git mv` 仅将 `backend-github`、`frontend-vue` 迁到 `apps/backend`、`apps/frontend`；更新 Maven、npm、测试、许可证和最小构建入口，验证并提交后冻结 `08A_SHA`。
+- [x] 8.1 在独立最终仓库 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform` 的 `codex/final-layout` 分支，从 `c58df289674c2b246334a4d005ad5ba1c90fae80` 开始，用 `git mv` 仅将 `backend-github`、`frontend-vue` 迁到 `apps/backend`、`apps/frontend`；更新 Maven、npm、测试、许可证和最小构建入口，验证并提交后冻结 `08A_SHA`。
 - [ ] 8.2 从 `08A_SHA` 创建同级工作树 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/database-layout`，分支 `codex/database-layout`；建立 `database/{bootstrap,migrations/ai-core,migrations/stream,seeds/stub,private}`，保留 V001/V002 字节、校验值和顺序，代码生成器 SQL 留在所属源码，私有数据保持忽略，并在数据库副本验证初始化和重复迁移。
 - [ ] 8.3 从同一 `08A_SHA` 创建同级工作树 `/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/remote-boundary`，分支 `codex/remote-boundary`，与 8.2 并行；将契约、fixtures、stub、验收证据、handoff、非数据库远程部署文件和架构文档分别迁入 `remote-inference`、`deploy/remote-inference` 与 `docs/remote-inference`，逐文件移动避免接管 8.2 的迁移和 seed，验证不存在两份可执行规范来源。
 - [ ] 8.4 两个并行分支提交后回到 `codex/final-layout`，核对实际文件集合零重叠并依次合并；更新 Compose、Dockerfile、环境模板、备份恢复脚本、AGENTS、OpenSpec 链接、Graphify 和 Serena 管理脚本，使活动路径从 Git 根动态解析；验证正式 Compose 默认无 stub，旧 WGAI 与临时工作树绝对路径不出现在活动配置。

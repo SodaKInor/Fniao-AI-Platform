@@ -16,6 +16,7 @@
 	<properties>
 		<jeecgboot.version>3.4.3</jeecgboot.version>
 		<java.version>1.8</java.version>
+		<skipTests>true</skipTests>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- 微服务 -->
@@ -375,7 +376,7 @@
 		        <groupId>org.apache.maven.plugins</groupId>
 		        <artifactId>maven-surefire-plugin</artifactId>
 		        <configuration>
-		          <skipTests>true</skipTests>
+		          <skipTests>${skipTests}</skipTests>
 		        </configuration>
 	        </plugin>
 	         <!-- 避免font文件的二进制文件格式压缩破坏 -->

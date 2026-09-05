@@ -24,7 +24,6 @@ import org.jeecg.modules.ai.video.port.VideoAnalysisProvider;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Clock;
 import org.jeecg.modules.ai.provider.config.ProviderAvailability;
 import org.jeecg.modules.ai.provider.config.ProviderConfiguration;
@@ -55,8 +54,7 @@ public class DevelopmentStubAcceptanceTest {
                 new ProviderObservations(Clock.systemUTC()));
         assertEquals("", availability.modeReason());
 
-        byte[] imageBytes = Files.readAllBytes(Paths.get(
-                "/workspace/backend-github/integrations/ai-contracts/examples/input.png"));
+        byte[] imageBytes = Files.readAllBytes(ClientTestInputs.EXAMPLES.resolve("input.png"));
         InferenceProvider imageProvider = configuration.inferenceProvider(properties, availability);
         ProviderResult image = imageProvider.infer(new ProviderRequest(
                 "stub-image-acceptance", binding("image-detection.v1", "sync-draft-v0.1"),

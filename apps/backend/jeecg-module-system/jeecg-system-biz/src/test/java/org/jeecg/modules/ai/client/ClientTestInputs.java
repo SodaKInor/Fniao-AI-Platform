@@ -25,10 +25,28 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ClientTestInputs {
     private ClientTestInputs() { }
-    public static final Path EXAMPLES = Paths.get("/workspace/backend-github/integrations/ai-contracts/examples");
+    public static final Path EXAMPLES = locateExamples();
     public static final String REQUEST_ID = "mock_job_0001";
     public static final String VIDEO_REQUEST_ID = "video-request-001";
     public static final String STREAM_SESSION_ID = "stream-session-001";
+
+    private static Path locateExamples() {
+        String configured = System.getProperty("ai.test.examples");
+        if (configured != null && !configured.trim().isEmpty()) {
+            return Paths.get(configured).toAbsolutePath().normalize();
+        }
+        for (Path root = Paths.get("").toAbsolutePath(); root != null; root = root.getParent()) {
+            Path backendRelative = root.resolve("integrations/ai-contracts/examples");
+            if (Files.isDirectory(backendRelative)) {
+                return backendRelative;
+            }
+            Path repositoryRelative = root.resolve("apps/backend/integrations/ai-contracts/examples");
+            if (Files.isDirectory(repositoryRelative)) {
+                return repositoryRelative;
+            }
+        }
+        throw new IllegalStateException("Cannot locate integrations/ai-contracts/examples");
+    }
 
     public static String example(String name) throws IOException {
         return new String(Files.readAllBytes(EXAMPLES.resolve(name)), java.nio.charset.StandardCharsets.UTF_8);
