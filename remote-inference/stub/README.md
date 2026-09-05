@@ -7,7 +7,7 @@ strict draft decoder allows it. It is not an algorithm, GPU service, production 
 
 Run `npm test`, then `WGAI_STUB_TOKEN=... npm start`. The default token is a public development value and must not be
 reused as a real credential. Requests select deterministic behavior with `X-WGAI-Stub-Scenario`; supported values are
-listed in `contract/provider-stub.v1.json`.
+listed in [the stub provider contract](../contracts/provider/provider-stub.v1.json).
 
 The service uses only Node standard libraries, fixed synthetic PNG bytes and in-memory session/request state. It never
 reads the WGAI database or upload storage and has no GPU, model, RTSP, CUDA, OpenCV, ONNX or legacy algorithm dependency.

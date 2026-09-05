@@ -4,8 +4,8 @@ services:
     profiles: [remote-ai-stub]
     image: wgai-remote-ai-stub:${APP_IMAGE_TAG:-local}
     build:
-      context: ../backend-github
-      dockerfile: integrations/ai-contracts/stub/Dockerfile
+      context: ..
+      dockerfile: remote-inference/stub/Dockerfile
     restart: unless-stopped
     environment:
       WGAI_STUB_HOST: 0.0.0.0
@@ -32,6 +32,6 @@ services:
       WGAI_INFERENCE_CA_FILE: ""
     volumes:
       - type: bind
-        source: ../backend-github/deploy/remote-ai/stub-token.dev
+        source: ./remote-inference/stub-token.dev
         target: /run/secrets/wgai-development-stub-token
         read_only: true

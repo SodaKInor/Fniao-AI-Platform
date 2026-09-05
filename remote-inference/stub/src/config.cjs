@@ -1,10 +1,6 @@
 'use strict';
 
-const SCENARIOS = new Set([
-  'success', 'empty', 'failed', 'invalid-schema', 'delayed', 'response-lost',
-  'artifact-interrupted', 'duplicate-events', 'out-of-order-events',
-  'stop-unsupported', 'stop-unknown'
-]);
+const { SCENARIOS } = require('./scenarios.cjs');
 
 function integer(value, fallback, minimum, maximum, name) {
   const parsed = value === undefined ? fallback : Number(value);
@@ -30,14 +26,4 @@ function loadConfig(env = process.env) {
   });
 }
 
-function scenario(req, url, fallback = 'success') {
-  const value = req.headers['x-wgai-stub-scenario'] || url.searchParams.get('scenario') || fallback;
-  if (!SCENARIOS.has(value)) {
-    const error = new Error('Unsupported stub scenario');
-    error.statusCode = 400;
-    throw error;
-  }
-  return value;
-}
-
-module.exports = { loadConfig, scenario, SCENARIOS };
+module.exports = { loadConfig };

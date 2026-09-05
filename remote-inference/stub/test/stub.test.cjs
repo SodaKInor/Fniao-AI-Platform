@@ -6,7 +6,8 @@ const http = require('node:http');
 const path = require('node:path');
 const test = require('node:test');
 const { createStubServer } = require('../src/server.cjs');
-const { loadConfig, scenario } = require('../src/config.cjs');
+const { loadConfig } = require('../src/config.cjs');
+const { scenario } = require('../src/scenarios.cjs');
 
 const TOKEN = 'test-development-stub-token';
 let instance;
@@ -141,7 +142,8 @@ test('supports empty, invalid, lost and interrupted deterministic failures', asy
 
 test('contract is parseable and implementation has no application or algorithm imports', () => {
   const root = path.resolve(__dirname, '..');
-  const contract = JSON.parse(fs.readFileSync(path.join(root, 'contract/provider-stub.v1.json')));
+  const contract = JSON.parse(fs.readFileSync(path.join(root, '..', 'contracts', 'provider',
+    'provider-stub.v1.json')));
   assert.equal(contract.simulated, true);
   const source = fs.readdirSync(path.join(root, 'src')).filter(name => name.endsWith('.cjs'))
     .map(name => fs.readFileSync(path.join(root, 'src', name), 'utf8')).join('\n');
