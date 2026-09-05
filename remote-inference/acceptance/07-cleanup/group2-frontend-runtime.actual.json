@@ -1,0 +1,218 @@
+{
+  "status": "PASS",
+  "simulated": true,
+  "realProviderValidated": false,
+  "prefix": "round5-stub-1788539193060",
+  "capabilities": [
+    {
+      "code": "image-detection.v1",
+      "available": true,
+      "simulated": true
+    },
+    {
+      "code": "video-file-analysis.v1",
+      "available": true,
+      "simulated": true
+    },
+    {
+      "code": "video-stream-analysis.v1",
+      "available": true,
+      "simulated": true
+    }
+  ],
+  "image": {
+    "requestId": "6d440c6a-edd6-4da0-9a14-12c06406ef41",
+    "detections": 1
+  },
+  "video": {
+    "requestId": "c7f91126-0997-4cf8-84f7-bb7ee8668871",
+    "events": 1,
+    "snapshots": 1
+  },
+  "stream": {
+    "sessionId": "53481273-540a-47bb-a53e-b0144be37344",
+    "stateBeforeStop": "RUNNING",
+    "stateAfterStop": "STOPPED",
+    "events": 1,
+    "snapshotSha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+  },
+  "downloaded": [
+    {
+      "assetId": "out_6d440c6a-edd6-4da0-9a14-12c06406ef41_0",
+      "sizeBytes": 79,
+      "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+    },
+    {
+      "assetId": "out_c7f91126-0997-4cf8-84f7-bb7ee8668871_s0",
+      "sizeBytes": 79,
+      "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+    }
+  ],
+  "historyItems": 67,
+  "databaseRows": [
+    "6d440c6a-edd6-4da0-9a14-12c06406ef41\tSUCCEEDED",
+    "c7f91126-0997-4cf8-84f7-bb7ee8668871\tSUCCEEDED"
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788539193062-owner_a",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788539196869-owner_b",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788539197120-viewer",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788539197361-nomenu",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 401
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 201
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/video-jobs",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/c7f91126-0997-4cf8-84f7-bb7ee8668871",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/c7f91126-0997-4cf8-84f7-bb7ee8668871",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_6d440c6a-edd6-4da0-9a14-12c06406ef41_0/content",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_c7f91126-0997-4cf8-84f7-bb7ee8668871_s0/content",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sources",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/stream-sessions",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/stream-sessions",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344/events?limit=50",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_432195df-3365-31de-8e43-b29b2e9bbf83/content",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344/stop",
+      "status": 202
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs?limit=100",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/6d440c6a-edd6-4da0-9a14-12c06406ef41",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/c7f91126-0997-4cf8-84f7-bb7ee8668871",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/stream-sessions/53481273-540a-47bb-a53e-b0144be37344",
+      "status": 404
+    }
+  ]
+}

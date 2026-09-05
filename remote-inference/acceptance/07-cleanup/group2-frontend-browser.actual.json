@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-09-04T16:30:15Z",
+  "environment": {
+    "frontend": "http://127.0.0.1:18100",
+    "backend": "http://127.0.0.1:19100",
+    "frontendImage": "wgai-cleanup-frontend:modules",
+    "backendImage": "wgai-cleanup-backend:modules"
+  },
+  "account": "ri00_owner_a",
+  "routes": [
+    {
+      "path": "/ai/inference",
+      "title": "图片检测 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "模拟图片检测能力、图片上传和参数表单正常显示"
+    },
+    {
+      "path": "/ai/video",
+      "title": "上传视频分析 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "模拟视频提示、MP4 上传和视频参数表单正常显示"
+    },
+    {
+      "path": "/ai/streams",
+      "title": "实时事件分析 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "模拟实时事件提示、已授权合成来源和启动表单正常显示"
+    },
+    {
+      "path": "/ai/history",
+      "title": "任务历史 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "模拟图片和视频历史记录正常显示"
+    },
+    {
+      "path": "/ai/jobs/c7f91126-0997-4cf8-84f7-bb7ee8668871",
+      "title": "任务详情 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "模拟标识、视频事件时间偏移和授权截图入口正常显示"
+    },
+    {
+      "path": "/ai/streams/53481273-540a-47bb-a53e-b0144be37344",
+      "title": "实时会话 · AI赋能训练平台",
+      "result": "PASS",
+      "observed": "停止终态、事件时间线和授权截图入口正常显示"
+    }
+  ],
+  "notes": [
+    "前端容器重建后浏览器会话需要重新登录；使用已授权的测试账号完成登录。",
+    "图片页第一次抓取发生在能力请求完成前，短暂显示暂无能力；等待后复核为模拟图片检测可用。",
+    "本证据只验证模拟流程和动态路由，不代表 RTX GPU、真实视频、RTSP 来源或远程停止已经联调。"
+  ],
+  "simulated": true,
+  "realProviderValidated": false
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS_SIMULATED_ONLY",
+  "url": "http://127.0.0.1:18105",
+  "isolatedApi": "http://127.0.0.1:19105",
+  "observations": {
+    "authorizedSourceSelected": true,
+    "startStatus": 202,
+    "runningStateRendered": true,
+    "eventOffsetRendered": "00:00:02.500",
+    "authorizedSnapshotLoaded": true,
+    "cursorAdvancedAndReused": true,
+    "explicitStopRequests": 1,
+    "confirmedStopRendered": "STOPPED",
+    "viewerDirectRoute": "/404"
+  },
+  "requestBoundary": {
+    "rawRtspSent": false,
+    "gpuUrlSent": false,
+    "credentialSent": false,
+    "snapshotUsedAuthorizedAssetEndpoint": true
+  },
+  "portsReleasedAfterCheck": [18105, 19105],
+  "originalIntegrationPortsUntouched": [18100, 19100]
+}

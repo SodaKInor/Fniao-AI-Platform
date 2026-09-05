@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-09-04T17:01:38Z",
+  "baseUrl": "http://127.0.0.1:18100",
+  "authenticated": true,
+  "simulated": true,
+  "realProviderValidated": false,
+  "routes": [
+    "/ai/inference",
+    "/ai/video",
+    "/ai/streams",
+    "/ai/history"
+  ],
+  "observed": [
+    "AI 工作台只显示精简后的四个业务菜单",
+    "图片、上传视频和实时事件页面明确显示模拟能力",
+    "任务历史保留并逐项显示模拟标签与完成状态",
+    "已删除页面没有触发动态组件加载错误"
+  ]
+}

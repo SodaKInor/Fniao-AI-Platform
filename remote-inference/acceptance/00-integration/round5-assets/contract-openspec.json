@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "command": "backend-github/integrations/ai-contracts/acceptance/02-contract/scripts/validate_contracts.py",
+      "exitCode": 0,
+      "output": "PASS: 4 OpenAPI documents, 34 positive/negative JSON cases, 2 PNG fixtures, cross-field checks\n/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/drafts/validation-venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn("
+    },
+    {
+      "command": "backend-github/integrations/ai-contracts/acceptance/02-contract/scripts/check_types.py",
+      "exitCode": 0,
+      "output": "PASS: 83 public types; DTO field/type and enum agreement; AST layer/size inventory"
+    },
+    {
+      "command": "openspec validate remote-inference-platform --strict",
+      "exitCode": 0,
+      "output": "Change 'remote-inference-platform' is valid"
+    },
+    {
+      "command": "openspec validate remote-video-streaming --strict",
+      "exitCode": 0,
+      "output": "Change 'remote-video-streaming' is valid"
+    }
+  ],
+  "evidenceSha256": {
+    "backend-github/integrations/ai-contracts/acceptance/02-contract/contract-checks.json": "1f1ddb92d9cf0901ff215eaa0264a7cbfdcbdded2909456adadb71bc666aff4b",
+    "backend-github/integrations/ai-contracts/acceptance/02-contract/type-checks.json": "a9d03df0bba7a6aa19b8547215203d856c5a67daff981bc4d6eecc965d69124d"
+  },
+  "scope": "Static contract/type/OpenSpec validation; no claim of live GPU capability."
+}

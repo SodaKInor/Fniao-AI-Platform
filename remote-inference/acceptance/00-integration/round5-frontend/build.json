@@ -1,0 +1,15 @@
+{
+  "status": "PASS_WITH_EXISTING_WARNINGS",
+  "nodeTests": { "passed": 27, "failed": 0 },
+  "eslint": "PASS",
+  "scope": "PASS",
+  "openspecStrict": "PASS",
+  "artifacts": {
+    "index.html": "fd34962ce83ae37d605735dd52e4891b9888dbcc84b91139c3de90c8a577b35c",
+    "js/app.57f1436a.js": "22dbba8ed860bfa68bf58abb72a9704725731e204493dec33c7502305d5907f5",
+    "js/chunk-0ca97e1c.4760ad7f.js": "da77d066a4155256d3e826908c095e7876a4fa665d9f9eb15d0330b3fc235351"
+  },
+  "matches04bEvidence": true,
+  "dependencyLockChanges": 0,
+  "existingWarningGroups": 5
+}

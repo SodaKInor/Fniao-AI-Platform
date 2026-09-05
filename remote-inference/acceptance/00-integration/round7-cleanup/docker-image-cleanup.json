@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "policy": "Remove only exact superseded validation tags with no container references; do not prune broadly.",
+  "before": {
+    "imageCount": 16,
+    "imageSize": "14.83GB",
+    "reclaimable": "9.07GB"
+  },
+  "removed": [
+    "wgai-cleanup-backend:group1",
+    "wgai-cleanup-backend:modules",
+    "wgai-cleanup-backend:legacy-code",
+    "wgai-cleanup-frontend:group1",
+    "wgai-cleanup-frontend:modules",
+    "wgai-cleanup-frontend:legacy-code",
+    "wgai-integration-backend:round6-stub-a60ba55",
+    "wgai-integration-frontend:round5-stub-a63ae8d"
+  ],
+  "after": {
+    "imageCount": 8,
+    "imageSize": "6.35GB",
+    "reclaimable": "590.3MB"
+  },
+  "freedApproximate": "8.48GB",
+  "preserved": {
+    "runningCandidateImages": true,
+    "dependencyImages": true,
+    "containers": "9/9 running, none deleted",
+    "volumes": "35 total, none deleted",
+    "buildCache": "47.3GB retained",
+    "developmentImages": [
+      "wgai-backend:local",
+      "wgai-frontend:local",
+      "wgai-mysql:local",
+      "wgai-remote-ai-stub:00-accept",
+      "maven:3.8.8-eclipse-temurin-8",
+      "redis:7.2.7-alpine"
+    ]
+  }
+}

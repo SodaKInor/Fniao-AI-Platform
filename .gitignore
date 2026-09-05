@@ -37,21 +37,22 @@
 **/*.pfx
 
 # Original database dumps and environment-specific upstream configuration
-/backend-github/db/
-/backend-github/**/application*.yml
-/backend-github/**/application*.yaml
-/backend-github/**/bootstrap*.yml
-/backend-github/**/bootstrap*.yaml
-!/backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/application.yml
-/backend-github/**/jeecg_database.properties
-/backend-github/**/docs/config/
-/backend-github/docker-compose*.yml
-/backend-github/jeecg-server-cloud/docker-compose*.yml
-/backend-github/jeecg-server-cloud/**/doc/db/
-/backend-github/jeecg-server-cloud/**/db/
+/apps/backend/db/
+/apps/backend/**/application*.yml
+/apps/backend/**/application*.yaml
+/apps/backend/**/bootstrap*.yml
+/apps/backend/**/bootstrap*.yaml
+!/apps/backend/jeecg-module-system/jeecg-system-start/src/main/resources/application.yml
+/apps/backend/**/jeecg_database.properties
+!/apps/backend/jeecg-module-system/jeecg-system-start/src/main/resources/jeecg/jeecg_database.properties
+/apps/backend/**/docs/config/
+/apps/backend/docker-compose*.yml
+/apps/backend/jeecg-server-cloud/docker-compose*.yml
+/apps/backend/jeecg-server-cloud/**/doc/db/
+/apps/backend/jeecg-server-cloud/**/db/
 
 # Source-control retains the reproducibility manifest, not opaque test tokens
-/backend-github/jeecg-module-system/jeecg-system-start/src/test/java/org/jeecg/TestMain.java
+/apps/backend/jeecg-module-system/jeecg-system-start/src/test/java/org/jeecg/TestMain.java
 
 # This machine's MCP/skill runtime settings are not deployment configuration
 /.codex/config.toml

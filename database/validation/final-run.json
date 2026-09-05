@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "result": "PASS",
+  "verifiedAt": "2026-09-05T02:45:29.038144+00:00",
+  "baseCommit": "07f970bd475a70554946140427c15635e0802cca",
+  "engine": "8.0.36",
+  "image": "mysql:8.0.36",
+  "isolation": {
+    "network": "none",
+    "storage": "tmpfs",
+    "persistentVolumeAttached": false,
+    "baseline": "authorized-external-private-snapshot",
+    "containerRemoved": true
+  },
+  "static": {
+    "scopeMode": "integration",
+    "changedPaths": [],
+    "manifestChecksums": {
+      "bootstrap-002": "940c66e3946f94e69d09731c983c72ac9929d02136953632772c76fd511ea6d3",
+      "V001": "0e50ad45101cc92bff877aa63ae60bb42fbf9720f2dc5d93c604a5f682f9c026",
+      "V002": "40e190fea24cdd476ef7bbd00520fe1b859082a8e8440b7ae4fe3c3845b54a15",
+      "stub-bindings-v1": "a16ab5ad6defb6edf426d285a34fbae8dba761a85853e192137f39c3520d5b37"
+    },
+    "codeGeneratorSqlFilesRemainingInApps": 26
+  },
+  "bootstrap": {
+    "baselineTableCount": 122,
+    "firstRun": {
+      "emptyTables": {
+        "sys_log": 0,
+        "sys_data_log": 0,
+        "tab_ai_history": 0,
+        "tab_ai_model_bund": 0
+      },
+      "sensitiveValueCounts": {
+        "tab_ai_model": 0,
+        "tab_ai_subscription": 0,
+        "tab_maxkb_model": 0,
+        "jimu_report_data_source": 0,
+        "jimu_report_db": 0
+      }
+    },
+    "secondRun": {
+      "emptyTables": {
+        "sys_log": 0,
+        "sys_data_log": 0,
+        "tab_ai_history": 0,
+        "tab_ai_model_bund": 0
+      },
+      "sensitiveValueCounts": {
+        "tab_ai_model": 0,
+        "tab_ai_subscription": 0,
+        "tab_maxkb_model": 0,
+        "jimu_report_data_source": 0,
+        "jimu_report_db": 0
+      }
+    },
+    "repeatStable": true
+  },
+  "migrations": {
+    "order": [
+      "V001",
+      "V002"
+    ],
+    "firstRunRows": {
+      "ai_asset": 1,
+      "ai_job": 1,
+      "ai_capability_binding": 0,
+      "ai_job_event": 1,
+      "ai_job_capacity": 1,
+      "ai_stream_source": 1,
+      "ai_stream_session": 1,
+      "ai_stream_event": 1
+    },
+    "secondRunRows": {
+      "ai_asset": 1,
+      "ai_job": 1,
+      "ai_capability_binding": 0,
+      "ai_job_event": 1,
+      "ai_job_capacity": 1,
+      "ai_stream_source": 1,
+      "ai_stream_session": 1,
+      "ai_stream_event": 1
+    },
+    "schemaFingerprint": "3424b96ffe5c1a354c5845e140d983c7f5acc405070cccab2efebb65a462ef4c",
+    "repeatStable": true
+  },
+  "stubSeed": {
+    "firstRunRows": {
+      "capabilityBindings": 3,
+      "syntheticSources": 1
+    },
+    "secondRunRows": {
+      "capabilityBindings": 3,
+      "syntheticSources": 1
+    },
+    "repeatStable": true,
+    "simulated": true
+  }
+}

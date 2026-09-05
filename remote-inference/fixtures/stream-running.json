@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": {
+    "sessionId": "stream-session-001",
+    "streamSourceId": "stream-source-001",
+    "capabilityCode": "video-stream-analysis.v1",
+    "capabilityVersion": "1.1.0",
+    "parameters": {
+      "maxEventsPerPoll": 50,
+      "pollIntervalMillis": 2000,
+      "includeSnapshots": true
+    },
+    "state": "RUNNING",
+    "createdAt": "2026-09-03T12:20:00Z",
+    "updatedAt": "2026-09-03T12:20:01Z"
+  },
+  "timestamp": 1788438001000
+}

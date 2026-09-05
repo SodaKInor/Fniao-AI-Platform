@@ -1,0 +1,105 @@
+{
+  "status": "PASS_EXPLICIT_DEVELOPMENT_STUB_REAL_FAIL_CLOSED",
+  "at": "2026-09-04T13:28:00Z",
+  "inspectedCommit": "b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d",
+  "contractVersion": "1.1.0",
+  "sourceChecks": [
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderConfiguration.java",
+      "sha256": "94484c9c6b8534ad4e95e7f3863f7cbe017e76bd649b7bcb19a309f463fe86a3",
+      "facts": {
+        "developmentStubProvidersRegisteredOnlyWithExplicitSignals": true,
+        "realProviderRegistered": false,
+        "productionFallbackToStub": false
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/config/provider/ProviderAvailability.java",
+      "sha256": "665ad64fb328061c78d55847fab959e63b2c6e09c991ccac7aa397d183e757a9",
+      "facts": {
+        "developmentStubRequiresRemoteModeStubKeyAndFlag": true,
+        "realRemoteStillRejectedAsUnconfirmed": true,
+        "simulatedBindingsRequired": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeInferenceProvider.java",
+      "sha256": "44f8643b73dcab8409248db0657898af75423b0bc29317feb4b71d25340956fc",
+      "facts": {
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeArtifactReader.java",
+      "sha256": "b015b0c70a6d46c00eb4c08d905f4a71b8e76d49ac54752e5dbe72e93682383f",
+      "facts": {
+        "savedMockArtifactsRemainReadable": true,
+        "remoteRequiresNonNullReader": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeVideoAnalysisProvider.java",
+      "sha256": "767dbc968ed914c78c37a9f880724c817870eaebd8c0c0172febf1a23c055dd7",
+      "facts": {
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/client/ModeStreamSessionProvider.java",
+      "sha256": "120b6fd598ab9914d2ebfc77c41bb662186da5c921cf61490d7c267b93a13805",
+      "facts": {
+        "eachOperationHasIndependentGate": true,
+        "remoteRequiresNonNullProvider": true,
+        "unconfirmedRemoteFailsClosed": true
+      }
+    },
+    {
+      "path": "backend-github/deploy/remote-ai/application-remote-ai.yml",
+      "sha256": "bf68921f8c383a474ffbe40c9d254a2bbed94625584aa2774d81febd6b9d578d",
+      "facts": {
+        "defaultMode": "disabled",
+        "defaultDevelopmentStub": false
+      }
+    },
+    {
+      "path": "backend-github/deploy/remote-ai/core.override.yml",
+      "sha256": "a233534e4a5cb7e334fb7451fcc3947629173a143463c7d9d9243475b703e723",
+      "facts": {
+        "defaultMode": "disabled",
+        "defaultDevelopmentStub": false,
+        "declaresStubService": false,
+        "declaresGpuService": false,
+        "mountsRemoteConfigReadOnly": true
+      }
+    },
+    {
+      "path": "backend-github/deploy/remote-ai/stub.override.yml",
+      "sha256": "a4ed129d5bd2d44a89635916a40ed64bd7a03304eb1a5c670302681af029a980",
+      "facts": {
+        "explicitProfile": "remote-ai-stub",
+        "simulatedProviderKey": "stub",
+        "publishedHostPort": false
+      }
+    }
+  ],
+  "currentActivationResult": {
+    "developmentStubRuntimeMayStart": true,
+    "developmentStubWireAccepted": true,
+    "externalContractConfirmed": false,
+    "formalRealProviderAssemblyImplemented": false,
+    "productionCapabilityBindingReady": false,
+    "runtimeMayStartForRealRequests": false,
+    "realProviderRequestAttempted": false
+  },
+  "openspecTasksCompleted": ["5.1", "5.2", "5.3", "5.4"],
+  "realIntegrationTasksCompleted": [],
+  "downstreamReleased": {
+    "06Integration": false,
+    "unifiedRegression6_5": false,
+    "cleanup07": false,
+    "releaseCandidate": false
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "command": "docker build --progress=plain -f deploy/backend/Dockerfile -t wgai-integration-backend:round5-assets-45ba76c .",
+  "sourceCommit": "45ba76ce3d55629041092ecb1230bdc1afb8b230",
+  "image": "wgai-integration-backend:round5-assets-45ba76c",
+  "imageId": "sha256:3a5c91104fb4b68fce034fc046116045b2ca9e0bd42e7702063813a3c5be9d84",
+  "imageDigest": "sha256:3a5c91104fb4b68fce034fc046116045b2ca9e0bd42e7702063813a3c5be9d84",
+  "sizeBytes": 1111524360,
+  "mavenReactor": "BUILD SUCCESS",
+  "testsExecutedInThisBuild": false,
+  "testsEvidence": "java8-tests.json (49/49 PASS in a separate 00-owned run)",
+  "springBootLayers": [
+    "dependencies",
+    "spring-boot-loader",
+    "snapshot-dependencies",
+    "application"
+  ],
+  "buildLog": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/drafts/round5-assets/backend-build.log",
+  "buildLogSha256": "9535941da4e19de2bc0d75e296300bcdae9393a17d84a4b4be006fdbacf4646f"
+}

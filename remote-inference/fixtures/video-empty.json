@@ -1,0 +1,30 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": {
+    "requestId": "video-request-empty",
+    "jobType": "VIDEO_FILE_ANALYSIS",
+    "capabilityCode": "video-file-analysis.v1",
+    "capabilityVersion": "1.1.0",
+    "inputAssetId": "asset-video-input-empty",
+    "videoParameters": {
+      "threshold": 0.5,
+      "sampleIntervalMillis": 1000,
+      "maxEvents": 100,
+      "includeSnapshots": true,
+      "annotate": false
+    },
+    "state": "SUCCEEDED",
+    "simulated": true,
+    "createdAt": "2026-09-03T12:10:00Z",
+    "updatedAt": "2026-09-03T12:10:05Z",
+    "videoResult": {
+      "resultType": "VIDEO_TIMELINE",
+      "simulated": true,
+      "events": [],
+      "snapshots": []
+    }
+  },
+  "timestamp": 1788437405000
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "candidate_file_count": 34,
+  "allowed_root": "backend-github/integrations/ai-contracts/acceptance/01-foundation/",
+  "business_code_modified": false,
+  "public_dependencies_modified": false,
+  "findings": [],
+  "scan_scope": "Candidate deliverables only; exact current deployment/test secrets and selected private-key/GitHub-token/JWT patterns. Not a universal secret or semantic scan.",
+  "ignored_paths_verified": [
+    "backend-master/probe.java",
+    "deploy/.env",
+    "backend-github/db/java_ai.sql",
+    "frontend-vue/node_modules/probe",
+    "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/asrt_sdk_maven-1.0-alpha1.jar",
+    "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/opencv-4.10.0.jar",
+    "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/jeecg/jeecg_database.properties",
+    "graphify-out/graph.json"
+  ],
+  "backend_master_files_matching_before_manifest": 1890,
+  "original_worktree_status": "",
+  "checked_at": "2026-09-03T09:31:18.616212+00:00"
+}

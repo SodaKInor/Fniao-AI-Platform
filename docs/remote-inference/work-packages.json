@@ -1,0 +1,309 @@
+{
+  "schema_version": 3,
+  "status": "HISTORICAL_01_TO_07_AND_STAGE_8_CONSTRUCTION_RECORD",
+  "change": "remote-inference-platform",
+  "task_count": 56,
+  "packages": [
+    {
+      "id": "00-integration",
+      "title": "集成与总体验收",
+      "tasks": [],
+      "depends_on": [],
+      "ready_after": "01—07 的历史集成记录已经冻结；剩余第 8 批由最终目录 codex/final-layout 负责。",
+      "scope": "旧 WGAI-parallel 集成记录只读保留，不再承担第 8 批写入、合并或推送。",
+      "can_parallel": "历史记录，不参与新的并行实施。",
+      "branch": "feature/remote-inference",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/code",
+      "suggested_frontend_port": 18100,
+      "suggested_backend_port": 19100,
+      "status": "HISTORICAL_ACCEPTED_THROUGH_ROUND7"
+    },
+    {
+      "id": "01-foundation",
+      "title": "版本基线、备份与隔离工作区",
+      "tasks": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "depends_on": [],
+      "ready_after": "可以最先开始；先检查本会话已完成的仓库准备记录，避免重复初始化",
+      "scope": "Git 基线、来源清单、备份、入口清单和 worktree 登记；建立基线时是唯一可处理原 WGAI 仓库元数据的包。",
+      "can_parallel": "02 可在自己的 drafts 中做文档准备；代码并行等待基线和公共契约。",
+      "branch": "work/remote-inference/01-foundation",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/code",
+      "suggested_frontend_port": 18101,
+      "suggested_backend_port": 19101,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "02-contract",
+      "title": "接口契约与共享类型",
+      "tasks": [
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6",
+        "2.7"
+      ],
+      "depends_on": [
+        "01-foundation"
+      ],
+      "ready_after": "代码 worktree 就绪；可先在本目录 drafts 中整理草案",
+      "scope": "外部和业务 API 契约、样例、最小 domain/port/api/dto 共享类型、分层和文件规模检查。",
+      "can_parallel": "与 01 的独立文档准备可并行；冻结并集成 2.5 后才释放 03/04a/04b。",
+      "branch": "work/remote-inference/02-contract",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/02-contract/code",
+      "suggested_frontend_port": 18102,
+      "suggested_backend_port": 19102,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "03-client",
+      "title": "远程调用客户端与后端守卫",
+      "tasks": [
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "3.7"
+      ],
+      "depends_on": [
+        "02-contract"
+      ],
+      "ready_after": "00 已集成 2.5，当前分支同步同一公共提交",
+      "scope": "client、config/provider、能力应用/控制器和旧后端执行守卫；3.4 的前端入口由 04b 配合。",
+      "can_parallel": "与 04a、04b 并行；不得改对方实现、公共 DTO 或未分配构建文件。",
+      "branch": "work/remote-inference/03-client",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client/code",
+      "suggested_frontend_port": 18103,
+      "suggested_backend_port": 19103,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "04a-assets-jobs",
+      "title": "文件、任务与成果后端",
+      "tasks": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.8"
+      ],
+      "depends_on": [
+        "02-contract"
+      ],
+      "ready_after": "00 已集成 2.5，当前分支同步同一公共提交",
+      "scope": "application/jobs、application/assets、storage、persistence、config/jobs、任务/资产 Controller 与数据库增量迁移。",
+      "can_parallel": "与 03、04b 并行；通过冻结端口和测试替身验证，不复制 HTTP 客户端。",
+      "branch": "work/remote-inference/04a-assets-jobs",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04a-assets-jobs/code",
+      "suggested_frontend_port": 18104,
+      "suggested_backend_port": 19104,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "04b-frontend",
+      "title": "前端页面与组件",
+      "tasks": [
+        "4.6",
+        "4.9"
+      ],
+      "contributes_to": [
+        "3.4",
+        "4.7",
+        "4.10"
+      ],
+      "depends_on": [
+        "02-contract"
+      ],
+      "ready_after": "00 已集成业务契约及 2.5，当前分支同步同一公共提交",
+      "scope": "frontend-vue 下的 api/ai、services/ai、components/ai、views/ai 和已约定的旧 AI 入口停用。",
+      "can_parallel": "与 03、04a 并行；用业务 API 模拟，不接 GPU 地址、不修改后端。",
+      "branch": "work/remote-inference/04b-frontend",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/04b-frontend/code",
+      "suggested_frontend_port": 18105,
+      "suggested_backend_port": 19105,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "05-lan",
+      "title": "独立 HTTP 占位服务与本地联调",
+      "tasks": [
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "depends_on": [
+        "00-integration"
+      ],
+      "ready_after": "04b已由00验收；同步最新规划并保留既有fail-closed工具后实施，不依赖同事服务。",
+      "scope": "stub契约场景、独立HTTP进程、fixtures、开发Compose profile和remote→stub图片/视频/流证据。",
+      "can_parallel": "05先完成；00验收后才释放06。",
+      "branch": "work/remote-inference/05-lan",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/05-lan/code",
+      "suggested_frontend_port": 18106,
+      "suggested_backend_port": 19106,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "06-resilience",
+      "title": "故障、恢复与取消",
+      "tasks": [
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5"
+      ],
+      "depends_on": [
+        "00-integration"
+      ],
+      "ready_after": "等待05 stub由00验收并提供新共同起点。",
+      "scope": "用stub验证恢复、UNKNOWN、取消/停止、故障、指标和日志；真实provider能力保持未知。",
+      "can_parallel": "前置未满足时只读检查；与05的共享行为不并行修改。",
+      "branch": "work/remote-inference/06-resilience",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
+      "suggested_frontend_port": 18107,
+      "suggested_backend_port": 19107,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "07-cleanup",
+      "title": "功能模块迁移与旧业务清理",
+      "tasks": [
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5"
+      ],
+      "depends_on": [
+        "00-integration"
+      ],
+      "ready_after": "等待00完成6.5并提供唯一本地stub/disabled验收SHA。",
+      "scope": "按功能重组前后端、建立依赖矩阵、逐组清理已确认退役的旧入口。",
+      "can_parallel": "仅可提前只读整理引用清单；删除和迁移在上一轮统一回归之后串行实施。",
+      "branch": "work/remote-inference/07-cleanup",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/07-cleanup/code",
+      "suggested_frontend_port": 18108,
+      "suggested_backend_port": 19108,
+      "status": "ACCEPTED"
+    },
+    {
+      "id": "08-release",
+      "title": "最终仓库目录整合与本地交付",
+      "tasks": [
+        "8.1",
+        "8.4",
+        "8.5"
+      ],
+      "depends_on": [],
+      "ready_after": "从 c58df289674c2b246334a4d005ad5ba1c90fae80 或仅包含本计划修订的后继提交开始阶段 A。",
+      "scope": "在最终目录阶段 A 迁移 apps/backend 与 apps/frontend；合并两个同级并行分支后阶段 D 统一修复、全量验证、工具重建并推送 main。",
+      "can_parallel": "阶段A、D均串行；08b/08c在两阶段之间并行。",
+      "branch": "codex/final-layout",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform",
+      "suggested_frontend_port": 18109,
+      "suggested_backend_port": 19109,
+      "contributes_to": [
+        "8.6"
+      ],
+      "status": "READY_STAGE_A_IN_FINAL_ROOT"
+    },
+    {
+      "id": "08b-database-layout",
+      "title": "数据库目录归整",
+      "tasks": [
+        "8.2",
+        "remote-video-streaming:7.3-database"
+      ],
+      "depends_on": [
+        "08-release:stage-a"
+      ],
+      "ready_after": "最终目录完成阶段 A 并从 08A_SHA 创建本包工作树。",
+      "scope": "database/bootstrap、migrations/ai-core、migrations/stream、seeds/stub、private及数据库验证器。",
+      "can_parallel": "与08c-remote-boundary并行；文件集合必须零重叠。",
+      "branch": "codex/database-layout",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/database-layout",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/database-layout",
+      "status": "WAITING_08A_SHA",
+      "worktree_created": false
+    },
+    {
+      "id": "08c-remote-boundary",
+      "title": "远程推理边界目录归整",
+      "tasks": [
+        "8.3",
+        "remote-video-streaming:7.3-remote"
+      ],
+      "depends_on": [
+        "08-release:stage-a"
+      ],
+      "ready_after": "最终目录完成阶段 A 并从同一 08A_SHA 创建本包工作树。",
+      "scope": "remote-inference、docs/remote-inference、deploy/remote-inference的非数据库内容及内部验证。",
+      "can_parallel": "与08b-database-layout并行；不得移动remote-ai父目录或接管数据库文件。",
+      "branch": "codex/remote-boundary",
+      "local_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/remote-boundary",
+      "code_directory": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees/remote-boundary",
+      "status": "WAITING_08A_SHA",
+      "worktree_created": false
+    }
+  ],
+  "runtime_registry": null,
+  "companion_changes": [
+    {
+      "change": "remote-video-streaming",
+      "task_count": 27
+    }
+  ],
+  "latest_plan_status": "ROUND8_FINAL_ROOT_READY_STAGE_A",
+  "future_external_gate": {
+    "id": "future-real-gpu",
+    "tasks": [
+      "9.1",
+      "9.2",
+      "9.3",
+      "9.4",
+      "9.5",
+      "9.6",
+      "remote-video-streaming:8.1",
+      "remote-video-streaming:8.2",
+      "remote-video-streaming:8.3",
+      "remote-video-streaming:8.4"
+    ],
+    "ready_after": "同事提供实际服务、接口资料、局域网/正式网络和凭据",
+    "sequence": [
+      "RTX 5070 LAN acceptance",
+      "RTX 4090 48GB production acceptance"
+    ],
+    "worktree": "create only when the external service is available"
+  },
+  "current_accepted_commit": "a14450ec0ed82cd329a666e52ac12c15cce3515d",
+  "completed_task_count": 44,
+  "active_workspace": {
+    "root": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform",
+    "branch": "codex/final-layout",
+    "parallel_parent": "/Users/twowt88/Documents/ChatGPT/Fniao-AI-Platform-worktrees",
+    "planning_start": "c58df289674c2b246334a4d005ad5ba1c90fae80"
+  }
+}

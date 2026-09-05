@@ -1,0 +1,33 @@
+{
+  "status": "BLOCKED_STALE_DESKTOP_PROCESSES",
+  "operation": "docker desktop restart",
+  "phase": "Stopping Docker Desktop",
+  "waitSeconds": 90,
+  "exitCode": 1,
+  "engineReadyAfterAttempt": false,
+  "remainingProcessNames": [
+    "com.docker.backend",
+    "com.docker.backend services",
+    "com.docker.backend fork",
+    "com.docker.build"
+  ],
+  "priorFailureEvidence": {
+    "hostLog": "Docker engine stopped after host ENOSPC",
+    "vmLog": "EXT4 write I/O errors were recorded before shutdown"
+  },
+  "hostFreeBytesAtPreflight": 12432506880,
+  "requiredFreeBytes": 4294967296,
+  "waitCommandInterruptedOnly": true,
+  "processesForciblyKilled": false,
+  "dockerDataReset": false,
+  "imagesOrVolumesModified": false,
+  "destructiveCleanupPerformed": false,
+  "subsequentState": {
+    "observedAt": "2026-09-04T11:21:41Z",
+    "status": "RECOVERED_WITHOUT_FORCE",
+    "dockerEngineReady": true,
+    "processesForciblyKilled": false,
+    "dockerDataReset": false,
+    "imagesOrVolumesModifiedByRecovery": false
+  }
+}

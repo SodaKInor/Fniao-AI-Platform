@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-09-04T05:27:00Z",
+  "planning_base": "d31489415b21032f3d08b9a0ef94a85813a8ec05",
+  "contract_delivery_commit": "1177de8be45123d043d7cb26b845ee9d94c26784",
+  "merge": "fast-forward",
+  "file_ownership": {
+    "changed_files": 82,
+    "out_of_scope_files": 0,
+    "allowed_roots": [
+      "backend-github/integrations/ai-contracts/",
+      "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/domain/",
+      "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/port/",
+      "backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/ai/api/dto/"
+    ]
+  },
+  "contract_validation": {
+    "openapi_documents": 4,
+    "json_cases": 34,
+    "png_fixtures": 2,
+    "old_image_cases_revalidated_against_1_1": true,
+    "forbidden_browser_fields_rejected": [
+      "rtspUrl",
+      "gpuUrl",
+      "providerSourceId",
+      "credentials"
+    ]
+  },
+  "java8_validation": {
+    "domain_and_port_classes": 62,
+    "dto_classes": 21,
+    "class_major_version": 52,
+    "unresolved_jdeps_references": 0,
+    "domain_dependencies_sha256": "708c7bddb467ee9ebe59c5afb1e658f91106d4a945144d89230d74d8205180a8",
+    "dto_dependencies_sha256": "ffa0c393a6fc05ea9ceb21a3e45e3c91b103899a38c968b09101141b00d1ea4a"
+  },
+  "backend_build": {
+    "command": "docker build --progress=plain -f deploy/backend/Dockerfile -t wgai-integration-backend:round5-contract-1177de8 .",
+    "exit_code": 0,
+    "image": "wgai-integration-backend:round5-contract-1177de8",
+    "image_digest": "sha256:abdcf2ee71cea368883f7dfbdb2be6f433ac7be4c2d25c3336452d84d337cfa6",
+    "image_size_bytes": 1111440728,
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/drafts/round5-contract/backend-build.log",
+    "log_sha256": "30b83bc4c124dd4d03041654cafc61194f4c69feab09c09fa0b38aa98d313f07",
+    "maven_reactor": "BUILD SUCCESS",
+    "spring_boot_layout_smoke": "dependencies, spring-boot-loader, snapshot-dependencies, application",
+    "tests_executed": false
+  },
+  "graphify": {
+    "command": "graphify update .",
+    "exit_code": 0,
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/drafts/round5-contract/graphify-update.log",
+    "log_sha256": "fd1265dd0a7ff268380e01b409078685099bffdde10b34ef2aa0a2010fabb287",
+    "limitations": "AST only; six pre-existing Vue parse warnings"
+  },
+  "openspec": {
+    "remote-inference-platform": "strict valid; 2.6 and 2.7 accepted",
+    "remote-video-streaming": "strict valid; 1.1 and 1.2 accepted"
+  },
+  "capability_gate": {
+    "provider_contract": "UNCONFIRMED",
+    "provider_video_submit": false,
+    "provider_stream_session_query": false,
+    "provider_stream_event_query": false,
+    "provider_stream_stop": false,
+    "provider_deduplication": false,
+    "runtime_stream_controllers_present": false,
+    "all_stream_sources_must_remain_disabled": true
+  },
+  "accepted_tasks": {
+    "remote-inference-platform": ["2.6", "2.7"],
+    "remote-video-streaming": ["1.1", "1.2"]
+  },
+  "not_claimed": [
+    "real RTX 5070 image, video or stream capability",
+    "provider method, TLS/CA, authentication, limit, query, cancel or stop confirmation",
+    "database, controller, provider client or frontend implementation",
+    "05, 06, 6.5, 07 cleanup or release candidate"
+  ],
+  "new_common_start_commit": "Recorded after this receipt commit in the external 00 HANDOFF and WORKSPACES.json."
+}

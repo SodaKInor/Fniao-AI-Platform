@@ -1,0 +1,45 @@
+{
+  "status": "PASS_SIMULATED_STUB_ONLY",
+  "at": "2026-09-04T13:30:00Z",
+  "baseCommit": "b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d",
+  "businessContractVersion": "1.1.0",
+  "providerVersion": "stub-simulated-v1",
+  "simulated": true,
+  "realProviderRequestAttempted": false,
+  "realGpuIntegrationComplete": false,
+  "stub": {
+    "implementation": "independent Node.js HTTP service",
+    "databaseAccess": false,
+    "legacyAlgorithmAccess": false,
+    "gpuOrModelDependency": false,
+    "hostPortPublished": false,
+    "sourceId": "synthetic-camera-01",
+    "contractSha256": "434c3771026e06c330026e9a36c69bd6c133a995f93558af4e7690ff22b705c3",
+    "dockerfileSha256": "a1bab2a7ee59b891d213bf4c4c7dd47647f4fd5da9b369ccbe7b6917fe7d6ef2",
+    "image": "wgai-remote-ai-stub:05-check",
+    "imageDigest": "sha256:7f11cefae014e9c828ef296fc2a0c3b841d1dd3ca549eb177720023921610211",
+    "imageSizeBytes": 48074242
+  },
+  "verification": {
+    "stubUnitTests": "PASS_5_OF_5",
+    "providerGateTests": "PASS_12_OF_12",
+    "java8CapabilityTests": "PASS_9_OF_9",
+    "java8ClientAndGateTests": "PASS_37_OF_37",
+    "java8WireAcceptance": "PASS_1_OF_1_IMAGE_VIDEO_STREAM_ARTIFACT_STOP",
+    "java8DockerCoreBuild": "PASS_6_OF_6_MODULES",
+    "composeRender": "PASS_EXPLICIT_REMOTE_AI_STUB_PROFILE"
+  },
+  "realGatesStillOpen": [
+    "external service contract and TLS/authentication",
+    "real image and MP4/H.264 requests",
+    "registered real stream source mapping and RTSP session",
+    "real result persistence and browser evidence",
+    "real cancellation and stop confirmation semantics"
+  ],
+  "downstreamRelease": {
+    "localResilienceCandidateMayBeIntegratedAfter00Acceptance": true,
+    "cleanup07Released": false,
+    "realReleaseCandidateAllowed": false,
+    "productionDeploymentAllowed": false
+  }
+}

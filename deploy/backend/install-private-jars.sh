@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-project_root=${1:-/workspace/backend-github}
+project_root=${1:-/workspace/apps/backend}
 resource_dir="$project_root/jeecg-module-system/jeecg-system-start/src/main/resources"
 asrt_jar="$resource_dir/asrt_sdk_maven-1.0-alpha1.jar"
 opencv_jar="$resource_dir/opencv-4.10.0.jar"

@@ -1,0 +1,20 @@
+{
+  "openspec": {
+    "command": "openspec validate remote-inference-platform --strict",
+    "exit_code": 0,
+    "result": "valid"
+  },
+  "graphify": {
+    "command": "graphify update .",
+    "exit_code": 0,
+    "worktree": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/code",
+    "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/01-foundation/drafts/graphify-final.log",
+    "sha256": "7a4c7ed58f9a91f89dd774cca51e20521c341de0a0c50b0e3e2e81b6fdd9ea80",
+    "coverage": "AST only; six pre-existing Vue syntax warnings yield partial extraction; not a semantic proof"
+  },
+  "serena": {
+    "state": "shared original-project index failed initialization",
+    "action": "not switched or used to write another worktree; inspected verified worktree files directly"
+  },
+  "business_implementation_changed": false
+}

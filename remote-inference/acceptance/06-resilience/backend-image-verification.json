@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-09-04T11:21:41Z",
+  "image": "wgai-resilience-backend:local-check",
+  "imageDigest": "sha256:7407c59851f72e32cf982119c2d023fd81088059f1acdba7d1585f79b29e7460",
+  "manifestDigest": "sha256:7407c59851f72e32cf982119c2d023fd81088059f1acdba7d1585f79b29e7460",
+  "sizeBytes": 1111539263,
+  "created": "2026-09-04T11:19:51.036343404Z",
+  "os": "linux",
+  "architecture": "amd64",
+  "exposedPort": "8080/tcp",
+  "entrypoint": [
+    "java",
+    "-Djava.security.egd=file:/dev/./urandom",
+    "-jar",
+    "/app/app.jar",
+    "--spring.config.additional-location=file:/app/config/"
+  ],
+  "runtimeCheck": {
+    "command": "docker run --rm --network none --entrypoint java wgai-resilience-backend:local-check -version",
+    "exitCode": 0,
+    "java": "openjdk version 1.8.0_502; Temurin build 25.502-b07",
+    "network": "none",
+    "volumesMounted": false,
+    "businessApplicationStarted": false,
+    "verificationContainerRemoved": true
+  },
+  "temporaryPrivateArtifactLinks": {
+    "sourceWorkspace": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/00-integration/code",
+    "targetWorkspace": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/06-resilience/code",
+    "targetLinksRemoved": true,
+    "sourceArtifactsUnchanged": true,
+    "sourceSha256": {
+      "asrt_sdk_maven-1.0-alpha1.jar": "10b56560251cec9bac5a92a6ab058b84ee3b43c438ac9cab5a257fbf96981330",
+      "opencv-4.10.0.jar": "794e79dc1b77bc849d60081f0fad069403a01abb1d1255e984bdd8b9e1bb2d81"
+    }
+  },
+  "postBuildPreflight": "PASS_READY",
+  "postBuildFreeBytes": 61387579392,
+  "requiredFreeBytes": 4294967296,
+  "originalContainersOrVolumesModified": false,
+  "productionDeploymentPerformed": false
+}

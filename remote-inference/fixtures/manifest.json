@@ -1,0 +1,224 @@
+{
+  "simulated": true,
+  "notice": "All fixtures are synthetic. No inference or real service capability is demonstrated. Timestamps are fixed fixture values, not a current availability promise.",
+  "files": [
+    {
+      "path": "input.png",
+      "mediaType": "image/png",
+      "sizeBytes": 79,
+      "sha256": "12b02152a0b0ce94163edff76b814fe0acb4f7778e176f7695d8d801f4126557"
+    },
+    {
+      "path": "annotated.png",
+      "mediaType": "image/png",
+      "sizeBytes": 79,
+      "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+    }
+  ],
+  "cases": {
+    "submit.json": {
+      "contract": "business",
+      "schema": "InferenceRequestDto",
+      "valid": true,
+      "simulated": true
+    },
+    "success.json": {
+      "contract": "business",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "accepted.json": {
+      "contract": "business",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "empty.json": {
+      "contract": "business",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "unknown.json": {
+      "contract": "business",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "error.json": {
+      "contract": "business",
+      "schema": "ErrorResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "asset.json": {
+      "contract": "business",
+      "schema": "AssetResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "history.json": {
+      "contract": "business",
+      "schema": "JobPageResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "capabilities.json": {
+      "contract": "business",
+      "schema": "CapabilityListResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-metadata.json": {
+      "contract": "provider",
+      "schema": "Metadata",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-success.json": {
+      "contract": "provider",
+      "schema": "Success",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-empty.json": {
+      "contract": "provider",
+      "schema": "Success",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-error.json": {
+      "contract": "provider",
+      "schema": "Error",
+      "valid": true,
+      "simulated": true
+    },
+    "invalid-threshold.json": {
+      "contract": "business",
+      "schema": "InferenceRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "invalid-provider-url.json": {
+      "contract": "business",
+      "schema": "InferenceRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "video-submit.json": {
+      "contract": "businessV11",
+      "schema": "VideoJobRequestDto",
+      "valid": true,
+      "simulated": true
+    },
+    "video-success.json": {
+      "contract": "businessV11",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "video-empty.json": {
+      "contract": "businessV11",
+      "schema": "JobResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "invalid-video-provider-url.json": {
+      "contract": "businessV11",
+      "schema": "VideoJobRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "stream-sources.json": {
+      "contract": "businessV11",
+      "schema": "StreamSourceListResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-start.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-running.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-events.json": {
+      "contract": "businessV11",
+      "schema": "StreamEventPageResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-empty-events.json": {
+      "contract": "businessV11",
+      "schema": "StreamEventPageResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "stream-stop-unknown.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionResponse",
+      "valid": true,
+      "simulated": true
+    },
+    "invalid-stream-rtsp.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "invalid-stream-gpu-url.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "invalid-stream-credentials.json": {
+      "contract": "businessV11",
+      "schema": "StreamSessionRequestDto",
+      "valid": false,
+      "simulated": true
+    },
+    "provider-video-metadata.json": {
+      "contract": "providerV02",
+      "schema": "VideoMetadata",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-video-success.json": {
+      "contract": "providerV02",
+      "schema": "VideoSuccess",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-start.json": {
+      "contract": "providerV02",
+      "schema": "StreamStartMetadata",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-running.json": {
+      "contract": "providerV02",
+      "schema": "ProviderSession",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-events.json": {
+      "contract": "providerV02",
+      "schema": "ProviderEventPage",
+      "valid": true,
+      "simulated": true
+    },
+    "provider-stream-stop.json": {
+      "contract": "providerV02",
+      "schema": "ProviderStopResult",
+      "valid": true,
+      "simulated": true
+    }
+  }
+}

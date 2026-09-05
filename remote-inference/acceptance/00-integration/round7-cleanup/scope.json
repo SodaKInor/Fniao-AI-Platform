@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "base": "722aad3fa11f7075576b760ab3d6deae83cd1480",
+  "delivery": "46260b93c98c7403bdf3263ea475b281804bae04",
+  "serialCommits": [
+    "380e76ed55e8ba7e8918e0ff848fd0d0e0e57607",
+    "c2ae8ed1d0f251c5b8b0cadc44624654101bd8f5",
+    "df1d6064648343bb3df97e615ea5aadfa81a490c",
+    "46260b93c98c7403bdf3263ea475b281804bae04"
+  ],
+  "changedPathCount": 485,
+  "backendMasterUnchanged": true,
+  "dependencyAndBuildScriptsRetainedUnchanged": true,
+  "noMajorUpgrade": true,
+  "realProviderValidated": false
+}

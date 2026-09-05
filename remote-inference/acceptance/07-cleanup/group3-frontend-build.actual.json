@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "localProductionBuild": "PASS_WITH_EXISTING_SIZE_AND_CSS_ORDER_WARNINGS",
+  "containerBuild": "PASS",
+  "image": "wgai-cleanup-frontend:legacy-code",
+  "imageId": "sha256:24ec90ff0710550866463710cc35528fccfecdbeac4b48211fb873764db857c5",
+  "sizeBytes": 36943069,
+  "playerAssetsRetained": true,
+  "note": "No Vue or Node major-version upgrade was included."
+}

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "simulated": true,
+  "realProviderValidated": false,
+  "rawRetiredMenuEntries": 0,
+  "retiredComponentsAfterTransform": 0,
+  "directExecution": {
+    "anonymous": 401,
+    "authorized": 409
+  },
+  "legacyTableRowsBefore": {
+    "pic_config": 0,
+    "tab_chat_keyword": 1,
+    "tab_chat_qa": 1,
+    "tab_chat_type": 4,
+    "tab_easy_config": 2,
+    "tab_easy_pic": 10,
+    "tab_easy_type": 0,
+    "tab_maxkb_model": 1,
+    "tab_message_list": 1,
+    "tab_message_train_log": 0,
+    "tab_message_train_model": 0,
+    "tab_message_type": 3
+  },
+  "legacyTableRowsAfter": {
+    "pic_config": 0,
+    "tab_chat_keyword": 1,
+    "tab_chat_qa": 1,
+    "tab_chat_type": 4,
+    "tab_easy_config": 2,
+    "tab_easy_pic": 10,
+    "tab_easy_type": 0,
+    "tab_maxkb_model": 1,
+    "tab_message_list": 1,
+    "tab_message_train_log": 0,
+    "tab_message_train_model": 0,
+    "tab_message_type": 3
+  },
+  "note": "Management tables and rows are retained; only retired UI and the MaxKB outbound test action are disabled."
+}

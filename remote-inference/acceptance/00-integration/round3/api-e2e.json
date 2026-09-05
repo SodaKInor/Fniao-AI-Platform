@@ -1,0 +1,3439 @@
+{
+  "status": "PASS",
+  "jobs": {
+    "immediate": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+    "delayed": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+    "empty": "d362244b-c8a0-4c62-8843-3327acee623a",
+    "auth": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+    "unknown": "109eb393-5822-417c-8c08-6c85469ded2b",
+    "truncate": "9d5934f8-4a35-4873-955c-9d74578066d9",
+    "ownerB": "9d512dae-4e6c-44a4-8087-84e064fa04ee"
+  },
+  "file": {
+    "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+    "bytes": 79,
+    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+  },
+  "database": {
+    "jobs": [
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\tcceef1074af527fb88a94fa36bb89751\tSUCCEEDED\t4",
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\tcceef1074af527fb88a94fa36bb89751\tSUCCEEDED\t4",
+      "d362244b-c8a0-4c62-8843-3327acee623a\tcceef1074af527fb88a94fa36bb89751\tSUCCEEDED\t4",
+      "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a\tcceef1074af527fb88a94fa36bb89751\tFAILED\t3",
+      "109eb393-5822-417c-8c08-6c85469ded2b\tcceef1074af527fb88a94fa36bb89751\tUNKNOWN\t3",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\tcceef1074af527fb88a94fa36bb89751\tFAILED\t7",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t9cbb9c301d48aee5250d26917ffb6048\tSUCCEEDED\t4"
+    ],
+    "events": [
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\t0\tPENDING\t1788437890747",
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\t1\tDISPATCHING\t1788437890826",
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\t2\tWAITING\t1788437890844",
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\t3\tFETCHING_RESULT\t1788437895363",
+      "090f6540-8692-4bba-8ece-6bbe32a97ae4\t4\tSUCCEEDED\t1788437895396",
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\t0\tPENDING\t1788437890431",
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\t1\tDISPATCHING\t1788437890522",
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\t2\tWAITING\t1788437890559",
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\t3\tFETCHING_RESULT\t1788437890623",
+      "0ce982cd-ad97-468e-9b65-82b4d60923f1\t4\tSUCCEEDED\t1788437890675",
+      "109eb393-5822-417c-8c08-6c85469ded2b\t0\tPENDING\t1788437896440",
+      "109eb393-5822-417c-8c08-6c85469ded2b\t1\tDISPATCHING\t1788437896482",
+      "109eb393-5822-417c-8c08-6c85469ded2b\t2\tWAITING\t1788437896501",
+      "109eb393-5822-417c-8c08-6c85469ded2b\t3\tUNKNOWN\t1788437896516",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t0\tPENDING\t1788437901134",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t1\tDISPATCHING\t1788437901349",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t2\tWAITING\t1788437901421",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t3\tFETCHING_RESULT\t1788437901442",
+      "9d512dae-4e6c-44a4-8087-84e064fa04ee\t4\tSUCCEEDED\t1788437901474",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t0\tPENDING\t1788437897064",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t1\tDISPATCHING\t1788437897114",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t2\tWAITING\t1788437897133",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t3\tFETCHING_RESULT\t1788437897149",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t4\tFETCHING_RESULT\t1788437897173",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t5\tFETCHING_RESULT\t1788437898196",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t6\tFETCHING_RESULT\t1788437900216",
+      "9d5934f8-4a35-4873-955c-9d74578066d9\t7\tFAILED\t1788437900232",
+      "d362244b-c8a0-4c62-8843-3327acee623a\t0\tPENDING\t1788437895578",
+      "d362244b-c8a0-4c62-8843-3327acee623a\t1\tDISPATCHING\t1788437895659",
+      "d362244b-c8a0-4c62-8843-3327acee623a\t2\tWAITING\t1788437895677",
+      "d362244b-c8a0-4c62-8843-3327acee623a\t3\tFETCHING_RESULT\t1788437895695",
+      "d362244b-c8a0-4c62-8843-3327acee623a\t4\tSUCCEEDED\t1788437895713",
+      "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a\t0\tPENDING\t1788437895757",
+      "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a\t1\tDISPATCHING\t1788437895864",
+      "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a\t2\tWAITING\t1788437895889",
+      "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a\t3\tFAILED\t1788437895907"
+    ]
+  },
+  "dispatchCounts": {
+    "immediate": 1,
+    "delayed": 1,
+    "empty": 1,
+    "auth": 1,
+    "unknown": 1,
+    "truncate": 1,
+    "ownerB": 1
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437889575-owner_a",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3166
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437889774-owner_b",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3246
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437889917-viewer",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3026
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13453
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437890049-nomenu",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3086
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13453
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437890177
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437890187
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/absent/content",
+      "status": 401,
+      "body": {
+        "success": false,
+        "message": "请先登录",
+        "code": 401,
+        "result": {
+          "errorCode": "UNAUTHENTICATED",
+          "message": "请先登录",
+          "simulated": false
+        },
+        "timestamp": 1788437890191
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/tab/testAI/predict",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890212
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890226
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/jobs",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890239
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890251
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890263
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/jobs",
+      "status": 403,
+      "body": {
+        "success": false,
+        "message": "没有 AI 执行权限",
+        "code": 403,
+        "result": {
+          "errorCode": "FORBIDDEN",
+          "message": "没有 AI 执行权限",
+          "simulated": false
+        },
+        "timestamp": 1788437890278
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 201,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 201,
+        "result": {
+          "assetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "fileName": "input.png",
+          "mediaType": "image/png",
+          "sizeBytes": 79,
+          "sha256": "12b02152a0b0ce94163edff76b814fe0acb4f7778e176f7695d8d801f4126557",
+          "createdAt": "2026-09-03T12:18:10.360Z",
+          "expiresAt": "2026-09-10T12:18:10.360Z"
+        },
+        "timestamp": 1788437890371
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/assets",
+      "status": 201,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 201,
+        "result": {
+          "assetId": "6dc20aec-7c1c-4e99-8b3e-dea2707f1680",
+          "fileName": "input.png",
+          "mediaType": "image/png",
+          "sizeBytes": 79,
+          "sha256": "12b02152a0b0ce94163edff76b814fe0acb4f7778e176f7695d8d801f4126557",
+          "createdAt": "2026-09-03T12:18:10.392Z",
+          "expiresAt": "2026-09-10T12:18:10.392Z"
+        },
+        "timestamp": 1788437890397
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.431Z",
+          "updatedAt": "2026-09-03T12:18:10.675Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_0ce982cd-ad97-468e-9b65-82b4d60923f1_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:10.664Z",
+                "expiresAt": "2026-10-03T12:18:10.664Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437890721
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.747Z"
+        },
+        "timestamp": 1788437890768
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.747Z"
+        },
+        "timestamp": 1788437890787
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437891053
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437891317
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437891580
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437891846
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437892111
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437892377
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437892640
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437892905
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437893166
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437893428
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437893694
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437893955
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437894220
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437894486
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437894748
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437895010
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "WAITING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:10.844Z"
+        },
+        "timestamp": 1788437895272
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437895537
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437895558
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "d362244b-c8a0-4c62-8843-3327acee623a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.99,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.578Z",
+          "updatedAt": "2026-09-03T12:18:15.713Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": []
+            },
+            "artifacts": []
+          }
+        },
+        "timestamp": 1788437895739
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.757Z",
+          "updatedAt": "2026-09-03T12:18:15.757Z"
+        },
+        "timestamp": 1788437895785
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.757Z",
+          "updatedAt": "2026-09-03T12:18:15.757Z"
+        },
+        "timestamp": 1788437895797
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.757Z",
+          "updatedAt": "2026-09-03T12:18:15.907Z",
+          "error": {
+            "errorCode": "PROVIDER_AUTH",
+            "message": "Provider call did not complete",
+            "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437896059
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/sys/user/getUserInfo",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13263
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.757Z",
+          "updatedAt": "2026-09-03T12:18:15.907Z",
+          "error": {
+            "errorCode": "PROVIDER_AUTH",
+            "message": "Provider call did not complete",
+            "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437896107
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:16.440Z",
+          "updatedAt": "2026-09-03T12:18:16.440Z"
+        },
+        "timestamp": 1788437896460
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:16.440Z",
+          "updatedAt": "2026-09-03T12:18:16.440Z"
+        },
+        "timestamp": 1788437896473
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "UNKNOWN",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:16.440Z",
+          "updatedAt": "2026-09-03T12:18:16.516Z",
+          "error": {
+            "errorCode": "RESULT_UNKNOWN",
+            "message": "Provider call did not complete",
+            "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437896739
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/sys/user/getUserInfo",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13263
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "UNKNOWN",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:16.440Z",
+          "updatedAt": "2026-09-03T12:18:16.516Z",
+          "error": {
+            "errorCode": "RESULT_UNKNOWN",
+            "message": "Provider call did not complete",
+            "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437896793
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 202,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 202,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.064Z"
+        },
+        "timestamp": 1788437897082
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "PENDING",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.064Z"
+        },
+        "timestamp": 1788437897097
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.173Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437897360
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.173Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437897621
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.173Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437897883
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:17.173Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437898144
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437898404
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437898668
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437898932
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437899193
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437899456
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437899721
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FETCHING_RESULT",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:18.196Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Result collection incomplete",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437899981
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:20.232Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Could not save complete result",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437900243
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/sys/user/getUserInfo",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13263
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:20.232Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Could not save complete result",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437900286
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 200,
+      "contentType": "image/png",
+      "size": 79
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Request not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901001
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901014
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901026
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Request not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901038
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901053
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901070
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Request not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901080
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901092
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901104
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=0",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Asset not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901119
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d512dae-4e6c-44a4-8087-84e064fa04ee",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "6dc20aec-7c1c-4e99-8b3e-dea2707f1680",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:21.134Z",
+          "updatedAt": "2026-09-03T12:18:21.474Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_9d512dae-4e6c-44a4-8087-84e064fa04ee_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:21.467Z",
+                "expiresAt": "2026-10-03T12:18:21.467Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437901497
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d512dae-4e6c-44a4-8087-84e064fa04ee",
+      "status": 404,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 404,
+        "result": {
+          "errorCode": "NOT_FOUND",
+          "message": "Request not found",
+          "simulated": false
+        },
+        "timestamp": 1788437901508
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "",
+        "code": 200,
+        "result": [
+          {
+            "code": "image-detection.v1",
+            "version": "mock-v1",
+            "displayName": "模拟图片检测",
+            "available": false,
+            "simulated": true,
+            "unavailableReason": "能力已停用",
+            "inputMediaTypes": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxInputBytes": 10485760,
+            "maxOutputBytes": 10485760,
+            "maxWaitMillis": 1500,
+            "parametersSchema": "detection.v1"
+          }
+        ],
+        "timestamp": 1788437901960
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 409,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 409,
+        "result": {
+          "errorCode": "CAPABILITY_UNAVAILABLE",
+          "message": "Capability unavailable",
+          "simulated": false
+        },
+        "timestamp": 1788437901976
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437901993
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437902006
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 200,
+      "contentType": "image/png",
+      "size": 79
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer?waitMillis=1500",
+      "status": 413,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 413,
+        "result": {
+          "errorCode": "LIMIT_EXCEEDED",
+          "message": "Input exceeds capability limit",
+          "simulated": false
+        },
+        "timestamp": 1788437902358
+      }
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentify",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentify",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentify",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentifyClose",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentifyClose",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentifyClose",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addAudio",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addAudio",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addAudio",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/startVideoUtil",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/startVideoUtil",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/startVideoUtil",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/stopVideoUtil",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/stopVideoUtil",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/stopVideoUtil",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiSubscription/subInfo",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiSubscription/subInfo",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiSubscription/subInfo",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "POST",
+      "url": "/tab/testAI/predict",
+      "status": 409,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 202
+    },
+    {
+      "method": "POST",
+      "url": "/tab/testAI/predict",
+      "status": 403,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 177
+    },
+    {
+      "method": "POST",
+      "url": "/tab/testAI/predict",
+      "status": 401,
+      "contentType": "application/json;charset=UTF-8",
+      "size": 163
+    },
+    {
+      "method": "GET",
+      "url": "/tab/tabAiHistory/list",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 218
+    },
+    {
+      "method": "GET",
+      "url": "/tab/tabAiModel/list",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 1781
+    },
+    {
+      "method": "GET",
+      "url": "/tab/tabAiSubscription/list",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 1086
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs?limit=100",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "items": [
+            {
+              "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:17.064Z",
+              "updatedAt": "2026-09-03T12:18:20.232Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:16.440Z",
+              "updatedAt": "2026-09-03T12:18:16.516Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.757Z",
+              "updatedAt": "2026-09-03T12:18:15.907Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "d362244b-c8a0-4c62-8843-3327acee623a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.578Z",
+              "updatedAt": "2026-09-03T12:18:15.713Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.747Z",
+              "updatedAt": "2026-09-03T12:18:15.396Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:15.389Z",
+                    "expiresAt": "2026-10-03T12:18:15.389Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.431Z",
+              "updatedAt": "2026-09-03T12:18:10.675Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_0ce982cd-ad97-468e-9b65-82b4d60923f1_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:10.664Z",
+                    "expiresAt": "2026-10-03T12:18:10.664Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "2b1ca7ea-2f5a-478a-8352-3ad03cbb2730",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:43.091Z",
+              "updatedAt": "2026-09-03T12:12:43.205Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_2b1ca7ea-2f5a-478a-8352-3ad03cbb2730_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:43.197Z",
+                    "expiresAt": "2026-10-03T12:12:43.197Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.730Z",
+              "updatedAt": "2026-09-03T12:12:40.061Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.152Z",
+              "updatedAt": "2026-09-03T12:12:36.300Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.548Z",
+              "updatedAt": "2026-09-03T12:12:35.687Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "a7a9a6e2-25bf-4b60-a108-4a95eb49f873",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.366Z",
+              "updatedAt": "2026-09-03T12:12:35.503Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "cfcf6180-acea-43dc-9421-3d5bcf1119b6",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.486Z",
+              "updatedAt": "2026-09-03T12:12:35.082Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_cfcf6180-acea-43dc-9421-3d5bcf1119b6_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:35.075Z",
+                    "expiresAt": "2026-10-03T12:12:35.075Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "eb7c1431-36b7-4e5a-a1be-40db1aeceecb",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.200Z",
+              "updatedAt": "2026-09-03T12:12:30.420Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_eb7c1431-36b7-4e5a-a1be-40db1aeceecb_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:30.410Z",
+                    "expiresAt": "2026-10-03T12:12:30.410Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "7426a795-4884-4838-8929-39ce024c68b4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:02:23.445Z",
+              "updatedAt": "2026-09-03T12:02:23.743Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_7426a795-4884-4838-8929-39ce024c68b4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:02:23.732Z",
+                    "expiresAt": "2026-10-03T12:02:23.732Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.800Z",
+              "updatedAt": "2026-09-03T11:57:18.987Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.214Z",
+              "updatedAt": "2026-09-03T11:57:15.373Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.627Z",
+              "updatedAt": "2026-09-03T11:57:14.753Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "9c6f0541-69d5-44be-b721-9cf476f90a3b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.454Z",
+              "updatedAt": "2026-09-03T11:57:14.574Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "b52be498-91e1-4fe6-9994-eceb88907605",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:09.633Z",
+              "updatedAt": "2026-09-03T11:57:14.262Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_b52be498-91e1-4fe6-9994-eceb88907605_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T11:57:14.251Z",
+                    "expiresAt": "2026-10-03T11:57:14.251Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "c54cc50a-ec1e-4f89-80d2-81d9d24b8aef",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:09.344Z",
+              "updatedAt": "2026-09-03T11:57:09.581Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_c54cc50a-ec1e-4f89-80d2-81d9d24b8aef_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T11:57:09.573Z",
+                    "expiresAt": "2026-10-03T11:57:09.573Z"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "timestamp": 1788437903118
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs?limit=100",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "items": [
+            {
+              "requestId": "9d512dae-4e6c-44a4-8087-84e064fa04ee",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "6dc20aec-7c1c-4e99-8b3e-dea2707f1680",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:21.134Z",
+              "updatedAt": "2026-09-03T12:18:21.474Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_9d512dae-4e6c-44a4-8087-84e064fa04ee_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:21.467Z",
+                    "expiresAt": "2026-10-03T12:18:21.467Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "478f3099-0e88-4333-ab13-8caca84ab3c0",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "013f6bbc-ea9e-40e4-a2f9-23e6e04caa06",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:40.595Z",
+              "updatedAt": "2026-09-03T12:12:40.715Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_478f3099-0e88-4333-ab13-8caca84ab3c0_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:40.688Z",
+                    "expiresAt": "2026-10-03T12:12:40.688Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "1b737693-9580-46fd-9dc0-81cae71a776d",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "aa1bb436-6a9c-483b-a09a-46e2c1eae7d1",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:19.619Z",
+              "updatedAt": "2026-09-03T11:57:19.758Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_1b737693-9580-46fd-9dc0-81cae71a776d_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T11:57:19.739Z",
+                    "expiresAt": "2026-10-03T11:57:19.739Z"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "timestamp": 1788437903137
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/0ce982cd-ad97-468e-9b65-82b4d60923f1",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.431Z",
+          "updatedAt": "2026-09-03T12:18:10.675Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_0ce982cd-ad97-468e-9b65-82b4d60923f1_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:10.664Z",
+                "expiresAt": "2026-10-03T12:18:10.664Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437903151
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437903164
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/d362244b-c8a0-4c62-8843-3327acee623a",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "d362244b-c8a0-4c62-8843-3327acee623a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.99,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.578Z",
+          "updatedAt": "2026-09-03T12:18:15.713Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": []
+            },
+            "artifacts": []
+          }
+        },
+        "timestamp": 1788437903178
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:15.757Z",
+          "updatedAt": "2026-09-03T12:18:15.907Z",
+          "error": {
+            "errorCode": "PROVIDER_AUTH",
+            "message": "Provider call did not complete",
+            "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437903196
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "UNKNOWN",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:16.440Z",
+          "updatedAt": "2026-09-03T12:18:16.516Z",
+          "error": {
+            "errorCode": "RESULT_UNKNOWN",
+            "message": "Provider call did not complete",
+            "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437903212
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "FAILED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:17.064Z",
+          "updatedAt": "2026-09-03T12:18:20.232Z",
+          "error": {
+            "errorCode": "ARTIFACT_TRANSFER",
+            "message": "Could not save complete result",
+            "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+            "simulated": true
+          }
+        },
+        "timestamp": 1788437903222
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/9d512dae-4e6c-44a4-8087-84e064fa04ee",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "9d512dae-4e6c-44a4-8087-84e064fa04ee",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "6dc20aec-7c1c-4e99-8b3e-dea2707f1680",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:21.134Z",
+          "updatedAt": "2026-09-03T12:18:21.474Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_9d512dae-4e6c-44a4-8087-84e064fa04ee_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:21.467Z",
+                "expiresAt": "2026-10-03T12:18:21.467Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437903235
+      }
+    }
+  ]
+}

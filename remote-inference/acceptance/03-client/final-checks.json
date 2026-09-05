@@ -1,0 +1,45 @@
+{
+  "status": "PASS_WITH_EXTERNAL_BLOCKER",
+  "at": "2026-09-04T06:01:18Z",
+  "code_root": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client/code",
+  "branch": "work/remote-inference/03-client",
+  "common_start": "e44041ec050974ee3f36655f6869fb96cf16faad",
+  "contract_commit": "1177de8be45123d043d7cb26b845ee9d94c26784",
+  "scope_and_contract_validation": "PASS",
+  "junit_tests": 42,
+  "java_class_major": 52,
+  "build_image": "sha256:7f3a693dc7a90e2cd3c801b9fa98a6e58a74f38fc88eca47bf6deac6e02fec54",
+  "build_log_sha256": "6b20a8aaa9cccb77e90d2ac5312027b95740f9cbc264fe588fd0a071d513820c",
+  "spring_boot_layertools_smoke": "PASS",
+  "openspec": {
+    "remote-inference-platform": "PASS --strict",
+    "remote-video-streaming": "PASS --strict",
+    "master_task_lists_modified_by_03": false
+  },
+  "graphify": {
+    "command": "graphify update .",
+    "exit_code": 0,
+    "nodes": 29542,
+    "links": 71841,
+    "existing_vue_parser_warnings": 6,
+    "topology_changed": false
+  },
+  "security": {
+    "production_http_allowed": false,
+    "exact_approved_origin_required": true,
+    "retry_on_connection_failure": false,
+    "redirects": false,
+    "post_bodies_one_shot": true,
+    "browser_rtsp_or_gpu_url_fields_added": false,
+    "secret_literal_scan": "PASS",
+    "unconfirmed_video_stream_runtime": "HARD_DISABLED"
+  },
+  "external_blocker": "05 has not confirmed the RTX 5070 method, TLS/CA, authentication, video/stream examples, limits, event query or stop behavior. This package must not be reported as real GPU acceptance.",
+  "not_touched": [
+    "backend-master",
+    "GPU source or weights",
+    "database migrations and historical data",
+    "frontend-vue",
+    "global OpenSpec task checkboxes"
+  ]
+}

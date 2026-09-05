@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "command": "graphify update .",
+  "nodes": 28935,
+  "edges": 73363,
+  "communities": 1148,
+  "uncachedFilesProcessed": 883,
+  "knownPartialParseWarnings": 6,
+  "note": "The six Vue syntax warnings predate this cleanup and are outside the retired AI execution paths."
+}

@@ -1,0 +1,24 @@
+#!/bin/zsh
+set -eu
+
+serena_bin="$1"
+repo_root="$2"
+mcp_port="$3"
+user_home_dir="$4"
+stdout_log="$5"
+stderr_log="$6"
+node_bin_dir="$7"
+export HOME="$user_home_dir"
+export PATH="${serena_bin:h}:$node_bin_dir:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+cd "$repo_root"
+
+exec "$serena_bin" start-mcp-server \
+  --transport streamable-http \
+  --host 127.0.0.1 \
+  --port "$mcp_port" \
+  --project "$repo_root" \
+  --context codex \
+  --enable-web-dashboard true \
+  --open-web-dashboard false \
+  --log-level INFO \
+  >> "$stdout_log" 2>> "$stderr_log"

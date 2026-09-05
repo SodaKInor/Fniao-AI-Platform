@@ -1,0 +1,592 @@
+{
+  "status": "PASS",
+  "tests": 16,
+  "unitLogSha256": "42ba3c480f2b8b85bdf20280589e80f192d86d739e831e02599e66026850877d",
+  "lintLogSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "buildLogSha256": "d598e3f3321876f4590bf536dbd7306b3540af2c184f05a61cea672e343e64bf",
+  "files": [
+    {
+      "path": "frontend-vue/src/api/ai/assets.js",
+      "lines": 29,
+      "methods": [
+        {
+          "line": 4,
+          "lines": 6
+        },
+        {
+          "line": 11,
+          "lines": 18
+        },
+        {
+          "line": 15,
+          "lines": 7
+        },
+        {
+          "line": 21,
+          "lines": 7
+        }
+      ],
+      "sha256": "74cbb863f0bc23cdc567c19c6c4b311d313739d5b7b26c628e71fb71e580cb22"
+    },
+    {
+      "path": "frontend-vue/src/api/ai/capabilities.js",
+      "lines": 8,
+      "methods": [
+        {
+          "line": 4,
+          "lines": 4
+        }
+      ],
+      "sha256": "456ae7debd9cee41b923b2df33095b84d7b6b8c6873209b3238df159b6792181"
+    },
+    {
+      "path": "frontend-vue/src/api/ai/index.js",
+      "lines": 4,
+      "methods": [],
+      "sha256": "fe4ace1bf908386b79c53f7b712a86ca75bab2faf284af448668cefa417b1d3c"
+    },
+    {
+      "path": "frontend-vue/src/api/ai/jobs.js",
+      "lines": 23,
+      "methods": [
+        {
+          "line": 4,
+          "lines": 7
+        },
+        {
+          "line": 12,
+          "lines": 5
+        },
+        {
+          "line": 18,
+          "lines": 5
+        }
+      ],
+      "sha256": "bba18a691c1ecce69b160399c533568d4e7285fbf44745d8c0ac8b622ca0c45f"
+    },
+    {
+      "path": "frontend-vue/src/api/ai/response.js",
+      "lines": 13,
+      "methods": [
+        {
+          "line": 1,
+          "lines": 7
+        },
+        {
+          "line": 9,
+          "lines": 4
+        }
+      ],
+      "sha256": "abb9727a58a9237bd2337ae06a75828d65fc491884fab4a35b02629fab2ccc4b"
+    },
+    {
+      "path": "frontend-vue/src/services/ai/jobPolling.js",
+      "lines": 42,
+      "methods": [
+        {
+          "line": 3,
+          "lines": 39
+        },
+        {
+          "line": 9,
+          "lines": 6
+        },
+        {
+          "line": 16,
+          "lines": 16
+        },
+        {
+          "line": 17,
+          "lines": 1
+        },
+        {
+          "line": 25,
+          "lines": 1
+        },
+        {
+          "line": 33,
+          "lines": 6
+        }
+      ],
+      "sha256": "9f2d9deee1853c46fafc2b1f0a73e9dfe896b17524763250df4585bdbc971d44"
+    },
+    {
+      "path": "frontend-vue/src/services/ai/legacyEntries.js",
+      "lines": 30,
+      "methods": [
+        {
+          "line": 10,
+          "lines": 6
+        },
+        {
+          "line": 17,
+          "lines": 13
+        },
+        {
+          "line": 18,
+          "lines": 11
+        }
+      ],
+      "sha256": "5e534f08b43a930b017bb946fcb653177926546956b538b9697cdf8e289b597e"
+    },
+    {
+      "path": "frontend-vue/src/services/ai/navigation.js",
+      "lines": 36,
+      "methods": [
+        {
+          "line": 6,
+          "lines": 4
+        },
+        {
+          "line": 7,
+          "lines": 2
+        },
+        {
+          "line": 11,
+          "lines": 8
+        },
+        {
+          "line": 20,
+          "lines": 16
+        },
+        {
+          "line": 23,
+          "lines": 1
+        }
+      ],
+      "sha256": "6af1b213e187e622e638563bbed28ccb93ee65832201cfad45949473c3d57fd1"
+    },
+    {
+      "path": "frontend-vue/src/services/ai/presentation.js",
+      "lines": 50,
+      "methods": [
+        {
+          "line": 30,
+          "lines": 6
+        },
+        {
+          "line": 37,
+          "lines": 5
+        },
+        {
+          "line": 40,
+          "lines": 1
+        },
+        {
+          "line": 43,
+          "lines": 7
+        },
+        {
+          "line": 48,
+          "lines": 1
+        }
+      ],
+      "sha256": "90c358684e924a936c0e0b4ddafe454d4d1c7f78668abfb659619f5b798faba3"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/CapabilityPanel.vue",
+      "lines": 28,
+      "methods": [
+        {
+          "line": 5,
+          "lines": 1
+        },
+        {
+          "line": 6,
+          "lines": 1
+        },
+        {
+          "line": 6,
+          "lines": 1
+        }
+      ],
+      "sha256": "640ba1510540546feb609de5eb39235f38a6bce2de23f22eff04f850c0f7a542"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/DetectionParameters.vue",
+      "lines": 39,
+      "methods": [
+        {
+          "line": 5,
+          "lines": 1
+        }
+      ],
+      "sha256": "bb8cfb76015481e5bd9af1a9026347c59d7367fe154e4d6690cbe286e34ab47b"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/JobStatusPanel.vue",
+      "lines": 31,
+      "methods": [
+        {
+          "line": 7,
+          "lines": 1
+        },
+        {
+          "line": 8,
+          "lines": 1
+        }
+      ],
+      "sha256": "7f2d778b61bfac098c055ed80ffd82bca2a7bcdb90c2f06da8580fe2b26b903d"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/ResultPreview.vue",
+      "lines": 71,
+      "methods": [
+        {
+          "line": 10,
+          "lines": 1
+        },
+        {
+          "line": 11,
+          "lines": 1
+        },
+        {
+          "line": 12,
+          "lines": 1
+        },
+        {
+          "line": 13,
+          "lines": 1
+        },
+        {
+          "line": 14,
+          "lines": 1
+        },
+        {
+          "line": 15,
+          "lines": 1
+        },
+        {
+          "line": 17,
+          "lines": 7
+        },
+        {
+          "line": 20,
+          "lines": 1
+        },
+        {
+          "line": 24,
+          "lines": 27
+        },
+        {
+          "line": 38,
+          "lines": 3
+        }
+      ],
+      "sha256": "d4ad4caa9d7cad079706eadf89a50c7aa7a1565b9cf1cc57be15c80a38e5a48c"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/UploadPanel.vue",
+      "lines": 44,
+      "methods": [
+        {
+          "line": 9,
+          "lines": 1
+        },
+        {
+          "line": 10,
+          "lines": 1
+        },
+        {
+          "line": 10,
+          "lines": 1
+        },
+        {
+          "line": 13,
+          "lines": 13
+        }
+      ],
+      "sha256": "18f23f9f7ab65b66220db1812fc8bdf1bacfb4d24abbbb15005e88598bbea7b1"
+    },
+    {
+      "path": "frontend-vue/src/components/ai/renderers/DetectionResult.vue",
+      "lines": 31,
+      "methods": [
+        {
+          "line": 5,
+          "lines": 5
+        },
+        {
+          "line": 10,
+          "lines": 1
+        },
+        {
+          "line": 10,
+          "lines": 1
+        }
+      ],
+      "sha256": "da5741abcb18a3bb6ab0d2b3499965399252466c77aaab73d888db5f3873b1bd"
+    },
+    {
+      "path": "frontend-vue/src/views/ai/DisabledEntryPage.vue",
+      "lines": 15,
+      "methods": [],
+      "sha256": "adaf8156b5fce9ec8a0e86e654e25d1132c21121326fd65679790e694e166f90"
+    },
+    {
+      "path": "frontend-vue/src/views/ai/HistoryPage.vue",
+      "lines": 61,
+      "methods": [
+        {
+          "line": 6,
+          "lines": 7
+        },
+        {
+          "line": 13,
+          "lines": 1
+        },
+        {
+          "line": 14,
+          "lines": 1
+        },
+        {
+          "line": 15,
+          "lines": 1
+        },
+        {
+          "line": 16,
+          "lines": 1
+        },
+        {
+          "line": 17,
+          "lines": 1
+        },
+        {
+          "line": 18,
+          "lines": 1
+        },
+        {
+          "line": 20,
+          "lines": 1
+        },
+        {
+          "line": 21,
+          "lines": 1
+        },
+        {
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "line": 23,
+          "lines": 1
+        },
+        {
+          "line": 24,
+          "lines": 11
+        },
+        {
+          "line": 30,
+          "lines": 1
+        },
+        {
+          "line": 31,
+          "lines": 1
+        }
+      ],
+      "sha256": "6acc3d34b3d605d0dbdf729b8184bf3e0a1029a0a42ba02ea37a7939028edbb2"
+    },
+    {
+      "path": "frontend-vue/src/views/ai/InferencePage.vue",
+      "lines": 127,
+      "methods": [
+        {
+          "line": 8,
+          "lines": 1
+        },
+        {
+          "line": 12,
+          "lines": 9
+        },
+        {
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "line": 23,
+          "lines": 1
+        },
+        {
+          "line": 24,
+          "lines": 1
+        },
+        {
+          "line": 26,
+          "lines": 1
+        },
+        {
+          "line": 27,
+          "lines": 1
+        },
+        {
+          "line": 28,
+          "lines": 1
+        },
+        {
+          "line": 29,
+          "lines": 1
+        },
+        {
+          "line": 30,
+          "lines": 1
+        },
+        {
+          "line": 31,
+          "lines": 1
+        },
+        {
+          "line": 32,
+          "lines": 1
+        },
+        {
+          "line": 34,
+          "lines": 5
+        },
+        {
+          "line": 39,
+          "lines": 1
+        },
+        {
+          "line": 40,
+          "lines": 12
+        },
+        {
+          "line": 47,
+          "lines": 1
+        },
+        {
+          "line": 52,
+          "lines": 9
+        },
+        {
+          "line": 61,
+          "lines": 1
+        },
+        {
+          "line": 62,
+          "lines": 23
+        },
+        {
+          "line": 72,
+          "lines": 1
+        }
+      ],
+      "sha256": "2743ecdc7f8cbef1b71eb04a975cc5bef5e513cc34e433503d689fd16849ae75"
+    },
+    {
+      "path": "frontend-vue/src/views/ai/JobDetailPage.vue",
+      "lines": 54,
+      "methods": [
+        {
+          "line": 10,
+          "lines": 1
+        },
+        {
+          "line": 11,
+          "lines": 1
+        },
+        {
+          "line": 12,
+          "lines": 5
+        },
+        {
+          "line": 14,
+          "lines": 1
+        },
+        {
+          "line": 15,
+          "lines": 1
+        },
+        {
+          "line": 17,
+          "lines": 1
+        },
+        {
+          "line": 18,
+          "lines": 1
+        },
+        {
+          "line": 19,
+          "lines": 1
+        },
+        {
+          "line": 20,
+          "lines": 1
+        },
+        {
+          "line": 21,
+          "lines": 1
+        },
+        {
+          "line": 22,
+          "lines": 1
+        },
+        {
+          "line": 26,
+          "lines": 1
+        },
+        {
+          "line": 27,
+          "lines": 1
+        },
+        {
+          "line": 28,
+          "lines": 7
+        }
+      ],
+      "sha256": "ecbb8471954f0fa55a6bcfe697aa690bed96d484ac537c227bb7ae69cacf3a44"
+    }
+  ],
+  "legacySizes": [
+    {
+      "path": "frontend-vue/src/store/modules/user.js",
+      "lines": 236,
+      "reviewMethodsOver80": []
+    },
+    {
+      "path": "frontend-vue/src/views/audio/audio.vue",
+      "lines": 154,
+      "reviewMethodsOver80": []
+    },
+    {
+      "path": "frontend-vue/src/views/tab/TabAiModelBundList.vue",
+      "lines": 265,
+      "reviewMethodsOver80": [
+        {
+          "line": 20,
+          "lines": 86
+        }
+      ]
+    },
+    {
+      "path": "frontend-vue/src/views/tab/live/audio.vue",
+      "lines": 101,
+      "reviewMethodsOver80": []
+    },
+    {
+      "path": "frontend-vue/src/views/teasy/TabEasyConfigList.vue",
+      "lines": 326,
+      "reviewMethodsOver80": [
+        {
+          "line": 18,
+          "lines": 95
+        }
+      ]
+    },
+    {
+      "path": "frontend-vue/src/views/video/TabAiModelBundList.vue",
+      "lines": 245,
+      "reviewMethodsOver80": []
+    }
+  ],
+  "reviewedLegacy": [
+    "src/store/modules/user.js: permission-result menu assembly only",
+    "TabAiModelBundList/audio/TabEasyConfigList: disabled execution controls; management queries retained"
+  ],
+  "scope": "Real integrated sources; no 04b in-memory business API used for integration acceptance.",
+  "warnings": "Existing CSS order, package size and outdated Browserslist warnings; dependency versions unchanged."
+}

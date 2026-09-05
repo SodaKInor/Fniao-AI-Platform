@@ -1,0 +1,10 @@
+{
+  "capabilityCode": "video-stream-analysis.v1",
+  "streamSourceId": "stream-source-001",
+  "parameters": {
+    "maxEventsPerPoll": 50,
+    "pollIntervalMillis": 2000,
+    "includeSnapshots": true
+  },
+  "gpuUrl": "https://gpu.example.invalid"
+}

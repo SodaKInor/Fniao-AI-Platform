@@ -1,0 +1,68 @@
+{
+  "id": "04b-frontend",
+  "started_at": "2026-09-03T09:25:55.011416+00:00",
+  "containers": [
+    {
+      "service": "backend",
+      "id": "a971d284344912d4e42fdf6535a49b8e3f79d30f6d02de4a2041800d3d429aac",
+      "image": "sha256:1bc72057fb083ba76954d10e4d4b37d77749f619ea0bd94a87c2cfb0ff88afe6",
+      "health": "healthy",
+      "volumes": [
+        "wgai-ri-04b-frontend_uploads"
+      ],
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19105"
+          }
+        ]
+      }
+    },
+    {
+      "service": "frontend",
+      "id": "394778eb540796b08974857158086132412d54f19483e398a7cb3182d3191a85",
+      "image": "sha256:a49d67c937b0f42b8d01958cc840130436ced5062ca8820f89ef54bf00f3be53",
+      "health": "healthy",
+      "volumes": [],
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18105"
+          }
+        ]
+      }
+    },
+    {
+      "service": "mysql",
+      "id": "0dc96aa89131cdda4fae2a6dcb1a57f90441b7f2f0bc8ff2293011412e91b9af",
+      "image": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "health": "healthy",
+      "volumes": [
+        "wgai-ri-04b-frontend_mysql_data"
+      ],
+      "ports": {}
+    },
+    {
+      "service": "redis",
+      "id": "2170da9310f046cca931532549f461d578deaac003d65659aa6ab3d3cff52607",
+      "image": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "health": "healthy",
+      "volumes": [
+        "wgai-ri-04b-frontend_redis_data"
+      ],
+      "ports": {}
+    }
+  ],
+  "frontend_http_status": 200,
+  "backend_http_status": 200,
+  "database_owner": "04b-frontend",
+  "redis_owner": "04b-frontend",
+  "upload_owner": "04b-frontend",
+  "status": "PASS",
+  "login_tested": false,
+  "inference_tested": false,
+  "stopped_at": "2026-09-03T09:26:39.801814+00:00",
+  "volumes_preserved": true
+}

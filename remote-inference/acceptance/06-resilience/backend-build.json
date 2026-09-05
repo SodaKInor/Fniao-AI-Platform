@@ -1,0 +1,28 @@
+{
+  "status": "PASS_IMAGE_EXPORT",
+  "command": "docker build --progress=plain -f deploy/backend/Dockerfile -t wgai-resilience-backend:local-check .",
+  "profile": "prod,docker-core",
+  "java": 8,
+  "mavenReactor": "BUILD SUCCESS",
+  "testsExecutedInBuild": false,
+  "testsEvidence": "java8-tests.json",
+  "image": "wgai-resilience-backend:local-check",
+  "imageDigest": "sha256:7407c59851f72e32cf982119c2d023fd81088059f1acdba7d1585f79b29e7460",
+  "sizeBytes": 1111539263,
+  "imageExport": "PASS",
+  "imageVerification": "backend-image-verification.json",
+  "currentPreflight": "backend-image-preflight.json",
+  "currentPreflightStatus": "PASS_READY",
+  "currentPreflightFreeSpace": "PASS_61387579392_OF_4294967296_BYTES",
+  "currentDockerRecoveryEvidence": "docker-desktop-recovery.json",
+  "buildExit": 0,
+  "buildFinishedAt": "2026-09-04T11:20:33Z",
+  "privateArtifacts": "temporarily hard-linked from the accepted 00 workspace, ignored by Git, removed immediately after build; accepted source hashes reverified",
+  "historicalBlockedAttempt": {
+    "hostFreeSpaceAtBlock": "146MiB",
+    "imageExport": "BLOCKED_HOST_DISK_FULL",
+    "action": "terminated during silent image export after Maven reactor BUILD SUCCESS to avoid exhausting the host disk"
+  },
+  "originalContainersOrVolumesModified": false,
+  "productionDeploymentPerformed": false
+}

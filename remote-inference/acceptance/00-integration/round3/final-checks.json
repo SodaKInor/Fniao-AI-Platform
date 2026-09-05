@@ -1,0 +1,216 @@
+{
+  "status": "PASS",
+  "passedTasks": 23,
+  "totalTasks": 41,
+  "pendingIntegration": [],
+  "releaseBoundary": "round4-mock-gate",
+  "gatesPassed": [
+    "preflight",
+    "migration",
+    "java-tests",
+    "frontend-checks",
+    "contract-checks",
+    "architecture",
+    "spring-boot-smoke",
+    "api-e2e",
+    "runtime-modes",
+    "safety-e2e",
+    "menu-e2e",
+    "live-contracts",
+    "artifacts",
+    "browser-e2e"
+  ],
+  "dependencies": [
+    {
+      "id": "05-lan",
+      "head": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+      "clean": true,
+      "released": false
+    },
+    {
+      "id": "06-resilience",
+      "head": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+      "clean": true,
+      "released": false
+    },
+    {
+      "id": "07-cleanup",
+      "head": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+      "clean": true,
+      "released": false
+    },
+    {
+      "id": "08-release",
+      "head": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+      "clean": true,
+      "released": false
+    }
+  ],
+  "services": [
+    {
+      "name": "wgai-ri-00-integration-backend-1",
+      "healthy": true,
+      "imageId": "sha256:776eca1beabd397e267eb45858ea23487b0c557cc044725e63ac92d640e64392",
+      "startedAt": "2026-09-04T04:20:46.371743661Z",
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19100"
+          }
+        ]
+      },
+      "volumes": [
+        {
+          "name": "wgai-ri-00-integration_uploads",
+          "destination": "/data/uploads"
+        },
+        {
+          "name": "wgai-ri-00-integration_ai_private",
+          "destination": "/data/ai-private"
+        }
+      ]
+    },
+    {
+      "name": "wgai-ri-00-integration-frontend-1",
+      "healthy": true,
+      "imageId": "sha256:0f0db860923ec815d7aea47b49a19f86c3def9bc720601c7a6afe94d30069ae7",
+      "startedAt": "2026-09-03T11:57:06.442953002Z",
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "18100"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    {
+      "name": "wgai-ri-00-integration-mysql-1",
+      "healthy": true,
+      "imageId": "sha256:a532724022429812ec797c285c1b540a644c15e248579c6bfdf12a8fbaab4964",
+      "startedAt": "2026-09-03T11:40:12.230859905Z",
+      "ports": {},
+      "volumes": [
+        {
+          "name": "wgai-ri-00-integration_mysql_data",
+          "destination": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "name": "wgai-ri-00-integration-redis-1",
+      "healthy": true,
+      "imageId": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "startedAt": "2026-09-03T11:40:12.232479397Z",
+      "ports": {},
+      "volumes": [
+        {
+          "name": "wgai-ri-00-integration_redis_data",
+          "destination": "/data"
+        }
+      ]
+    },
+    {
+      "name": "wgai-backend-1",
+      "healthy": true,
+      "imageId": "sha256:a59400988242024f3eba4bb60a21bf66d68559109c398d202df32c29bece46ea",
+      "startedAt": "2026-09-03T09:03:09.265254293Z",
+      "ports": {},
+      "volumes": [
+        {
+          "name": "wgai_backend_uploads",
+          "destination": "/data/uploads"
+        }
+      ]
+    },
+    {
+      "name": "wgai-frontend-1",
+      "healthy": true,
+      "imageId": "sha256:13e3aec9e368bfc0854c3420cfd1d699096e5108a926efd9942014f099498fb8",
+      "startedAt": "2026-09-03T09:03:47.46147457Z",
+      "ports": {
+        "80/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8080"
+          }
+        ]
+      },
+      "volumes": []
+    },
+    {
+      "name": "wgai-mysql-1",
+      "healthy": true,
+      "imageId": "sha256:3df7a55ceec4b20972ef1f746d0b40eae362b460c8c024b24d4b18c492ef73aa",
+      "startedAt": "2026-09-02T10:46:41.77468019Z",
+      "ports": {},
+      "volumes": [
+        {
+          "name": "wgai_mysql_data",
+          "destination": "/var/lib/mysql"
+        }
+      ]
+    },
+    {
+      "name": "wgai-redis-1",
+      "healthy": true,
+      "imageId": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "startedAt": "2026-09-03T09:02:56.186355344Z",
+      "ports": {},
+      "volumes": [
+        {
+          "name": "wgai_redis_data",
+          "destination": "/data"
+        }
+      ]
+    }
+  ],
+  "evidenceSha256": {
+    "FIXES.md": "c986cfb685f7fbd99d56163df34d166146e725fe09f7ce826013e885e42c6db9",
+    "README.md": "fad2925ff6df5657058cf0db55491cc63f5e3f05607ace673621b29ee1839362",
+    "api-e2e.json": "a3200de55d5f01b10297dbe3a185df17406fca46080649c2a25cbf4724b28107",
+    "architecture.json": "3aaa7f96b6cae3a0990f9769ff83fdb00dbd835c4d350ac516d9dd3bdd1c51c4",
+    "artifacts.json": "2ad374b8f32ad8360a506678dbf89cb690348c45d961d8b83bc0e08b6c4b317e",
+    "browser-e2e.json": "7412cbec693bfd03fa14898449c78db8ad25ae077476b45e9170d3c06b3192d9",
+    "browser-pending.png": "e60b5c71a88a19a64746f958dcacbd11a751853f4965526d1730c1a1e2c12861",
+    "browser-pending.txt": "cda11f8e12ec354b7f367aa5dfd1ff81f4c3b0a25174db954309f946c72add52",
+    "contract-checks.json": "0aaf29f8124153dcccf8620291ece9bafbb235495b8de5496e1d2acd60ff3e57",
+    "frontend-checks.json": "4414390e5cb7e04e7218f515147f7d5b88d466f09078aaba768ae28924af35f8",
+    "java-tests.json": "91e7a620491459c040995f00ca5350fa7dc5c7646f0e58b23bfc42050a49ae11",
+    "live-contracts.json": "f51f8dcdd3cb395f5f4698783bcff5e7276534216c269c5238a083a2cf54f987",
+    "menu-e2e.json": "b7baf8627f5ea8753a90c9fa59a3b0ab927cf4f137139587c82682a83a3ed83f",
+    "migration.json": "08396f58fc3227f1a86ec5bfc9f37df33be68a1017c1f9ac175c608e5eb25270",
+    "preflight.json": "7940b6f4f108c58c1c4e12f54c1bd82095c7fc65312f150f058350e11633ce7b",
+    "runtime-modes.json": "23406d26afbef4ba054567ce078891a3d1deb708c1896069ff3d4aae6a09e654",
+    "safety-e2e.json": "e784034360c9764b042ae1f93256e51d01a00efa36bc3d884dc63e5047c38c21",
+    "scripts/AccountPassword.java": "589c3aa4985f81770857b7bb2edd33e118b6fd350d4546c7d55a12f1fbea576f",
+    "scripts/DownloadFaultFilter.java": "54c327e63393c94d417502d90ec265439a531a927bebfd10e52ec5e94d717b15",
+    "scripts/FaultInjection.java": "03b19ec53c34d6b84f4e109ea1a948ace166f11f0c25d73e42961235ea697d92",
+    "scripts/api-e2e.cjs": "c1db3c00d107e9e7a48f7252187e1fb888c262bba89848367a286eb574274279",
+    "scripts/artifacts.py": "9893fb1b7c8be4d075ca0948b60e6472d1e81dc982a45b8013da064eed764f6c",
+    "scripts/contracts-architecture.py": "846c05bcc026b1dc816c5416e4b7b2691e00bbcc7dad80120f041b7e83f30dd2",
+    "scripts/fault-runtime.cjs": "31357a166a263e7b68a59436d9d3e96bb10775cbe95e1f7c229b1d7b48a58ab4",
+    "scripts/final-checks.cjs": "8c6ed17429794a17e5998e7b994cb9bfd1604033d166b0e25fe0cd705446c794",
+    "scripts/frontend-evidence.cjs": "fc1004487aabdc600eff992036d6346ddb308e5674cdac17f9e291fe427857d3",
+    "scripts/http.cjs": "0aadb01f02f443aaa51aa1ec570dc33bbead5bd8b76820fd72aff1e9883fe62c",
+    "scripts/java-tests.py": "4e4420d5a48e66fe65d7f0aa8663a3604f250247aceda0d7dd9ae3870b1dd6d3",
+    "scripts/java-tests.sh": "0c066e4866c18429e0e3076619eb0c5f25d6fea25b108a85013bb36b46ba82c3",
+    "scripts/live-contracts.py": "c877bd290a1195cbc97e539c1b3c0ddfe8807df28f2205d37abeb21e3187f14e",
+    "scripts/menu-e2e.cjs": "93a7df93845ac1f87263585b9aa2b1eee25b18005a704e60f74159f1fa2ed334",
+    "scripts/migration.cjs": "b39a36f10ccc2dfcde7b6e717b023c900c2be3dd75b6ca4c6384f44530a3d101",
+    "scripts/preflight.cjs": "b98ea965e9c6c291228e97635c7d29ad764fa254eff5d4bcdf30cbc12c70c82b",
+    "scripts/runtime-modes.cjs": "be0d626f5cb3f418d0ba5f866d7af81c30dfd983611eb3490c7efc2ebc449f18",
+    "scripts/runtime.cjs": "6111545d48d4e435a88fc1a05aafd26834f4f0ad65b549448a69913b0ec29718",
+    "scripts/safety-e2e.cjs": "6e1fe38effa6b1b30618c48e58cd35468e68a42dbd7c3d15ca3b0ad1b3415869",
+    "scripts/seed.cjs": "4f5c5aa08d10391290983d075a98542ee05ce7e126de37407684735f69331c07",
+    "seed.json": "2f2b11e4ca3368c60aeb4d45ec72cf2dba63929e307bde0ecee639ad8b1f2d6b",
+    "spring-boot-smoke.json": "8e7b7bbfa16859e8e44eccad2d24ee19cfdd6bd60b853a540fe8f57dfad750b7"
+  },
+  "limits": [
+    "No real provider protocol approval",
+    "No production deployment/push/archive",
+    "05/06/07/08 remain gated by their own prerequisites"
+  ]
+}

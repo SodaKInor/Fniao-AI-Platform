@@ -1,0 +1,1553 @@
+{
+  "status": "PASS",
+  "modes": [
+    "disabled",
+    "unconfirmed remote"
+  ],
+  "unchangedJobCount": 25,
+  "conclusion": "Core healthy; no new persistence/dispatch; own historical results readable with real login in both modes.",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437934024-owner_a",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3094
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "",
+        "code": 200,
+        "result": [
+          {
+            "code": "image-detection.v1",
+            "version": "mock-v1",
+            "displayName": "模拟图片检测",
+            "available": false,
+            "simulated": true,
+            "unavailableReason": "AI 调用已停用",
+            "inputMediaTypes": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxInputBytes": 10485760,
+            "maxOutputBytes": 10485760,
+            "maxWaitMillis": 1500,
+            "parametersSchema": "detection.v1"
+          }
+        ],
+        "timestamp": 1788437935773
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437935837
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "items": [
+            {
+              "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:24.110Z",
+              "updatedAt": "2026-09-03T12:18:24.272Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_3a3b7efa-5021-4364-8035-811c12199ca8_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:24.264Z",
+                    "expiresAt": "2026-10-03T12:18:24.264Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:17.064Z",
+              "updatedAt": "2026-09-03T12:18:20.232Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:16.440Z",
+              "updatedAt": "2026-09-03T12:18:16.516Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.757Z",
+              "updatedAt": "2026-09-03T12:18:15.907Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "d362244b-c8a0-4c62-8843-3327acee623a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.578Z",
+              "updatedAt": "2026-09-03T12:18:15.713Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.747Z",
+              "updatedAt": "2026-09-03T12:18:15.396Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:15.389Z",
+                    "expiresAt": "2026-10-03T12:18:15.389Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.431Z",
+              "updatedAt": "2026-09-03T12:18:10.675Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_0ce982cd-ad97-468e-9b65-82b4d60923f1_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:10.664Z",
+                    "expiresAt": "2026-10-03T12:18:10.664Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "2b1ca7ea-2f5a-478a-8352-3ad03cbb2730",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:43.091Z",
+              "updatedAt": "2026-09-03T12:12:43.205Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_2b1ca7ea-2f5a-478a-8352-3ad03cbb2730_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:43.197Z",
+                    "expiresAt": "2026-10-03T12:12:43.197Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.730Z",
+              "updatedAt": "2026-09-03T12:12:40.061Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.152Z",
+              "updatedAt": "2026-09-03T12:12:36.300Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.548Z",
+              "updatedAt": "2026-09-03T12:12:35.687Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "a7a9a6e2-25bf-4b60-a108-4a95eb49f873",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.366Z",
+              "updatedAt": "2026-09-03T12:12:35.503Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "cfcf6180-acea-43dc-9421-3d5bcf1119b6",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.486Z",
+              "updatedAt": "2026-09-03T12:12:35.082Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_cfcf6180-acea-43dc-9421-3d5bcf1119b6_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:35.075Z",
+                    "expiresAt": "2026-10-03T12:12:35.075Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "eb7c1431-36b7-4e5a-a1be-40db1aeceecb",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.200Z",
+              "updatedAt": "2026-09-03T12:12:30.420Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_eb7c1431-36b7-4e5a-a1be-40db1aeceecb_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:30.410Z",
+                    "expiresAt": "2026-10-03T12:12:30.410Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "7426a795-4884-4838-8929-39ce024c68b4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:02:23.445Z",
+              "updatedAt": "2026-09-03T12:02:23.743Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_7426a795-4884-4838-8929-39ce024c68b4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:02:23.732Z",
+                    "expiresAt": "2026-10-03T12:02:23.732Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.800Z",
+              "updatedAt": "2026-09-03T11:57:18.987Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.214Z",
+              "updatedAt": "2026-09-03T11:57:15.373Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.627Z",
+              "updatedAt": "2026-09-03T11:57:14.753Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "9c6f0541-69d5-44be-b721-9cf476f90a3b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.454Z",
+              "updatedAt": "2026-09-03T11:57:14.574Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "b52be498-91e1-4fe6-9994-eceb88907605",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:09.633Z",
+              "updatedAt": "2026-09-03T11:57:14.262Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_b52be498-91e1-4fe6-9994-eceb88907605_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T11:57:14.251Z",
+                    "expiresAt": "2026-10-03T11:57:14.251Z"
+                  }
+                ]
+              }
+            }
+          ],
+          "nextCursor": "MTc4ODQzNjYyOTYzMzpiNTJiZTQ5OC05MWUxLTRmZTYtOTk5NC1lY2ViODg5MDc2MDU"
+        },
+        "timestamp": 1788437935917
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 200,
+      "contentType": "image/png",
+      "size": 79
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 409,
+        "result": {
+          "errorCode": "CAPABILITY_UNAVAILABLE",
+          "message": "Capability unavailable",
+          "simulated": false
+        },
+        "timestamp": 1788437935990
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/sys/randomImage/ri00-1788437971945-owner_a",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 3150
+    },
+    {
+      "method": "POST",
+      "url": "/sys/login",
+      "status": 200,
+      "contentType": "application/json",
+      "size": 13456
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "",
+        "code": 200,
+        "result": [
+          {
+            "code": "image-detection.v1",
+            "version": "mock-v1",
+            "displayName": "模拟图片检测",
+            "available": false,
+            "simulated": true,
+            "unavailableReason": "外部服务地址、凭据或信任配置不完整",
+            "inputMediaTypes": [
+              "image/png",
+              "image/jpeg"
+            ],
+            "maxInputBytes": 10485760,
+            "maxOutputBytes": 10485760,
+            "maxWaitMillis": 1500,
+            "parametersSchema": "detection.v1"
+          }
+        ],
+        "timestamp": 1788437974338
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+          "capabilityCode": "image-detection.v1",
+          "capabilityVersion": "mock-v1",
+          "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+          "parameters": {
+            "threshold": 0.5,
+            "maxDetections": 10,
+            "annotate": true
+          },
+          "state": "SUCCEEDED",
+          "simulated": true,
+          "createdAt": "2026-09-03T12:18:10.747Z",
+          "updatedAt": "2026-09-03T12:18:15.396Z",
+          "result": {
+            "simulated": true,
+            "data": {
+              "schemaVersion": "detection.v1",
+              "imageWidth": 16,
+              "imageHeight": 16,
+              "detections": [
+                {
+                  "label": "simulated-square",
+                  "score": 0.95,
+                  "box": {
+                    "x": 0.25,
+                    "y": 0.25,
+                    "width": 0.5,
+                    "height": 0.5
+                  }
+                }
+              ]
+            },
+            "artifacts": [
+              {
+                "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                "fileName": "simulated.png",
+                "mediaType": "image/png",
+                "sizeBytes": 79,
+                "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                "createdAt": "2026-09-03T12:18:15.389Z",
+                "expiresAt": "2026-10-03T12:18:15.389Z"
+              }
+            ]
+          }
+        },
+        "timestamp": 1788437974398
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "body": {
+        "success": true,
+        "message": "OK",
+        "code": 200,
+        "result": {
+          "items": [
+            {
+              "requestId": "3a3b7efa-5021-4364-8035-811c12199ca8",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:24.110Z",
+              "updatedAt": "2026-09-03T12:18:24.272Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_3a3b7efa-5021-4364-8035-811c12199ca8_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:24.264Z",
+                    "expiresAt": "2026-10-03T12:18:24.264Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:17.064Z",
+              "updatedAt": "2026-09-03T12:18:20.232Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "9d5934f8-4a35-4873-955c-9d74578066d9",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:16.440Z",
+              "updatedAt": "2026-09-03T12:18:16.516Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "109eb393-5822-417c-8c08-6c85469ded2b",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.757Z",
+              "updatedAt": "2026-09-03T12:18:15.907Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "d362244b-c8a0-4c62-8843-3327acee623a",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:15.578Z",
+              "updatedAt": "2026-09-03T12:18:15.713Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "090f6540-8692-4bba-8ece-6bbe32a97ae4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.747Z",
+              "updatedAt": "2026-09-03T12:18:15.396Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:15.389Z",
+                    "expiresAt": "2026-10-03T12:18:15.389Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "0ce982cd-ad97-468e-9b65-82b4d60923f1",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "005cb347-d380-41cd-aa1f-9d19083a234f",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:18:10.431Z",
+              "updatedAt": "2026-09-03T12:18:10.675Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_0ce982cd-ad97-468e-9b65-82b4d60923f1_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:18:10.664Z",
+                    "expiresAt": "2026-10-03T12:18:10.664Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "2b1ca7ea-2f5a-478a-8352-3ad03cbb2730",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:43.091Z",
+              "updatedAt": "2026-09-03T12:12:43.205Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_2b1ca7ea-2f5a-478a-8352-3ad03cbb2730_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:43.197Z",
+                    "expiresAt": "2026-10-03T12:12:43.197Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.730Z",
+              "updatedAt": "2026-09-03T12:12:40.061Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "cce810fe-627c-4f4d-9cde-e21998672b03",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:36.152Z",
+              "updatedAt": "2026-09-03T12:12:36.300Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "c60e7feb-6dac-4e60-bbb5-689b17303b9c",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.548Z",
+              "updatedAt": "2026-09-03T12:12:35.687Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "fd5b4747-1521-4b5a-ade7-5484164948fc",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "a7a9a6e2-25bf-4b60-a108-4a95eb49f873",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:35.366Z",
+              "updatedAt": "2026-09-03T12:12:35.503Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "cfcf6180-acea-43dc-9421-3d5bcf1119b6",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.486Z",
+              "updatedAt": "2026-09-03T12:12:35.082Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_cfcf6180-acea-43dc-9421-3d5bcf1119b6_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:35.075Z",
+                    "expiresAt": "2026-10-03T12:12:35.075Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "eb7c1431-36b7-4e5a-a1be-40db1aeceecb",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "44b985bd-5cda-4d83-b9aa-850c7e8be81c",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:12:30.200Z",
+              "updatedAt": "2026-09-03T12:12:30.420Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_eb7c1431-36b7-4e5a-a1be-40db1aeceecb_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:12:30.410Z",
+                    "expiresAt": "2026-10-03T12:12:30.410Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "7426a795-4884-4838-8929-39ce024c68b4",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T12:02:23.445Z",
+              "updatedAt": "2026-09-03T12:02:23.743Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_7426a795-4884-4838-8929-39ce024c68b4_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T12:02:23.732Z",
+                    "expiresAt": "2026-10-03T12:02:23.732Z"
+                  }
+                ]
+              }
+            },
+            {
+              "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.800Z",
+              "updatedAt": "2026-09-03T11:57:18.987Z",
+              "error": {
+                "errorCode": "ARTIFACT_TRANSFER",
+                "message": "Could not save complete result",
+                "requestId": "42b4c641-50cf-4f9e-9a8e-7690bbece96e",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "UNKNOWN",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:15.214Z",
+              "updatedAt": "2026-09-03T11:57:15.373Z",
+              "error": {
+                "errorCode": "RESULT_UNKNOWN",
+                "message": "Provider call did not complete",
+                "requestId": "0ff0d599-5e7e-45d5-a5b2-7667c310ac34",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "FAILED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.627Z",
+              "updatedAt": "2026-09-03T11:57:14.753Z",
+              "error": {
+                "errorCode": "PROVIDER_AUTH",
+                "message": "Provider call did not complete",
+                "requestId": "102914f4-d02e-412f-931d-8879f5926d51",
+                "simulated": true
+              }
+            },
+            {
+              "requestId": "9c6f0541-69d5-44be-b721-9cf476f90a3b",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.99,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:14.454Z",
+              "updatedAt": "2026-09-03T11:57:14.574Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": []
+                },
+                "artifacts": []
+              }
+            },
+            {
+              "requestId": "b52be498-91e1-4fe6-9994-eceb88907605",
+              "capabilityCode": "image-detection.v1",
+              "capabilityVersion": "mock-v1",
+              "inputAssetId": "e04de2eb-ed0f-4915-b69b-26ffbb24ff80",
+              "parameters": {
+                "threshold": 0.5,
+                "maxDetections": 10,
+                "annotate": true
+              },
+              "state": "SUCCEEDED",
+              "simulated": true,
+              "createdAt": "2026-09-03T11:57:09.633Z",
+              "updatedAt": "2026-09-03T11:57:14.262Z",
+              "result": {
+                "simulated": true,
+                "data": {
+                  "schemaVersion": "detection.v1",
+                  "imageWidth": 16,
+                  "imageHeight": 16,
+                  "detections": [
+                    {
+                      "label": "simulated-square",
+                      "score": 0.95,
+                      "box": {
+                        "x": 0.25,
+                        "y": 0.25,
+                        "width": 0.5,
+                        "height": 0.5
+                      }
+                    }
+                  ]
+                },
+                "artifacts": [
+                  {
+                    "assetId": "out_b52be498-91e1-4fe6-9994-eceb88907605_0",
+                    "fileName": "simulated.png",
+                    "mediaType": "image/png",
+                    "sizeBytes": 79,
+                    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+                    "createdAt": "2026-09-03T11:57:14.251Z",
+                    "expiresAt": "2026-10-03T11:57:14.251Z"
+                  }
+                ]
+              }
+            }
+          ],
+          "nextCursor": "MTc4ODQzNjYyOTYzMzpiNTJiZTQ5OC05MWUxLTRmZTYtOTk5NC1lY2ViODg5MDc2MDU"
+        },
+        "timestamp": 1788437974507
+      }
+    },
+    {
+      "method": "GET",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 200,
+      "contentType": "image/png",
+      "size": 79
+    },
+    {
+      "method": "POST",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "body": {
+        "success": false,
+        "message": "Request rejected",
+        "code": 409,
+        "result": {
+          "errorCode": "CAPABILITY_UNAVAILABLE",
+          "message": "Capability unavailable",
+          "simulated": false
+        },
+        "timestamp": 1788437974610
+      }
+    }
+  ]
+}

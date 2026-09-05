@@ -1,0 +1,21 @@
+{
+  "status": "HISTORICAL_PRE_LAYOUT_MANIFEST",
+  "pathNote": "Paths record the pre-layout source location; current private intake paths are documented in deploy/README_DEPLOY.md.",
+  "artifacts": [
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/asrt_sdk_maven-1.0-alpha1.jar",
+      "bytes": 17999,
+      "sha256": "10b56560251cec9bac5a92a6ab058b84ee3b43c438ac9cab5a257fbf96981330",
+      "source": "Existing local project artifact; upstream acquisition/license to be documented by 01-foundation",
+      "tracked": false
+    },
+    {
+      "path": "backend-github/jeecg-module-system/jeecg-system-start/src/main/resources/opencv-4.10.0.jar",
+      "bytes": 803300,
+      "sha256": "794e79dc1b77bc849d60081f0fad069403a01abb1d1255e984bdd8b9e1bb2d81",
+      "source": "Existing local project artifact; upstream acquisition/license to be documented by 01-foundation",
+      "tracked": false
+    }
+  ],
+  "note": "No binaries or credentials included; manifests do not replace acquisition/restore verification."
+}

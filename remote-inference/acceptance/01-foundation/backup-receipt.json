@@ -1,0 +1,72 @@
+{
+  "backup_directory": "/Users/twowt88/Documents/ChatGPT/WGAI-backups/round1/20260903T090136Z",
+  "started_at": "20260903T090136Z",
+  "source_commit": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+  "foundation_start_commit": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+  "running_image_ids": [
+    "sha256:13e3aec9e368bfc0854c3420cfd1d699096e5108a926efd9942014f099498fb8",
+    "sha256:3df7a55ceec4b20972ef1f746d0b40eae362b460c8c024b24d4b18c492ef73aa",
+    "sha256:a59400988242024f3eba4bb60a21bf66d68559109c398d202df32c29bece46ea",
+    "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b"
+  ],
+  "saved_image_mapping": [
+    {
+      "container": "/wgai-frontend-1",
+      "original_image": "sha256:13e3aec9e368bfc0854c3420cfd1d699096e5108a926efd9942014f099498fb8",
+      "saved_image": "sha256:5728b9f065d29b94f454c83df671d9d65cfc741f801c491f41e009ff0ea4c334",
+      "method": "container_root_filesystem_snapshot_original_image_unavailable"
+    },
+    {
+      "container": "/wgai-backend-1",
+      "original_image": "sha256:a59400988242024f3eba4bb60a21bf66d68559109c398d202df32c29bece46ea",
+      "saved_image": "sha256:ed393b682e5d08383b59fba92ae6175e73e41b86ef45238ff90c56696f4ee924",
+      "method": "container_root_filesystem_snapshot_original_image_unavailable"
+    },
+    {
+      "container": "/wgai-mysql-1",
+      "original_image": "sha256:3df7a55ceec4b20972ef1f746d0b40eae362b460c8c024b24d4b18c492ef73aa",
+      "saved_image": "sha256:0c1abe2407df2c9e5dce0e36f3f57d2081a408b7bc51467f484e277eb1155c3a",
+      "method": "container_root_filesystem_snapshot_original_image_unavailable"
+    },
+    {
+      "container": "/wgai-redis-1",
+      "original_image": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "saved_image": "sha256:ddd16a9b1575a774c7e62956be8daa1de5b32cfb5c25b7a216aefed8e0919f9b",
+      "method": "original_image"
+    }
+  ],
+  "table_engines_before": "InnoDB\t121\nMyISAM\t1",
+  "method": "Application writers stopped; mysqldump --lock-all-tables; stopped-container upload archive",
+  "restore_executed": false,
+  "snapshot_complete_at": "2026-09-03T09:02:56.090021+00:00",
+  "services_restored_at": "2026-09-03T09:04:03.135750+00:00",
+  "sql_create_table_count": 122,
+  "uploads.tar_readable_files": 6,
+  "redis.tar_readable_files": 4,
+  "images.tar_readable_files": 62,
+  "files": [
+    {
+      "path": "database.sql.gz",
+      "bytes": 240563,
+      "sha256": "63e310bcf17a9c8672371b500b33e946893b44b0bfad7ad26cb70e49a6f58826"
+    },
+    {
+      "path": "images.tar",
+      "bytes": 1341796352,
+      "sha256": "3c54c7adbbd30c3cf837215258aac7754c297cb7c3a79e89a7fdad78e87d0acd"
+    },
+    {
+      "path": "redis.tar",
+      "bytes": 34304,
+      "sha256": "56eaff9662dd5a00ccca7a4be23b3671b29c91c55a2c5e5dd8c034cbf9254451"
+    },
+    {
+      "path": "uploads.tar",
+      "bytes": 8873984,
+      "sha256": "221440e6af72ae3649a56b3687a72220909ea27fe8622f95f6d68ab264adb75f"
+    }
+  ],
+  "restored_home_http_status": 200,
+  "status": "PASS",
+  "verified_at": "2026-09-03T09:04:11.931538+00:00"
+}

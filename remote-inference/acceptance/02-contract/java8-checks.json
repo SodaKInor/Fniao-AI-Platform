@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "contract_version": "1.1.0",
+  "java_version": [
+    "openjdk version \"1.8.0_392\"",
+    "OpenJDK Runtime Environment (Temurin)(build 1.8.0_392-b08)",
+    "OpenJDK 64-Bit Server VM (Temurin)(build 25.392-b08, mixed mode)",
+    "javac 1.8.0_392"
+  ],
+  "classes": 83,
+  "domain_and_port_classes": 62,
+  "dto_classes": 21,
+  "class_major_version": 52,
+  "domain_ports_classpath": "Java 8 standard library and the owned domain/port declarations only",
+  "dto_classpath": "compiled domain plus the existing jackson-annotations artifact",
+  "existing_dependency": {
+    "original_path": "BOOT-INF/lib/jackson-annotations-2.13.2.jar",
+    "sha256": "7d3df5aafa2dc61ad1dbad30f411548c0184ed92d94628c63168721f08237cd4"
+  },
+  "jdeps": {
+    "unresolved_references": 0,
+    "domain_dependencies_sha256": "708c7bddb467ee9ebe59c5afb1e658f91106d4a945144d89230d74d8205180a8",
+    "dto_dependencies_sha256": "ffa0c393a6fc05ea9ceb21a3e45e3c91b103899a38c968b09101141b00d1ea4a",
+    "allowed": [
+      "Java 8 standard library",
+      "owned org.jeecg.modules.ai.domain and port declarations",
+      "existing Jackson annotations for API DTOs"
+    ]
+  },
+  "coverage": [
+    "image 1.0 constructors remain source-compatible",
+    "typed upload-video requests, events, results and provider port",
+    "typed stream source, session, event, stop and repository ports",
+    "no unbounded Map in owned domain, port or DTO files"
+  ],
+  "tests": "Declaration and ABI compatibility only; no client, persistence, UI, real GPU or stop capability is claimed."
+}

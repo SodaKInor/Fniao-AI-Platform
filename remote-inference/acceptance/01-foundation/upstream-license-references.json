@@ -1,0 +1,24 @@
+[
+  {
+    "component": "ASRT Java SDK",
+    "url": "https://raw.githubusercontent.com/nl8590687/ASRT_SDK_Java/4dfaa57b3b2135f1f9bc4c0b5cdbc4e53f4f872f/LICENSE",
+    "declared_license": "Apache-2.0",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "retrieved_on": "2026-09-03",
+    "scope": "Upstream source license declaration; local binary provenance independently verified against user-supplied original ZIP",
+    "upstream_maven_coordinates": {
+      "groupId": "net.ailemon.asrt",
+      "artifactId": "sdk",
+      "version": "1.0-alpha1"
+    },
+    "upstream_pom_url": "https://raw.githubusercontent.com/nl8590687/ASRT_SDK_Java/4dfaa57b3b2135f1f9bc4c0b5cdbc4e53f4f872f/asrt_sdk_maven/pom.xml"
+  },
+  {
+    "component": "OpenCV 4.10.0",
+    "url": "https://raw.githubusercontent.com/opencv/opencv/4.10.0/LICENSE",
+    "declared_license": "Apache-2.0",
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "retrieved_on": "2026-09-03",
+    "scope": "Upstream source license declaration; local binary provenance independently verified against user-supplied original ZIP"
+  }
+]

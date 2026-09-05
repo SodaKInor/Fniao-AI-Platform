@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "contracts": {
+    "openapiDocuments": 4,
+    "positiveAndNegativeJsonCases": 34,
+    "pngFixtures": 2,
+    "publicJavaTypes": 83
+  },
+  "openspecStrict": [
+    "remote-inference-platform",
+    "remote-video-streaming"
+  ],
+  "frozenContractChanged": false,
+  "externalProviderContract": "UNCONFIRMED"
+}

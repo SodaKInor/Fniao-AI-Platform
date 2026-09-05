@@ -1,0 +1,14 @@
+PENDING: awaiting user authorization for CAPTCHA; no authenticated UI workflow claimed.
+- link "logo":
+  - /url: /
+  - img "logo"
+- tablist:
+  - 'generic "图标: left"':
+  - 'generic "图标: right"':
+  - tab [selected]
+- tabpanel:
+  - textbox "请输入帐户名"
+  - textbox "请输入密码"
+  - textbox "请输入验证码"
+- button "登 录":
+  - generic: 登 录

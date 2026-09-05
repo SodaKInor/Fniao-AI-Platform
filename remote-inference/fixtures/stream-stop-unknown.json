@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "message": "stop confirmation unknown",
+  "code": 202,
+  "result": {
+    "sessionId": "stream-session-001",
+    "streamSourceId": "stream-source-001",
+    "capabilityCode": "video-stream-analysis.v1",
+    "capabilityVersion": "1.1.0",
+    "parameters": {
+      "maxEventsPerPoll": 50,
+      "pollIntervalMillis": 2000,
+      "includeSnapshots": true
+    },
+    "state": "STOP_REQUESTED",
+    "createdAt": "2026-09-03T12:20:00Z",
+    "updatedAt": "2026-09-03T12:25:00Z",
+    "unknownReason": "STOP_CONFIRMATION_UNKNOWN",
+    "error": {
+      "errorCode": "RESULT_UNKNOWN",
+      "message": "Provider stop response was lost",
+      "requestId": "stream-session-001",
+      "simulated": true,
+      "unknownReason": "STOP_CONFIRMATION_UNKNOWN"
+    }
+  },
+  "timestamp": 1788438300000
+}

@@ -1,0 +1,12 @@
+{
+  "contract_version": "0.2-draft",
+  "request_id": "video-request-001",
+  "capability": "video-file-analysis.v1",
+  "parameters": {
+    "threshold": 0.5,
+    "sample_interval_ms": 1000,
+    "max_events": 100,
+    "include_snapshots": true,
+    "annotate": false
+  }
+}

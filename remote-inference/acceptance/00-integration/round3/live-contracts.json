@@ -1,0 +1,559 @@
+{
+  "status": "PASS",
+  "responses": 92,
+  "checks": [
+    {
+      "evidence": "spring-boot-smoke",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "schema": "CapabilityListResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/capabilities",
+      "status": 401,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs",
+      "status": 401,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/absent/content",
+      "status": 401,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs",
+      "status": 403,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets",
+      "status": 201,
+      "schema": "AssetResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets",
+      "status": 201,
+      "schema": "AssetResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 202,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 202,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 202,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 202,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/out_090f6540-8692-4bba-8ece-6bbe32a97ae4_0/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/assets/005cb347-d380-41cd-aa1f-9d19083a234f/content",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d512dae-4e6c-44a4-8087-84e064fa04ee",
+      "status": 404,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "schema": "CapabilityListResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/infer",
+      "status": 413,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "schema": "JobPageResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "schema": "JobPageResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/0ce982cd-ad97-468e-9b65-82b4d60923f1",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/d362244b-c8a0-4c62-8843-3327acee623a",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/f92a6bee-1d9c-4070-8d5e-3b202e1b7e6a",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/109eb393-5822-417c-8c08-6c85469ded2b",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d5934f8-4a35-4873-955c-9d74578066d9",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "api-e2e",
+      "url": "/ai/v1/jobs/9d512dae-4e6c-44a4-8087-84e064fa04ee",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "schema": "CapabilityListResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "schema": "JobPageResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "schema": "ErrorResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/capabilities",
+      "status": 200,
+      "schema": "CapabilityListResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/jobs/090f6540-8692-4bba-8ece-6bbe32a97ae4",
+      "status": 200,
+      "schema": "JobResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/jobs",
+      "status": 200,
+      "schema": "JobPageResponse"
+    },
+    {
+      "evidence": "runtime-modes",
+      "url": "/ai/v1/infer",
+      "status": 409,
+      "schema": "ErrorResponse"
+    }
+  ],
+  "failures": []
+}

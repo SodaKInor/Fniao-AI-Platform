@@ -1,4 +1,6 @@
-# WGAI 远程 GPU 接入检查
+# WGAI 远程 GPU 接入检查（历史基线）
+
+> 本审计冻结目录整合前的入口和行号。下方仍存在的源码链接已指向最终 `apps` 路径；07 已移除的执行入口以清理表为权威证据，不再伪造当前文件链接。
 
 检查日期：2026-09-02。范围为当前工作区、运行中的本机四个容器、接口文档与数据库结构/配置完整性；没有连接 GPU 电脑，没有执行真实推理，没有评测算法精度。
 
@@ -91,19 +93,19 @@ P0：接入远程模型/扩大访问范围前必须处理。P1：第一条真实
 
 路径中的行号为本次源码的 1-based 行号。
 
-- E1：[历史识别控制器](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java)，115–118；[识别分派服务](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java)，593–703。
-- E2：[区域检测服务](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java)，45–75。
+- E1：[历史识别控制器](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/controller/TabAiHistoryController.java)，115–118；[识别分派服务](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/tab/service/impl/TabAiHistoryServiceImpl.java)，593–703。
+- E2：[区域检测服务](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/demo/video/service/impl/TabVideoUtilServiceImpl.java)，45–75。
 - E3：[部署 Compose](../../../deploy/docker-compose.yml)、[Docker 后端配置](../../../deploy/backend/application-docker.yml)、[环境示例](../../../deploy/.env.example)；目标源码中配置消费点为 `JeecgSystemApplication.java:37` 和 `TabAiHistoryServiceImpl.java:61–77`。
-- E4：[训练入口](../../../frontend-vue/src/views/train/TabTrainPythonList.vue)，214、259；[人脸入口](../../../frontend-vue/src/views/face/TabFaceTest.vue)，343；[视频配置入口](../../../frontend-vue/src/views/video/TabAiVideoSettingList.vue)，221；两版 controller 映射与运行接口文档交叉核对。
-- E5：[Shiro 配置](../../../backend-github/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java)，94、102、129–130、145、163。
-- E6：[通用上传/下载](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/CommonController.java)，66–125、134–156、213 起。
-- E7：[模型实体](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/entity/TabAiModel.java)，58–94；[本地模型加载](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/AIModel/AIModelYolo3.java)，695–703、1062–1070。
-- E8：[前端请求设置](../../../frontend-vue/src/utils/request.js)，14–20；[Nginx 配置](../../../deploy/frontend/nginx.conf)。
-- E9：[WebSocket](../../../backend-github/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java)，32、49–58。
-- E10：[嵌入聊天页](../../../frontend-vue/src/views/maxkb/userchat.vue)，3–7、17–26；[模型表单](../../../frontend-vue/src/views/maxkb/modules/TabMaxkbModelForm.vue)，21–38；[跳转代码](../../../frontend-vue/src/views/maxkb/TabMaxkbModelList.vue)，239–242。
-- E11：[业务模块 POM](../../../backend-github/jeecg-module-system/jeecg-system-biz/pom.xml)，43–66、82–94；[核心构建文件](../../../deploy/backend/Dockerfile)。
-- E12：[首次初始化清理 SQL](../../../deploy/db/002-local-sanitize.sql)，5–25。
-- E13：[前端依赖](../../../frontend-vue/package.json)、[后端依赖](../../../backend-github/pom.xml)，12、18。
+- E4：训练、人脸和旧视频配置入口已在 07 退役；见[清理表](../../../remote-inference/acceptance/07-cleanup/CLEANUP_TABLE.md)。
+- E5：[Shiro 配置](../../../apps/backend/jeecg-boot-base-core/src/main/java/org/jeecg/config/shiro/ShiroConfig.java)，94、102、129–130、145、163。
+- E6：[通用上传/下载](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/system/controller/CommonController.java)，66–125、134–156、213 起。
+- E7：[模型实体](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/tab/entity/TabAiModel.java)，58–94；本地模型执行类已在 07 退役，见[清理表](../../../remote-inference/acceptance/07-cleanup/CLEANUP_TABLE.md)。
+- E8：[前端请求设置](../../../apps/frontend/src/utils/request.js)，14–20；[Nginx 配置](../../../deploy/frontend/nginx.conf)。
+- E9：[WebSocket](../../../apps/backend/jeecg-module-system/jeecg-system-biz/src/main/java/org/jeecg/modules/message/websocket/WebSocket.java)，32、49–58。
+- E10：MaxKB 页面与跳转已在 07 退役；见[清理表](../../../remote-inference/acceptance/07-cleanup/CLEANUP_TABLE.md)。
+- E11：[业务模块 POM](../../../apps/backend/jeecg-module-system/jeecg-system-biz/pom.xml)，43–66、82–94；[核心构建文件](../../../deploy/backend/Dockerfile)。
+- E12：[首次初始化清理 SQL](../../../database/bootstrap/002-local-sanitize.sql)，5–25。
+- E13：[前端依赖](../../../apps/frontend/package.json)、[后端依赖](../../../apps/backend/pom.xml)，12、18。
 
 ## 验证边界
 

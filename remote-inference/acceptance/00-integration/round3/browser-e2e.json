@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "scope": "Real browser acceptance against the isolated 00 integration runtime; provider remains mock and no real GPU claim is made.",
+  "testedCodeHead": "1b56019bb0538a22c16187d3d1141227a0f23e79",
+  "origin": "http://127.0.0.1:18100",
+  "backendOrigin": "http://127.0.0.1:19100/jeecg-boot",
+  "browser": "Codex in-app Chromium",
+  "sample": {
+    "path": "backend-github/integrations/ai-contracts/examples/input.png",
+    "mediaType": "image/png",
+    "sizeBytes": 79,
+    "sha256": "12b02152a0b0ce94163edff76b814fe0acb4f7778e176f7695d8d801f4126557"
+  },
+  "accounts": {
+    "owner_a": {
+      "login": "PASS",
+      "aiMenu": true,
+      "canExecute": true,
+      "workflow": "PASS"
+    },
+    "owner_b": {
+      "login": "PASS",
+      "aiMenu": true,
+      "canExecute": true,
+      "foreignJob": "record missing or access denied"
+    },
+    "viewer": {
+      "login": "PASS",
+      "aiMenu": true,
+      "canExecute": false,
+      "page": "capability reports no execution permission; upload and submit controls disabled"
+    },
+    "nomenu": {
+      "login": "PASS",
+      "aiMenu": false,
+      "canExecute": false,
+      "directRoute": "/ai/inference resolves to /404 with missing-or-unauthorized message"
+    },
+    "anonymous": {
+      "directRoute": "/ai/inference redirects to /user/login"
+    }
+  },
+  "workflows": {
+    "synchronous200": {
+      "requestId": "500ced01-4045-4a0e-8446-f4a2674832b3",
+      "uploadStatus": 201,
+      "submitStatus": 200,
+      "state": "SUCCEEDED",
+      "resultAssetId": "out_500ced01-4045-4a0e-8446-f4a2674832b3_0"
+    },
+    "accepted202": {
+      "requestId": "efcb1779-cd7e-4583-b01e-a158a42fb818",
+      "submitStatus": 202,
+      "pollSequenceBytes": [443, 443, 945],
+      "state": "SUCCEEDED",
+      "createdAtEpochMs": 1788495407686,
+      "updatedAtEpochMs": 1788495412352,
+      "resultAssetId": "out_efcb1779-cd7e-4583-b01e-a158a42fb818_0"
+    },
+    "fullPageFlow": {
+      "requestId": "7965801d-cbf0-42e6-b32b-10dd8990cb54",
+      "steps": [
+        "upload",
+        "submit",
+        "wait",
+        "view structured result",
+        "preview result image",
+        "download action",
+        "reload detail",
+        "open refreshed history"
+      ],
+      "historyContainsRequest": true,
+      "simulatedDisclosureVisible": true,
+      "resultAssetId": "out_7965801d-cbf0-42e6-b32b-10dd8990cb54_0"
+    },
+    "interruptedDownload": {
+      "requestId": "8853ea34-4d48-43b5-9844-d0b2dbc56b02",
+      "resultAssetId": "out_8853ea34-4d48-43b5-9844-d0b2dbc56b02_0",
+      "truncatedBytes": 12,
+      "browserMessage": "网络连接中断，请重新查询或下载",
+      "partialPreviewPublished": false,
+      "restoredBytes": 79,
+      "restoredPreview": true,
+      "restoredDownloadAction": true
+    }
+  },
+  "resultAsset": {
+    "mediaType": "image/png",
+    "sizeBytes": 79,
+    "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+  },
+  "legacy": {
+    "retiredEntry": "shows disabled notice and no run action",
+    "managementMenusRetained": [
+      "AI模型库",
+      "AI识别结果历史"
+    ],
+    "newTaskUsesLegacyAnonymousWebSocket": false
+  },
+  "runtimeRestored": {
+    "providerMode": "mock",
+    "downloadMode": "normal",
+    "faultOverlayRequiredOnlyForInterruption": true
+  },
+  "limitations": [
+    "The browser run validates the mock end-to-end business flow, not a real GPU service.",
+    "Browser download completion is evidenced by the successful 79-byte response and absence of a page error; the in-app browser does not expose a saved-file path.",
+    "05/06/07/08 and real-provider capabilities remain unreleased."
+  ]
+}

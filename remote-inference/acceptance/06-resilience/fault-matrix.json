@@ -1,0 +1,88 @@
+{
+  "status": "LOCAL_FIXTURES_PASS_REAL_PROVIDER_BLOCKED",
+  "commonStart": "b23f2fc8c5d1911af61dd0f55ad6a89d73c0d09d",
+  "java8Suite": {
+    "tests": 58,
+    "database": "06-owned disposable MySQL schema",
+    "originalDatabaseOrVolumesModified": false
+  },
+  "cases": [
+    {
+      "case": "PENDING restart",
+      "evidence": "ResilienceTest.pendingRestartDispatchesExactlyOnce",
+      "expected": "dispatches once"
+    },
+    {
+      "case": "active FETCHING_RESULT",
+      "evidence": "ResilienceTest.activeResultDownloadIsNotStolenBeforeLease",
+      "expected": "not reclaimed before bounded lease"
+    },
+    {
+      "case": "stale FETCHING_RESULT",
+      "evidence": "ResilienceTest.staleResultRecoveryReadsArtifactsWithoutReplayingInference",
+      "expected": "same checkpoint artifacts fetched; zero inference POST"
+    },
+    {
+      "case": "stale DISPATCHING or WAITING",
+      "evidence": "ResilienceTest.staleDispatchedWorkBecomesUnknownAndTerminalRaceWins",
+      "expected": "UNKNOWN when query is unavailable; terminal race cannot be overwritten"
+    },
+    {
+      "case": "image/video response loss",
+      "evidence": "WorkflowTest.responseLostBecomesUnknownAndExplicitRetryHasNewIdentity; VideoWorkflowTest.responseLossIsUnknownAndNeverTransparentlyReplayed",
+      "expected": "UNKNOWN; no transparent replay; explicit retry has a new identity"
+    },
+    {
+      "case": "PENDING cancel race and remote cancel boundary",
+      "evidence": "PersistenceTest.cancelAndDispatchHaveOnlyOneWinner; VideoWorkflowTest.onlyPendingVideoJobsCanBeCancelledLocally",
+      "expected": "one atomic winner; dispatched job is not falsely cancelled"
+    },
+    {
+      "case": "ambiguous stream start",
+      "evidence": "ResilienceTest.ambiguousStreamStartNeverReplaysRemotePost",
+      "expected": "UNKNOWN; zero repeated start POST"
+    },
+    {
+      "case": "ambiguous stream stop",
+      "evidence": "ResilienceTest.uncertainStopQueriesConfirmationWithoutRepeatingStop",
+      "expected": "query confirms STOPPED; zero repeated stop POST"
+    },
+    {
+      "case": "unconfirmed stop support",
+      "evidence": "StreamWorkflowTest.unconfirmedFeaturesKeepStartAndRemoteStopDisabled",
+      "expected": "operation rejected; state remains RUNNING"
+    },
+    {
+      "case": "event deduplication, late event, and snapshot batch integrity",
+      "evidence": "StreamWorkflowTest.eventsAreDeduplicatedPagedAndRejectedAfterTerminalState; ResilienceTest.invalidSnapshotBatchIsAtomicAndCannotCrossStreamSessions",
+      "expected": "duplicates ignored; terminal state/cursor cannot be overwritten; invalid snapshot batches commit no partial events and cannot link a snapshot across sessions"
+    },
+    {
+      "case": "stream snapshot interruption",
+      "evidence": "ResilienceTest.interruptedStreamSnapshotDoesNotAdvanceCursorOrPublishPartialAsset",
+      "expected": "no event, cursor advance, metadata, or partial file"
+    },
+    {
+      "case": "artifact interruption and provider offline history",
+      "evidence": "WorkflowTest.interruptedDownloadRetriesOnlySameArtifactAndCleansPartialFile; WorkflowTest.completeResultAndHistorySurviveProviderOffline",
+      "expected": "only artifact read retries; saved history remains readable"
+    },
+    {
+      "case": "authorization and login isolation",
+      "evidence": "ApiTest.unauthenticatedAndForeignResourcesAreNotReadable; ApiTest.providerAuthenticationFailureDoesNotBecomeLogin401; StreamApiTest.anonymousAndOtherUsersCannotSeeSourcesSessionsOrEvents",
+      "expected": "anonymous/cross-owner denied; provider auth failure does not clear business login"
+    },
+    {
+      "case": "Micrometer and rollover",
+      "evidence": "ResilienceTest.boundedMetricsExposeQueuesDurationsErrorsAndEventDeduplication; ConfigurationTest.recoveryLeaseCannotBeDisabledOrMadeUnbounded; static-checks.json",
+      "expected": "bounded tags and queue/inflight/duration/error/dedup meters; all file appenders roll by size and time"
+    }
+  ],
+  "notClaimed": [
+    "real RTX 5070 image/video/RTSP request",
+    "real provider query/cancel/stop semantics",
+    "6.1-6.5 completion",
+    "00 integration acceptance",
+    "07 cleanup or release candidate"
+  ]
+}

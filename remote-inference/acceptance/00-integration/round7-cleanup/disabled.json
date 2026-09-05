@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "mode": "disabled",
+  "realProviderValidated": false,
+  "capabilitiesAvailable": 0,
+  "historicalJobId": "ce599ad6-848c-4629-b311-9c9b78b484bb",
+  "historicalState": "SUCCEEDED",
+  "historicalAssetSha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d",
+  "newSubmissionStatus": 409,
+  "jobCountBefore": 75,
+  "jobCountAfter": 75,
+  "note": "Disabled mode fails closed while authenticated history and stored results remain readable."
+}

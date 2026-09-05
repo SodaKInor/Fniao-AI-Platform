@@ -1,0 +1,19 @@
+{
+  "simulated": true,
+  "provider_request_id": "provider-video-001",
+  "provider_version": "unconfirmed-fixture",
+  "events": [
+    {
+      "event_id": "provider-video-event-001",
+      "offset_ms": 1250,
+      "event_type": "person",
+      "score": 0.91,
+      "snapshot": {
+        "reference": "artifacts/snapshot-001.png",
+        "media_type": "image/png",
+        "size_bytes": 79,
+        "sha256": "6a6d02559b8c8014f8840fe7faeb3c550fca2bce0303355ae07f0722089dca4d"
+      }
+    }
+  ]
+}

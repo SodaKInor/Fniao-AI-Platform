@@ -29,7 +29,7 @@ table_count=$(compose exec -T -e MYSQL_PWD="$MYSQL_PASSWORD" mysql \
   mysql -u"$MYSQL_USER" -D"$MYSQL_DATABASE" -Nse \
   "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='$MYSQL_DATABASE'")
 [ "$table_count" -ge 100 ] || fail "Only $table_count tables were initialized"
-for table in sys_user sys_permission tab_ai_model; do
+for table in sys_user sys_permission tab_ai_model ai_asset ai_job ai_stream_session; do
   present=$(compose exec -T -e MYSQL_PWD="$MYSQL_PASSWORD" mysql \
     mysql -u"$MYSQL_USER" -D"$MYSQL_DATABASE" -Nse "SHOW TABLES LIKE '$table'")
   [ "$present" = "$table" ] || fail "Missing business table $table"
@@ -46,10 +46,14 @@ base_url="http://${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-8080}"
   || fail "Nginx API proxy failed"
 
 echo "[5/10] Sanitized local seed data"
-legacy_binding_count=$(compose exec -T -e MYSQL_PWD="$MYSQL_PASSWORD" mysql \
+legacy_algorithm_count=$(compose exec -T -e MYSQL_PWD="$MYSQL_PASSWORD" mysql \
   mysql -u"$MYSQL_USER" -D"$MYSQL_DATABASE" -Nse \
-  "SELECT (SELECT COUNT(*) FROM tab_ai_model_bund) + (SELECT COUNT(*) FROM sys_log)")
-[ "$legacy_binding_count" -eq 0 ] || fail "Historical algorithm/log rows were not sanitized"
+  "SELECT (SELECT COUNT(*) FROM tab_ai_model_bund) + (SELECT COUNT(*) FROM tab_ai_history) + (SELECT COUNT(*) FROM sys_data_log)")
+[ "$legacy_algorithm_count" -eq 0 ] || fail "Historical algorithm/audit rows were not sanitized"
+unsafe_runtime_log_count=$(compose exec -T -e MYSQL_PWD="$MYSQL_PASSWORD" mysql \
+  mysql -u"$MYSQL_USER" -D"$MYSQL_DATABASE" -Nse \
+  "SELECT COUNT(*) FROM sys_log WHERE CONCAT_WS(' ', log_content, method, request_url, request_param) REGEXP '/Users/|[A-Za-z]:\\\\\\\\|192\\.168\\.'")
+[ "$unsafe_runtime_log_count" -eq 0 ] || fail "Runtime logs contain author-machine paths or private addresses"
 
 echo "[6/10] Production static-address scan"
 bad_static=$(compose exec -T frontend sh -c \
@@ -88,4 +92,4 @@ echo "[10/10] Final HTTP check"
 /usr/bin/curl -fsS "$base_url/jeecg-boot/sys/randomImage/deploy-verify-final" >/dev/null \
   || fail "API proxy failed after restart"
 
-echo "VERIFY PASSED: core WGAI deployment is healthy and persistent"
+echo "VERIFY PASSED: Fniao AI Platform core deployment is healthy, disabled-by-default and persistent"

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "simulated": true,
+  "realProviderValidated": false,
+  "prefix": "round6-stub-1788534540040",
+  "responseLost": {
+    "requestId": "9a5fa6cb-6b74-4b66-b679-43b226ba3604",
+    "state": "UNKNOWN",
+    "errorCode": "PROVIDER_OFFLINE",
+    "providerPosts": 1
+  },
+  "validEmpty": {
+    "requestId": "a8f8b183-a350-437f-af87-aaf31a05bc4f",
+    "state": "SUCCEEDED",
+    "detections": 0,
+    "artifacts": 0
+  },
+  "artifactInterrupted": {
+    "requestId": "730fd01e-0444-46d0-8cd3-a6f52fa4123c",
+    "state": "FAILED",
+    "errorCode": "ARTIFACT_TRANSFER",
+    "inferencePosts": 1,
+    "artifactGetAttempts": 3
+  },
+  "duplicateEvents": {
+    "sessionId": "ed0d9e1b-f23f-449c-8ca9-888627b4b5a5",
+    "persisted": 1
+  },
+  "stopUnknown": {
+    "sessionId": "ef9ce7b7-5510-4e32-97ef-55d9f5a90e6e",
+    "state": "UNKNOWN",
+    "reason": "STOP_CONFIRMATION_UNKNOWN",
+    "providerStopPosts": 1,
+    "repeatStatus": 409
+  },
+  "providerOffline": {
+    "requestId": "8cdcaa0e-da2c-4a91-a52a-8df1c1472188",
+    "historyStatus": 200,
+    "downloadStatus": 200,
+    "downloadedBytes": 79
+  },
+  "metrics": {
+    "wgai.ai.queue.size": 1,
+    "wgai.ai.inflight.size": 1,
+    "wgai.ai.operation.duration": 3,
+    "wgai.ai.errors": 1,
+    "wgai.ai.stream.events": 1
+  },
+  "backendRestart": {
+    "existingSessionTokenAccepted": true,
+    "requestId": "8cdcaa0e-da2c-4a91-a52a-8df1c1472188",
+    "state": "SUCCEEDED"
+  }
+}

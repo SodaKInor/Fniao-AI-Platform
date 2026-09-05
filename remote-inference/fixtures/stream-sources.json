@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "message": "ok",
+  "code": 200,
+  "result": [
+    {
+      "streamSourceId": "stream-source-001",
+      "displayName": "Warehouse entrance",
+      "available": false,
+      "unavailableReason": "Provider source mapping is not confirmed"
+    }
+  ],
+  "timestamp": 1788438000000
+}

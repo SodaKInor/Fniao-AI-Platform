@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "simulated": true,
+  "realProviderValidated": false,
+  "retiredRoutes": [
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentify",
+      "anonymous": 401,
+      "authorized": 409
+    },
+    {
+      "method": "GET",
+      "url": "/tab/tabAiHistory/addAudio?path=retired.wav",
+      "anonymous": 401,
+      "authorized": 409
+    },
+    {
+      "method": "POST",
+      "url": "/tab/tabAiHistory/addIdentifyClose",
+      "anonymous": 401,
+      "authorized": 409
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/startVideoUtil",
+      "anonymous": 401,
+      "authorized": 409
+    },
+    {
+      "method": "POST",
+      "url": "/video/tabVideoUtil/stopVideoUtil",
+      "anonymous": 401,
+      "authorized": 409
+    },
+    {
+      "method": "GET",
+      "url": "/tab/tabAiSubscription/subInfo",
+      "anonymous": 401,
+      "authorized": 409
+    }
+  ],
+  "retainedTableRowsBefore": {
+    "pic_config": 0,
+    "tab_ai_base": 80,
+    "tab_ai_history": 0,
+    "tab_ai_model": 5,
+    "tab_ai_model_bund": 0,
+    "tab_ai_subscription": 2
+  },
+  "retainedTableRowsAfter": {
+    "pic_config": 0,
+    "tab_ai_base": 80,
+    "tab_ai_history": 0,
+    "tab_ai_model": 5,
+    "tab_ai_model_bund": 0,
+    "tab_ai_subscription": 2
+  },
+  "note": "Old execution routes are rejected for direct calls; management and history rows remain unchanged."
+}

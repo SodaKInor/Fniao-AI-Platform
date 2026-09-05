@@ -1,0 +1,24 @@
+{
+  "success": true,
+  "message": "SIMULATED fixture; no GPU execution",
+  "code": 200,
+  "result": [
+    {
+      "code": "image-detection.v1",
+      "version": "mock-v1",
+      "displayName": "模拟图片检测",
+      "available": true,
+      "simulated": true,
+      "unavailableReason": "",
+      "inputMediaTypes": [
+        "image/png",
+        "image/jpeg"
+      ],
+      "maxInputBytes": 10485760,
+      "maxOutputBytes": 10485760,
+      "maxWaitMillis": 1500,
+      "parametersSchema": "detection.v1"
+    }
+  ],
+  "timestamp": 1788429600000
+}

@@ -1,0 +1,7 @@
+# No credentials. Online CodeGenerateDbConfig replaces these values from the isolated datasource.
+# The bundle must exist during class initialization, even when the GUI generator is not used.
+diver_name=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://127.0.0.1:1/unused
+username=
+password=
+database_name=unused

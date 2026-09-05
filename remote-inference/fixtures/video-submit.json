@@ -1,0 +1,11 @@
+{
+  "capabilityCode": "video-file-analysis.v1",
+  "inputAssetId": "asset-video-input-001",
+  "parameters": {
+    "threshold": 0.5,
+    "sampleIntervalMillis": 1000,
+    "maxEvents": 100,
+    "includeSnapshots": true,
+    "annotate": false
+  }
+}

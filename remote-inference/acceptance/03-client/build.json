@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "image": "sha256:7f3a693dc7a90e2cd3c801b9fa98a6e58a74f38fc88eca47bf6deac6e02fec54",
+  "tag": "wgai-03-client-backend:round5",
+  "size_bytes": 1111458812,
+  "at": "2026-09-04T06:01:18Z",
+  "command": "docker build -f deploy/backend/Dockerfile -t wgai-03-client-backend:round5 .",
+  "log": "/Users/twowt88/Documents/ChatGPT/WGAI-parallel/03-client/drafts/build-backend-round5.log",
+  "log_sha256": "6b20a8aaa9cccb77e90d2ac5312027b95740f9cbc264fe588fd0a071d513820c",
+  "java8_packaging": true,
+  "spring_boot_layers": [
+    "dependencies",
+    "spring-boot-loader",
+    "snapshot-dependencies",
+    "application"
+  ],
+  "tests": "Maven packaging keeps the existing skipTests behavior; 42 actual JUnit tests are independently recorded in java8-tests.json.",
+  "limitations": "This is a local package image. It does not prove the unconfirmed GPU contract or enable production video/stream capabilities."
+}

@@ -1,0 +1,290 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "account": "owner_a",
+      "aiMenu": true,
+      "canInfer": true,
+      "menuPaths": [
+        {
+          "path": "/round3/retired",
+          "component": "ai/DisabledEntryPage"
+        },
+        {
+          "path": "/dashboard/analysis",
+          "component": "dashboard/Analysis"
+        },
+        {
+          "path": "/tab",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/tab/TabAiModelList",
+          "component": "tab/TabAiModelList"
+        },
+        {
+          "path": "/tab/TabAiHistoryList",
+          "component": "tab/TabAiHistoryList"
+        },
+        {
+          "path": "/online",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/online/copyform/:code",
+          "component": "modules/online/cgform/OnlCgformCopyList"
+        },
+        {
+          "path": "/online/cgformErpList/:code",
+          "component": "modules/online/cgform/auto/erp/OnlCgformErpList"
+        },
+        {
+          "path": "/online/cgformTabList/:code",
+          "component": "modules/online/cgform/auto/tab/OnlCgformTabList"
+        },
+        {
+          "path": "/online/df/:table/:id",
+          "component": "modules/online/cgform/auto/OnlineDynamicForm"
+        },
+        {
+          "path": "/online/cgformList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformAutoList"
+        },
+        {
+          "path": "/online/cgreport/:code",
+          "component": "modules/online/cgreport/auto/OnlCgreportAutoList"
+        },
+        {
+          "path": "/online/cgformTreeList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformTreeList"
+        },
+        {
+          "path": "/online/cgformInnerTableList/:code",
+          "component": "modules/online/cgform/auto/innerTable/OnlCgformInnerTableList"
+        },
+        {
+          "path": "/ai",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/ai/inference",
+          "component": "ai/InferencePage"
+        },
+        {
+          "path": "/ai/history",
+          "component": "ai/HistoryPage"
+        },
+        {
+          "path": "/ai/jobs/:requestId",
+          "component": "ai/JobDetailPage"
+        }
+      ]
+    },
+    {
+      "account": "owner_b",
+      "aiMenu": true,
+      "canInfer": true,
+      "menuPaths": [
+        {
+          "path": "/round3/retired",
+          "component": "ai/DisabledEntryPage"
+        },
+        {
+          "path": "/dashboard/analysis",
+          "component": "dashboard/Analysis"
+        },
+        {
+          "path": "/tab",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/tab/TabAiModelList",
+          "component": "tab/TabAiModelList"
+        },
+        {
+          "path": "/tab/TabAiHistoryList",
+          "component": "tab/TabAiHistoryList"
+        },
+        {
+          "path": "/online",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/online/copyform/:code",
+          "component": "modules/online/cgform/OnlCgformCopyList"
+        },
+        {
+          "path": "/online/cgformErpList/:code",
+          "component": "modules/online/cgform/auto/erp/OnlCgformErpList"
+        },
+        {
+          "path": "/online/cgformTabList/:code",
+          "component": "modules/online/cgform/auto/tab/OnlCgformTabList"
+        },
+        {
+          "path": "/online/df/:table/:id",
+          "component": "modules/online/cgform/auto/OnlineDynamicForm"
+        },
+        {
+          "path": "/online/cgformList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformAutoList"
+        },
+        {
+          "path": "/online/cgreport/:code",
+          "component": "modules/online/cgreport/auto/OnlCgreportAutoList"
+        },
+        {
+          "path": "/online/cgformTreeList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformTreeList"
+        },
+        {
+          "path": "/online/cgformInnerTableList/:code",
+          "component": "modules/online/cgform/auto/innerTable/OnlCgformInnerTableList"
+        },
+        {
+          "path": "/ai",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/ai/inference",
+          "component": "ai/InferencePage"
+        },
+        {
+          "path": "/ai/history",
+          "component": "ai/HistoryPage"
+        },
+        {
+          "path": "/ai/jobs/:requestId",
+          "component": "ai/JobDetailPage"
+        }
+      ]
+    },
+    {
+      "account": "viewer",
+      "aiMenu": true,
+      "canInfer": false,
+      "menuPaths": [
+        {
+          "path": "/round3/retired",
+          "component": "ai/DisabledEntryPage"
+        },
+        {
+          "path": "/dashboard/analysis",
+          "component": "dashboard/Analysis"
+        },
+        {
+          "path": "/tab",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/tab/TabAiModelList",
+          "component": "tab/TabAiModelList"
+        },
+        {
+          "path": "/tab/TabAiHistoryList",
+          "component": "tab/TabAiHistoryList"
+        },
+        {
+          "path": "/online",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/online/copyform/:code",
+          "component": "modules/online/cgform/OnlCgformCopyList"
+        },
+        {
+          "path": "/online/cgformErpList/:code",
+          "component": "modules/online/cgform/auto/erp/OnlCgformErpList"
+        },
+        {
+          "path": "/online/cgformTabList/:code",
+          "component": "modules/online/cgform/auto/tab/OnlCgformTabList"
+        },
+        {
+          "path": "/online/df/:table/:id",
+          "component": "modules/online/cgform/auto/OnlineDynamicForm"
+        },
+        {
+          "path": "/online/cgformList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformAutoList"
+        },
+        {
+          "path": "/online/cgreport/:code",
+          "component": "modules/online/cgreport/auto/OnlCgreportAutoList"
+        },
+        {
+          "path": "/online/cgformTreeList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformTreeList"
+        },
+        {
+          "path": "/online/cgformInnerTableList/:code",
+          "component": "modules/online/cgform/auto/innerTable/OnlCgformInnerTableList"
+        },
+        {
+          "path": "/ai",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/ai/inference",
+          "component": "ai/InferencePage"
+        },
+        {
+          "path": "/ai/history",
+          "component": "ai/HistoryPage"
+        },
+        {
+          "path": "/ai/jobs/:requestId",
+          "component": "ai/JobDetailPage"
+        }
+      ]
+    },
+    {
+      "account": "nomenu",
+      "aiMenu": false,
+      "canInfer": false,
+      "menuPaths": [
+        {
+          "path": "/dashboard/analysis",
+          "component": "dashboard/Analysis"
+        },
+        {
+          "path": "/online",
+          "component": "layouts/RouteView"
+        },
+        {
+          "path": "/online/copyform/:code",
+          "component": "modules/online/cgform/OnlCgformCopyList"
+        },
+        {
+          "path": "/online/cgformErpList/:code",
+          "component": "modules/online/cgform/auto/erp/OnlCgformErpList"
+        },
+        {
+          "path": "/online/cgformTabList/:code",
+          "component": "modules/online/cgform/auto/tab/OnlCgformTabList"
+        },
+        {
+          "path": "/online/df/:table/:id",
+          "component": "modules/online/cgform/auto/OnlineDynamicForm"
+        },
+        {
+          "path": "/online/cgformList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformAutoList"
+        },
+        {
+          "path": "/online/cgreport/:code",
+          "component": "modules/online/cgreport/auto/OnlCgreportAutoList"
+        },
+        {
+          "path": "/online/cgformTreeList/:code",
+          "component": "modules/online/cgform/auto/OnlCgformTreeList"
+        },
+        {
+          "path": "/online/cgformInnerTableList/:code",
+          "component": "modules/online/cgform/auto/innerTable/OnlCgformInnerTableList"
+        }
+      ]
+    }
+  ],
+  "scope": "Real Shiro permission responses processed by actual frontend navigation module; not a browser UI test."
+}

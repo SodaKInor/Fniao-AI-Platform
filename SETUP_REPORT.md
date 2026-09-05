@@ -1,4 +1,6 @@
-# WGAI 开发工具部署报告
+# WGAI 开发工具部署报告（历史记录）
+
+> 本文冻结 2026-09-02 旧 WGAI 工作区的工具部署事实，所含绝对路径、项目名和进程状态不得作为当前 Fniao AI Platform 的运行配置。当前工具状态见 `docs/FINAL_INTEGRATION_REPORT.md`。
 
 生成时间：2026-09-02（America/Los_Angeles）  
 工作区：`/Users/twowt88/Documents/ChatGPT/WGAI`

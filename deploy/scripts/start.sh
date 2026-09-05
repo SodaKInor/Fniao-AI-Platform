@@ -30,6 +30,7 @@ if grep -q 'CHANGE_ME_' "$ENV_FILE"; then
 fi
 
 load_env
+require_database_baseline
 compose config --quiet
 
 echo "Building MySQL initialization image"
@@ -54,4 +55,4 @@ wait_for_health frontend 180
 
 compose up -d
 compose ps
-echo "WGAI is available at http://${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-8080}"
+echo "Fniao AI Platform is available at http://${FRONTEND_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-8080}"

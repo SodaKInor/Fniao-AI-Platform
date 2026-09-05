@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-09-03T09:30:34.882868+00:00",
+  "original_services": [
+    {
+      "name": "/wgai-mysql-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-redis-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-backend-1",
+      "health": "healthy",
+      "running": true
+    },
+    {
+      "name": "/wgai-frontend-1",
+      "health": "healthy",
+      "running": true
+    }
+  ],
+  "test_services_stopped": true
+}

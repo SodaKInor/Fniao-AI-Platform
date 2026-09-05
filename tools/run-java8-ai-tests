@@ -1,0 +1,72 @@
+#!/bin/sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+repo_root=$(git -C "$script_dir" rev-parse --show-toplevel)
+suffix="$$"
+network="fniao-java8-tests-$suffix"
+mysql_container="fniao-java8-tests-mysql-$suffix"
+database="fniao_ai_test_$suffix"
+mysql_password="fniao-java8-fixture-only"
+
+cleanup() {
+  docker rm -f "$mysql_container" >/dev/null 2>&1 || true
+  docker network rm "$network" >/dev/null 2>&1 || true
+}
+trap cleanup EXIT HUP INT TERM
+
+docker network create "$network" >/dev/null
+docker run -d --name "$mysql_container" --network "$network" --network-alias mysql \
+  --tmpfs /var/lib/mysql:rw \
+  -e MYSQL_ROOT_PASSWORD="$mysql_password" \
+  -e MYSQL_DATABASE="$database" \
+  -e MYSQL_USER=foundation \
+  -e MYSQL_PASSWORD="$mysql_password" \
+  mysql:8.0.36 --character-set-server=utf8mb4 --collation-server=utf8mb4_bin >/dev/null
+
+ready=false
+attempt=0
+while [ "$attempt" -lt 90 ]; do
+  if docker exec -e MYSQL_PWD="$mysql_password" "$mysql_container" \
+    mysql -uroot --batch --skip-column-names -e 'SELECT 1' >/dev/null 2>&1; then
+    ready=true
+    break
+  fi
+  attempt=$((attempt + 1))
+  sleep 1
+done
+test "$ready" = true
+
+for migration in \
+  "$repo_root/database/migrations/ai-core/V001__04a_assets_jobs.sql" \
+  "$repo_root/database/migrations/stream/V002__04a_video_stream.sql"
+do
+  docker exec -i -e MYSQL_PWD="$mysql_password" "$mysql_container" mysql -uroot \
+    --default-character-set=utf8mb4 "$database" < "$migration"
+done
+
+test_classes="org.jeecg.modules.ai.application.capabilities.CapabilityTest org.jeecg.modules.ai.assetsjobs.ApiTest org.jeecg.modules.ai.assetsjobs.ConfigurationTest org.jeecg.modules.ai.assetsjobs.PersistenceTest org.jeecg.modules.ai.assetsjobs.ResilienceTest org.jeecg.modules.ai.assetsjobs.StorageTest org.jeecg.modules.ai.assetsjobs.StreamApiTest org.jeecg.modules.ai.assetsjobs.StreamControllerProxyTest org.jeecg.modules.ai.assetsjobs.StreamWorkflowTest org.jeecg.modules.ai.assetsjobs.VideoApiTest org.jeecg.modules.ai.assetsjobs.VideoWorkflowTest org.jeecg.modules.ai.assetsjobs.WorkflowTest org.jeecg.modules.ai.client.DevelopmentStubAcceptanceTest org.jeecg.modules.ai.client.DraftArtifactTest org.jeecg.modules.ai.client.DraftInferenceTest org.jeecg.modules.ai.client.DraftStreamProviderTest org.jeecg.modules.ai.client.DraftVideoProviderTest org.jeecg.modules.ai.integration.CombinedConfigurationTest org.jeecg.modules.ai.integration.ControllerProxyTest org.jeecg.modules.ai.legacy.AiAccessTest"
+
+docker run --rm --network "$network" \
+  --mount type=bind,source="$repo_root",target=/workspace \
+  --mount type=volume,source=fniao_maven_cache,target=/root/.m2 \
+  --mount type=bind,source="$repo_root/deploy/backend/rebuild-opencv-java8.sh",target=/usr/local/bin/rebuild-opencv-java8.sh,readonly \
+  --tmpfs /validation:rw \
+  -w /workspace/apps/backend \
+  -e MYSQL_PASSWORD="$mysql_password" \
+  maven:3.8.8-eclipse-temurin-8 sh -lc \
+  "/workspace/deploy/backend/install-private-jars.sh /workspace/apps/backend && \
+   mvn -B -Pdocker-core -DskipTests=true -pl jeecg-module-system/jeecg-system-biz -am install && \
+   mvn -B -q -pl jeecg-module-system/jeecg-system-biz dependency:build-classpath \
+     -Dmdep.includeScope=test -Dmdep.outputFile=/tmp/fniao-test-classpath && \
+   keytool -genkeypair -alias fixture -keyalg RSA -keysize 2048 -storetype PKCS12 \
+     -keystore /validation/server.p12 -storepass fixture-only -keypass fixture-only \
+     -dname CN=fixture.invalid -ext SAN=ip:127.0.0.1 -validity 30 >/dev/null 2>&1 && \
+   keytool -exportcert -rfc -keystore /validation/server.p12 -storepass fixture-only \
+     -alias fixture -file /validation/server.crt >/dev/null 2>&1 && \
+   printf '<configuration><root level=\"ERROR\"/></configuration>\\n' > /validation/logback-test.xml && \
+   java -Dlogback.configurationFile=/validation/logback-test.xml \
+     -Dai.test.jdbc='jdbc:mysql://mysql:3306/$database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC' \
+     -Dai.test.examples=/workspace/remote-inference/fixtures \
+     -cp \"/workspace/apps/backend/jeecg-module-system/jeecg-system-biz/target/test-classes:/workspace/apps/backend/jeecg-module-system/jeecg-system-biz/target/classes:\$(cat /tmp/fniao-test-classpath)\" \
+     org.junit.runner.JUnitCore $test_classes"

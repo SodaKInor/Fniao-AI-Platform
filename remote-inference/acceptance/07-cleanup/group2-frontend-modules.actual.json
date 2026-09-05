@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "scope": "frontend production AI modules",
+  "files": 31,
+  "oldLayerDirectoriesWithFiles": [],
+  "forbiddenFeatureRoots": [],
+  "unresolvedLocalImports": [],
+  "fileImportCycles": [],
+  "dynamicMenuTargets": [
+    "modules/ai/image/InferencePage",
+    "modules/ai/job/HistoryPage",
+    "modules/ai/job/JobDetailPage",
+    "modules/ai/stream/StreamSessionPage",
+    "modules/ai/stream/StreamStartPage",
+    "modules/ai/video/VideoInferencePage"
+  ],
+  "features": [
+    {
+      "feature": "asset",
+      "files": 3,
+      "importsFeatures": [
+        "result"
+      ]
+    },
+    {
+      "feature": "capability",
+      "files": 2,
+      "importsFeatures": [
+        "result"
+      ]
+    },
+    {
+      "feature": "image",
+      "files": 3,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "public",
+        "result"
+      ]
+    },
+    {
+      "feature": "job",
+      "files": 5,
+      "importsFeatures": [
+        "public",
+        "result",
+        "video"
+      ]
+    },
+    {
+      "feature": "legacy",
+      "files": 3,
+      "importsFeatures": []
+    },
+    {
+      "feature": "result",
+      "files": 4,
+      "importsFeatures": [
+        "image"
+      ]
+    },
+    {
+      "feature": "stream",
+      "files": 7,
+      "importsFeatures": [
+        "capability",
+        "public",
+        "result"
+      ]
+    },
+    {
+      "feature": "video",
+      "files": 3,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "public",
+        "result",
+        "stream"
+      ]
+    },
+    {
+      "feature": "public",
+      "files": 1,
+      "importsFeatures": [
+        "asset",
+        "capability",
+        "job",
+        "stream"
+      ]
+    }
+  ]
+}

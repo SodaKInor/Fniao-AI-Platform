@@ -1,0 +1,34 @@
+- complementary:
+  - link "logo AI赋能训练":
+    - /url: /
+    - img "logo"
+    - heading "AI赋能训练" [level=1]
+  - menu:
+    - 'menuitem "图标: appstore 首页"':
+      - 'link "图标: appstore 首页"':
+        - /url: /dashboard/analysis
+        - 'generic "图标: appstore"':
+        - text: 首页
+- 'generic "图标: menu-fold"':
+- text: AI赋能训练平台
+- 'generic "图标: search"':
+- 'link "图标: question-circle-o"':
+  - /url: http://doc.jeecg.com
+  - 'generic "图标: question-circle-o"':
+- 'generic "图标: bell"':
+- generic: 本地模拟用户
+- link:
+  - /url: javascript:;
+- generic "系统设置"
+- main:
+  - tablist:
+    - 'generic "图标: left"':
+    - 'generic "图标: right"':
+    - tab "首页" [selected]:
+      - generic: 首页
+  - tabpanel
+  - generic: 首页
+  - 'generic "图标: exclamation-circle"':
+  - generic: 此入口已停用
+  - generic: 当前版本没有此功能的已验收执行接口，因此不提供运行操作。原有源码和业务数据保留。
+  - paragraph: 已有模型登记、绑定管理和识别历史可继续从原管理菜单查询。

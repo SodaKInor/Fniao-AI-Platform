@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "scope": "unreferenced legacy WGAI image tags only",
+  "removed": [
+    "wgai-integration-backend:round3",
+    "wgai-integration-backend:round5-stub-a63ae8d",
+    "wgai-integration-frontend:round3",
+    "wgai-remote-ai-stub:05-check",
+    "wgai-resilience-backend:local-check"
+  ],
+  "imageUsageBefore": "12.64GB",
+  "imageUsageAfter": "6.355GB",
+  "preserved": [
+    "all nine containers",
+    "all Docker volumes",
+    "current backend, frontend and stub images",
+    "wgai-backend:local and wgai-frontend:local used by separate containers",
+    "MySQL and Redis images",
+    "Docker build cache"
+  ],
+  "buildCacheReclaimed": false,
+  "volumesDeleted": false,
+  "containersDeleted": false
+}

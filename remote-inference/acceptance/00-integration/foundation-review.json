@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "foundation_commit": "0514ccbe8e876dbdbae25ae8712db85487ba412c",
+  "previous_start": "e1ccab10fe5314c67be811c47cdbc3663e8a4b53",
+  "verified_at": "2026-09-03T09:33:30.177409+00:00",
+  "checks": [
+    "HANDOFF commit matches actual branch HEAD; clean worktrees",
+    "34 changed files all owned by foundation acceptance",
+    "Source ZIP CRC/hashes and JAR member hashes; original licenses retained",
+    "Independent recalculation of all four out-of-repo backup hashes matched",
+    "10 actual isolated four-service baselines passed; original 4 services healthy",
+    "Backend Java 8/private dependencies and frontend build PASS; tests skipped as recorded",
+    "Menu/runtime/source entrypoint inventory and explicit dispositions reviewed",
+    "No public contract, business implementation, dependency or original worktree changes",
+    "git diff --check passed"
+  ],
+  "tasks_accepted": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "1.4",
+    "1.5",
+    "1.6"
+  ],
+  "release_02": "Only after this integration review is committed",
+  "not_accepted": [
+    "Login/authorization end-to-end",
+    "Inference/GPU acceptance",
+    "Complete business restore drill",
+    "Task 4.7"
+  ]
+}

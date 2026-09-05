@@ -1,0 +1,33 @@
+{
+  "status": "ACCEPTED_SIMULATED_FRONTEND_FAIL_CLOSED",
+  "at": "2026-09-04T08:22:50Z",
+  "commonStart": "f242a027a2e2827f5445bea80e517c472ff1e3c9",
+  "deliveryCommit": "d81a89648eba104995c4e26b6c607a850077226e",
+  "merge": "fast-forward",
+  "contractVersion": "1.1.0",
+  "checks": {
+    "nodeTests": { "passed": 27, "failed": 0 },
+    "eslint": "PASS",
+    "productionBuild": "PASS_WITH_EXISTING_WARNINGS",
+    "scope": "PASS",
+    "openspecStrict": ["remote-inference-platform", "remote-video-streaming"],
+    "browser": "PASS"
+  },
+  "acceptedTasks": {
+    "remote-inference-platform": ["4.9", "4.10"],
+    "remote-video-streaming": ["4.1", "4.2", "4.3"]
+  },
+  "capabilityGate": {
+    "providerContract": "UNCONFIRMED",
+    "productionVideoAndStreamHardDisabled": true,
+    "realGpuIntegrationClaimed": false
+  },
+  "notClaimed": [
+    "real RTX 5070 image, video or stream integration",
+    "05 provider confirmation",
+    "06 resilience and observability matrix",
+    "6.5 unified regression",
+    "07 cleanup or release candidate"
+  ],
+  "newCommonStartCommit": "Recorded after this acceptance receipt commit in the external 00 HANDOFF and WORKSPACES.json."
+}

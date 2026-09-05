@@ -1,18 +1,24 @@
 #!/bin/zsh
 set -eu
 
-workspace="/Users/twowt88/Documents/ChatGPT/WGAI"
-cd "$workspace"
+script_dir="${0:A:h}"
+repo_root="$(git -C "$script_dir" rev-parse --show-toplevel)"
+graphify_bin="$(command -v graphify)"
+cd "$repo_root"
+
+if [ ! -s "$repo_root/graphify-out/graph.json" ]; then
+  exec "$graphify_bin" extract "$repo_root" --code-only --force --out "$repo_root"
+fi
 
 result=0
-output="$(/Users/twowt88/.local/bin/graphify update "$workspace" 2>&1)" || result=$?
+output="$(GRAPHIFY_FORCE=1 "$graphify_bin" update "$repo_root" 2>&1)" || result=$?
 print -r -- "$output"
 
 if [ "$result" -eq 0 ]; then
   exit 0
 fi
 
-if [[ "$output" == *"Nothing to update"* ]] && [ -s "$workspace/graphify-out/graph.json" ]; then
+if [[ "$output" == *"Nothing to update"* ]] && [ -s "$repo_root/graphify-out/graph.json" ]; then
   print "Graphify graph is already up to date."
   exit 0
 fi

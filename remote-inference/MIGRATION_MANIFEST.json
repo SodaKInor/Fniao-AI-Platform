@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "package": "08c-remote-boundary",
+  "baseCommit": "07f970bd475a70554946140427c15635e0802cca",
+  "branch": "codex/remote-boundary",
+  "moveMethod": "git mv",
+  "sourceFileCount": 353,
+  "sourceBlobSets": {
+    "apps/backend/integrations/ai-contracts": {
+      "fileCount": 328,
+      "sortedBlobIdSetSha256": "7c31adde9bf2521b9ecd97ae47b2b137e198a41dd19dbc1f34835cac7d0df6e5"
+    },
+    "apps/backend/development/remote-inference": {
+      "fileCount": 9,
+      "sortedBlobIdSetSha256": "a67f17d45db6f93a452f3478561a4b26eea53108e4e545772a3b1caf09ea5210"
+    },
+    "apps/backend/deploy/remote-ai/non-database": {
+      "fileCount": 16,
+      "sortedBlobIdSetSha256": "bf12799c04c8e7c1c27feaae094cdd1d0a51b69be3b7a43164a49717d9bed07b"
+    }
+  },
+  "pathMappings": [
+    {
+      "source": "apps/backend/integrations/ai-contracts/README.md",
+      "target": "remote-inference/README.md",
+      "category": "active-index",
+      "owner": "08c-remote-boundary"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/v1/**",
+      "target": "remote-inference/contracts/business/v1/**",
+      "category": "business-contract-1.0",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/v1.1/**",
+      "target": "remote-inference/contracts/business/v1.1/**",
+      "category": "business-contract-1.1",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/provider-draft/v0.1.openapi.json",
+      "target": "remote-inference/contracts/provider/v0.1.openapi.json",
+      "category": "provider-contract-draft",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/provider-draft/v0.2.openapi.json",
+      "target": "remote-inference/contracts/provider/v0.2.openapi.json",
+      "category": "provider-contract-draft",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/stub/contract/provider-stub.v1.json",
+      "target": "remote-inference/contracts/provider/provider-stub.v1.json",
+      "category": "stub-provider-contract",
+      "owner": "05-lan"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/examples/**",
+      "target": "remote-inference/fixtures/**",
+      "category": "synthetic-fixtures",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/stub/**",
+      "target": "remote-inference/stub/**",
+      "category": "development-http-stub",
+      "owner": "05-lan",
+      "excludes": [
+        "contract/provider-stub.v1.json"
+      ]
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/acceptance/**",
+      "target": "remote-inference/acceptance/**",
+      "category": "historical-acceptance",
+      "owner": "historical-package-owners"
+    },
+    {
+      "source": "apps/backend/integrations/ai-contracts/handoff/**",
+      "target": "remote-inference/handoff/**",
+      "category": "provider-interface-handoff",
+      "owner": "02-contract"
+    },
+    {
+      "source": "apps/backend/development/remote-inference/**",
+      "target": "docs/remote-inference/**",
+      "category": "active-architecture-and-runbook",
+      "owner": "08c-remote-boundary"
+    }
+  ],
+  "deploymentFileMappings": [
+    "README.md",
+    "application-remote-ai.yml",
+    "ca.override.yml",
+    "contract-intake-rules.cjs",
+    "contract-intake.example.json",
+    "core.override.yml",
+    "dev.env.example",
+    "prod.env.example",
+    "real-integration-evidence-rules.cjs",
+    "real-integration-evidence.example.json",
+    "secrets.override.yml",
+    "stub-token.dev",
+    "stub.env.example",
+    "stub.override.yml",
+    "validate-contract-intake.cjs",
+    "validate-real-integration-evidence.cjs"
+  ],
+  "deploymentMappingRule": {
+    "sourcePrefix": "apps/backend/deploy/remote-ai/",
+    "targetPrefix": "deploy/remote-inference/",
+    "owner": "08c-remote-boundary"
+  },
+  "databaseOwnedFilesLeftInPlace": [
+    "apps/backend/deploy/remote-ai/migrations/V001__04a_assets_jobs.sql",
+    "apps/backend/deploy/remote-ai/migrations/V002__04a_video_stream.sql",
+    "apps/backend/deploy/remote-ai/stub-bindings.example.sql"
+  ],
+  "postMoveEdits": [
+    "remote-inference/README.md",
+    "remote-inference/stub/Dockerfile",
+    "remote-inference/stub/src/config.cjs",
+    "remote-inference/stub/src/routes.cjs",
+    "remote-inference/stub/src/scenarios.cjs",
+    "remote-inference/stub/test/stub.test.cjs",
+    "deploy/remote-inference/README.md",
+    "deploy/remote-inference/stub.override.yml"
+  ],
+  "preservation": {
+    "contractFilesByteIdentical": 7,
+    "fixtureFilesByteIdentical": 38,
+    "historicalAcceptanceFilesByteIdentical": 266,
+    "providerHandoffFilesByteIdentical": 2,
+    "architectureDocumentFilesByteIdentical": 9,
+    "databaseFilesModified": 0,
+    "openspecTaskTablesModified": 0
+  }
+}
