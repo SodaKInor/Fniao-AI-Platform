@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "07f970bd475a70554946140427c15635e0802cca",
+  "execution": [
+    {
+      "order": 1,
+      "kind": "bootstrap-sanitizer",
+      "version": "bootstrap-002",
+      "sourceAtBase": "deploy/db/002-local-sanitize.sql",
+      "target": "database/bootstrap/002-local-sanitize.sql",
+      "contentOwner": "01-foundation",
+      "pathOwner": "codex/database-layout",
+      "previousVersion": "external-private-baseline",
+      "sha256": "940c66e3946f94e69d09731c983c72ac9929d02136953632772c76fd511ea6d3",
+      "repeatBehavior": "Re-running truncates the same disposable audit/runtime tables and repeats the same nullification updates; schema remains unchanged."
+    },
+    {
+      "order": 2,
+      "kind": "migration",
+      "version": "V001",
+      "sourceAtBase": "apps/backend/deploy/remote-ai/migrations/V001__04a_assets_jobs.sql",
+      "target": "database/migrations/ai-core/V001__04a_assets_jobs.sql",
+      "contentOwner": "04a-assets-jobs",
+      "pathOwner": "codex/database-layout",
+      "previousVersion": "bootstrap-002",
+      "sha256": "0e50ad45101cc92bff877aa63ae60bb42fbf9720f2dc5d93c604a5f682f9c026",
+      "repeatBehavior": "CREATE TABLE IF NOT EXISTS preserves matching tables and the guarded capacity insert keeps exactly one id=1 row."
+    },
+    {
+      "order": 3,
+      "kind": "migration",
+      "version": "V002",
+      "sourceAtBase": "apps/backend/deploy/remote-ai/migrations/V002__04a_video_stream.sql",
+      "target": "database/migrations/stream/V002__04a_video_stream.sql",
+      "contentOwner": "04a-assets-jobs",
+      "pathOwner": "codex/database-layout",
+      "previousVersion": "V001",
+      "sha256": "40e190fea24cdd476ef7bbd00520fe1b859082a8e8440b7ae4fe3c3845b54a15",
+      "repeatBehavior": "Additive CREATE TABLE IF NOT EXISTS statements preserve the existing stream schema and rows on a second execution."
+    },
+    {
+      "order": 4,
+      "kind": "development-seed",
+      "version": "stub-bindings-v1",
+      "sourceAtBase": "apps/backend/deploy/remote-ai/stub-bindings.example.sql",
+      "target": "database/seeds/stub/stub-bindings.example.sql",
+      "contentOwner": "05-lan",
+      "pathOwner": "codex/database-layout",
+      "previousVersion": "V002",
+      "sha256": "a16ab5ad6defb6edf426d285a34fbae8dba761a85853e192137f39c3520d5b37",
+      "repeatBehavior": "Fixed primary keys are upserted; capability descriptors remain deterministic and the synthetic source updated_at value may refresh without creating rows."
+    }
+  ]
+}
