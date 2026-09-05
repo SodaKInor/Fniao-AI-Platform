@@ -54,7 +54,7 @@
 仓库外的私有 JSON，所有凭据只写绝对文件引用，然后执行：
 
 ```sh
-node backend-github/deploy/remote-ai/validate-contract-intake.cjs /absolute/private/path/contract-intake.json
+node deploy/remote-inference/validate-contract-intake.cjs /absolute/private/path/contract-intake.json
 ```
 
 校验器要求 HTTPS 与完全一致的批准 origin，拒绝占位/回环主机、URL 内嵌凭据、任何 RTSP 字符串
@@ -74,7 +74,7 @@ node backend-github/deploy/remote-ai/validate-contract-intake.cjs /absolute/priv
 `real-integration-evidence.example.json` 的字段整理，并执行：
 
 ```sh
-node backend-github/deploy/remote-ai/validate-real-integration-evidence.cjs \
+node deploy/remote-inference/validate-real-integration-evidence.cjs \
   /absolute/private/path/contract-intake.json \
   /path/to/real-integration-evidence.json
 ```

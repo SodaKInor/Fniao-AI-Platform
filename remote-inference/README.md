@@ -1,14 +1,14 @@
 # AI 接口共同交付
 
-当前冻结 v1.1/business.openapi.json（内部 1.1.0），并保留不可变的
-v1/business.openapi.json（1.0.0 图片兼容基线）。外部图片草案
-provider-draft/v0.1.openapi.json 与视频/流扩展草案 provider-draft/v0.2.openapi.json
+当前冻结 contracts/business/v1.1/business.openapi.json（内部 1.1.0），并保留不可变的
+contracts/business/v1/business.openapi.json（1.0.0 图片兼容基线）。外部图片草案
+contracts/provider/v0.1.openapi.json 与视频/流扩展草案 contracts/provider/v0.2.openapi.json
 均为 UNCONFIRMED，不是已上线接口。后续 03/04a/04b 必须从 00 记录的同一冻结提交开始，
 不自行改公开字段或类型。
 
-- [1.1 图片、上传视频和实时流语义](v1.1/SEMANTICS.md)
-- [1.0 图片兼容基线](v1/SEMANTICS.md)
-- [模拟夹具说明](examples/README.md)
+- [1.1 图片、上传视频和实时流语义](contracts/business/v1.1/SEMANTICS.md)
+- [1.0 图片兼容基线](contracts/business/v1/SEMANTICS.md)
+- [模拟夹具说明](fixtures/README.md)
 - [开发服务交接模板](handoff/development.md)
 - [正式服务交接模板](handoff/production.md)
 - [本包检查与审阅](acceptance/02-contract/README.md)
@@ -26,3 +26,6 @@ API DTO 使用已有 Jackson annotations，未增加依赖。领域和端口使�
 契约引用均为文档内 JSON Pointer，不依赖网络 schema。OpenAPI 校验器同时检查 1.0、1.1 和
 两份 provider 草案，并验证 manifest 的正反样例。私有制品和构建输入依照 01 的复现步骤取得，
 不复制真实配置。
+
+当前目录是契约、fixtures、独立开发 stub、历史验收证据和接口交接材料的唯一版本化来源。
+运行 `node validate-boundary.cjs` 验证契约/fixtures、目录边界、活动链接和模拟/正式配置隔离。

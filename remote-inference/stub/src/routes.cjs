@@ -4,12 +4,12 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { authorized } = require('./auth.cjs');
 const { readBody, jsonBody, multipart } = require('./body.cjs');
-const { scenario, SCENARIOS } = require('./config.cjs');
+const { scenario, SCENARIOS } = require('./scenarios.cjs');
 const fixtures = require('./fixtures.cjs');
 const reply = require('./respond.cjs');
 const validation = require('./validation.cjs');
 
-const imageBytes = fs.readFileSync(path.resolve(__dirname, '..', '..', 'examples', 'annotated.png'));
+const imageBytes = fs.readFileSync(path.resolve(__dirname, '..', '..', 'fixtures', 'annotated.png'));
 const SOURCE = 'synthetic-camera-01';
 
 function createRouter(config, state) {
